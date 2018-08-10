@@ -1,0 +1,109 @@
+﻿<form name="qtyForm" class="fill-height" role="form">
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-default" ng-click="AddNewItems()" ng-disabled="IsPeriodClosed">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{Translations.AddNewItems}}
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <div class="pull-right">
+                        <button class="btn btn-default btn-success" type="button" ng-click="SubmitRequest()"
+                                 ng-disabled="(IsOffline || HasTransferItemWithoutQuantity) || IsSubmitButtonDisabled">{{Translations.Submit}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row fill-height">
+                <div class="col-md-12 fill-height">
+                    <div class="panel panel-default fill-height container-2-toolbars">
+                        <div class="panel-heading">
+                            {{ IsOutbound ? Translations.To : Translations.From }}: {{IsOutbound ? SendingLocationDisplayName : RequestingLocationDisplayName }}
+                        </div>
+                        <div ng-hide="Items.length === 0" class="table-header">
+                            <div id="TableHeader">
+                                <div class="column-header">{{ Translations.Description }}({{ Translations.ItemCode }})</div>
+                                <div class="column-header">{{ Translations.QtyOnHand }}</div>
+                                <div class="column-header">{{ Translations.AltUnit1 }}</div>
+                                <div class="column-header">{{ Translations.AltUnit2 }}</div>
+                                <div class="column-header" ng-show="HasTransferUnit4">{{ Translations.AltUnit3 }}</div>
+                                <div class="column-header">{{ Translations.BaseUnit }}</div>
+                            </div>
+                        </div>
+                        <div ng-hide="Items.length !== 0" class="alert alert-warning">
+                            <p> {{Translations.NoItemsMessage}}</p>
+                        </div>
+                        <div class="touch-scrollable">
+                            <table class="table table-striped" mx-scrollable-table watch="Items" header-id="TableHeader">
+                                <tbody>
+                                    <tr ng-repeat="item in Items">
+                                        <td class="word-break"
+                                            ng-class="{
+                                                'col-xs-2 col-lg-3': HasTransferUnit4,
+                                                'col-xs-4 col-lg-5': !HasTransferUnit4
+                                            }">
+                                            {{ item.Description }}({{ item.Code  }})
+                                        </td>
+                                        <td class="col-xs-2 col-lg-1">{{ item.OnHandQuantity | number:2}}&nbsp;&nbsp;{{item.TransferUnit3.substring(0,1).toUpperCase()+item.TransferUnit3.substring(1)}}</td>
+                                        <td class="col-xs-2 col-lg-2">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   ng-show="item.TransferUnit1"
+                                                   ng-model="item.TransferQty1"
+                                                   name="TransferQty1"
+                                                   select-on-focus-input
+                                                   mx-virtual-keyboard-input
+                                                   number-only-input minvalue="0" precision="2" />
+                                            <label>{{ item.TransferUnit1.substring(0,1).toUpperCase()+item.TransferUnit1.substring(1)}}</label>
+                                        </td>
+                                        <td class="col-xs-2 col-lg-2">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   ng-show="item.TransferUnit2"
+                                                   ng-model="item.TransferQty2"
+                                                   name="TransferQty2"
+                                                   select-on-focus-input
+                                                   mx-virtual-keyboard-input
+                                                   number-only-input minvalue="0" precision="2" />
+                                            <label>{{ item.TransferUnit2.substring(0,1).toUpperCase()+item.TransferUnit2.substring(1)}}</label>
+                                        </td>
+                                        <td class="col-xs-2 col-lg-2" ng-show="HasTransferUnit4">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   ng-show="item.TransferUnit4"
+                                                   ng-model="item.TransferQty4"
+                                                   name="TransferQty4"
+                                                   select-on-focus-input
+                                                   mx-virtual-keyboard-input
+                                                   number-only-input minvalue="0" precision="2" />
+                                            <label>{{ item.TransferUnit4.substring(0,1).toUpperCase()+item.TransferUnit4.substring(1)}}</label>
+                                        </td>
+                                        <td class="col-xs-2 col-lg-2">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   ng-show="item.TransferUnit3"
+                                                   ng-model="item.TransferQty3"
+                                                   name="TransferQty3"
+                                                   select-on-focus-input
+                                                   mx-virtual-keyboard-input
+                                                   number-only-input minvalue="0" precision="2" />
+                                            <label>{{ item.TransferUnit3.substring(0,1).toUpperCase()+item.TransferUnit3.substring(1)}}</label>
+                                        </td>
+                                        <td class="min-50"
+                                            ng-click="RemoveItemAtIndex($index)">
+                                            <i class="fa fa-trash-o"
+                                               title="Remove Item"
+                                            style="cursor: pointer"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

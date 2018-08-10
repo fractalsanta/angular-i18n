@@ -1,0 +1,7 @@
+﻿<h2>Connecting to partner site</h2>
+<form action="{{Model.Url}}" target="_blank" method="post" ng-if="IsReady" mx-form-autosubmit>
+    <input type="hidden" name="UserId" value="{{Model.UserId}}" />
+    <input type="hidden" name="Timestamp" value="{{Model.Timestamp}}" />
+    <input type="hidden" name="Signature" value="{{Model.Signature}}" />
+    <input type="hidden" name="Site" value="{{Model.Site}}" />
+</form>

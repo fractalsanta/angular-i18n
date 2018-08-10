@@ -1,0 +1,163 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.LotOwnerModel
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataWebsite.Model
+@section HeadTagsSection {
+    <style>
+    </style>
+}
+<h1>Contact Details</h1>
+
+@if (ViewData.Model.UserSession.LotNames.Count > 1)
+{
+    @Html.Raw(Html.StrataDropdown(ViewData.Model.UserSession.LotNames, ViewData.Model.CurrentLotIndex, ((d, i) => Url.Action("Contacts", new { index = i }))))
+}
+else
+{
+    <h2>@Html.Raw(ViewData.Model.UserSession.LotNames[0].Name)</h2>
+}
+<div class="full-width-data-container" style="border: none; background-color: inherit;">
+    <div class="report-section floatLeft">
+        <h3>Portfolio</h3>
+        <div class="section">
+            @Model.BodyCorporateName
+            <br />
+            <span>Plan Number:</span> @Model.PlanNumber
+        </div>
+        <div class="section" style="clear: both;">
+            @Html.ValueOrDefault(Model.AddressLine1)
+            @Html.ValueOrDefault(Model.AddressLine2)
+            @Html.ValueOrDefault(Model.AddressLine3)
+        </div>
+    </div>
+    <div class="report-section floatRight">
+        @if (Model.AgentContentStrata.ShowPropertyPhoto && Model.HasPropertyPhoto)
+        {
+            <h3 style="visibility: hidden;">Photo</h3>
+            <img src="@Url.Action("PropertyPhoto", new { PlanNo = Model.PlanNumber == null ? "" : Model.PlanNumber.Trim() })" />
+        }
+    </div>
+</div>
+<div class="full-width-data-container" style="border: none; background-color: inherit;">
+    <div class="report-section floatLeft">
+        <h3>Owner Contact Details</h3>
+        <div class="section">
+            @Html.Partial("RenderContact", Model.MainContact)
+        </div>
+    </div>
+    <div class="report-section floatRight">
+        <h3>Financial Details</h3>
+        <div class="section">
+            @if (!Model.HidePaidTo)
+            {
+                <div class="label">
+                    Paid to:
+                </div>
+                <div class="value">@Model.FinancialPaidTo</div>
+            }
+            <div class="label">
+                Last Receipt:
+            </div>
+            <div class="value">@Model.FinancialLastReceiptDate</div>
+            <div class="label">
+                Amount:
+            </div>
+            <div class="value">@Model.FinancialLastReceiptAmount</div>
+            <div class="label">
+                Receipt No:
+            </div>
+            <div class="value">@Model.FinancialLastReceiptRecordNo</div>
+        </div>
+        <h3>Dates</h3>
+        <div class="section">
+            <div class="label">
+                Entered:
+            </div>
+            <div class="value">
+                @if (Model.FinancialEnteredDate != null)
+                { @Model.FinancialEnteredDate.ToShortDateString();
+                }
+            </div>
+            <div class="label">
+                Purchased:
+            </div>
+            <div class="value">
+                @if (Model.FinancialPurchasedDate != null)
+                { @Model.FinancialPurchasedDate.ToShortDateString();
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="full-width-data-container" style="border: none; background-color: inherit;">
+    <div class="report-section floatLeft">
+        <h3>Agent Contact Details</h3>
+        <div class="section">
+            @if (Model.AgentContact != null)
+            {
+                @Html.Partial("RenderContact", Model.AgentContact)
+            }
+            else
+            {
+                @Html.Partial("RenderContact", new Contact())
+            }
+        </div>
+        <div class="section">
+            @Html.ActionLink("Update my details", "UpdateRequestForm", "Agency", new { subject = string.Concat("Update my details: ", Model.BodyCorporateName), heading = "Update Request Form" }, new { @class = "coolButton", style = "float: left; width: 145px; height: 29px; vertical-align: middle; padding-top: 6px;" })
+        </div>
+    </div>
+    <div class="report-section floatRight">
+        <h3>Tenant Contact Details</h3>
+        <div class="section">
+            @if (Model.LevyContact != null)
+            {
+                @Html.Partial("RenderContact", Model.LevyContact)
+            }
+            else
+            {
+                @Html.Partial("RenderContact", new Contact())
+            }
+        </div>
+    </div>
+</div>
+@if (Model.ShowDocumentDisributions && Model.DocumentDistributions != null)
+{
+    <h1>Document Distribution</h1>
+    <div class="full-width-data-container documentDistribution" style="border: none; background-color: inherit;">
+        <div class="report-section floatLeft">
+            <h3>Levies</h3>
+            <div class="section">
+                @foreach (var dd in ((List<DocumentDistributionModel>)Model.DocumentDistributions).Where(d => d.Type == "Levies"))
+                {
+                    <div class="label">@dd.Recipient</div>
+                    <div class="value">@dd.Value </div>
+                    <div style="clear: both"></div>
+                }
+            </div>
+        </div>
+        <div class="report-section floatRight">
+            <h3>Meetings</h3>
+            <div class="section">
+                @foreach (var dd in ((List<DocumentDistributionModel>)Model.DocumentDistributions).Where(d => d.Type == "Meetings"))
+                {
+                    <div class="label">@dd.Recipient</div>
+                    <div class="value">@dd.Value </div>
+                    <div style="clear: both"></div>
+                }
+            </div>
+        </div>
+        <div style="clear: both"> </div>
+        <div class="report-section floatLeft">
+            <h3>Correspondence</h3>
+            <div class="section">
+                @foreach (var dd in ((List<DocumentDistributionModel>)Model.DocumentDistributions).Where(d => d.Type == "Correspondence"))
+                {
+                    <div class="label">@dd.Recipient</div>
+                    <div class="value">@dd.Value </div>
+                    <div style="clear: both"></div>
+                }
+            </div>
+        </div>
+    </div>
+}
+

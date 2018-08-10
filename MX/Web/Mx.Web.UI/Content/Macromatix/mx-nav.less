@@ -1,0 +1,84 @@
+﻿.dropdown-menu {
+    > li {
+        > a {
+            .glyphicon,
+            .fa {
+                padding-right: 14px;
+            }
+
+            padding: 14px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+    }
+}
+
+.navbar-default {
+    .navbar-nav {
+        > .open {
+            > a {
+                &, &:hover, &:focus {
+                    /* store nav bar open background color */
+                    background-color: #1f366c;
+                }
+            }
+        }
+
+        > li {
+            > a {
+                /*Nav bar store name*/
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.nav-tabs {
+    border-bottom: none;
+
+    > li {
+        &.active {
+            > a {
+                &, &:hover, &:focus {
+                    /* Tab Selected */
+                    color: #1f366c;
+                    width: 150px;
+                    font-weight: normal;
+                    text-align: center;
+                    background-color: #fff;
+                    border: 1px solid #dcdfe8;
+                    border-bottom-color: transparent;
+                    cursor: default;
+                }
+            }
+        }
+
+        > a {
+            /* Tab Unselected + rollover */
+            background-color: #e7e8ed;
+            width: 150px;
+            text-align: center;
+            margin-right: 2px;
+            margin-bottom: 1px;
+            line-height: 1.428571429;
+            border: 0px solid transparent;
+            border-radius: 4px 4px 0 0;
+
+            &:hover {
+                border-color: #dcdfe8 #dcdfe8 #dcdfe8;
+            }
+        }
+    }
+}
+
+.nav {
+    > li {
+        > a {
+            &:hover, &:focus {
+                /* Location roll over */
+                background-color: #f1f2f7;
+                cursor: pointer;
+            }
+        }
+    }
+}

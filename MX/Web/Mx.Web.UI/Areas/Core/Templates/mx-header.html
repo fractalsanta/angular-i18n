@@ -1,0 +1,114 @@
+﻿<nav class="navbar navbar-default mx-nav" role="banner">
+    <div id="mx-navbar-header" class="navbar-header" ng-click="vm.ToggleNav()">
+        <div class="pull-left mx-nav-btn btn-sm">
+            <i class="fa fa-2x fa-bars"></i>
+        </div>
+        <a class="navbar-brand">
+            <img src="/Content/Images/macromatix_logo/svg/mxlogo_white.svg" class="mx-logo-img fill hidden-xs" />
+            <img src="/Content/Images/macromatix_logo/svg/white_blue_Compact.svg" class="mx-logo-img fill visible-xs" />
+        </a>
+    </div>
+    <!--User-->
+    <div class="dropdown navbar-nav navbar-right mx-user-nav" dropdown>
+        <button class="navbar-btn btn btn-default btn-sm dropdown-toggle mx-header-btn mx-user-btn" dropdown-toggle>
+            <i class="fa fa-user pull-left"></i><i class="caret pull-right"></i>
+        </button>
+        <ul class="dropdown-menu touch-scrollable" role="menu">
+            <li class="dropdown-header">
+                <h5>{{$parent.Model.User.BusinessUser.FirstName}} {{$parent.Model.User.BusinessUser.LastName}}</h5>
+                <h5>{{$parent.Model.User.BusinessUser.MobileSettings.EntityName}}</h5>
+                <h5>{{vm.VersionInfo.ProductVersion}} - {{vm.VersionInfo.FileVersion}}</h5>
+            </li>
+            <li>
+                <a ng-click="vm.CollapseNav() && vm.NavigateTo('Administration/MyAccount')">
+                    <h5><i class="fa fa-user"></i>{{vm.L10N.MyAccount.MyAccount}}</h5>
+                </a>
+            </li>
+            <li ng-show="vm.CanViewSettings">
+                <a ng-click="vm.CollapseNav() && vm.NavigateTo('Administration/Settings')">
+                    <h5><i class="glyphicon glyphicon-cog"></i>{{vm.L10N.Settings.Settings}}</h5>
+                </a>
+            </li>
+            <li>
+                <a ng-click="vm.CollapseNav() && vm.NavigateTo('Administration/ChangeStore')">
+                    <h5><i class="glyphicon glyphicon-random"></i>{{vm.L10N.ChangeStore.ChangeStore}}</h5>
+                </a>
+            </li>
+            <li ng-hide="$parent.ShowPINLogin()">
+                <a href="#/" ng-click="$parent.Logout() && vm.NavigateTo('#/')">
+                    <h5>
+                        <i class=" glyphicon glyphicon-off">
+                        </i>{{vm.L10N.Authentication.LogOut}}
+                    </h5>
+                </a>
+            </li>
+            <li class="col-xs-6" style="padding-left: 0; padding-right: 0;" ng-show="$parent.ShowPINLogin()">
+                <a href="#/" ng-click="$parent.Logout() && vm.NavigateTo('#/')">
+                    <h5>
+                        <i class=" glyphicon glyphicon-off">
+                        </i>{{vm.L10N.Authentication.LogOut}}
+                    </h5>
+                </a>
+            </li>
+            <li class="col-xs-6" style="padding-left: 0; padding-right: 0;" ng-show="$parent.ShowPINLogin()">
+                <a href="#/" ng-click="$parent.Lock() && vm.NavigateTo('#/')">
+                    <h5>
+                        <i class="glyphicon glyphicon-lock">
+                        </i>{{vm.L10N.Authentication.Lock}}
+                    </h5>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--Notifications-->
+    <div class="dropdown navbar-nav navbar-right mx-notification-nav" dropdown>
+        <button class="navbar-btn btn btn-default btn-sm dropdown-toggle mx-header-btn mx-notification-btn" dropdown-toggle>
+            <span class="fa fa-bell"></span>
+            <div class="notification-badge" ng-show="vm.NotificationAreas.length" ng-click=""><span class="mx-bg-bluelight mx-col-white badge pull-right">{{vm.NotificationAreas.length}}</span></div>
+        </button>
+        <ul class="dropdown-menu notification touch-scrollable" role="menu">
+            <li role="presentation" ng-if="!vm.NotificationAreas.length" class="dropdown-header"><h5>{{vm.L10N.Notifications.YouHaveNoNotifications}}</h5></li>
+            <li role="presentation" ng-if="vm.NotificationAreas.length" class="dropdown-header"><h5>{{vm.YouHaveNotifications()}}</h5></li>
+            <li role="presentation" class="dropdown-submenu" ng-repeat-start="area in vm.NotificationAreas">
+                <h5>{{area.Name}}</h5>
+            </li>
+            <li role="presentation" class="dropdown-subnav" ng-repeat="notification in area.Notifications" ng-repeat-end>
+                <a role="menuitem" tabindex="-1" ng-click="vm.NavigateToNotification(notification)"><h5>{{notification.Title}}</h5></a>
+            </li>
+        </ul>
+    </div>
+    <!--Offline-->
+    <div class="dropdown navbar-nav navbar-right mx-signal-nav" dropdown>
+        <button class="navbar-btn btn btn-default btn-sm dropdown-toggle mx-header-btn mx-signal-btn" dropdown-toggle>
+            <span class="fa fa-signal" ng-class="{'has-error': vm.CountIsOfflineMode()}"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" ng-if="!vm.CountIsOfflineMode()" class="dropdown-header"><h5>{{vm.L10N.Notifications.DeviceIsConnected}}</h5></li>
+            <li role="presentation" ng-if="vm.CountIsOfflineMode()" class="dropdown-header has-error"><h5>{{vm.L10N.Notifications.DeviceIsOffline}}</h5></li>
+            <li role="presentation" ng-if="vm.CountIsOfflineMode()" class="dropdown-subnav">
+                <h5>({{vm.CountOfflineRecords()}}) {{vm.L10N.Notifications.PendingUpdates}}</h5>
+            </li>
+        </ul>
+    </div>
+    <ul class="nav navbar-nav hidden-xs navbar-nav-center">
+        <li ng-if="!vm.CountIsOfflineMode()">
+            <a class="header-title">
+                <div class="text-center page-name">{{$parent.GetTitle()}}&nbsp;</div>
+                <div class="text-center store-name">{{$parent.Model.User.BusinessUser.MobileSettings.EntityName}}</div>
+            </a>
+        </li>
+        <li ng-if="vm.CountIsOfflineMode()" style="margin-top: 22px">
+            <span class="label label-danger rounded md-font-size">
+                <i class="fa fa-exclamation-circle"></i>
+                <span>{{vm.L10N.Notifications.OfflineModeMessage}} {{vm.CountOfflineRecords()}} {{vm.L10N.Notifications.PendingTasksLowCase}}</span>
+            </span>
+        </li>
+        <li ng-if="! vm.IsBackplaneActive()" style="margin-top: 22px">
+            <span class="label label-warning rounded md-font-size">
+                <i class="fa fa-exclamation-circle"></i>
+                <span>{{vm.L10N.Notifications.OfflineModeMessage}}</span>
+            </span>
+        </li>
+
+    </ul>
+</nav>

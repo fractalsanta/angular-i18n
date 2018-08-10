@@ -1,0 +1,159 @@
+﻿<div class="fill-height">
+    <tabset class="fill-height container-1-toolbar">
+        <tab class="fill-height" heading="{{Translations.Orders}}" select="!IsOffline && OrdersTabClick()" active="DisplayOptions.OrderTabActive">
+            <div class="panel panel-default fill-height container-1-toolbar">
+                <div class="panel-heading mx-white">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <input type="search" class="form-control" ng-model="DisplayOptions.SearchText" placeholder="{{Translations.SearchOrders}}" ng-change="ApplySearchFilter()" />
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="dropdown" dropdown>
+                                <mx-dropdown-button value="DisplayOptions.FilterText"></mx-dropdown-button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a ng-click="FilterLast(14)">{{Translations.Last}} 14 {{Translations.Days}}</a></li>
+                                    <li><a ng-click="OpenCustomRangeDialog()">{{Translations.CustomRange}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <button type="button" class="pull-right btn"
+                                    ng-if="DisplayOptions.CanCreateOrder"
+                                    ng-click="OpenNewOrderDialog()"
+                                    ng-disabled="IsOffline"
+                                    ng-class="{ 'btn-success': !IsOffline, 'btn-danger': IsOffline }">
+                                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ Translations.AddOrder }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default fill-height" ng-show="OrderSummaryData.length" ng-class="{ 'container-1-toolbar': !RequiresPaging(), 'container-2-toolbars': RequiresPaging() }">
+                        <div class="panel-heading" ng-show="RequiresPaging()">
+                            <pagination total-items="FilteredOrders.length"
+                                        ng-model="CurrentPage"
+                                        max-size="PagingOptions.numPages"
+                                        class="pull-right"
+                                        boundary-links="true"
+                                        direction-links="false"
+                                        rotate="false"
+                                        first-text="&laquo;" last-text="&raquo;"
+                                        items-per-page="PagingOptions.itemsPerPage"
+                                        ng-change="ChangePage(CurrentPage)"></pagination>
+                        </div>
+                        <div class="table-header">
+                            <div id="TableHeaderActiveOrders">
+                                <div ng-repeat="column in ActiveOrdersGridDefinitions"
+                                     class="column-header"
+                                     ng-click="column.Field && SortColumn(column.Field)"
+                                     ng-class="{ 'pointer-cursor': column.Field }">
+                                    <span>
+                                        {{ column.Title }}&nbsp;&nbsp;<i class="fa" ng-class="{ 'fa-angle-down': !DisplayOptions.SortAscending, 'fa-angle-up': DisplayOptions.SortAscending, 'invisible': DisplayOptions.SortProperty !== column.Field }"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="touch-scrollable">
+                            <table class="table table-striped" mx-scrollable-table watch="CurrentPageOrders" header-id="TableHeaderActiveOrders" refresh-callback="HeaderRefresh">
+                                <tbody>
+                                    <tr ng-repeat="order in CurrentPageOrders">
+                                        <td class="word-break">{{ order.VendorName }}</td>
+                                        <td>{{ (order.Id !== order.DisplayId) ? order.DisplayId : Translations.Draft }}</td>
+                                        <td>{{ order.OrderDate | date }}</td>
+                                        <td>{{ order.DeliveryDate | date }}</td>
+                                        <td>{{ order.CoverUntilDate | date }}</td>
+                                        <td>{{ order.Status | translate:Translations }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default btn-block"
+                                                    ng-click="ViewOrder(order)"
+                                                    ng-disabled="IsOffline">
+                                                {{ Translations.View }}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tab>
+        <tab class="fill-height" heading="{{Translations.Scheduled}}" select="!IsOffline && ScheduledTabClick()" active="DisplayOptions.ScheduledTabActive">
+            <div class="panel panel-default fill-height container-1-toolbar">
+                <div class="panel-heading mx-white">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-3">
+                            <input type="search" class="form-control" ng-model="DisplayOptions.SearchText" placeholder="{{Translations.SearchOrders}}" ng-change="ApplySearchFilterScheduled()" />
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-xs-4">
+                            <mx-prevday-nextday-picker options="DayPickerOptions" on-change="FilterScheduledOrdersByDate(selectedDate)" ng-show="!IsInOverdueMode()"></mx-prevday-nextday-picker>
+                            <button type="button" class="btn btn-default" ng-click="GoToScheduledOrders()" ng-show="IsInOverdueMode()"><i class="fa fa-repeat"></i>&nbsp;&nbsp;{{Translations.AllScheduledOrders}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="panel panel-default fill-height" ng-show="ScheduledOrderSummaryData.length" ng-class="{ 'container-1-toolbar': !RequiresPagingScheduled(), 'container-2-toolbars': RequiresPagingScheduled() }">
+                        <div class="panel-heading" ng-show="RequiresPagingScheduled()">
+                            <pagination total-items="FilteredOrdersScheduled.length"
+                                        ng-model="CurrentPageScheduled"
+                                        max-size="PagingOptionsScheduled.numPages"
+                                        class="pull-right"
+                                        boundary-links="true"
+                                        direction-links="false"
+                                        rotate="false"
+                                        first-text="&laquo;" last-text="&raquo;"
+                                        items-per-page="PagingOptionsScheduled.itemsPerPage"
+                                        ng-change="ChangePageScheduled(CurrentPageScheduled)"></pagination>
+                        </div>
+                        <div class="table-header">
+                            <div id="TableHeaderScheduledOrders">
+                                <div ng-repeat="column in ScheduledOrdersGridDefinitions"
+                                     class="column-header"
+                                     ng-click="column.Field && SortColumn(column.Field)"
+                                     ng-class="{ 'pointer-cursor': column.Field }">
+                                    {{ column.Title }}
+                                    &nbsp;&nbsp;<i class="fa" ng-class="{ 'fa-angle-down': !DisplayOptions.SortAscending, 'fa-angle-up': DisplayOptions.SortAscending, 'invisible': DisplayOptions.SortProperty !== column.Field }"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="touch-scrollable">
+                            <table class="table table-striped" mx-scrollable-table watch="CurrentPageOrdersScheduled" header-id="TableHeaderScheduledOrders" refresh-callback="HeaderRefreshScheduled">
+                                <tbody>
+                                    <tr ng-repeat="order in CurrentPageOrdersScheduled">
+                                        <td>{{ order.Supplier }}</td>
+                                        <td>{{ order.DeliveryDate | date }}</td>
+                                        <td>{{ order.CutoffTime | date:'medium' }}</td>
+                                        <td>{{ order.Status | translate:Translations }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default btn-block"
+                                                    ng-if="order.TransactionSalesOrderId <= 0 && (Translations[order.Status] === Translations.Pending || Translations[order.Status] === Translations.Overdue)"
+                                                    ng-click="SkipScheduledOrder(order)"
+                                                    ng-disabled="IsOffline">
+                                                {{ Translations.SkipOrder }}
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-block"
+                                                    ng-if="DisplayOptions.CanCreateOrder && order.TransactionSalesOrderId <= 0 && (Translations[order.Status] === Translations.Pending || Translations[order.Status] === Translations.Overdue)"
+                                                    ng-click="CreateScheduledOrder(order)"
+                                                    ng-disabled="IsOffline || PeriodClosed"
+                                                    ng-class="{ 'btn-danger': IsOffline, 'btn-success': !IsOffline }">
+                                                {{ Translations.CreateNewOrder }}
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-block"
+                                                    ng-if="order.TransactionSalesOrderId > 0"
+                                                    ng-click="ViewScheduledOrderDetail(order)"
+                                                    ng-disabled="IsOffline">
+                                                {{ Translations.View }}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+</div>

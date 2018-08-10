@@ -1,0 +1,47 @@
+﻿<div class="fill-height" mx-mobile-ready>
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white row">
+            <div class="col-xs-7 col-sm-4 col-md-3 col-lg-2">
+                <mx-prevday-nextday-picker options="Vm.DatePickerOptions" on-change="OnDatePickerChange(selectedDate)"></mx-prevday-nextday-picker>
+            </div>
+            <div class="col-xs-5 col-sm-8 col-md-9 col-lg-10">
+                <button type="button" class="btn btn-success pull-right" ng-click="AddDriveRecord()">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ ::L10N.AddDriveRecord }}
+                </button>
+            </div>
+        </div>
+        <div class="panel-body touch-scrollable">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{ ::L10N.DriveDistanceRecords }}</strong>
+                </div>
+                <table class="table table-striped" ng-if="DoRecordsExist()">
+                    <thead>
+                        <tr>
+                            <th>{{ ::L10N.Employee }}</th>
+                            <th>{{ ::L10N.TotalShiftDistance }}</th>
+                            <th>{{ ::L10N.AuthorizedBy }}</th>
+                            <th>{{ ::L10N.Status }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="record in Vm.DriverDistanceRecords track by record.Id">
+                            <td class="min-50">{{ record.EmployeeName }}</td>
+                            <td class="min-50">{{ GetTotalDistance(record) | number:1 }}</td>
+                            <td class="min-50">{{ record.AuthorizedByName }}</td>
+                            <td class="min-50">
+                                <div ng-if="CanActionRecord(record)">
+                                    <button type="button" class="btn btn-default btn-success" ng-click="Approve(record)"> {{ ::L10N.Approve }} </button>
+                                    <button type="button" class="btn btn-default btn-danger" ng-click="Deny(record)"> {{ ::L10N.Deny }} </button>
+                                </div>
+                                <div ng-if="!CanActionRecord(record)">
+                                    <span ng-class="GetStatusIconClass(record)"></span>&nbsp;&nbsp;{{ GetDisplayStatus(record) }}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿<div>
+    <div class="input-group">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="PrevDay()"><i class="glyphicon glyphicon-arrow-left"></i></button>
+        </span>
+        <span class="form-control text-nowrap" datepicker-popup ng-model="InstanceModel.TargetDate"
+               ng-change="OnSelectedDayChange()" ng-click="OnClick()" is-open="PopupOpened"
+              show-button-bar="false" show-weeks="false" min-date="Options.Min" max-date="Options.Max">{{ InstanceModel.TargetDate | date }}</span>
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="NextDay()"><i class="glyphicon glyphicon-arrow-right"></i></button>
+        </span>
+    </div>
+</div>

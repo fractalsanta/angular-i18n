@@ -1,0 +1,15 @@
+<script>
+    var localsysdate = new Date('2018-05-10 13:00');
+    var cutoff = new Date("2018-05-10 14:00"); //Cutoff Date from Server (in server time)
+
+    var diffbetweenlocalandcutoff = (localsysdate.getTime() - cutoff.getTime()) / 1000;
+    
+    var dateDiff = new Date(new Date().valueOf() + diffbetweenlocalandcutoff * 1000); //Math.abs uses absolute/positive version of difference
+     
+    
+
+    
+
+    document.write(diffbetweenlocalandcutoff);
+    document.write(dateDiff);
+</script>

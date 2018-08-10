@@ -1,0 +1,151 @@
+﻿@using Rockend.iStrata.StrataWebsite.Model
+@model MaintenanceJobDetailModel
+@{
+    ViewBag.Title = "Job Details";
+}
+@section HeadTagsSection
+{
+}
+
+<div data-role="header" data-position="inline" data-theme="c">
+    @if (Model.IsQuote)
+    {
+        <h2>Quote Details</h2>
+    }
+    else
+    {
+        <h2>Job Details</h2>
+    }
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer" style="margin-bottom: 16px;">
+            <a href="@Url.Action("Menu", "Mobile")" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" /></a>
+        </div>
+        <div class="section">
+            <h3>Job Description</h3>
+            <div class="section">
+                @Model.DiarySubject
+            </div>
+        </div>
+        <div class="section">
+            <h3>Tradesperson</h3>
+            <div class="section">
+                <div class="label">
+                    Name:
+                </div>
+                <div class="value">@Model.TradieName</div>
+                <div class="clear">
+                </div>
+
+                <div class="label">
+                    Amount Quoted:
+                </div>
+                <div class="value">
+                    @if (Model.AmountQuoted != 0)
+                    {
+                        <span>@Model.AmountQuoted.ToString("C")</span>
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </div>
+                <div class="clear">
+                </div>
+
+                @if (!Model.IsQuote)
+                {
+                    <div class="label">Total Amount Invoiced</div>
+                    <div class="value">
+                        @if (Model.AmountInvoiced != 0)
+                        {
+                            <span>@Model.AmountInvoiced.ToString("C")</span>
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="label"><b>Invoices</b></div>
+                    <div class="clear"></div>
+
+                        if (Model.Invoices != null && Model.Invoices.Count > 0)
+                        {
+                            foreach (Invoice inv in Model.Invoices)
+                            {            
+                    <div class="label">Description</div>
+                    <div class="value">@inv.Description</div>
+                    <div class="clear"></div>
+                    <div class="label">Number</div>
+                    <div class="value">@inv.RefNumber</div>
+                    <div class="clear"></div>
+                            }
+                        }
+                        else
+                        {
+                    <span>No invoices to display.</span>
+                        }
+                }
+            </div>
+        </div>
+
+        <!-- Quote / job details -->
+        <div class="section">
+            <h3>@Model.StatusHeader</h3>
+            <div class="section">
+                @if (!Model.IsQuote)
+                {
+                    <div class="label">Job Number</div>
+                    <div class="value">@Model.JobNumber</div>
+                }
+                else
+                {
+                    <div class="label">Quote Number</div>
+                    <div class="value">@Model.OrderNumber</div>
+                }
+                <div class="clear">
+                </div>
+
+                <div class="label">
+                    Manager:
+                </div>
+                <div class="value">@Model.Manager</div>
+                <div class="clear">
+                </div>
+
+                <div class="label">
+                    Reported By:
+                </div>
+                <div class="value">@Model.ReportedBy</div>
+                <div class="clear">
+                </div>
+
+                <div class="label">
+                    Created:
+                </div>
+                <div class="value">@Model.DateReported.ToShortDateString()</div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+
+        <!-- Photos -->
+        @if (Model.ImageCount > 0 && Model.AgentContentStrata.ShowMaintenanceImages)
+        {
+            <div class="section">
+                <h3>Images</h3>
+                @for (int i = 0; i < Model.ImageDescriptions.Count; i++)
+                {
+                    <div class="imageContainer">
+                        <img src="@Url.Action("MaintenancePhoto", new { index = i, jobId = Model.JobId, maintType = Model.MaintType })" />
+                        <span>@Model.ImageDescriptions[i]</span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

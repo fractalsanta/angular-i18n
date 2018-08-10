@@ -1,0 +1,83 @@
+﻿<div class="modal-header">{{Translations.SearchPrepAdjustItemTitle}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <form ng-submit="Search(Model.SearchText)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="text" select-on-focus-input class="form-control"
+                           placeholder="{{Translations.Search}}" ng-model="Model.SearchText">
+                </div>
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-default pull-right"
+                            ng-click="Search(Model.SearchText)"
+                            ng-disabled="!SearchTextValid()">
+                        <i class="fa fa-search"></i>&nbsp;&nbsp;{{Translations.Search}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div ng-show="Model.Items && !Model.Items.length">
+        <div class="alert alert-warning">{{Translations.SearchPrepAdjustItemNoRecordsFound}}</div>
+    </div>
+
+    <div class="mx-table-sync panel panel-default fill-height" style="margin-bottom: 0; padding-top: 0;" ng-show="Model.Items && Model.Items.length">
+        <table class="table table-striped" mx-table-sync>
+            <thead>
+                <tr>
+                    <th ng-repeat="column in GridDefinitions"
+                        class="{{column.ColWidth}}"
+                        ng-click="column.Field && SortColumn(column.Field)"
+                        ng-class="{ 'pointer-cursor': column.Field }">
+                        <span>{{ column.Title }}</span>&nbsp;&nbsp;
+                        <i class="fa"
+                           ng-class="{
+                                'fa-angle-down': !DisplayOptions.SortAscending,
+                                'fa-angle-up': DisplayOptions.SortAscending,
+                                'invisible': DisplayOptions.SortProperty !== column.Field
+                        }">
+                        </i>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="modal-body-fixed touch-scrollable" style="margin-bottom: 0; height: 350px;" ng-show="Model.Items && Model.Items.length">
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="item in Model.Items" mx-repeat-scroll-top
+                        ng-class="{'active': Model.SelectedIdHash[item.Id]}"
+                        ng-click="!Model.ExistingIdHash[item.Id] && AddItem(item)">
+                        <td class="{{GridDefinitions[0].ColWidth}}">
+                            <div ng-show="!Model.ExistingIdHash[item.Id]">
+                                <i ng-hide="Model.SelectedIdHash['' + item.Id]" class="fa fa-square-o"></i>
+                                <i ng-show="Model.SelectedIdHash['' + item.Id]" class="fa fa-check-square-o"></i>
+                            </div>
+                        </td>
+                        <td class="{{GridDefinitions[1].ColWidth}}" ng-class="{'mx-disabled': Model.ExistingIdHash[item.Id] }">
+                            <div ng-disabled="Model.ExistingIdHash[item.Id]">
+                                {{item.ItemCode}} - {{item.Name}}
+                            </div>
+                        </td>
+                        <td class="{{GridDefinitions[2].ColWidth}}" ng-class="{'mx-disabled': Model.ExistingIdHash[item.Id] }">
+                            <div ng-disabled="Model.ExistingIdHash[item.Id]">
+                                {{Translation.Finished }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" style="margin-top: 0;">
+    <button class="btn btn-default pull-left"
+            ng-click="Cancel()">
+        {{Translations.Cancel}}
+    </button>
+    <button class="btn btn-success"
+            ng-show="Model.AddSelectedItems.length > 0"
+            ng-click="OK()">
+        {{Translations.Submit}}
+    </button>
+</div>

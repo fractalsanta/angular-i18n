@@ -1,0 +1,28 @@
+﻿<div class="modal-header">{{Translations.AddLocation}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" name="newLocationForm">
+        <div>
+            {{Translations.LocationWillBeAdded}}{{LocationInfo}}
+            <br />
+            <br />
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label">{{Translations.Number}}</label>
+            <div class="col-xs-10">
+                <input type="text" name="locationNumber" class="form-control" ng-model="FormData.Number" required ng-minlength="1" maxlength="50" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label">{{Translations.Name}}</label>
+            <div class="col-xs-10">
+                <input type="text" name="locationName" ng-model="FormData.Name" class="form-control" required ng-minlength="1" maxlength="50" />
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translations.Cancel}}</button>
+    <button class="btn btn-success" ng-click="AddAnother()" ng-disabled="newLocationForm.$invalid">{{Translations.AddAnother}}</button>
+    <button class="btn btn-default" ng-click="Finish()" ng-disabled="newLocationForm.$invalid && NewLocations.length === 0">{{Translations.SaveAndClose}}</button>
+</div>

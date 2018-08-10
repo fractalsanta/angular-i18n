@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript">
+        window.addEventListener("load", function () {
+            // Set a timeout...
+            setTimeout(function () {
+                // Hide the address bar!
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+
+    </script>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    
+    @if (ViewBag.HasIPhoneIcon)
+    {
+        @*<link rel="apple-touch-icon" href="@Url.Action("IPhoneIconImage", "Home")" />*@
+        <link rel="apple-touch-icon-precomposed" href="@ViewBag.IPhoneIconUrl" />
+    }
+
+    <link href="@Url.Content("~/Content/Styles/reset-min.css")" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/Content/Styles/jquery.mobile-1.3.0.min.css" />
+    @*<link rel="Stylesheet" href="/Content/Styles/jquery.mobile.button.css" />
+    <link rel="Stylesheet" href="/Content/Styles/jquery.mobile.theme.css" />*@
+        
+    <script type="text/javascript" src="/Content/Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/jquery.mobile-1.3.0.min.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Reports.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Documents.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Maintenance.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Mobile.js"></script>
+
+    <link href="@Url.Content("~/Content/Styles/mobile.css")" rel="stylesheet" type="text/css" />
+
+    @RenderSection("HeadTagsSection", required: false)
+    @*<style type="text/css">
+        input[type="submit"], .coolButton, .darkBox .coolButton, .menuContainer a
+        {
+            background-color: @ViewBag.ButtonColour;
+            color: @ViewBag.ButtonFontColour;
+        }
+    </style>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bmi_SafeAddOnload = function () { };
+        });
+
+        $(document).on('pageinit', function () {
+            $('.ui-input-text').removeClass('ui-corner-all');
+            $('.ui-select div').removeClass('ui-btn-corner-all');
+        });
+    </script>
+</head>
+<body style="width: 100%; height: 100%;">
+    <div style="width: 100%;">
+        @if (!string.IsNullOrEmpty(ViewBag.AgencyUrl))
+        {
+            <a href="@ViewBag.AgencyUrl" target="_blank" data-ajax="false">
+                <img src='@ViewBag.BannerUrl' alt='Banner' style="width: 100%;" />
+            </a>
+        }
+        else
+        {
+            <img src='@ViewBag.BannerUrl' alt='Banner' style="width: 100%;" />
+        }
+        <div class="mainContentContainer">
+            @RenderBody()
+        </div>
+        @if (ViewBag.HasFooterBanner)
+        {
+            <div class="footerImageContainer">
+                @if (!string.IsNullOrEmpty(ViewBag.FooterUrl))
+                {
+                    <a href="@ViewBag.FooterUrl" target="_blank" data-ajax="false">
+                        @*<img src='@Url.Action("FooterImage", "Login")' style="width: 100%; margin-top: 8px;" />*@
+                        <img src='@ViewBag.FooterBannerUrl' style="width: 100%; margin-top: 8px;" />
+                    </a>
+                }
+                else
+                {
+                    <img src='@ViewBag.FooterBannerUrl' style="width: 100%; margin-top: 8px;" />
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>

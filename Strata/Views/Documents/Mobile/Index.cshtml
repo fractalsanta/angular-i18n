@@ -1,0 +1,65 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.DocumentsModel
+@using Rockend.iStrata.StrataWebsite.Model
+@{
+    ViewBag.Title = "Documents";
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Documents</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer" style="margin-bottom: 16px;">
+            <a href="#" data-rel="back" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" /></a>
+        </div>
+        @if (Model != null && Model.Documents != null && Model.Documents.Count > 0)
+        {
+            <div class="section">
+                <script type="text/javascript">
+                    (function () {
+                        $("table.tablesorter").tablesorter({
+                            dateFormat: "mmddyyyy",
+
+                            headers: {
+                                2: { sorter: "shortDate" } //, dateFormat will parsed as the default above
+                            }
+                        });
+                    })();
+                </script>
+                <span style="margin-left: 3%; margin-bottom: 5px; display: block;">Sort by: </span>
+                <table id="myTable" class="tablesorter documents">
+                    <thead>
+                        <tr>
+                            <th style="">Plan
+                            </th>
+                            <th style="">Document Type
+                            </th>
+                            <th data-sorter="shortDate" data-date-format="ddmmyyyy" style="">Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DocumentModel doc in Model.Documents)
+                        {
+                            <tr>
+                                <td class="plan">
+                                    @doc.PlanNumber
+                                </td>
+                                <td class="documentType">
+                                    @Html.ActionLink(doc.DocumentType, "GetDocument", new { folderId = doc.FolderId, libraryId = doc.LibraryId, documentId = doc.DocumentId }, new { data_ajax = "false" })
+                                </td>
+                                <td class="date">
+                                    @doc.Date.ToShortDateString()
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <span>No documents to display.</span>
+        }
+    </div>
+</div>

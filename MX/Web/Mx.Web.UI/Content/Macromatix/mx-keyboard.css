@@ -1,0 +1,115 @@
+﻿/*
+ Delay, in milliseconds, to animate the sliding keyboard.
+ Must match the AnimationDelay property in mx-virtual-keyboard.ts
+*/
+html.virtual-keyboard-on-animated .app-level-container {
+  bottom: 130px !important;
+}
+html.virtual-keyboard-on {
+  position: fixed !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+html.virtual-keyboard-on .mx-virtual-keyboard {
+  visibility: visible;
+  height: 130px;
+  z-index: 1100;
+  /* 10 more than modal shadow */
+}
+.mx-virtual-keyboard {
+  visibility: hidden;
+  position: absolute;
+  overflow: hidden;
+  bottom: 0px;
+  width: 100%;
+  padding-top: 3px;
+  vertical-align: bottom;
+  padding-bottom: 25px;
+  background-color: #f1f2f7;
+  -webkit-transition: height cubic-bezier(1, 0, 0, 1) 300ms, visibility cubic-bezier(1, 0, 0, 1) 300ms;
+  transition: height cubic-bezier(1, 0, 0, 1) 300ms, visibility cubic-bezier(1, 0, 0, 1) 300ms;
+  height: 0;
+}
+.mx-virtual-keyboard .col-xs-1,
+.mx-virtual-keyboard .col-xs-2,
+.mx-virtual-keyboard .col-xs-3,
+.mx-virtual-keyboard .col-xs-4,
+.mx-virtual-keyboard .col-xs-5,
+.mx-virtual-keyboard .col-xs-6,
+.mx-virtual-keyboard .col-xs-7,
+.mx-virtual-keyboard .col-xs-8,
+.mx-virtual-keyboard .col-xs-9,
+.mx-virtual-keyboard .col-xs-10,
+.mx-virtual-keyboard .col-xs-11,
+.mx-virtual-keyboard .col-xs-12 {
+  padding: 4px 4px;
+}
+.mx-virtual-keyboard .col-xs-1 .btn,
+.mx-virtual-keyboard .col-xs-2 .btn,
+.mx-virtual-keyboard .col-xs-3 .btn,
+.mx-virtual-keyboard .col-xs-4 .btn,
+.mx-virtual-keyboard .col-xs-5 .btn,
+.mx-virtual-keyboard .col-xs-6 .btn,
+.mx-virtual-keyboard .col-xs-7 .btn,
+.mx-virtual-keyboard .col-xs-8 .btn,
+.mx-virtual-keyboard .col-xs-9 .btn,
+.mx-virtual-keyboard .col-xs-10 .btn,
+.mx-virtual-keyboard .col-xs-11 .btn,
+.mx-virtual-keyboard .col-xs-12 .btn {
+  text-align: center;
+  min-height: 54px;
+}
+.mx-virtual-keyboard .col-xs-1 .btn:hover,
+.mx-virtual-keyboard .col-xs-2 .btn:hover,
+.mx-virtual-keyboard .col-xs-3 .btn:hover,
+.mx-virtual-keyboard .col-xs-4 .btn:hover,
+.mx-virtual-keyboard .col-xs-5 .btn:hover,
+.mx-virtual-keyboard .col-xs-6 .btn:hover,
+.mx-virtual-keyboard .col-xs-7 .btn:hover,
+.mx-virtual-keyboard .col-xs-8 .btn:hover,
+.mx-virtual-keyboard .col-xs-9 .btn:hover,
+.mx-virtual-keyboard .col-xs-10 .btn:hover,
+.mx-virtual-keyboard .col-xs-11 .btn:hover,
+.mx-virtual-keyboard .col-xs-12 .btn:hover {
+  background-color: #ffffff;
+  border-color: #dcdfe8;
+}
+.mx-virtual-keyboard .col-xs-1 .btn-special,
+.mx-virtual-keyboard .col-xs-2 .btn-special,
+.mx-virtual-keyboard .col-xs-3 .btn-special,
+.mx-virtual-keyboard .col-xs-4 .btn-special,
+.mx-virtual-keyboard .col-xs-5 .btn-special,
+.mx-virtual-keyboard .col-xs-6 .btn-special,
+.mx-virtual-keyboard .col-xs-7 .btn-special,
+.mx-virtual-keyboard .col-xs-8 .btn-special,
+.mx-virtual-keyboard .col-xs-9 .btn-special,
+.mx-virtual-keyboard .col-xs-10 .btn-special,
+.mx-virtual-keyboard .col-xs-11 .btn-special,
+.mx-virtual-keyboard .col-xs-12 .btn-special {
+  background-color: #e7e8ed;
+}
+.mx-virtual-keyboard .col-xs-1 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-2 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-3 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-4 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-5 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-6 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-7 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-8 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-9 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-10 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-11 .btn-special:hover,
+.mx-virtual-keyboard .col-xs-12 .btn-special:hover {
+  background-color: #e7e8ed;
+}
+.mx-virtual-keyboard-input-control:not(:disabled) {
+  cursor: default !important;
+  background-color: #ffffff !important;
+}
+.selected {
+  -webkit-appearance: none;
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0px 0px 2px 1px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0px 0px 2px 1px rgba(102, 175, 233, 0.6);
+}

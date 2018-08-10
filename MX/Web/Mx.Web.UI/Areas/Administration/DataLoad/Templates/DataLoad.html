@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="panel panel-default ">
+        <div class="panel-heading"><h3>Data Load</h3></div>
+        <div class="panel-heading">Store</div>
+        <div class="panel-body">
+            
+            <input type="text" ng-model="fileModel">
+            <input type="file" ng-file-select="onFileSelect($files)">
+            <input type="file" ng-file-select="onFileSelect($files)" multiple>
+            <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class"
+                 ng-show="dropSupported">drop files here</div>
+            <div ng-file-drop-available="dropSupported=true"
+                 ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+            <button ng-click="upload.abort()">Cancel Upload</button>
+
+
+        </div>
+    </div>
+</div>

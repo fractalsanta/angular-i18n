@@ -1,0 +1,183 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.VotingModel
+@using Rockend.iStrata.StrataWebsite.Model
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+
+@section headTagsSection
+{
+    <style type="text/css">
+        .motion{
+            margin-bottom: 10px;
+        }
+        .motion-header{
+            cursor: pointer;
+            padding: 10px 10px 0px 10px;
+            background-color: #cecece;
+            border: 1px solid #ccc;
+
+        }
+        .motion-title{
+            width: 88%;
+            display: inline-block;
+        }
+        .motion-title * {
+            font-size: 12px;
+            font-weight: bolder;
+        }
+        .motion-vote{
+            width: 10%;
+            display: inline-block;
+        }
+        .motion-vote select {
+            width: auto;
+        }
+        .motion-body{
+            display: none;
+            background-color: #F4F5F5;
+            padding: 10px;
+            font-size: 12px;
+        }
+        #submit-votes-button:disabled { 
+            background-color: #ccc;
+        }  
+        #vote-declaration-modal {
+            max-width: 810px !important;
+        }
+        #vote-declaration-modal .grid-item {
+            padding: 0;
+        }
+        #vote-declaration-modal header {
+            padding: 12px;
+            border-bottom: solid 1px #999;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #vote-declaration-modal .confirm-inner {
+            padding: 12px;
+            min-height:inherit;
+        } 
+        .highlighted {
+           border: solid 2px #999;
+        }
+        .inactive {
+            background: #CCC;
+            opacity: .5;
+        }
+       .grid-item {min-height:180px}
+    </style>
+    
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery.modal.min.js")"></script>
+    <link href="@Url.Content("~/Content/Styles/jquery.modal.min.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/vote.js")"></script>
+}
+<h1>Electronic Voting Paper for @Model.Meeting.Description on @Model.Meeting.MeetingDate.ToLocalTime().ToShortDateString()</h1>
+<div class="cf">
+        <div class="left"><a href="#vote-guidelines-modal" rel="modal:open"><input type="button" class="coolButton gridButton" value="Voting Guidelines" style="width:auto;" /></a></div>
+        <div class="right">
+            <h3>@Model.VotingCutoffDescription()</h3>
+        </div>
+</div>
+@using (Html.BeginForm("Vote", "Meeting", FormMethod.Post, new { name = "votingForm", autocomplete = "off", @id = "votingForm" }))
+{
+<!-- Modal window content -->
+<div id="vote-guidelines-modal" class="modal">
+    <h1 style="text-shadow: 2px 2px 2px #CCCCCC;">Voting Guidelines</h1>
+    <p>Welcome to pre-meeting electronic voting. Please read the voting guidelines before proceeding to the Electronic Voting Paper.</p>
+    <p>You can now cast your votes in 4 easy steps:</p>
+
+    <ol>
+        <li>Click on a motion to view more details and attachments if available.</li>
+        <li>Make a selection of For, Against or Abstain.</li>
+        <li>When you've made a selection for each motion of the Agenda, select the Submit button.</li>
+        <li>Review the Confirmation screen, and select the button to agree and submit your votes.</li>
+    </ol>
+
+    <p>Please note:</p>
+
+    <ul>
+        <li>You must submit your votes before the ballot close date/time, which is displayed at the top of the Electronic Voting Page.</li>
+        <li>You can change your votes at any time before the ballot closes by logging into your profile again.</li>
+        <li>All pre-meeting votes are informal until the results are reviewed by the strata manager.</li>
+        <li>Motions that require partial resolution are subject to change after the meeting has started.</li>
+        <li>For votes to be valid, all owners must be financial and have no outstanding amounts at the start of the meeting.</li>
+        <li>Entitlements will be calculated when votes are counted, for meetings that allow votes per entitlement.</li>
+    </ul>
+
+    <input type="button" class="coolButton gridButton" value="Proceed to Electronic Voting Paper" style="width:auto" />
+
+</div>
+
+
+<div id="vote-declaration-modal" class="modal">
+    <h1 style="text-shadow: 2px 2px 2px #CCCCCC;">Confirmation</h1>
+    <h2>'By selecting the Agree and Submit button below, I acknowledge that my details below are correct, and that my votes will be recorded as 'By Pre-Meeting Electronic Vote'. I acknowledge that in order for my vote to contribute towards the meeting quorum I must be financial with no amounts owing at the time the meeting commences.</h2>
+    <br />
+    
+    <div class="grid-wrapper" id="declaration-wrapper" style="display:table">
+
+        <div class="grid-item highlighted" id="grid-item-owner" style="display: table-cell;">
+            <header>
+                @Html.RadioButton("voter-type", "lot-owner", new { id="lot-owner", @checked = "checked" })
+                <label for="lot-owner" style="font-size:18px">&nbsp;&nbsp;Registered Lot Owner</label>
+            </header>
+
+            <div class="confirm-inner">
+                <p>
+                    Name: @Model.OwnerName
+                    <br /> Representing @Model.LotName
+                    <br />  Levy entitlement: @Model.LevyAmount
+                </p>
+            </div>
+        </div>
+
+        <div class="grid-item" id="grid-item-proxy" style="display: table-cell;">
+            <header>
+                @Html.RadioButton("voter-type", "proxy", new { id = "proxy" })
+                <label for="proxy" style="font-size:18px">&nbsp;&nbsp;Proxy</label>
+            </header>
+
+            <div class="confirm-inner inactive">
+                <p>
+                    Registered proxy name: @Html.TextBoxFor(m => m.ProxyName, new { @class = "field", autocomplete = "off", disabled = "disabled" })
+                    <br /> Representing @Model.LotName
+                    <br /> Nominated by: @Model.OwnerName, @Model.LotName
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+    
+    <br />
+    
+        <input type="button" onclick="submitVote()" class="coolButton gridButton" value="Agree and Submit" style="width:auto;" />
+    
+</div>
+<!-- End modal window content -->
+    <div id="motions">
+        @for (var i = 0; i < Model.Meeting.AgendaItems.Count; i++)
+        {
+        <div class="motion">
+            <div class="motion-header">
+                <div class="motion-title" onclick="toggleBody(event, this)">
+                    @Html.HiddenFor(m => m.Meeting.AgendaItems[i].SortOrder)
+                    <p><span>@(Model.Meeting.AgendaItems[i].SortOrder).</span> @Model.Meeting.AgendaItems[i].Description</p>
+                </div>
+                <div class="motion-vote">
+                    @Html.DropDownListFor(m => m.Meeting.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions, "", new { @class = "vote-options" })
+                </div>
+            </div>
+            <div class="motion-body">
+                <p>@Model.Meeting.AgendaItems[i].MotionText</p>
+            </div>
+        </div>
+        }
+    </div>
+    <div>
+        @if (!Model.IsVotingClosed())
+        {
+        <a href="#vote-declaration-modal" rel="modal:open">
+            <input type="button" id="submit-votes-button" class="coolButton" value="Submit" style="float: right" />
+        </a>
+        }  
+</div>
+}

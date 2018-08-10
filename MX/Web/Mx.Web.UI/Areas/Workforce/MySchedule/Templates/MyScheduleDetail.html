@@ -1,0 +1,77 @@
+﻿<div class="row fill-height" mx-mobile-ready>
+
+    <div class="panel panel-default container-1-toolbar fill-height" ng-show="GetShift()" ng-swipe-right="SetDetailedView(false)">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <button type="button" class="pull-left btn btn-primary visible-xs" ng-click="SetDetailedView(false)">
+                        <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{L10N.Back}}
+                    </button>
+                </div>
+                <div class="col-xs-6 col-md-9">
+                    <button type="button" class="pull-right btn btn-primary" ng-if="!GetShift().IsTimeOffRequest" ng-click="ShareScheduleShift()">
+                        <span class="fa fa-share-square-o"></span>&nbsp;&nbsp;{{L10N.Share}}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body touch-scrollable">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>
+                        {{GetShift().StartDateTime | formatDate: 'dddd, D MMMM'}}
+                        <br />
+                        {{GetShift().StartDateTime | formatDate: 'LT'}} - {{GetShift().EndDateTime | formatDate: 'LT'}}
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row" ng-repeat="break in GetShift().Breaks">
+                <div class="col-xs-6">
+                    {{L10N.Break}} ({{break.Duration}} {{L10N.Minutes}}.)
+                </div>
+                <div class="col-xs-6">
+                    {{break.StartDateTime | formatDate: 'LT'}} - {{break.EndDateTime | formatDate: 'LT'}}
+                </div>
+            </div>
+
+            <div ng-if="!GetShift().IsTimeOffRequest">
+                <h3>{{GetShift().RoleName}}</h3>
+                <h4>{{GetShift().EntityName}}</h4>
+                {{GetShift().EntityAddress1}}, {{GetShift().EntityCity}} {{GetShift().EntityPostCode}}
+            </div>
+            <div ng-if="GetShift().IsTimeOffRequest">
+                <h3>{{GetTimeOffStatus(GetShift()).Status}}</h3>
+                <h4>{{GetShift().EntityName}}</h4>
+            </div>
+
+            <hr />
+            <div ng-show="GetManagerShifts()">
+                <h3>{{L10N.Manager}}:</h3>
+                <div class="row" ng-repeat="manager in GetManagerShifts()">
+                    <div class="col-xs-6">
+                        {{manager.EmployeeFirstName}} {{manager.EmployeeLastName}}
+                    </div>
+                    <div class="col-xs-6" ng-show="GetManagerPhoneNumber(manager)">
+                        <a href="tel:{{GetManagerPhoneNumber(manager)}}">
+                            <span class="fa fa-phone fa-2x">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <h3 ng-show="GetTeamShifts()">{{L10N.Team}}:</h3>
+            <div class="row" ng-repeat="tshift in GetTeamShifts()">
+                <div class="col-xs-6">
+                    {{tshift.EmployeeFirstName}} {{tshift.EmployeeLastName}}
+                </div>
+                <div class="col-xs-6">
+                    {{tshift.StartDateTime | formatDate: 'LT'}} - {{tshift.EndDateTime | formatDate: 'LT'}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

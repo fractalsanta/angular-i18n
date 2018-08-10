@@ -1,0 +1,28 @@
+.scrolling {  // momentum scrolling
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.truncate {
+  // NOTE: Make sure to specify a width
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {color:#9d9d9d !important;}
+::-moz-placeholder          {color:#9d9d9d !important;}/* Firefox 19+ */
+:-moz-placeholder           {color:#9d9d9d !important;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#9d9d9d !important;}
+
+md-input-container.md-default-theme label, md-input-container label, md-input-container.md-default-theme .md-placeholder, md-input-container .md-placeholder {
+  color: #9d9d9d;
+}
+md-select-menu.md-default-theme md-content md-option:not([disabled]):focus, md-select-menu md-content md-option:not([disabled]):focus, md-select-menu.md-default-theme md-content md-option:not([disabled]):hover, md-select-menu md-content md-option:not([disabled]):hover {
+  background: rgb(206, 236, 246) !important;
+}

@@ -1,0 +1,35 @@
+﻿<div ng-controller="Workforce.MyAvailability.MyAvailabilityWeekController" class="row fill-height" mx-mobile-ready>
+    <div class="panel panel-default fill-height">
+        <div class="panel-body touch-scrollable fill-height">
+            <div class="row fill-height">
+                <div class="panel panel-default">
+                    <div ng-repeat="day in GetDayAvailability()" class="panel-default" ng-click="SelectMyAvailabilityDay(day); SetDetailedView(true);">
+                        <div class="panel-heading">
+                            <strong>
+                                <span>{{day.Date | formatDate:"dddd"}}</span>
+                            </strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="pull-right">
+                                <span class="fa fa-angle-right fa-3x"></span>
+                            </div>
+                            <div ng-repeat="time in day.Times" ng-show="day.Times && day.Times.length > 0">
+                                <div class="color-coded-panel-body" ng-style="{'border-left-color': GetColorCode(day)}" ng-show="time  && !time.IsAllDay">
+                                    <span>{{time.Start | formatDate:"LT"}} - </span>
+                                    <span>{{time.End | formatDate:"LT"}}</span>
+                                </div>
+                                <div class="color-coded-panel-body" ng-style="{'border-left-color': GetColorCode(day)}" ng-show="time.IsAllDay">
+                                    <span>{{L10N.AllDay}}</span>
+                                </div>
+                            </div>
+                            <div class="color-coded-panel-body" ng-style="{'border-left-color': GetColorCode(day)}" ng-show="!day.Times || day.Times.length == 0">
+                                <span>{{L10N.NoAvailability}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

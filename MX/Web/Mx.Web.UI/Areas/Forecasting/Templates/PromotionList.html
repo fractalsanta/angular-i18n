@@ -1,0 +1,61 @@
+﻿<div class="panel panel-default fill-height" ng-class="RequiresPaging() ? 'container-3-toolbars' : 'container-2-toolbars'">
+    <div class="panel-heading mx-white">
+        <div class="pull-left col-xs-3 row">
+            <input type="search" class="form-control" ng-model="Vm.FilterText" placeholder="{{::L10N.Search}}">
+        </div>
+
+        <div class="pull-left col-xs-4">
+            <div class="input-group date-range-fixed-width" ng-click="OpenDateRange()">
+                <span class="form-control pull-left" ng-class="{'mx-fg-novalue': !Vm.DateRange.StartDate}">
+                    <span ng-if="!Vm.DateRange.StartDate" class="text-nowrap">{{::L10N.SelectDates}}</span>
+                    <span ng-if="Vm.DateRange.StartDate" class="text-nowrap">{{Vm.DateRange.StartDate | date}} - {{Vm.DateRange.EndDate | date}}</span>
+                </span>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <button class="btn btn-success pull-right" ui-sref=".Details({Id:null})"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{::L10N.AddPromotion}}</button>
+    </div>
+
+    <div class="panel-heading" ng-show="RequiresPaging()">
+        <pagination total-items="Vm.FilteredPromotions.length"
+                    ng-model="Vm.CurrentPage"
+                    max-size="Vm.PagingOptions.numPages"
+                    class="pull-right"
+                    boundary-links="true"
+                    direction-links="false"
+                    rotate="false"
+                    first-text="&laquo;" last-text="&raquo;"
+                    items-per-page="Vm.PagingOptions.itemsPerPage"
+                    ng-change="ChangePage(Vm.CurrentPage)" />
+    </div>
+
+    <div class="table-header">
+        <div id="TableHeader">
+            <mx-grid-header header="Header"></mx-grid-header>
+        </div>
+    </div>
+
+    <div class="touch-scrollable">
+        <table class="table table-striped table-hover" mx-scrollable-table header-id="TableHeader" watch="Vm.CurrentPagePromotions">
+            <tr ng-repeat="promo in Vm.CurrentPagePromotions track by promo.PromotionId"
+                ui-sref=".Details({Id:{{promo.PromotionId}}})"
+                data-promotion-id="{{promo.PromotionId}}"
+                class="pointer-cursor"
+                mx-repeat-scroll-top>
+                <td>{{promo.Name}}</td>
+                <td class="min-100">{{promo.StartDate | date}} - {{promo.EndDate | date}}</td>
+                <td>{{promo.TimelineText}}</td>
+                <td class="min-50 text-center">
+                    <div class="fa fa-angle-right fa-2x"></div>
+                </td>
+            </tr>
+        </table>
+
+        <div ng-if="Vm.FilteredPromotions.length == 0" class="alert alert-warning">{{::L10N.NoPromotions}}</div>
+    </div>
+</div>

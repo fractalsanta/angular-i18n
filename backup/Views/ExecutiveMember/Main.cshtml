@@ -1,0 +1,102 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.ExecutiveMemberModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+<div class="full">
+    <h1>
+        Executive Committee Member</h1>
+    @if (ViewData.Model.UserSession.OwnersCorpNames.Count > 1)
+    {
+        @Html.Raw(Html.StrataDropdown(ViewData.Model.UserSession.ExecutiveMemberNames, ViewData.Model.CurrentExecutiveMemberIndex, ((d, i) => Url.Action("Main", new { index = i }))))
+    }
+    else
+    {
+        <h2>@ViewData.Model.UserSession.ExecutiveMemberNames[0].Name</h2>
+    }
+</div>
+<div class="full-width-data-container" style="border: none; background-color: inherit;">
+    <div class="report-section floatLeft" style="position: relative;">
+        <h3>
+            Property Details</h3>
+        <div class="section">
+            @Model.BodyCorporateName
+            <br />
+            <span>Plan Number:</span> @Model.PlanNumber
+        </div>
+        <h3>
+            Address</h3>
+        <div class="section">
+            @Html.ValueOrDefault(Model.AddressLine1)
+            @Html.ValueOrDefault(Model.AddressLine2)
+            @Html.ValueOrDefault(Model.AddressLine3)
+        </div>
+        <h3>
+            Member Name</h3>
+        <div class="section">
+            <div class="value">@Model.MemberName </div><br />
+            <div class="value">@Model.MemberAddress </div>
+        </div>
+        <div style="width: 360px; position: absolute; left: 415px; top: 172px;">
+            <h3>
+                Other Details
+            </h3>
+            <div class="section">
+                <div class="label">
+                    Position:</div>
+                <div class="value">@Model.Position
+                </div>
+                <div class="label">
+                    Receives Reports:</div>
+                <div class="value">@Model.ReceivesReports
+                </div>
+            </div>
+        </div>
+        <h3>
+            Contact Details</h3>
+        <div class="section">
+            @Html.Partial("RenderContact", Model.ExecutiveMemberContact)
+        </div>
+    </div>
+    <div class="report-section floatRight">
+    </div>
+</div>
+<h3>
+    <b>All Executive Committee Members</b> @*For Selected @ViewData.Model.UserSession.Terminology["Owners Corporation"]*@</h3>
+<table class="data" style="height: 200px;" cellpadding="0" cellspacing="0">
+    <tr>
+        <th style="width: 4%;">
+            Position
+        </th>
+        <th style="width: 1%;">
+            Lot
+        </th>
+        <th style="width: 1%;">
+            Unit
+        </th>
+        <th style="width: 4%;">
+            Name
+        </th>
+        <th style="width: 6%;">
+            Address
+        </th>
+        <th style="width: 6%;">
+            Contact
+        </th>
+    </tr>
+    @foreach (ExecutiveInfo info in ViewData.Model.ExecutiveInfo)
+    { 
+        <tr>
+            <td>@info.Position
+            </td>
+            <td>@info.Lot
+            </td>
+            <td>@info.Unit
+            </td>
+            <td>@info.Name
+            </td>
+            <td>@info.Address
+            </td>
+            <td>@info.Phone
+            </td>
+        </tr>
+    }
+</table>

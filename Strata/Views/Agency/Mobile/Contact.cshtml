@@ -1,0 +1,80 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.AgencyModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@section HeadTagsSection
+{
+    <style>
+        table.contact td
+        {
+            padding-bottom: 18px;
+        }
+    </style>
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Contact Agency</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer">
+            <a href="#" data-rel="back" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" /></a>
+        </div>
+        <br />
+        <table class="contact">
+            <tr valign="top">
+                <td style="width: 180px;">
+                    <b>Strata Agency Name</b>
+                </td>
+                <td>
+                    @Model.Name.ToStringOrEmpty(false)
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;
+                </td>
+                <td>
+                    @Model.AddressLine1.ToStringOrEmpty(false) @Model.AddressLine2.ToStringOrEmpty(false)
+                    @Model.Town.ToStringOrEmpty(false) @Model.City.ToStringOrEmpty(false) @Model.Region.ToStringOrEmpty(false)
+                    @Model.PostCode.ToStringOrEmpty(false)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Phone</b>
+                </td>
+                <td>
+                    @Model.Phone.ToStringOrDefault()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Fax</b>
+                </td>
+                <td>
+                    @Model.Fax.ToStringOrDefault()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Email</b>
+                </td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(Model.Email))
+                    { 
+                        <a href="mailto:@Model.Email.ToStringOrDefault()">
+                            @Model.Email.ToStringOrDefault()</a><br />
+                    
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;">
+                    <b>Online form</b>
+                </td>
+                <td style="padding-top: 10px;">
+                    @Html.ActionLink("Contact", "ContactForm")
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

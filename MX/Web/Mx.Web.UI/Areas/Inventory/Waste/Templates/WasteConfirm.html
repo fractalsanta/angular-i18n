@@ -1,0 +1,33 @@
+﻿<div ng-form="FinishWaste">
+    <div class="modal-header">{{Translation.FinishAdjustment}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+    <div class="modal-body">
+        <p class="text-right">
+            {{Translation.ItemsBeingModified}}
+            <span class="badge">{{Model.ItemsCount}}</span>
+        </p>
+        <p class="text-right">
+            {{Translation.WasteTotal}}:
+            <span class="badge">{{Model.TotalCost  | currencyOrDash}}</span>
+        </p>
+    </div>
+    <div class="modal-body" ng-class="{'has-error': FinishWaste.$invalid}">
+        <span class="form-control" datepicker-popup ng-model="Model.ApplyDate" ui-validate=" 'ValidateDate($value)' "
+              is-open="Model.ShowApplyDate"
+              max-date="Model.MaxDate"
+              datepicker-options="Model.DateOptions"
+              show-button-bar="false"
+              ng-click="OpenApplyDate($event)">
+            {{ Model.ApplyDate | date }}
+        </span>
+        <div style="display: inline-block;">
+            <timepicker ng-model="Model.ApplyDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+        </div>
+        <div class="alert alert-danger" ng-show="Model.PeriodClosed">{{ Translation.PeriodClosed }}</div>
+    </div>
+    <div class="modal-footer">
+        <span>
+            <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translation.Cancel}}</button>
+            <button class="btn btn-success pull-right" ng-disabled="FinishWaste.$invalid || Model.PeriodClosed" ng-click="Submit()">{{Translation.AdjustmentSubmit}}</button>
+        </span>
+    </div>
+</div>

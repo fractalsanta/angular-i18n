@@ -1,0 +1,8 @@
+﻿
+.menucontainer { background:#666666; border: solid 1px white; float: right;}
+
+.menu { display: inline-block; }
+.menu a:hover { color:white; background:#CC0000; }
+.menu a:hover ul { display:block; position:absolute; margin-left: -4px; border:1px solid white; }
+.menu a:hover a:hover { color:white; background:#CC0000; }
+.menu a:hover ul li { display: block; width: inherit;}

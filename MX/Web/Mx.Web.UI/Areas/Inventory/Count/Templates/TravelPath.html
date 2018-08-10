@@ -1,0 +1,187 @@
+﻿<!--Main content panel-->
+<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="col-xs-6 pull-left">
+            <div class="dropdown inline" dropdown ng-if="CheckCanViewUoms()">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" dropdown-toggle>
+                    <span class="">
+                        {{ TranslatedCurrentViewingMode() }} &nbsp;
+                        <span class="caret"></span>
+                    </span>
+                </button>
+                <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu3">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="ChangeViewingMode(0)">{{Translation.CountFrequency}}</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="ChangeViewingMode(1)">{{Translation.UnitOfMeasure}}</a></li>
+                </ul>
+            </div>
+            <button type="button" class="btn btn-default" ng-click="ManageLocationsClick()"><i class="fa fa-gears"></i>&nbsp;&nbsp;{{Translation.ManageLocations}}</button>
+            <a ng-show="CountType != null" href="#/Inventory/Count/Edit/{{CountTypeName}}" class="btn btn-default"><i class="fa fa-repeat"></i>&nbsp;&nbsp;{{Translation.Count}}</a>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-lg-2 pull-right">
+            <div class="dropdown" dropdown>
+                <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" dropdown-toggle
+                        ng-class="{'btn-success': !IsOfflineMode(), 'btn-danger': IsOfflineMode(), 'disabled': IsOfflineMode() }">
+                    <span class="">
+                        &nbsp;&nbsp;{{Translation.Actions}} &nbsp;
+                        <span class="caret"></span>
+                    </span>
+                </button>
+                <ul ng-if="!IsOfflineMode()" class="dropdown-menu col-xs-12 pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation" ng-click="AddNewItems()"><a role="menuitem" tabindex="-1"><i class="fa fa-plus"></i>{{Translation.TravelPathAddNewItems}}</a></li>
+                    <li role="presentation" ng-click="isDisabled || MoveItemsClicked()" ng-class="{'disabled':!SelectedItems || SelectedItems.length == 0}">
+                        <a role="menuitem" tabindex="-1"><i class="fa fa-exchange"></i>{{Translation.Move}} <span ng-show="SelectedItems.length > 0">{{SelectedItems.length}}</span></a>
+                    </li>
+                    <li role="presentation" ng-click="CopyItemsClicked()" ng-class="{'disabled':!SelectedItems || SelectedItems.length == 0}">
+                        <a role="menuitem" tabindex="-1"><i class="fa fa-copy"></i>{{Translation.Copy}} <span ng-show="SelectedItems.length > 0">{{SelectedItems.length}}</span></a>
+                    </li>
+                    <li role="presentation" ng-click="DeleteItemsClicked()" ng-class="{'disabled':!SelectedItems || SelectedItems.length == 0}">
+                        <a role="menuitem" tabindex="-1"><i class="fa fa-plus"></i>{{Translation.DeleteText}} <span ng-show="SelectedItems.length > 0">{{SelectedItems.length}}</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <div class="panel-body">
+
+        <!--Count row-->
+        <div class="row fill-height">
+            <div class="col-xs-3 col-sm-3 fill-height">
+                <!--Areas-->
+                <div class="container-1-toolbar fill-height">
+                    <div>
+                        <div class="input-group col-xs-12" style="z-index: 100;">
+                            <input type="text"
+                                   ng-model="SetSearchItemText" typeahead-wait-ms="1" typeahead-min-length="1"
+                                   placeholder="{{Translation.SearchItems}}"
+                                   typeahead="description.Description +' ('+ description.Code+')' for description in SearchItemsInLocations(SetSearchItemText)"
+                                   typeahead-on-select="SetSearchItem($item)"
+                                   class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" ng-click="ClearSearchText()">
+                                    <span class="fa fa-times" ng-click="ClearSearchText()"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable" style="z-index: 99;">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li ng-repeat="travelPathItem in TravelPathData.TravelPath" ng-class="{'active': travelPathItem.Location === CurrentTravelPathItem().Location, 'mx-highlight': LocationNeedsToBeHighlighted(travelPathItem)}">
+                                <span mx-scroll-to-element ng-if="LocationScrollToSet(travelPathItem)"></span>
+                                <div ng-click="LocationClicked(travelPathItem)">
+                                    <div class="pull-right">
+                                        &nbsp;
+                                        <span ng-show="travelPathItem.LocationType != 'SystemNewItem' || travelPathItem.Items.length > 0"
+                                              class="badge"
+                                              ng-class="{'mx-bg-warning': travelPathItem.LocationType == 'SystemNewItem' && travelPathItem.Items.length > 0 }">
+                                            {{travelPathItem.Items.length}}
+                                        </span>
+                                    </div>
+                                    {{travelPathItem.Location}}
+
+                                </div>
+                            </li>
+                            <div ng-hide="TravelPathData.TravelPath.length > 0" class="alert alert-warning">{{Translation.NoData}}</div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--Counts (Frequency) (Headers do not align if you don't show/hide entire div) -->
+            <div class="col-xs-9 fill-height" ng-if="CurrentViewingMode == 0">
+                <div class="panel panel-default fill-height container-2-toolbars">
+                    <div class="panel-heading">
+                        <strong>{{CurrentTravelPathItem().Location}}</strong>
+                    </div>
+                    <div class="table-header">
+                        <div id="TravelHeader">
+                            <div class="column-header"></div>
+                            <div class="column-header">{{Translation.Description}} ({{ Translation.ItemCode }})</div>
+                            <div class="column-header">{{TranslatedCurrentViewingMode()}}</div>
+                            <div class="column-header">{{Translation.Order}}</div>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-striped IOS712FIX" mx-scrollable-table watch="CurrentTravelPathItem().Items" header-id="TravelHeader">
+                            <tbody>
+                            <tr ng-repeat="Item in CurrentTravelPathItem().Items" ng-class="{'active': CheckItemIsSelected(Item), 'mx-highlight': ItemNeedsToBeHighlighted(Item) }"
+                                class="disable-select" mx-repeat-scroll-top>
+                                <td class="min-50" ng-click="ItemRowClicked(Item)">
+                                    <i ng-hide="CheckItemIsSelected(Item)" class="fa fa-square-o"></i>
+                                    <i ng-show="CheckItemIsSelected(Item)" class="fa fa-check-square-o"></i>
+                                </td>
+                                <td ng-click="ItemRowClicked(Item)">
+                                    <span mx-scroll-to-element ng-if="ItemNeedsToBeHighlighted(Item, true) || ItemIsLast(Item)"></span>
+                                    {{Item.Description}} ({{Item.Code}})
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm" ng-show="CheckSpotPermission()" ng-class="{'btn-info': Item.IsSpotCounted }" ng-click="ItemCountTypeClick(Item, 0, CurrentTravelPathItem())">{{Translation.Spot}}</button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-show="CheckDailyPermission()" ng-class="{'btn-info': Item.IsDailyCounted }" ng-click="ItemCountTypeClick(Item, 1, CurrentTravelPathItem())">{{Translation.Daily}}</button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-show="CheckWeeklyPermission()" ng-class="{'btn-info': Item.IsWeeklyCounted }" ng-click="ItemCountTypeClick(Item, 2, CurrentTravelPathItem())">{{Translation.Weekly}}</button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-show="CheckMonthlyPermission()" ng-class="{'btn-info': Item.IsMonthlyCounted }" ng-click="ItemCountTypeClick(Item, 4, CurrentTravelPathItem())">{{Translation.Monthly}}</button>
+                                        <button type="button" class="btn btn-default btn-sm" ng-show="CheckPeriodicPermission()" ng-class="{'btn-info': Item.IsPeriodicCounted }" ng-click="ItemCountTypeClick(Item, 3, CurrentTravelPathItem())">{{Translation.Periodic}}</button>
+                                    </div>
+                                </td>
+                                <td class="text-center min-70" ng-click="ItemTravelPathIconClicked(Item)">
+                                    <i class="fa fa-bars" ng-show="SelectedItem == null"></i>
+                                    <i class="fa fa-thumb-tack" ng-show="Item === SelectedItem"></i>
+                                    <i class="fa fa-bullseye" ng-show="SelectedItem != null && SelectedItem != Item"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div ng-hide="CurrentTravelPathItem().Items" class="alert alert-warning">{{Translation.NoProductsForLocation}}</div>
+                    </div>
+                </div>
+            </div>
+            <!--Counts (UnitOfMeasure) (Headers do not align if you don't show/hide entire div) -->
+            <div class="col-xs-9 fill-height" ng-if="CurrentViewingMode == 1">
+                <div class="panel panel-default fill-height container-2-toolbars">
+                    <div class="panel-heading">
+                        <strong>{{CurrentTravelPathItem().Location}}</strong>
+                    </div>
+                    <div class="table-header">
+                        <div id="TravelHeader">
+                            <div class="column-header"></div>
+                            <div class="column-header">{{Translation.Description}} ({{ Translation.ItemCode }})</div>
+                            <div class="column-header">{{TranslatedCurrentViewingMode()}}</div>
+                            <div class="column-header">{{Translation.Order}}</div>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-striped IOS712FIX" mx-scrollable-table watch="CurrentTravelPathItem().Items" header-id="TravelHeader">
+                            <tbody>
+                                <tr ng-repeat="Item in CurrentTravelPathItem().Items" ng-class="{'active': CheckItemIsSelected(Item), 'mx-highlight': ItemNeedsToBeHighlighted(Item) }"
+                                    class="disable-select" mx-repeat-scroll-top>
+                                    <td class="min-50" ng-click="ItemRowClicked(Item)">
+                                        <i ng-hide="CheckItemIsSelected(Item)" class="fa fa-square-o"></i>
+                                        <i ng-show="CheckItemIsSelected(Item)" class="fa fa-check-square-o"></i>
+                                    </td>
+                                    <td ng-click="ItemRowClicked(Item)">
+                                        <span mx-scroll-to-element ng-if="ItemNeedsToBeHighlighted(Item, true) || ItemIsLast(Item)"></span>
+                                        {{Item.Description}} ({{Item.Code}})
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default btn-sm" ng-show="Item.IsOuterUomSet" ng-class="{'btn-info': !Item.DisableOuterUnit }" ng-click="ItemUomClick(Item, 1, CurrentTravelPathItem())">{{Item.OuterUom}}</button>
+                                            <button type="button" class="btn btn-default btn-sm" ng-show="Item.IsInnerUomSet" ng-class="{'btn-info': !Item.DisableInnerUnit }" ng-click="ItemUomClick(Item, 2, CurrentTravelPathItem())">{{Item.InnerUom}}</button>
+                                            <button type="button" class="btn btn-default btn-sm" ng-show="Item.IsWeightUomSet" ng-class="{'btn-info': !Item.DisableWeightUnit }" ng-click="ItemUomClick(Item, 3, CurrentTravelPathItem())">{{Item.WeightUom}}</button>
+                                            <button type="button" class="btn btn-default btn-sm" ng-show="Item.IsInventoryUnitUomSet" ng-class="{'btn-info': !Item.DisableInventoryUnit }" ng-click="ItemUomClick(Item, 4, CurrentTravelPathItem())">{{Item.InventoryUnitUom}}</button>
+                                        </div>
+                                    </td>
+                                    <td class="text-center min-70" ng-click="ItemTravelPathIconClicked(Item)">
+                                        <i class="fa fa-bars" ng-show="SelectedItem == null"></i>
+                                        <i class="fa fa-thumb-tack" ng-show="Item === SelectedItem"></i>
+                                        <i class="fa fa-bullseye" ng-show="SelectedItem != null && SelectedItem != Item"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-hide="CurrentTravelPathItem().Items" class="alert alert-warning">{{Translation.NoProductsForLocation}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

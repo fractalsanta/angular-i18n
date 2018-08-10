@@ -1,0 +1,16 @@
+2017-01-19 09:59:14.5675 UTC ----------- MxConnect
+Startup
+Startup.Configuration => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-19 12:34:15.8684 UTC ----------- MxConnect
+Startup
+Startup.Configuration => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-19 14:25:06.9864 UTC ----------- MxConnect
+Startup
+Startup.Configuration => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-19 14:58:31.3596 UTC ----------- MxConnect
+Startup
+Startup.Configuration => MxLogger.LogMessage => MxLogger.Log
+

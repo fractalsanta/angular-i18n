@@ -1,0 +1,131 @@
+﻿<!--Main content panel-->
+<div class="panel-body fill-height">
+    <div class="row fill-height">
+        <!--Areas-->
+        <div class="col-sm-3 col-xs-3 fill-height">
+            <div class="fill-height container-1-toolbar">
+                <div>
+                    <div class="input-group">
+                        <input type="text"
+                               placeholder="{{Translation.SearchItems}}"
+                               ng-model="Search.ProductFull"
+                               ng-change="ClearSelected"
+                               class="form-control" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="ClearSearchResult()">
+                                <span class="fa fa-times" ng-click="ClearSearchResult()"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li ng-repeat="data in ItemList | filter:Search | limitTo:20" ng-class="{'active': data.Selected }">
+                            <div ng-click="ChangeItems(data)">
+                                <div class="pull-right">
+                                    &nbsp;
+                                    <span class="badge" ng-class="ItemStatusClass(data.Item)">{{Uncounted(data.Item)}}</span>
+                                </div>
+                                {{data.Item.Description}} ({{data.Item.ProductCode}})
+                            </div>
+                        </li>
+                    </ul>
+                    <br />
+                    <div ng-hide="HasMatch()" class="alert alert-warning">{{Translation.NoMatches}}: {{Search.ProductFull}}</div>
+                </div>
+            </div>
+        </div>
+        <!--Counts-->
+        <div class="col-sm-9 col-xs-9 fill-height">
+            <div class="panel panel-default fill-height container-2-toolbars">
+                <div class="panel-heading">
+                    <strong ng-show="SelectedItems()[0]">{{SelectedItems()[0].Description}} ({{SelectedItems()[0].ProductCode}})</strong>
+
+                    <pagination total-items="SelectedItems().length"
+                                ng-if="SelectedItems().length > PagingSettings.ItemsPerPage"
+                                ng-model="PagingSettings.CurrentPage"
+                                max-size="PagingSettings.MaxNumberOfPages"
+                                class="pull-right"
+                                boundary-links="true"
+                                direction-links="false"
+                                rotate="false"
+                                num-pages="numPages"
+                                first-text="&laquo;" last-text="&raquo;"
+                                items-per-page="PagingSettings.ItemsPerPage"></pagination>
+
+                </div>
+                <div class="table-header">
+                    <div id="TableHeader">
+                        <div class="column-header">{{Translation.Location}}</div>
+                        <div class="column-header">{{Translation.Outer}}</div>
+                        <div class="column-header" ng-show="AreaGroups.HasInner">{{Translation.Inner}}</div>
+                        <div class="column-header" ng-show="AreaGroups.HasWeight">{{Translation.Weight}}</div>
+                        <div class="column-header">{{Translation.Unit}}</div>
+                        <div class="column-header">{{Translation.Counted}}</div>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <table class="table table-striped" count-table-arrow-navigation mx-scrollable-table watch="PageItems" header-id="TableHeader">
+                        <tbody>
+                            <tr ng-repeat="Item in PageItems" ng-form="ActiveLine" mx-repeat-scroll-top class="top">
+                                <td class="word-break">{{Item.Location}}</td>
+                                <td ng-class="{'has-error': ActiveLine.OuterCount.$invalid}">
+                                    <input type="text"
+                                           ng-disabled="!CheckCountCanUpdatePermission()"
+                                           ng-show="Item.OuterUnit"
+                                           class="form-control"
+                                           ng-model="Item.OuterCount"
+                                           ng-blur="ActiveLine.OuterCount.$valid && UpdateItem(Item,0)"
+                                           name="OuterCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2"/>
+                                    <label>{{Item.OuterUnit}}</label>
+                                </td>
+                                <td ng-show="AreaGroups.HasInner" ng-class="{'has-error': ActiveLine.InnerCount.$invalid}">
+                                    <input type="text"
+                                           ng-disabled="!CheckCountCanUpdatePermission()"
+                                           ng-show="Item.InnerUnit"
+                                           class="form-control"
+                                           ng-model="Item.InnerCount"
+                                           ng-blur="ActiveLine.InnerCount.$valid && UpdateItem(Item,1)"
+                                           name="InnerCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2"/>
+                                    <label>{{Item.InnerUnit}}</label>
+                                </td>
+                                <td ng-show="AreaGroups.HasWeight" ng-class="{'has-error': ActiveLine.WeightCount.$invalid}">
+                                    <input type="text"
+                                           ng-disabled="!CheckCountCanUpdatePermission()"
+                                           ng-show="Item.WeightUnit"
+                                           class="form-control"
+                                           ng-model="Item.WeightCount"
+                                           ng-blur="ActiveLine.WeightCount.$valid && UpdateItem(Item,3)"
+                                           name="WeightCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2"/>
+                                    <label>{{Item.WeightUnit}}</label>
+                                </td>
+                                <td ng-class="{'has-error': ActiveLine.InventoryCount.$invalid}">
+                                    <input type="text"
+                                           ng-show="Item.InventoryUnit"
+                                           class="form-control"
+                                           ng-disabled="!CheckCountCanUpdatePermission()"
+                                           ng-model="Item.InventoryCount"
+                                           ng-blur="ActiveLine.InventoryCount.$valid && UpdateItem(Item,2)"
+                                           name="InventoryCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2"/>
+                                    <label>{{Item.InventoryUnit}}</label>
+                                </td>
+                                <td>
+                                    <i style="padding-top: 11px" class="{{ StatusClass(Item) }}" title="{{ StatusTitle(Item) }}"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ng-if="!SelectedItems()" class="alert alert-warning">{{Translation.SelectItemDescription}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

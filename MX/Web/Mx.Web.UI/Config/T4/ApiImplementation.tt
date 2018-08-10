@@ -1,0 +1,74 @@
+﻿/////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//    TypeScript implementation layer for REST WebAPI services 
+//    WARNING: This file has been automatically generated. Any changes may be lost on the next run.
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+/// <reference path="../../scripts/typings/angularjs/angular.d.ts" />
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".ts" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="System.Core" #>
+<#@ include file="VSCodeModel.t4" #>
+<#@ include file="SimplerCodeModel.t4" #>
+<#@ include file="Utils.t4" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="EnvDTE" #>
+<#
+
+var api = ScanApi();
+const int DefaultClientTimeout = 120;
+
+foreach (ControllerDefinition controller in api.Controllers) 
+{
+    var fullName = controller.Type.FullName;
+    var areaName = GetAreaNamespace(fullName);
+    var serviceName = GetServiceName(fullName);
+    var interfaceName = GetProxyName(fullName);
+    var dependencyName = serviceName.Substring(0, 1).ToLower() + serviceName.Substring(1);
+    if (areaName == null) continue;
+    WriteLine("");
+    WriteLine("module {0} {{", areaName);
+    Indent(1); WriteLine("// {0}", GetAreaLocalName(fullName));
+    Indent(1); WriteLine("class {0} implements {1} {{", serviceName, interfaceName);
+    Indent(2); WriteLine("constructor(private $http: ng.IHttpService) { }");
+    foreach (var member in controller.Methods.Where(m => m.IsValid)) 
+    {
+        var method = GetMethod(member.Name);
+
+        var url = "\"/" + GetControllerUrl(controller.FilePath) 
+            + (member.Parameters.Any(p => p.Name == "id") ? "/\" + encodeURI(id.toString())" : "\"");
+
+        Indent(2); Write("{0}(", member.Name);
+        Write(string.Join(", ", member.Parameters.Select(GetTSParamDefinition)));
+        WriteLine("): ng.IHttpPromise<{0}>{{", GetTSPromiseName(member.Type));
+        var parameters = member.Parameters.Where(p => p.Name != "id" && !p.FromBody);
+        var data = member.Parameters.FirstOrDefault(p => p.FromBody);
+        Indent(3); WriteLine("return this.$http({");
+        Indent(4); WriteLine("method: \"{0}\",", method);
+        Indent(4); WriteLine("url: {0},", url);
+        var attr = member.Attributes.FirstOrDefault(a=>a.Name == "ClientTimeout");
+        var timeout = attr == null ? DefaultClientTimeout.ToString() : attr.Value;
+        Indent(4); Write("timeout: {0}000", timeout);
+        if (parameters.Any())
+        {
+            WriteLine(",");
+            Indent(4); Write("params: {{ {0} }}", string.Join(", ", parameters.Select(GetTSFieldValueDefinition)));
+        }
+        if (data != null)
+        {
+            WriteLine(",");
+            Indent(4); Write("data: {0}", data.Name);
+        }
+        WriteLine(""); Indent(3); WriteLine("});");
+        Indent(2); WriteLine("}");
+    }
+    Indent(1); WriteLine("}");
+    Indent(1); WriteLine("export var ${0}: Core.NG.INamedDependency<{1}> = Core.NG.CoreModule.RegisterService(\"ApiLayer.{2}\", {2}, Core.NG.$http);", dependencyName, interfaceName, serviceName);
+    Indent(0); WriteLine("}");
+}
+#>

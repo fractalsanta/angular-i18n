@@ -1,0 +1,21 @@
+﻿<div class="modal-header">
+    {{::L10N.ConfirmPromotion}}<button type="button" class="close" ng-click="Cancel()">&times;</button>
+</div>
+
+<div class="modal-body form-group">
+    <div>
+        {{::L10N.OverlapConfirmation}}<b><i>&nbsp;{{::PromotionName}}</i></b>.
+    </div>
+    <hr/>
+    <div class="panel-limited-height touch-scrollable">
+        <p ng-repeat="item in Overlaps">
+            <b>{{::item.Description}} ({{::item.ItemCode}}):</b>
+            <span ng-repeat="promo in item.Promotions"><span ng-if="$index > 0">,</span>&nbsp;{{::promo}}</span>
+        </p>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="pull-left btn btn-default" ng-click="Cancel()">{{::L10N.Cancel}}</button>
+    <button class="btn btn-success" ng-click="Close()">{{::L10N.Confirm}}</button>
+</div>

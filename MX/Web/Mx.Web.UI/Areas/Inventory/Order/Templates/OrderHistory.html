@@ -1,0 +1,57 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-5 col-md-4">
+                <input class="form-control" ng-model="Model.FilterText" placeholder="{{::L10N.SearchOrders}}" ng-change="ApplySearchFilter()" />
+            </div>
+            <div class="col-xs-7">
+                <mx-date-range dates="Model.DatesRange" days="14" change="SelectDatesRange()"></mx-date-range>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default fill-height" ng-class="{ 'container-1-toolbar': !RequiresPaging(), 'container-2-toolbars': RequiresPaging() }">
+            <div class="panel-heading" ng-show="RequiresPaging()">
+                <pagination total-items="FilteredOrders.length"
+                            ng-model="CurrentPage"
+                            max-size="PagingOptions.numPages"
+                            class="pull-right"
+                            boundary-links="true"
+                            direction-links="false"
+                            rotate="false"
+                            first-text="&laquo;" last-text="&raquo;"
+                            items-per-page="PagingOptions.itemsPerPage"
+                            ng-change="ChangePage(CurrentPage)"></pagination>
+            </div>
+            <div class="table-header">
+                <div id="TableHeaderOrdersHistory">
+                    <div ng-repeat="column in OrdersHistoryGridDefinitions"
+                         class="column-header"
+                         ng-click="column.Field && SortByColumn(column.Field)"
+                         ng-class="{ 'pointer-cursor': column.Field }">
+                        {{ column.Title }}
+                        &nbsp;&nbsp;<i class="fa" ng-class="{ 'fa-angle-down': !DisplayOptions.SortAscending, 'fa-angle-up': DisplayOptions.SortAscending, 'invisible': DisplayOptions.SortProperty !== column.Field }"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="touch-scrollable">
+                <table class="table table-striped" mx-scrollable-table watch="CurrentPageOrders" header-id="TableHeaderOrdersHistory">
+                    <tbody>
+                        <tr ng-repeat="order in CurrentPageOrders">
+                            <td class="col-xs-3">{{::order.VendorName }}</td>
+                            <td class="col-xs-1">{{::order.DisplayId }}</td>
+                            <td class="col-xs-2">{{::order.OrderDate | formatDate:'L' }}</td>
+                            <td class="col-xs-2"><span>{{(order.ApplyDate ? order.ApplyDate : order.DeliveryDate) | formatDate:'L' }}  </span></td>
+                            <td class="col-xs-2">{{::order.Status | translate:L10N }}</td>
+                            <td class="col-xs-2">{{::order.OrderedItems}} ({{::order.OrderedCases}} {{ L10N.Cases }})</td>
+                            <td class="col-xs-1">
+                                <button type="button" class="btn btn-default btn-block btn-sm" ng-click="ViewOrder(order)">{{ L10N.View }}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿<div id="mx-navbar-panel" ng-hide="!NavState.Expanded">
+    <div class="navbar-backdrop" ng-click="Collapse()"></div>
+    <div ng-swipe-left="Collapse()" class="panel panel-mx pull-left">
+        <div style="padding-top: 61px">
+            <div class="subpanel-mx" ng-repeat="navItem in NavItems">
+                <div class="panel-heading" ng-class="{'active': navItem.IsExpanded}" ng-click="ToggleExpansion(navItem)" ng-show="navItem.SubNavs && navItem.SubNavs.length">
+                    <span ng-class="{'active': navItem.IsExpanded}">
+                        <i class="nav-icon {{navItem.Icon}}" ng-class="{'active': navItem.IsExpanded}"></i>{{ navItem.Title }}
+                        <i ng-show="navItem.SubNavs && !navItem.IsExpanded" class="pull-right fa fa-chevron-down"></i>
+                        <i ng-show="navItem.SubNavs && navItem.IsExpanded" class="pull-right fa fa-chevron-up"></i>
+                    </span>
+                </div>
+                <div class="list-group" ng-show="navItem.IsExpanded && navItem.SubNavs && navItem.SubNavs.length">
+                    <a class="list-group-item" ng-class="{'active': navItem.IsExpanded}"
+                       ng-show="subNavItem.IsAvailable == undefined || subNavItem.IsAvailable"
+                       ng-click="Collapse()"
+                       ng-href="#{{subNavItem.Url}}"
+                       ng-repeat="subNavItem in navItem.SubNavs">
+                        <i ng-class="subNavItem.Icon" class="nav-icon"></i>{{ subNavItem.Title }} <i class="fa fa-repeat" ng-show="subNavItem.InProgress" style="padding-left: 10px"></i>
+                    </a>
+                </div>
+                <div ng-if="!navItem.OpenLinkInNewTab" class="panel-heading" ng-show="!navItem.SubNavs" ng-click="Navigate(navItem)">
+                    <div ng-class="{'active': navItem.IsExpanded}">
+                        <i class="{{navItem.Icon}} nav-icon"></i>{{ navItem.Title }}
+                    </div>
+                </div>
+
+                <div ng-if="navItem.OpenLinkInNewTab" class="panel-heading" ng-show="!navItem.SubNavs">
+                    <div ng-class="{'active': navItem.IsExpanded}">
+                        <a href="{{ navItem.Url }}" target="_blank">
+                            <i class="{{navItem.Icon}} nav-icon"></i>{{ navItem.Title }}    
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

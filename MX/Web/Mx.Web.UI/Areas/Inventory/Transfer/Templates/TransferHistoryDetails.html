@@ -1,0 +1,72 @@
+﻿<div class="transfer-details panel panel-default fill-height container-3-toolbars">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="text-right col-md-12 col-sm-12 col-xs-12">
+                <button type="button" class="btn btn-default" ng-click="Return()">
+                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;{{ ::Translations.Back }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading mx-white toolbar-double-height">
+        <div class="panel panel-default">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ GetToOrFromText() }}</th>
+                        <th>{{ ::Translations.RequestDate }}</th>
+                        <th>{{ ::Translations.Requester }}</th>
+                        <th class="col-sm-2 col-xs-1">{{ ::Translations.Status }}</th>
+                        <th>{{ ::Translations.TotalCost }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ EntityDisplayName }}</td>
+                        <td>{{ Transfer.CreateDate | date:'medium' }}</td>
+                        <td>{{ Transfer.InitiatedBy || 'N/A' }}</td>
+                        <td>{{ Transfer.Status }}</td>
+                        <td>{{ GetRequestTotal() | currency }}</td>
+                    </tr>
+                    <tr ng-if="IsTransferDenied()">
+                        <td colspan="5">
+                            <strong> {{ Translations.DenialReason }} :  </strong> <dfn> {{Transfer.Comment || Translations.DenialReasonDefaultText }}</dfn>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row fill-height">
+            <div class="col-sm-12 fill-height">
+                <div class="panel panel-default fill-height container-2-toolbars" ng-show="Transfer && Transfer.Details.length">
+                    <div class="panel-heading">{{ ::Translations.Items }}</div>
+                    <div class="table-header">
+                        <div id="ItemsTableHeader">
+                            <div class="column-header" ng-repeat="column in GridDefinitions">{{ column.Title }}</div>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-striped" mx-scrollable-table watch="Transfer.Details" header-id="ItemsTableHeader">
+                            <tbody ng-click="OnRowSelect($event)">
+                                <tr ng-repeat="item in Transfer.Details track by item.Id"
+                                    ng-class="{ info: item === SelectedItem}"
+                                    data-item-id="{{ item.ItemId }}">
+                                    <td>{{ item.Description }} ({{ item.ItemCode }})</td>
+                                    <td>{{ item.ReportingUom }}</td>
+                                    <td>{{ item.ReportingRequested | number:2}}</td>
+                                    <td ng-if="item.ReportingTransferred >= 0">{{ item.ReportingTransferred | number:2 }}</td>
+                                    <td ng-if="item.ReportingTransferred < 0">{{ ::Translations.Dash }}</td>
+                                    <td>{{ item.ReportingOnHand | number:2 }}</td>
+                                    <td>{{ item.ReportingUnitCost | currency}}</td>
+                                    <td>{{ item.TransferCost | currency}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

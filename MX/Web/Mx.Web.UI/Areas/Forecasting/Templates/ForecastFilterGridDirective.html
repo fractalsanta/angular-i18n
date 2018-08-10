@@ -1,0 +1,45 @@
+﻿<div class="panel panel-default" style="margin-top: 4px;" ng-click="OnClick($event)">
+    <table class="table table-striped table-bordered table-condensed filterGrid forecastGrid">
+        <thead>
+            <tr>
+                <th class="col-xs-2 col-md-3">{{ ::L10N.ForecastFilter }}</th>
+                <th class="col-xs-2 col-md-3">{{ ::L10N.LastYear }}</th>
+                <th class="col-xs-2 col-md-3">{{ ::L10N.SystemForecast }}</th>
+                <th class="col-xs-4 col-md-3">
+                    {{ ::L10N.ManagerForecast }}
+                    <span class="text-nowrap">
+                        <button ng-if="Options.MetricKey === 'sales'" class="btn btn-default" ng-class="{ active: !InlineOptions.IsByPercentage }" ng-click="OnClickSetByPercentage(false, $event)">{{ CURRENCY_SYM }}</button>
+                        <button ng-if="Options.MetricKey === 'transactions'" class="btn btn-default" ng-class="{ active: !InlineOptions.IsByPercentage }" ng-click="OnClickSetByPercentage(false, $event)">#</button>
+                        <button type="button" class="btn btn-default" ng-class="{ active: InlineOptions.IsByPercentage }" ng-click="OnClickSetByPercentage(true, $event)">%</button>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in GridData" ng-class="{'mx-fg-editing': $index === EditingIndex}" row-index="{{ $index }}">
+                <td class="">
+                    {{ (Options.FiltersMap[ row.FilterId || 0 ].Filter.Name) || L10N.Total }}
+                </td>
+                <td class="">
+                    {{ row.LastYear }}
+                </td>
+                <td class="">
+                    {{ row.SystemForecast }}
+                </td>
+                <td class="">
+                    <span class="form-control"
+                          ng-disabled="RowNotEditable(row, $index)"
+                          ng-class="{
+                            'mx-fg-isdisabled': RowNotEditable(row, $index),
+                            'mx-fg-novalue': CellValue(row.Filtered.Data, 0) === undefined
+                          }">
+                        <span>
+                            {{ row.ManagerForecast }}
+                        </span>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <edit-forecast-inline editing="Editing" options="InlineOptions" ng-show="Editing && EditingIndex !== null" />
+</div>

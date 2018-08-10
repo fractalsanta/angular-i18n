@@ -1,0 +1,82 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-5 col-sm-3">
+                <mx-entity-search options="SearchOptions"></mx-entity-search>
+            </div> 
+            <div class="col-xs-7 col-sm-9">
+                <button type="button" class="btn btn-success pull-right" ng-click="AddLocation()" ng-show="SelectedLocation.Viewable">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ Translations.Add + " " + HierarchyLevels[SelectedLocation.Type] }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body container-3-toolbars">
+        <div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb" ng-show="SelectedLocation">
+                    <li ng-repeat="crumb in Breadcrumbs track by crumb.Id" ng-class="{ active: crumb === SelectedLocation }">
+                        <a ng-if="crumb !== SelectedLocation" ng-click="crumb.Viewable && SelectLocation(crumb)">{{ HierarchyLevels[crumb.Type - 1] }}</a>
+                        <span ng-if="crumb === SelectedLocation">{{ HierarchyLevels[crumb.Type - 1] }}</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="row toolbar-double-height">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h4>{{ SelectedLocation.DisplayName }}</h4>
+                            </div>
+                            <div class="col-xs-3">
+                                <h4><i class="fa fa-sitemap"></i>&nbsp;&nbsp;{{ Translations.Children }}: {{ SelectedLocation.Children.length }}</h4>
+                            </div>
+                            <div class="col-xs-3">
+                                <h4 ng-show="SelectedLocation.Parent">
+                                    <i class="fa fa-home"></i>&nbsp;&nbsp;{{ Translations.ReportsTo }}:
+                                    <a ng-click="SelectedLocation.Parent.Viewable && SelectLocation(SelectedLocation.Parent)"> {{ SelectedLocation.Parent.DisplayName }}</a>
+                                </h4>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-default pull-right" ng-click="EditLocation(SelectedLocation)" ng-show="SelectedLocation.Viewable">
+                                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{ Translations.Edit }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="fill-height touch-scrollable">
+                <br/>
+                <div class="list-group">
+                    <a class="list-group-item" ng-click="(location.Type !== HierarchyLevels.length) ? SelectLocation(location) : ''"
+                       ng-repeat="location in SelectedLocationChildren track by $index"
+                       ng-if="(location !== SearchedLocation || $index === 0)">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h5>{{ location.DisplayName }}</h5>
+                            </div>
+                            <div class="col-xs-3">
+                                <h5 ng-if="location.Type !== HierarchyLevels.length">
+                                    <i class="fa fa-sitemap"></i>&nbsp;&nbsp;{{ Translations.Children }}: {{ location.Children.length }}
+                                </h5>
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="button" ng-if="location.Type !== HierarchyLevels.length" class="btn btn-default pull-right">
+                                    {{ Translations.View }}
+                                </button>
+                                <button ng-show="location.Viewable" type="button" ng-if="location.Type === HierarchyLevels.length" class="btn btn-default pull-right" ng-click="EditLocation(location)">
+                                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{ Translations.Edit }}
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿<div class="modal-header"><span>{{ Title }}</span><button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<form class="form-horizontal" role="form" ng-submit="Submit($event);" ng>
+    <div class="modal-body">
+        <div class="form-group" ng-hide="Metric =='events'">
+            <div class="col-sm-3">
+                <input id="override" type="radio" ng-model="FormData.EditType" value="override" ng-click="InputFocus($event);" />
+                <label class="control-label" for="override">{{ Translations.Value }}</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="tel" class="form-control no-ms-clear" id="overrideInput" ng-disabled="FormData.EditType !== 'override'" number-only-input select-on-focus-input ng-change="UpdatePercent();" ng-model="FormData.NewValue"
+                       maxlength="10" maxvalue="10000000" iscurrency="{{ FormData.IsCurrency }}" autocomplete="off" autofocus />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <input id="percentage" type="radio" ng-model="FormData.EditType" ng-disabled="FormData.OriginalValue === 0" value="percentage" ng-click="InputFocus($event);" />
+                <label class="control-label" for="percentage">{{ Translations.Percentage }}</label>
+            </div>
+            <div class="col-sm-9">
+                <input type="tel" ispercent="true" class="form-control no-ms-clear" id="percentInput" autocomplete="off"
+                       ng-disabled="FormData.EditType !== 'percentage'" number-only-input select-on-focus-input ng-change="UpdateValue()"
+                       maxlength="7" minvalue="-100" maxvalue="1000" precision="2"
+                       ng-model="FormData.PercentChange" ng-init="FormData.PercentChange='0%'" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" ng-click="Cancel()">{{ Translations.Cancel }}</button>
+        <button type="submit" class="btn btn-success" ng-disabled="IsEmpty()">
+            {{ Translations.Apply }}
+        </button>
+    </div>
+</form>

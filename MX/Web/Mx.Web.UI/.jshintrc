@@ -1,0 +1,23 @@
+{
+    "bitwise": false,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "noarg": true,
+    "noempty": true,
+    "plusplus": true,
+    "undef": true,
+    "unused": true,
+    "strict": true,
+    "trailing": true,
+    "globals": {
+        "window": false,
+        "angular": false,
+        "$": false,
+        "moment": false,
+        "Core": false,
+        "_": false
+    }
+}

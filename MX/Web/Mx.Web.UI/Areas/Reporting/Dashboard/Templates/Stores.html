@@ -1,0 +1,24 @@
+﻿<div>
+    <div class="margin-15 fill-height">
+        <div ng-repeat="group in Model.EntityGroups" class="panel panel-default" mx-repeat-scroll-top>
+            <div class="panel-heading">
+                {{TypeDisplay(group.TypeId)}}
+            </div>
+            <div class="list-group">
+                <a class="list-group-item" ng-repeat="entity in group.Entities | filter:Search" href="javascript:;" ng-click="DrillDown(entity)">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            {{entity.Name}}
+                            <progressbar type="info" ng-if="Model.ShowBars" value="ValueWidth(entity)"></progressbar>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="pull-right">
+                                <span class="badge {{ValueClassBg(entity)}}">{{Value(entity)}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

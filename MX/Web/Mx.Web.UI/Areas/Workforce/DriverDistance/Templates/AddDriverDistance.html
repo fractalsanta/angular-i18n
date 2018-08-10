@@ -1,0 +1,65 @@
+﻿<form class="form-horizontal" role="form" name="addDriverDistanceForm">
+    <div class="modal-header">{{ ::L10N.DriveRecord }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-show="!Vm.AuthorizationIsValid">{{ Vm.ValidationErrorMessage }}</div>
+        <div class="alert alert-danger" ng-show="Vm.ShowOdomError">{{ ::L10N.OdomError }}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>{{ ::L10N.DriveRecord }}</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{ 'has-error': addDriverDistanceForm.employee.$invalid }">
+                    <label class="col-xs-3 control-label">{{ ::L10N.Employee }}</label>
+                    <div class="col-xs-8">
+                        <select class="form-control" name="employee"
+                                ng-model="Vm.SelectedUserId"
+                                ng-options="user.Id as (user.FirstName + ' ' + user.LastName) for user in Vm.AvailableUsers | orderBy:'FirstName'"
+                                required>
+                            <option value selected disabled ng-show="Vm.ShowSelectUserPrompt">{{ ::L10N.PleaseSelect }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': addDriverDistanceForm.startOdom.$invalid }">
+                    <label class="col-xs-3 control-label">{{ ::L10N.ShiftStartOdom}}</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" name="startOdom"
+                               type="text"
+                               required
+                               ng-change="IsOdomValid()"
+                               ng-model="Vm.StartOdomRead"
+                               select-on-focus-input
+                               mx-virtual-keyboard-input
+                               number-only-input maxlength="8" precision="1" />
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': addDriverDistanceForm.endOdom.$invalid }">
+                    <label class="col-xs-3 control-label">{{ ::L10N.ShiftEndOdom }}</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" name="endOdom"
+                               type="text"
+                               required
+                               ng-change="IsOdomValid()"
+                               ng-model="Vm.EndOdomRead"
+                               select-on-focus-input
+                               mx-virtual-keyboard-input
+                               number-only-input maxlength="8" precision="1" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-if="Vm.ShowAuthorization">
+            <div class="panel-heading">
+                <strong>{{ ::L10N.Authorize }}</strong>
+            </div>
+            <div class="panel-body">
+                <mx-authorization user="Vm.Authorize" is-optional="true" is-valid="Vm.AuthorizationIsValid" />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="reset" class="pull-left btn btn-default" ng-click="Cancel()">{{ ::L10N.Cancel }}</button>
+        <button type="submit" class="btn btn-success" ng-disabled="addDriverDistanceForm.$invalid" ng-click="Submit()">{{ ::L10N.Submit }}</button>
+    </div>
+</form>

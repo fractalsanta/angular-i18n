@@ -1,0 +1,11 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.BudgetReportParametersModel
+<div class="full">
+    <h3>
+        @ViewData.Model.OwnersCorporationTerminology Budget Start Date</h3>
+    <select id="budgetIndex" name="budgetIndex" style="width: 500px;">
+        @for (int index = 0; index < ViewData.Model.BudgetList.Count; index++)
+        {
+            <option value="@index">@ViewData.Model.BudgetList[index]</option>
+        }
+    </select>
+</div>

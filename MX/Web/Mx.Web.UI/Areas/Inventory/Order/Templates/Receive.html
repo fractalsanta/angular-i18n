@@ -1,0 +1,62 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-3">
+                <input type="search" class="form-control" ng-model="Model.FilterText" placeholder="{{ Translations.SearchOrders }}">
+            </div>
+            <div class="col-xs-3">
+                <div class="dropdown" dropdown>
+                    <mx-dropdown-button value="Model.DateRange"></mx-dropdown-button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="FilterLast(14)">{{ Translations.Last }} 14 {{ Translations.Days }}</a></li>
+                        <li><a ng-click="OpenCustomRangeDialog()">{{ Translations.CustomRange }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default fill-height" ng-class="{ 'container-1-toolbar': !RequiresPaging(), 'container-2-toolbars': RequiresPaging() }">
+            <div class="panel-heading" ng-show="RequiresPaging()">
+                <pagination total-items="FilteredOrders.length"
+                            ng-model="CurrentPage"
+                            max-size="PagingOptions.numPages"
+                            class="pull-right"
+                            boundary-links="true"
+                            direction-links="false"
+                            rotate="false"
+                            first-text="&laquo;" last-text="&raquo;"
+                            items-per-page="PagingOptions.itemsPerPage"
+                            ng-change="ChangePage(CurrentPage)"></pagination>
+            </div>
+            <table class="table table-striped toolbar-table-header">
+                <tr>
+                    <th class="col-xs-4">{{ Translations.Supplier }}</th>
+                    <th class="col-xs-2">{{ Translations.OrderNumber }}</th>
+                    <th class="col-xs-2">{{ Translations.DeliveryDate }}</th>
+                    <th class="col-xs-2">{{ Translations.Status }}</th>
+                    <th class="col-xs-2"></th>
+                </tr>
+            </table>
+            <div class="touch-scrollable">
+                <table class="table table-striped" mx-scrollable-table watch="CurrentPageOrders">
+                    <tbody>
+                        <tr ng-show="!FilteredOrders.length" class="info">
+                            <td colspan="5">{{ Translations.NoMatchingItems }}</td>
+                        </tr>
+                        <tr ng-repeat="Order in CurrentPageOrders track by Order.DisplayId">
+                            <td class="col-xs-4">{{ Order.VendorName }}</td>
+                            <td class="col-xs-2">{{ Order.DisplayId }}</td>
+                            <td class="col-xs-2">{{ Order.DeliveryDate | formatDate:'L' }}</td>
+                            <td class="col-xs-2">{{ Order.Status | translate:Translations }}</td>
+                            <td class="col-xs-2">
+                                <button type="button" class="btn btn-default btn-block btn-sm" ng-if="IsOrderReceived(Order)" ng-click="ViewOrder(Order)">{{ Translations.View }}</button>
+                                <button type="button" class="btn btn-success btn-block btn-sm" ng-if="!IsOrderReceived(Order)" ng-click="ViewOrder(Order)">{{ Translations.Receive }}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

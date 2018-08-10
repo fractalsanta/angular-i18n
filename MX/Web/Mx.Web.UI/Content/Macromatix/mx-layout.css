@@ -1,0 +1,542 @@
+﻿.modal {
+  overflow: hidden;
+}
+.modal.datepicker .modal-dialog {
+  width: 310px;
+}
+.modal.narrow .modal-dialog {
+  width: 360px;
+}
+.modal.smaller .modal-dialog {
+  width: 525px;
+}
+.modal.wide-sm .modal-dialog {
+  width: 660px;
+}
+.modal.wide .modal-dialog {
+  width: 720px;
+}
+.rounded {
+  border-radius: 1.5em;
+}
+.table.table-small-bottom {
+  margin-bottom: 0;
+}
+.table.collapse.in {
+  /* Fix for tables that are made to be collapsible inside a panel. */
+  display: table;
+}
+.table td.active,
+.table th.active,
+.table tr.active > td,
+.table tr.active > th {
+  /* Selected row top and bottom stroke in table. */
+  background-color: #e6f5fc;
+  border-top: 1px solid #b2e2f4;
+  border-bottom: 1px solid #b2e2f4;
+}
+.table tr > th:last-child,
+.table tr > td:last-child {
+  /* Make right padding on last table column somewhat more consistent with left padding on first column. */
+  padding-right: 10px;
+}
+.table > tbody > tr.top > td {
+  vertical-align: top;
+}
+.dropdown-menu > li > a {
+  /* Dropdown menus cursor. */
+  cursor: pointer;
+  white-space: normal;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  /* Drop down rollover and text color. */
+  color: #1f366c;
+  background-color: #f1f2f7;
+}
+.dropdown-menu .divider {
+  /* Add .dividers in dropdown menus to separate all selections and adjust color. */
+  margin: 0;
+  background-color: #dcdfe8;
+}
+.height-restrained-dropdown {
+  height: auto;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+.dropdown.width-restrained-dropdown button > span {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+@media screen and (max-height: 480px) {
+  .mx-user-nav > .dropdown-menu.touch-scrollable {
+    position: fixed;
+    top: 65px;
+    bottom: 1px;
+  }
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+ul[ui-sortable] > li,
+div[ui-sortable] > div {
+  cursor: pointer;
+}
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ul[datepicker-popup-wrap] {
+  /* Fix to datepicker popup container to add back removed padding so
+        control does not overflow from container. */
+  padding: 5px !important;
+}
+ul[datepicker-popup-wrap] table[datepicker] {
+  /* Fix to pop-up datepicker width being restricted to containing parent. */
+  min-width: 256px;
+}
+body.modal-open,
+.modal-open .navbar-fixed-top,
+.modal-open .navbar-fixed-bottom {
+  margin-right: 0;
+  overflow-y: hidden;
+}
+.mx-ios .modal {
+  position: absolute;
+  overflow: visible;
+  height: auto !important;
+}
+.mx-ios .modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto !important;
+}
+.input-group {
+  /* Ensure normal input groups with form-control elements match button sizes. */
+}
+.input-group > .form-control:not(.input-lg):not(.input-sm),
+.input-group > .input-group-btn > .btn:not(.btn-sm):not(.btn-xs):not(.btn-lg) {
+  height: 32px;
+}
+.mx-toast {
+  position: absolute;
+  z-index: 10001;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  top: 69px;
+}
+.app-level-container {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  overflow: hidden;
+}
+.min-width-sm {
+  min-width: 767px;
+}
+.mx-ios .touch-scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  overflow-y: scroll;
+}
+.mx-ios .touch-scrollable > table.table {
+  /* Remove bottom padding on tables that are nested in a scrollable area. */
+  margin-bottom: 0;
+}
+:not(.mx-ios) .touch-scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+:not(.mx-ios) .touch-scrollable > table.table {
+  /* Remove bottom padding on tables that are nested in a scrollable area. */
+  margin-bottom: 0;
+}
+:not(.mx-ios) .touch-scrollable::-webkit-scrollbar {
+  height: 8px;
+  overflow: visible;
+  width: 8px;
+}
+:not(.mx-ios) .touch-scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+  background-clip: padding-box;
+  border-radius: 8px;
+  border-width: 1px 1px 1px 6px;
+  min-height: 18px;
+}
+:not(.mx-ios) .touch-scrollable::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+body.mx-ios .panel-heading * {
+  -webkit-overflow-scrolling: auto;
+}
+.container-fluid > .touch-scrollable {
+  overflow-y: hidden;
+}
+.modal-body-fixed {
+  height: 400px;
+  max-height: 400px;
+  margin-bottom: 10px;
+}
+@media screen and (max-height: 719px) {
+  .modal-body-fixed {
+    height: 320px;
+    max-height: 320px;
+  }
+}
+.panel-limited-height {
+  max-height: 400px;
+}
+@media screen and (max-height: 719px) {
+  .panel-limited-height {
+    max-height: 320px;
+  }
+}
+.modal-body {
+  padding-bottom: 5px;
+}
+.modal-footer {
+  margin-top: 0;
+}
+.container-1-toolbar {
+  position: relative;
+}
+.container-1-toolbar > :not(:last-child) {
+  height: 54px;
+}
+.container-1-toolbar > :last-child {
+  top: 54px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.container-1-toolbar .toolbar-double-height {
+  height: 108px;
+}
+.container-2-toolbars {
+  position: relative;
+}
+.container-2-toolbars > :not(:last-child) {
+  height: 54px;
+}
+.container-2-toolbars > :last-child {
+  top: 108px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.container-2-toolbars .toolbar-double-height {
+  height: 108px;
+}
+.container-3-toolbars {
+  position: relative;
+}
+.container-3-toolbars > :not(:last-child) {
+  height: 54px;
+}
+.container-3-toolbars > :last-child {
+  top: 162px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.container-3-toolbars .toolbar-double-height {
+  height: 108px;
+}
+.fill-height {
+  height: 100%;
+}
+.fill-height .tab-content .tab-pane {
+  height: 100%;
+}
+.mxconnect-container div.panel,
+.modal-body-fixed div.panel {
+  margin-bottom: 0;
+}
+.mxconnect-container div.panel-body {
+  padding: 0 15px;
+}
+.nav-tabs > li > a {
+  height: 54px;
+}
+.toolbar-table-header td,
+.toolbar-table-header th {
+  font-weight: bold;
+  background-color: white !important;
+  border-bottom: 1px solid #dcdfe8;
+}
+.dropdown.inline {
+  display: inline-block;
+}
+.panel .panel-body-divider {
+  border-bottom: 1px solid #d3d3d3;
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 1px;
+}
+.panel .panel-body-content-divider {
+  border-bottom: 1px solid #d3d3d3;
+  margin: 10px 0;
+  height: 1px;
+}
+.panel .panel-body .color-coded-panel-body {
+  border-left-width: 5px;
+  border-left-style: solid;
+  padding-left: 10px;
+}
+.panel-heading > .pagination {
+  /* Remove top and bottom margin from pagination control in a panel-heading to center properly. */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.column-header {
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding-left: 8px;
+  overflow: hidden;
+  padding-top: 10px;
+  font-weight: bold;
+  position: absolute;
+  /* shrink the font so we can somewhat prevent column headers from showing ellipsis all the time*/
+  font-size: 12px;
+  word-break: break-word;
+}
+.column-header .sort-indicator {
+  vertical-align: top;
+}
+.column-header div {
+  display: inline-block;
+}
+.table-header {
+  overflow: hidden;
+  border-bottom: 2px solid #dcdfe8;
+}
+.table-header > div {
+  position: relative;
+  overflow: hidden;
+}
+.table-header > div:last-child {
+  padding-right: 10px;
+}
+.mx-resizable-table-header > td {
+  background-color: #ffffff !important;
+}
+.mx-hidden-row {
+  border: none !important;
+  visibility: hidden;
+}
+.mx-hidden-row > td {
+  padding: 0 !important;
+  height: 0;
+}
+.touch-scrollable table.table td {
+  min-width: 90px;
+}
+.touch-scrollable table.table td.min-50 {
+  min-width: 50px;
+}
+.touch-scrollable table.table td.min-60 {
+  min-width: 60px;
+}
+.touch-scrollable table.table td.min-70 {
+  min-width: 70px;
+}
+.touch-scrollable table.table td.min-80 {
+  min-width: 80px;
+}
+.touch-scrollable table.table td.min-90 {
+  min-width: 90px;
+}
+.touch-scrollable table.table td.min-100 {
+  min-width: 100px;
+}
+.touch-scrollable table.table td.min-110 {
+  min-width: 110px;
+}
+.touch-scrollable table.table td.min-120 {
+  min-width: 120px;
+}
+.touch-scrollable table.table td.min-130 {
+  min-width: 130px;
+}
+.touch-scrollable table.table td.min-140 {
+  min-width: 140px;
+}
+.touch-scrollable table.table td.min-150 {
+  min-width: 150px;
+}
+.touch-scrollable table.table td.min-160 {
+  min-width: 160px;
+}
+.touch-scrollable table.table td.min-170 {
+  min-width: 170px;
+}
+.touch-scrollable table.table td.min-180 {
+  min-width: 180px;
+}
+.touch-scrollable table.table td.min-190 {
+  min-width: 190px;
+}
+.touch-scrollable table.table td.min-200 {
+  min-width: 200px;
+}
+.mx-composite-container {
+  width: 100%;
+  overflow: hidden;
+  transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transition: transform 1s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+}
+.detail-mode {
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .mx-composite-container {
+    width: 200%;
+  }
+  .list-mode {
+    transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transition: transform 1s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+  }
+  .detail-mode {
+    transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    transition: transform 1s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+  }
+}
+@media (max-width: 991px) {
+  .mx-composite-container-sm {
+    width: 200%;
+  }
+  .list-mode-sm {
+    transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transition: transform 1s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+  }
+  .detail-mode-sm {
+    transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    transition: transform 1s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+  }
+}
+.nav > li > div {
+  position: relative;
+  padding: 13px 15px;
+  color: #8792ab;
+  background: transparent;
+}
+@media (max-width: 767px) {
+  .nav > li > div {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
+.nav-pills > li {
+  word-break: break-word;
+}
+.word-break {
+  word-break: break-word;
+}
+.nav-pills > li > div {
+  border-radius: 4px;
+}
+.nav-pills > li.active > div {
+  color: #1f366c;
+  background-color: #e7e8ed;
+}
+.nav > li.mx-highlight > div {
+  background-color: #ffedcc;
+  color: black;
+  -webkit-transition: background-color 1s ease;
+  /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s ease;
+}
+.nav > li.mx-highlight.active > div {
+  background-color: orange;
+  color: black;
+  -webkit-transition: background-color 1s ease;
+  /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s ease;
+}
+.table > tbody > tr.mx-highlight > td {
+  background-color: #ffedcc;
+}
+.table > tbody > tr.mx-highlight.active > td {
+  background-color: #ffc966;
+}
+.form-control::-ms-clear {
+  visibility: hidden;
+}
+.btn-group .btn.btn-flat:hover,
+.btn-group .btn.btn-flat:focus {
+  background-color: #ffffff;
+  border-color: #dcdfe8;
+  cursor: default;
+}
+.btn-group .btn.btn-flat:active {
+  box-shadow: 0 2px #dcdfe8;
+  outline: none;
+}
+.margin-15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.table > tbody > tr.top > td.middle-vertical {
+  vertical-align: middle;
+}
+.padding-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.notification {
+  max-height: 300px;
+}
+.notification > li > h5,
+.notification > li > a > h5 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+tr.table-summary-row td {
+  font-weight: bold;
+}
+.panel-bottom-padded {
+  padding-bottom: 15px;
+}

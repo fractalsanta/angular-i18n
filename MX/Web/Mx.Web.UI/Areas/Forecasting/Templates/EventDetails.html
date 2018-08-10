@@ -1,0 +1,99 @@
+﻿<div class="panel panel-default container-1-toolbar fill-height" mx-mobile-ready>
+    <div class="panel-heading mx-white">
+        <div class="col-xs-5">
+            <button type="button" class="btn btn-primary visible-xs" ng-click="Back()">
+                <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ ::L10N.Back }}
+            </button>
+        </div>
+        <div class="col-xs-7">
+            <span class="pull-right text-nowrap">
+                <span ng-show="Model.IsEdit">
+                    <button type="button" class="btn btn-default hidden-xs" ng-click="EditCancel()">
+                        {{ ::L10N.Cancel}}
+                    </button>&nbsp;&nbsp;
+                </span>
+                <a class="btn btn-success" ng-hide="Model.IsEdit || ! CheckCanEditPermission()" ng-click="Edit()">{{::L10N.EditEventButton}}</a>
+                <a class="btn btn-success" ng-show="Model.IsEdit" ng-click="EditSave()">{{::L10N.Save}}</a>
+            </span>
+        </div>
+    </div>
+    <div class="panel-body touch-scrollable text-center">
+        <div class="row">
+            <div class="col-xs-12" ng-if="GetSelectedEventProfileTag()">
+                    <div ng-hide='Model.IsFullEdit' class="text-left">
+                        <h3>
+                            {{::L10N.EventDate}}
+                        </h3>
+                        <p>{{GetSelectedEventProfileTag().Date | formatDate:"LL"}}</p>
+                        <h3>
+                            {{::L10N.EventProfile}}
+                        </h3>
+                        <p>{{GetSelectedEventProfileTag().EventProfile.Name}}</p>
+                    </div>
+                    <div ng-if='Model.IsFullEdit' class="text-left">
+                        <div>
+                            <p><strong>{{::L10N.EventDate}}:
+                                </strong></p>
+                            <span class="form-inline"><mx-prevday-nextday-picker options="DatePickerOptions" on-change="OnDatePickerChange(selectedDate)"
+                                                          model="Model.EditDate">
+                               </mx-prevday-nextday-picker>
+                                <br /><br/></span>
+                        </div>
+                        <div>
+                            <p><strong>
+                                {{::L10N.EventProfile}}:
+                            </strong></p>
+                            <p class="form-inline"><select class="form-control" ng-disabled="IsAjaxBusy()"
+                                    ng-model="Model.ProfileId"
+                                    ng-options="p.Id as p.Name for p in Model.Profiles | orderBy:'Name'"
+                                    ng-change="SelectEventProfile()"
+                                    ng-required></select></p>
+                        </div>
+                    </div>
+                <div ng-if="IsManual()">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap">{{::L10N.PastOccurrences}}</th>
+                                <th >{{::L10N.Notes}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="history in GetSelectedProfile().History">
+                                <td class="text-left">
+                                    <span class="text-nowrap">{{history.Date | formatDate:"LL"}}</span>
+                                </td>
+                                <td class="text-left word-break">
+                                    {{history.Note}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-left">
+                    <div ng-if="Model.IsEdit">
+                        <strong>
+                            {{L10N.Notes}}:
+                        </strong>
+                        <textarea class="form-control word-break" rows="6" ng-attr-placeholder="{{::L10N.EnterEventNotes}}" maxlength="{{NoteMaxLength}}"
+                                  ng-model="Model.Note"></textarea>
+                    </div>
+                    <div ng-if="! Model.IsEdit && GetSelectedEventProfileTag().Note">
+                        <strong>
+                            {{L10N.Notes}}:
+                        </strong>
+                        <p class="word-break">{{GetSelectedEventProfileTag().Note}}</p>
+                    </div>
+                        
+                    </div>
+                    <br />
+            </div>
+        </div>
+        <div ng-hide='DisableEdit()' class="text-left">
+            <a ng-hide='Model.IsEdit' tabindex="-1" class="btn btn-danger" ng-click="DeleteEventTag()"><i class="fa fa-trash-o"></i> {{::L10N.DeleteEvent}}</a>
+        </div>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,96 @@
+2017-01-16 12:39:03.6516 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 12:40:54.6187 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 12:41:48.1640 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 12:44:52.6638 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 13:13:22.2405 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 13:14:10.4331 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 13:15:45.9508 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-16 13:18:10.1542 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+

@@ -1,0 +1,49 @@
+﻿.jstree-default > .jstree-container-ul .jstree-loading > .jstree-ocl {
+  background: url("/Content/jstree-themes/default/throbber.gif") center center no-repeat;
+}
+.jstree-default .jstree-node,
+.jstree-default .jstree-icon {
+  background-image: url("/Content/jstree-themes/default/32px.png");
+}
+.jstree-default .jstree-last {
+  background-image: none;
+}
+.jstree-default .jstree-checkbox {
+  background-image: none;
+  position: relative;
+  top: 1px;
+  left: -1px;
+  /* .fa */
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+.jstree-default .jstree-checkbox:before {
+  /* .fa-square-o */
+  content: "\f096";
+}
+.jstree-default.jstree-checkbox-selection .jstree-clicked > .jstree-checkbox:before,
+.jstree-default .jstree-checked > .jstree-checkbox:before {
+  /* .fa-check-square-o */
+  content: "\f046";
+}
+.jstree-default .jstree-anchor > .jstree-undetermined:before {
+  /* .fa-minus-square-o */
+  content: "\f147";
+}
+.jstree-default .jstree-disabled {
+  cursor: not-allowed;
+  background: transparent !important;
+  opacity: 0.7;
+  color: inherit;
+}
+.jstree-default .jstree-disabled > .jstree-icon {
+  opacity: 0.7;
+  color: inherit;
+  -webkit-filter: none;
+}

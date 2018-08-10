@@ -1,0 +1,12 @@
+{
+	"Compile": {
+    	  "Mode": "External"
+        , "Extensions": [".ts"]
+        , "ExtensionsWithNoOutput": [".d.ts"]
+	}
+    , "Tests": [ {
+          "Includes": ["*.ts"]
+        , "Excludes": ["*.d.ts"]
+		, "ExpandReferenceComments": "true"
+    } ]
+}

@@ -1,0 +1,2170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b9039183-3252-45f4-ba2f-f296354dd3e4" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project/app/components/Help/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Project/app/components/StorePages/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2856">
+              <caret line="244" column="16" lean-forward="true" selection-start-line="244" selection-start-column="16" selection-end-line="244" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>b</find>
+      <find>bus</find>
+      <find>busy</find>
+      <find>busyl</find>
+      <find>busylo</find>
+      <find>busyloa</find>
+      <find>busyload</find>
+      <find>busyloading</find>
+      <find>w</find>
+      <find>body</find>
+      <find>body,</find>
+      <find>body, th</find>
+      <find>body, t</find>
+      <find>body, h</find>
+      <find>body, ht</find>
+      <find>body, html</find>
+      <find>o</find>
+      <find>open sa</find>
+      <find>retake</find>
+      <find>console.log</find>
+      <find>hi</find>
+      <find>his</find>
+      <find>history.</find>
+      <find>png</find>
+      <find>leftIcon</find>
+      <find>debugger</find>
+      <find>debugger;</find>
+      <find>d</find>
+      <find>de</find>
+      <find>debug</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>drawer</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Dev\MRBReact\Project\server\middlewares</dir>
+      <dir>C:\Dev\MRBReact\Project</dir>
+      <dir>C:\Dev\MRBReact\Project\app\containers\AuthenticateContainer</dir>
+      <dir>C:\Dev\MRBReact\Project\</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Project" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Project/app/containers/HelpContainer/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/index.html" />
+        <option value="$PROJECT_DIR$/Project/app/components/Help/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/NavigationContainer/selectors.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/AboveStoreSearch/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/SearchContainer/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/SearchContainer/selectors.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Search/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/FeedbackGroups/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/CannotCapture/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/containers/CommentsContainer/selectors.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Data/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Authenticate/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/BusyLoading/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/AuthenticateContainer/sagas.js" />
+        <option value="$PROJECT_DIR$/Project/server/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/CannotCaptureReasonContainer/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/NotCapturedContainer/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/NotCaptured/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/routes.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Navigation/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/FeedbackItemsContainer/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/StoreProgress/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/global-styles.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/StorePagesContainer/reducer.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/StorePagesContainer/actions.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/StorePagesContainer/constants.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/StorePagesContainer/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/DataContainer/sagas.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/StorePagesContainer/sagas.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/HomePage/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/AboveStoreSearchContainer/selectors.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/FeedbackItems/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/SelectStore/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/containers/App/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/CannotCapture/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/CannotCaptureReason/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Comments/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Hierarchy/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/CreateFeedback/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/Hierarchy/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/StorePages/index.js" />
+        <option value="$PROJECT_DIR$/Project/app/components/CannotCaptureReason/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/Comments/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/CreateFeedback/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/Help/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/NotCaptured/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/Search/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/SearchGroups/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/SearchResults/styles.css" />
+        <option value="$PROJECT_DIR$/Project/app/components/StorePages/styles.css" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/Project/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewImageContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StoreProgressContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StorePagesContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SelectStoreContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NavigationContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HomePage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HierarchyContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FeedbackItemsContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FeedbackGroupsContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DrawerContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommentsContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CannotCaptureContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="containers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AboveStoreSearchContainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewImage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StoreProgress" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="StorePages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SelectStore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SearchResults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SearchGroups" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NotCaptured" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Navigation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hierarchy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Help" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FeedbackItems" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FeedbackGroups" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CreateFeedback" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Comments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CannotCaptureReason" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CannotCapture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AboveStoreSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MRBReact" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Dev\MRBReact\Project\app" />
+      <recent name="C:\Dev\MRBReact\Project" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\MRBReact\Project\app\components\Hierarchy" />
+      <recent name="C:\Dev\MRBReact\Project\app\components\NotCaptured" />
+      <recent name="C:\Dev\MRBReact\Project\app\components\CannotCaptureReason" />
+      <recent name="C:\Dev\MRBReact\Project\app\components\Comments" />
+      <recent name="C:\Dev\MRBReact\Project\app\components\CannotCapture" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9039183-3252-45f4-ba2f-f296354dd3e4" name="Default" comment="" />
+      <created>1508327978239</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1508327978239</updated>
+      <workItem from="1508327979525" duration="707000" />
+      <workItem from="1508329637784" duration="1372000" />
+      <workItem from="1508331465397" duration="1303000" />
+      <workItem from="1508400580844" duration="598000" />
+      <workItem from="1508402932617" duration="597000" />
+      <workItem from="1508406995243" duration="598000" />
+      <workItem from="1508486734006" duration="598000" />
+      <workItem from="1508494768905" duration="599000" />
+      <workItem from="1508496584720" duration="599000" />
+      <workItem from="1508499705772" duration="597000" />
+      <workItem from="1508501937243" duration="597000" />
+      <workItem from="1508743534189" duration="597000" />
+      <workItem from="1508745547277" duration="597000" />
+      <workItem from="1508747436412" duration="599000" />
+      <workItem from="1508755634980" duration="599000" />
+      <workItem from="1508758516060" duration="597000" />
+      <workItem from="1508760974646" duration="596000" />
+      <workItem from="1508829630940" duration="598000" />
+      <workItem from="1508831451202" duration="597000" />
+      <workItem from="1508833300489" duration="597000" />
+      <workItem from="1508916215297" duration="596000" />
+      <workItem from="1508921380874" duration="604000" />
+      <workItem from="1509368439475" duration="818000" />
+      <workItem from="1509369415091" duration="643000" />
+      <workItem from="1509371319973" duration="597000" />
+      <workItem from="1509373136013" duration="596000" />
+      <workItem from="1509373990124" duration="116000" />
+      <workItem from="1509976606619" duration="1217000" />
+      <workItem from="1509978132931" duration="595000" />
+      <workItem from="1510040507837" duration="418000" />
+      <workItem from="1510041367613" duration="599000" />
+      <workItem from="1510044444964" duration="599000" />
+      <workItem from="1510047276927" duration="599000" />
+      <workItem from="1510052153303" duration="1985000" />
+      <workItem from="1510057369226" duration="2023000" />
+      <workItem from="1510059584894" duration="1810000" />
+      <workItem from="1510061418590" duration="2433000" />
+      <workItem from="1510063868714" duration="1829000" />
+      <workItem from="1510065716251" duration="1891000" />
+      <workItem from="1510067628616" duration="2053000" />
+      <workItem from="1510069715288" duration="1226000" />
+      <workItem from="1510121810125" duration="1884000" />
+      <workItem from="1510123729955" duration="1710000" />
+      <workItem from="1510125596572" duration="1809000" />
+      <workItem from="1510127427760" duration="1941000" />
+      <workItem from="1510129709532" duration="2103000" />
+      <workItem from="1510131944296" duration="1786000" />
+      <workItem from="1510133754591" duration="1942000" />
+      <workItem from="1510137835773" duration="1792000" />
+      <workItem from="1510139827546" duration="1871000" />
+      <workItem from="1510142085973" duration="1948000" />
+      <workItem from="1510144158492" duration="1335000" />
+      <workItem from="1510146085640" duration="1577000" />
+      <workItem from="1510147945236" duration="1174000" />
+      <workItem from="1510212849007" duration="1583000" />
+      <workItem from="1510214991619" duration="1784000" />
+      <workItem from="1510216799498" duration="1872000" />
+      <workItem from="1510218692837" duration="2132000" />
+      <workItem from="1510220844684" duration="2523000" />
+      <workItem from="1510225172820" duration="1785000" />
+      <workItem from="1510226978914" duration="597000" />
+      <workItem from="1510230267478" duration="599000" />
+      <workItem from="1510232286006" duration="599000" />
+      <workItem from="1510299149119" duration="52000" />
+      <workItem from="1510299531277" duration="1868000" />
+      <workItem from="1510301440584" duration="1922000" />
+      <workItem from="1510303377895" duration="1817000" />
+      <workItem from="1510313902809" duration="1894000" />
+      <workItem from="1510315823024" duration="1460000" />
+      <workItem from="1510318289094" duration="617000" />
+      <workItem from="1510320216368" duration="957000" />
+      <workItem from="1510322036930" duration="128000" />
+      <workItem from="1510557654663" duration="135000" />
+      <workItem from="1510557891272" duration="1840000" />
+      <workItem from="1510559745989" duration="1829000" />
+      <workItem from="1510561593185" duration="1728000" />
+      <workItem from="1510563399527" duration="1802000" />
+      <workItem from="1510565230566" duration="1840000" />
+      <workItem from="1510567087514" duration="1837000" />
+      <workItem from="1510568941859" duration="1455000" />
+      <workItem from="1510576078239" duration="1885000" />
+      <workItem from="1510577982276" duration="1940000" />
+      <workItem from="1510579938088" duration="1892000" />
+      <workItem from="1510581852376" duration="2078000" />
+      <workItem from="1510583951604" duration="2005000" />
+      <workItem from="1510646771682" duration="1922000" />
+      <workItem from="1510649030543" duration="1652000" />
+      <workItem from="1510650946183" duration="2179000" />
+      <workItem from="1510657313194" duration="1782000" />
+      <workItem from="1510659133527" duration="1794000" />
+      <workItem from="1510660945373" duration="599000" />
+      <workItem from="1510730421692" duration="1843000" />
+      <workItem from="1510732293910" duration="1945000" />
+      <workItem from="1510734260754" duration="1269000" />
+      <workItem from="1510736074550" duration="1873000" />
+      <workItem from="1510737972322" duration="1789000" />
+      <workItem from="1510739782757" duration="2075000" />
+      <workItem from="1510741881645" duration="1916000" />
+      <workItem from="1510743829141" duration="1233000" />
+      <workItem from="1510745674106" duration="1829000" />
+      <workItem from="1510747519271" duration="1793000" />
+      <workItem from="1510749333892" duration="1860000" />
+      <workItem from="1510751218407" duration="1824000" />
+      <workItem from="1510753557866" duration="1801000" />
+      <workItem from="1510755382989" duration="1808000" />
+      <workItem from="1510757211196" duration="1844000" />
+      <workItem from="1510759077274" duration="1797000" />
+      <workItem from="1510760899021" duration="1798000" />
+      <workItem from="1510762721139" duration="1333000" />
+      <workItem from="1510764546257" duration="1402000" />
+      <workItem from="1510766297621" duration="104000" />
+      <workItem from="1510766414449" duration="245000" />
+      <workItem from="1510766672231" duration="607000" />
+      <workItem from="1510767700719" duration="590000" />
+      <workItem from="1510814331170" duration="1574000" />
+      <workItem from="1510816228605" duration="1939000" />
+      <workItem from="1510819677404" duration="1832000" />
+      <workItem from="1510821530848" duration="1828000" />
+      <workItem from="1510830171091" duration="613000" />
+      <workItem from="1510831987361" duration="1252000" />
+      <workItem from="1510836999906" duration="1784000" />
+      <workItem from="1510906152135" duration="599000" />
+      <workItem from="1510908122312" duration="599000" />
+      <workItem from="1511163960866" duration="1891000" />
+      <workItem from="1511165871936" duration="1848000" />
+      <workItem from="1511167917868" duration="1818000" />
+      <workItem from="1511169752653" duration="1850000" />
+      <workItem from="1511171626118" duration="2231000" />
+      <workItem from="1511173887235" duration="1512000" />
+      <workItem from="1511175696480" duration="1562000" />
+      <workItem from="1511179508822" duration="1833000" />
+      <workItem from="1511181361673" duration="1902000" />
+      <workItem from="1511183285348" duration="2133000" />
+      <workItem from="1511186341268" duration="1374000" />
+      <workItem from="1511336252822" duration="1802000" />
+      <workItem from="1511340238787" duration="1864000" />
+      <workItem from="1511342119220" duration="1217000" />
+      <workItem from="1511344798449" duration="608000" />
+      <workItem from="1511355222651" duration="668000" />
+      <workItem from="1511357039611" duration="1453000" />
+      <workItem from="1511358978434" duration="598000" />
+      <workItem from="1511424331362" duration="953000" />
+      <workItem from="1511426863675" duration="1292000" />
+      <workItem from="1511428765690" duration="597000" />
+      <workItem from="1511433747159" duration="1096000" />
+      <workItem from="1511437378886" duration="1443000" />
+      <workItem from="1511440139082" duration="600000" />
+      <workItem from="1511443895605" duration="762000" />
+      <workItem from="1511768375260" duration="1791000" />
+      <workItem from="1511770613291" duration="2087000" />
+      <workItem from="1511772721933" duration="2332000" />
+      <workItem from="1511775075018" duration="1853000" />
+      <workItem from="1511776949522" duration="1850000" />
+      <workItem from="1511778822014" duration="1853000" />
+      <workItem from="1511780699296" duration="2042000" />
+      <workItem from="1511782758710" duration="1988000" />
+      <workItem from="1511784775556" duration="1820000" />
+      <workItem from="1511786611753" duration="2102000" />
+      <workItem from="1511788728614" duration="1862000" />
+      <workItem from="1511790605901" duration="1857000" />
+      <workItem from="1511793175338" duration="1944000" />
+      <workItem from="1511795133832" duration="2119000" />
+      <workItem from="1511850180092" duration="1940000" />
+      <workItem from="1511852136089" duration="1795000" />
+      <workItem from="1511853952483" duration="1872000" />
+      <workItem from="1511855847713" duration="1621000" />
+      <workItem from="1511857787321" duration="1839000" />
+      <workItem from="1511859651353" duration="1804000" />
+      <workItem from="1511863647027" duration="2037000" />
+      <workItem from="1511865705887" duration="1848000" />
+      <workItem from="1511867577557" duration="1558000" />
+      <workItem from="1511869694037" duration="1460000" />
+      <workItem from="1511871701915" duration="970000" />
+      <workItem from="1511939334881" duration="942000" />
+      <workItem from="1511941147383" duration="1660000" />
+      <workItem from="1511942970161" duration="1985000" />
+      <workItem from="1511944973448" duration="1401000" />
+      <workItem from="1512032213554" duration="1134000" />
+      <workItem from="1512034029903" duration="1573000" />
+      <workItem from="1512036145600" duration="1791000" />
+      <workItem from="1512037959615" duration="1627000" />
+      <workItem from="1512041886507" duration="607000" />
+      <workItem from="1512044352275" duration="1789000" />
+      <workItem from="1512046161584" duration="1608000" />
+      <workItem from="1512047996083" duration="1776000" />
+      <workItem from="1512116089145" duration="598000" />
+      <workItem from="1512136973154" duration="602000" />
+      <workItem from="1512374312395" duration="2112000" />
+      <workItem from="1512379173092" duration="183000" />
+      <workItem from="1512379880048" duration="734000" />
+      <workItem from="1512383344566" duration="40000" />
+      <workItem from="1512384905570" duration="1804000" />
+      <workItem from="1512386735287" duration="1842000" />
+      <workItem from="1512388590649" duration="616000" />
+      <workItem from="1512390647739" duration="1835000" />
+      <workItem from="1512395108842" duration="654000" />
+      <workItem from="1512718085451" duration="1201000" />
+      <workItem from="1512721670442" duration="598000" />
+      <workItem from="1512725610493" duration="599000" />
+      <workItem from="1512730502675" duration="599000" />
+      <workItem from="1512735284491" duration="599000" />
+      <workItem from="1512977883461" duration="1581000" />
+      <workItem from="1512979747775" duration="837000" />
+      <workItem from="1512982923663" duration="1339000" />
+      <workItem from="1512984776390" duration="1880000" />
+      <workItem from="1512986740948" duration="236000" />
+      <workItem from="1512987059324" duration="272000" />
+      <workItem from="1512987346207" duration="2008000" />
+      <workItem from="1512992569117" duration="1796000" />
+      <workItem from="1512994383807" duration="1857000" />
+      <workItem from="1512996300907" duration="1818000" />
+      <workItem from="1512998148615" duration="1306000" />
+      <workItem from="1512999979124" duration="654000" />
+      <workItem from="1513002130187" duration="873000" />
+      <workItem from="1513057922427" duration="1843000" />
+      <workItem from="1513059780912" duration="1823000" />
+      <workItem from="1513061625578" duration="1005000" />
+      <workItem from="1513063462940" duration="1812000" />
+      <workItem from="1513065350911" duration="1603000" />
+      <workItem from="1513069594733" duration="598000" />
+      <workItem from="1513151991752" duration="1790000" />
+      <workItem from="1513153812185" duration="1363000" />
+      <workItem from="1513155767067" duration="1797000" />
+      <workItem from="1513157588385" duration="2041000" />
+      <workItem from="1513161644598" duration="1789000" />
+      <workItem from="1513163468076" duration="1687000" />
+      <workItem from="1513167863314" duration="1817000" />
+      <workItem from="1513169702274" duration="1998000" />
+      <workItem from="1513171727173" duration="2237000" />
+      <workItem from="1513174147711" duration="1850000" />
+      <workItem from="1513176027470" duration="2657000" />
+      <workItem from="1513179983935" duration="1209000" />
+      <workItem from="1513182528577" duration="1188000" />
+      <workItem from="1513184233364" duration="605000" />
+      <workItem from="1513241374672" duration="599000" />
+      <workItem from="1513253839792" duration="721000" />
+      <workItem from="1513584907812" duration="599000" />
+      <workItem from="1513591679144" duration="599000" />
+      <workItem from="1513602395281" duration="599000" />
+      <workItem from="1513662378961" duration="1801000" />
+      <workItem from="1513664268379" duration="1651000" />
+      <workItem from="1513668156244" duration="1144000" />
+      <workItem from="1513670420485" duration="599000" />
+      <workItem from="1513671340964" duration="608000" />
+      <workItem from="1513673869402" duration="1787000" />
+      <workItem from="1513679232712" duration="1876000" />
+      <workItem from="1513681128577" duration="1790000" />
+      <workItem from="1513682947942" duration="2049000" />
+      <workItem from="1513685038111" duration="1811000" />
+      <workItem from="1513756063912" duration="599000" />
+      <workItem from="1513768117448" duration="599000" />
+      <workItem from="1513774155474" duration="1199000" />
+      <workItem from="1513936591729" duration="599000" />
+      <workItem from="1514366454999" duration="1459000" />
+      <workItem from="1514379423869" duration="997000" />
+      <workItem from="1514384544278" duration="599000" />
+      <workItem from="1514879661427" duration="63000" />
+      <workItem from="1514882725183" duration="260000" />
+      <workItem from="1514883110873" duration="839000" />
+      <workItem from="1514888924459" duration="599000" />
+      <workItem from="1514961377679" duration="944000" />
+      <workItem from="1514963552250" duration="1262000" />
+      <workItem from="1514965400859" duration="1426000" />
+      <workItem from="1514968572050" duration="1815000" />
+      <workItem from="1514970480780" duration="1229000" />
+      <workItem from="1514972289257" duration="599000" />
+      <workItem from="1514976474883" duration="599000" />
+      <workItem from="1515051389525" duration="1400000" />
+      <workItem from="1515053443031" duration="599000" />
+      <workItem from="1515058449689" duration="875000" />
+      <workItem from="1515065860719" duration="762000" />
+      <workItem from="1515394567647" duration="1514000" />
+      <workItem from="1515396518512" duration="1793000" />
+      <workItem from="1515398329995" duration="1809000" />
+      <workItem from="1515400524568" duration="1848000" />
+      <workItem from="1515402391300" duration="1959000" />
+      <workItem from="1515404503094" duration="1852000" />
+      <workItem from="1515406373862" duration="1803000" />
+      <workItem from="1515408300477" duration="781000" />
+      <workItem from="1515410972939" duration="1885000" />
+      <workItem from="1515412876100" duration="1794000" />
+      <workItem from="1515414688099" duration="609000" />
+      <workItem from="1515417180739" duration="1730000" />
+      <workItem from="1515419148227" duration="599000" />
+      <workItem from="1515568772142" duration="967000" />
+      <workItem from="1515573425396" duration="2237000" />
+      <workItem from="1515578414081" duration="1862000" />
+      <workItem from="1515580300547" duration="1693000" />
+      <workItem from="1515583633707" duration="1358000" />
+      <workItem from="1515585469967" duration="1674000" />
+      <workItem from="1515587922275" duration="1944000" />
+      <workItem from="1515589934940" duration="2069000" />
+      <workItem from="1515592118406" duration="1175000" />
+      <workItem from="1515594293803" duration="1266000" />
+      <workItem from="1515655735762" duration="852000" />
+      <workItem from="1515657599074" duration="963000" />
+      <workItem from="1515659342025" duration="1490000" />
+      <workItem from="1515661620346" duration="1819000" />
+      <workItem from="1515663471674" duration="1559000" />
+      <workItem from="1515668848715" duration="690000" />
+      <workItem from="1515671495712" duration="599000" />
+      <workItem from="1515675417325" duration="598000" />
+      <workItem from="1515740563372" duration="1867000" />
+      <workItem from="1515742450736" duration="1824000" />
+      <workItem from="1515744294581" duration="1084000" />
+      <workItem from="1515746288330" duration="1828000" />
+      <workItem from="1515748135368" duration="1828000" />
+      <workItem from="1515749982975" duration="1981000" />
+      <workItem from="1515753038493" duration="1077000" />
+      <workItem from="1515759274162" duration="1986000" />
+      <workItem from="1515761284531" duration="1718000" />
+      <workItem from="1515763093216" duration="1819000" />
+      <workItem from="1515764932837" duration="1871000" />
+      <workItem from="1515766823787" duration="2355000" />
+      <workItem from="1516005594458" duration="1208000" />
+      <workItem from="1516007930666" duration="1783000" />
+      <workItem from="1516009757908" duration="619000" />
+      <workItem from="1516089574501" duration="1771000" />
+      <workItem from="1516091363379" duration="64000" />
+      <workItem from="1516091471548" duration="599000" />
+      <workItem from="1516093362775" duration="1805000" />
+      <workItem from="1516095184612" duration="2163000" />
+      <workItem from="1516100892598" duration="600000" />
+      <workItem from="1516102072681" duration="1826000" />
+      <workItem from="1516106977168" duration="1577000" />
+      <workItem from="1516108699461" duration="1589000" />
+      <workItem from="1516110412795" duration="794000" />
+      <workItem from="1516112308682" duration="1549000" />
+      <workItem from="1516176464516" duration="917000" />
+      <workItem from="1516179929172" duration="1330000" />
+      <workItem from="1516181740472" duration="1306000" />
+      <workItem from="1516268661690" duration="1995000" />
+      <workItem from="1516270684281" duration="2354000" />
+      <workItem from="1516274738061" duration="1851000" />
+      <workItem from="1516282527493" duration="598000" />
+      <workItem from="1516950559247" duration="1258000" />
+      <workItem from="1516956383789" duration="854000" />
+      <workItem from="1517213187937" duration="1055000" />
+      <workItem from="1517299083348" duration="1270000" />
+      <workItem from="1517301079737" duration="1821000" />
+      <workItem from="1517307132287" duration="1638000" />
+      <workItem from="1517316117623" duration="1807000" />
+      <workItem from="1517317941802" duration="1823000" />
+      <workItem from="1517379375839" duration="1786000" />
+      <workItem from="1517381180988" duration="1796000" />
+      <workItem from="1517382999203" duration="1965000" />
+      <workItem from="1517384993047" duration="1386000" />
+      <workItem from="1517387267529" duration="1825000" />
+      <workItem from="1517389112629" duration="1864000" />
+      <workItem from="1517390997211" duration="1967000" />
+      <workItem from="1517392987925" duration="1858000" />
+      <workItem from="1517394862849" duration="1868000" />
+      <workItem from="1517397806662" duration="1871000" />
+      <workItem from="1517399695875" duration="272000" />
+      <workItem from="1517400169838" duration="756000" />
+      <workItem from="1517400963035" duration="2046000" />
+      <workItem from="1517403033747" duration="1464000" />
+      <workItem from="1517405145032" duration="2043000" />
+      <workItem from="1517407208486" duration="1787000" />
+      <workItem from="1517409172166" duration="1923000" />
+      <workItem from="1517412103537" duration="2024000" />
+      <workItem from="1517414403007" duration="1248000" />
+      <workItem from="1517418158890" duration="613000" />
+      <workItem from="1517420092305" duration="688000" />
+      <workItem from="1517421201130" duration="1207000" />
+      <workItem from="1517467243062" duration="1795000" />
+      <workItem from="1517469074928" duration="1952000" />
+      <workItem from="1517471046583" duration="1887000" />
+      <workItem from="1517472983890" duration="1831000" />
+      <workItem from="1517475178206" duration="1950000" />
+      <workItem from="1517477442081" duration="1751000" />
+      <workItem from="1517479338861" duration="861000" />
+      <workItem from="1517481287477" duration="610000" />
+      <workItem from="1517484006631" duration="727000" />
+      <workItem from="1517814457551" duration="1786000" />
+      <workItem from="1517816267596" duration="1742000" />
+      <workItem from="1517818086969" duration="2071000" />
+      <workItem from="1517820174837" duration="1531000" />
+      <workItem from="1517822074884" duration="1793000" />
+      <workItem from="1517823891507" duration="1100000" />
+      <workItem from="1517825065496" duration="546000" />
+      <workItem from="1517825639279" duration="1819000" />
+      <workItem from="1517827478450" duration="1926000" />
+      <workItem from="1517829423742" duration="1903000" />
+      <workItem from="1517831348628" duration="1845000" />
+      <workItem from="1517833214293" duration="418000" />
+      <workItem from="1517833647538" duration="1207000" />
+      <workItem from="1517901669945" duration="1458000" />
+      <workItem from="1517903683970" duration="1791000" />
+      <workItem from="1517905524293" duration="1252000" />
+      <workItem from="1517907365415" duration="858000" />
+      <workItem from="1517908261221" duration="1098000" />
+      <workItem from="1517914045949" duration="1793000" />
+      <workItem from="1517915880572" duration="1797000" />
+      <workItem from="1517917695640" duration="1153000" />
+      <workItem from="1517921417396" duration="1910000" />
+      <workItem from="1517923346896" duration="1774000" />
+      <workItem from="1517985415969" duration="1631000" />
+      <workItem from="1517987467125" duration="958000" />
+      <workItem from="1517988882568" duration="1940000" />
+      <workItem from="1517992419082" duration="817000" />
+      <workItem from="1517999896713" duration="1278000" />
+      <workItem from="1518001720227" duration="624000" />
+      <workItem from="1518005720512" duration="877000" />
+      <workItem from="1518008167470" duration="1035000" />
+      <workItem from="1518009232346" duration="1849000" />
+      <workItem from="1518011108928" duration="874000" />
+      <workItem from="1518074392420" duration="1808000" />
+      <workItem from="1518076444183" duration="2002000" />
+      <workItem from="1518078478352" duration="1806000" />
+      <workItem from="1518080305842" duration="1801000" />
+      <workItem from="1518082128308" duration="1843000" />
+      <workItem from="1518083993846" duration="1797000" />
+      <workItem from="1518085814061" duration="633000" />
+      <workItem from="1518086479328" duration="1799000" />
+      <workItem from="1518088299342" duration="1785000" />
+      <workItem from="1518090106722" duration="1790000" />
+      <workItem from="1518092117613" duration="772000" />
+      <workItem from="1518092925021" duration="1842000" />
+      <workItem from="1518094799357" duration="1993000" />
+      <workItem from="1518096819213" duration="1817000" />
+      <workItem from="1518098747662" duration="1284000" />
+      <workItem from="1518100546805" duration="1811000" />
+      <workItem from="1518102376510" duration="1817000" />
+      <workItem from="1518104213893" duration="1965000" />
+      <workItem from="1518159974869" duration="1853000" />
+      <workItem from="1518161847698" duration="1965000" />
+      <workItem from="1518166503794" duration="1656000" />
+      <workItem from="1518168441274" duration="2074000" />
+      <workItem from="1518170538697" duration="2115000" />
+      <workItem from="1518175260265" duration="684000" />
+      <workItem from="1518179447224" duration="1517000" />
+      <workItem from="1518421341855" duration="1009000" />
+      <workItem from="1518422439150" duration="1593000" />
+      <workItem from="1518424518765" duration="599000" />
+      <workItem from="1518427235504" duration="2567000" />
+      <workItem from="1518429837540" duration="1382000" />
+      <workItem from="1518433379282" duration="232000" />
+      <workItem from="1518433961091" duration="1830000" />
+      <workItem from="1518436371873" duration="706000" />
+      <workItem from="1518438201346" duration="915000" />
+      <workItem from="1518509121675" duration="1291000" />
+      <workItem from="1518512488648" duration="873000" />
+      <workItem from="1518516157258" duration="1242000" />
+      <workItem from="1518518060296" duration="695000" />
+      <workItem from="1518518823334" duration="1938000" />
+      <workItem from="1518520777512" duration="668000" />
+      <workItem from="1518522599013" duration="1803000" />
+      <workItem from="1518524426227" duration="1753000" />
+      <workItem from="1518594402221" duration="1055000" />
+      <workItem from="1518597510803" duration="1835000" />
+      <workItem from="1518599393250" duration="640000" />
+      <workItem from="1518601568021" duration="1692000" />
+      <workItem from="1518603399611" duration="864000" />
+      <workItem from="1518607894832" duration="913000" />
+      <workItem from="1518609716730" duration="1805000" />
+      <workItem from="1518611550146" duration="1403000" />
+      <workItem from="1518679013549" duration="2108000" />
+      <workItem from="1518681645232" duration="2300000" />
+      <workItem from="1518684312404" duration="1800000" />
+      <workItem from="1518686183348" duration="616000" />
+      <workItem from="1518689449384" duration="1477000" />
+      <workItem from="1518691290190" duration="1421000" />
+      <workItem from="1518693224732" duration="1799000" />
+      <workItem from="1518695047210" duration="1816000" />
+      <workItem from="1518696890047" duration="1227000" />
+      <workItem from="1518698705315" duration="1479000" />
+      <workItem from="1518765938042" duration="2305000" />
+      <workItem from="1518768260674" duration="1857000" />
+      <workItem from="1518770591147" duration="2201000" />
+      <workItem from="1518775136468" duration="2095000" />
+      <workItem from="1518777259964" duration="1610000" />
+      <workItem from="1518779444199" duration="1423000" />
+      <workItem from="1518783663110" duration="1655000" />
+      <workItem from="1519196257940" duration="1799000" />
+      <workItem from="1519198075813" duration="1670000" />
+      <workItem from="1519199908431" duration="1709000" />
+      <workItem from="1519201721080" duration="1836000" />
+      <workItem from="1519203589414" duration="1751000" />
+      <workItem from="1519208071265" duration="2166000" />
+      <workItem from="1519210723511" duration="1836000" />
+      <workItem from="1519217018199" duration="1894000" />
+      <workItem from="1519218929714" duration="1577000" />
+      <workItem from="1519220766922" duration="599000" />
+      <workItem from="1519284318472" duration="864000" />
+      <workItem from="1519374320058" duration="599000" />
+      <workItem from="1519380543107" duration="695000" />
+      <workItem from="1519382585289" duration="609000" />
+      <workItem from="1519629582170" duration="832000" />
+      <workItem from="1519642115511" duration="1220000" />
+      <workItem from="1519645844868" duration="1179000" />
+      <workItem from="1519647662507" duration="643000" />
+      <workItem from="1519650594161" duration="1218000" />
+      <workItem from="1519652583848" duration="1324000" />
+      <workItem from="1519715955042" duration="1224000" />
+      <workItem from="1519719392620" duration="1796000" />
+      <workItem from="1519721297761" duration="1476000" />
+      <workItem from="1519723824361" duration="900000" />
+      <workItem from="1519728209530" duration="542000" />
+      <workItem from="1519728787197" duration="1335000" />
+      <workItem from="1519731472245" duration="108000" />
+      <workItem from="1519731606680" duration="247000" />
+      <workItem from="1519731883326" duration="101000" />
+      <workItem from="1519732026018" duration="1721000" />
+      <workItem from="1519734996665" duration="598000" />
+      <workItem from="1519808670792" duration="599000" />
+      <workItem from="1519888473452" duration="597000" />
+      <workItem from="1519893041054" duration="599000" />
+      <workItem from="1519896310671" duration="599000" />
+      <workItem from="1519905297198" duration="599000" />
+      <workItem from="1519908166124" duration="598000" />
+      <workItem from="1519910295020" duration="43000" />
+      <workItem from="1522134966995" duration="127000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="705504000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38043478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3652174" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../Angular4Project/Angular4Project/ts-hello/main.js" />
+        <option value="$PROJECT_DIR$/../Angular4Project/Angular4Project/ts-hello/like.component.js" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Project/app/containers/DataContainer/sagas.js</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Project/app/containers/SelectStoreContainer/actions.js</url>
+          <line>6</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Project/app/containers/SearchResultsContainer/index.js</url>
+          <line>6</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/sagas.js</url>
+          <line>1</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="12" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Navigation/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="37" column="12" lean-forward="false" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Drawer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/FeedbackItemsContainer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="70" lean-forward="false" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Search/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/global-styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StoreProgressContainer/selectors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StoreProgressContainer/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/selectors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="40" column="4" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StoreProgressContainer/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/SearchContainer/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StoreProgressContainer/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StoreProgressContainer/sagas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="14" column="39" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/ViewImage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="63" column="61" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="37" column="4" lean-forward="false" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/DataContainer/sagas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="128" column="4" lean-forward="false" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StorePagesContainer/sagas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding>
+            <element signature="e#65#120#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/ViewImageContainer/sagas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/HomePage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/AboveStoreSearchContainer/selectors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/server/logger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="49" lean-forward="false" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/AuthenticateContainer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/FeedbackItems/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/SelectStoreContainer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/StoreProgress/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="52" column="62" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/BusyLoading/tests/index.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/CannotCaptureReason/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="72" column="52" lean-forward="false" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/App/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/containers/StoreProgressContainer/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Comments/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="95" column="41" lean-forward="false" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/SelectStore/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/CannotCapture/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="58" column="32" lean-forward="false" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/CreateFeedback/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Hierarchy/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="73" column="19" lean-forward="false" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/AboveStoreSearch/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/CannotCapture/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/CannotCaptureReason/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Comments/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="127" column="8" lean-forward="true" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Hierarchy/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Navigation/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/NotCaptured/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Search/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/SearchGroups/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/SearchResults/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/StorePages/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="52" column="14" lean-forward="false" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/ViewImage/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/CreateFeedback/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="3" lean-forward="false" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/Help/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/app/components/StorePages/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="244" column="16" lean-forward="true" selection-start-line="244" selection-start-column="16" selection-end-line="244" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

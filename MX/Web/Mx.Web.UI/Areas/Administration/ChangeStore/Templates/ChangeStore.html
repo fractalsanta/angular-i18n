@@ -1,0 +1,19 @@
+﻿<div class="panel panel-default container-1-toolbar fill-height">
+    <div class="panel-heading mx-white">
+        <input type="text" class="form-control" placeholder="{{Translations.TypeToSearch}}" ng-model="search.Name">
+    </div>
+    <div class="touch-scrollable">
+        <table class="table table-striped">
+            <tbody>
+                <tr ng-repeat="store in Stores | filter:search | limitTo:50" ng-click="ChangeStore(store)" class="pointer-cursor">
+                    <td class="col-lg-11 col-md-11 col-sm-10">{{ store.Name }}</td>
+                    <td class="col-lg-1 col-md-1 col-sm-2">
+                        <div>
+                            <button class="btn btn-default btn-sm">{{ Translations.Select }}</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

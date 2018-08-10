@@ -1,0 +1,20 @@
+﻿<div style="position: relative;">
+    <div class="dayLinksWrapper">
+        <div ng-if="Options.Part === null" ng-repeat="dayLink in DayLinks"
+             ng-style="SetDayLinks(dayLink.svgPathWidth)">
+            <span class="pointer-cursor"
+                  ng-click="NavigateToParam('part', dayLink.id)">{{ dayLink.name }}</span>
+        </div>
+        <div ng-if="Options.Part !== null && DayPartLink" ng-style="SetDayLinks(DayPartLink.svgPathWidth)">
+            <span ng-if="DayPartLink.previousShow"
+                    ng-click="NavigateToParam('part', DayPartLink.previousLink)"
+                    class="pointer-cursor daySegmentPrevLink fa fa-chevron-left"></span>
+            <span class="pointer-cursor" ng-click="NavigateToParam('part')" style="opacity: .65;">{{ ::L10N.Day }}</span>
+            <span>{{ DayPartLink.name }}</span>
+            <span ng-if="DayPartLink.nextShow"
+                    ng-click="NavigateToParam('part', DayPartLink.nextLink)"
+                    class="pointer-cursor daySegmentNextLink fa fa-chevron-right"></span>
+        </div>
+    </div>
+    <div class="forecast-filter-graph" kendo-chart k-options="chart" style="min-height: 340px;"></div>
+</div>

@@ -1,0 +1,185 @@
+﻿@import "../Bootstrap/mixins.less";
+@import "mx-bootstrap-variables.less";
+@import "mx-color.less";
+
+.col-sm-half-1 {
+    width: 4.166666666666666%;
+}
+
+img.fill {
+    width: 100%;
+}
+
+i.ico-16 {
+    width: 16px;
+}
+.input-invalid { 
+    border-color: #ff0000 !important; 
+}
+.label-invalid {
+    color:#ff0000; 
+    float:none; 
+    position:absolute;
+}
+
+.input-group-addon-merge {
+    background-color: #fff;
+    padding: 6px 0px 6px 12px;
+    color: #d0d3dd;
+}
+
+.form-control-merge {
+    border-left: 0;
+}
+
+.vertical-button-seperator {
+    border-left: 1px solid #dcdfe8;
+    height: 32px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.panel-default > .panel-heading.mx-white {
+    background-color: #ffffff;
+}
+
+.disable-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*fa fa-2x fa-bars, access main menu*/
+.fa-2x {
+    font-size: 1.75em;
+    margin: 1px -5px;
+}
+
+a {
+    /* Fix to allow anchors without href to show proper cursor. */
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        /*no underline on rollover*/
+        color: #1f366c;
+        text-decoration: none;
+    }
+}
+
+.initial-cursor {
+    cursor: initial;
+}
+
+.not-allowed-cursor {
+    cursor: not-allowed;
+}
+
+.pointer-cursor,
+li.dropdown,
+ul.nav,
+.subpanel-mx > .panel-heading {
+    cursor: pointer;
+}
+
+li.dropdown-header.has-error {
+    background-color: #d75553;
+}
+
+.fa.has-error {
+    color: #d75553;
+}
+
+.dropdown-subnav {
+    > h5 {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+}
+
+.dropdown-menu {
+    margin-top: 0;
+    padding: 0;
+
+    > li:last-child,
+    > li:last-child > a,
+    > li:last-child:hover,
+    > li:last-child > a:hover {
+        .border-bottom-radius(@border-radius-small);
+        border-bottom: none;
+    }
+    > li:first-child,
+    > li:first-child > a,
+    > li:first-child:hover,
+    > li:first-child > a:hover {
+        .border-top-radius(@border-radius-small);
+        border-top: none;
+    }
+}
+
+html.application {
+    background-color: #f1f2f7;
+}
+
+.glyphicon {
+    top: 2px;
+}
+.k-ie i.fa {
+    cursor: default;
+}
+
+.no-user-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+textarea {
+    &.no-resize {
+        resize: none;
+    }
+
+    &.vertical-resize {
+        resize: vertical;
+    }
+
+    &.horizontal-resize {
+        resize: horizontal;
+    }
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+.green-text{
+    color: @mx-success;
+}
+
+.half-opaque {
+    opacity: @disabled-opacity;
+}
+
+.opaque-disabled {
+    opacity: @disabled-opacity;
+    pointer-events: none;
+}
+
+.base-text {
+    font-size: @font-size-base;
+    color: @text-color;
+}
+
+.date-range-fixed-width {
+    width: 235px;
+}
+
+.higher-span {
+    line-height: 24px;
+    display: inline-block;
+}

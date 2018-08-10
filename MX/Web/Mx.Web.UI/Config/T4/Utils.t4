@@ -1,0 +1,136 @@
+﻿<#+ 
+string GetTSName(TypeDefinition type)
+{
+    string name = type.TSElementName;
+    if (type.IsEnum)
+    {
+        name = GetAreaLocalName(name);
+    }
+    else if (!type.IsPrimitive && type.IsProjectDefined)
+    {
+        name = GetModelName(name);
+    }
+    if (type.IsArray)
+        name += "[]";
+    return name;
+}
+
+string GetTSPromiseName(TypeDefinition type)
+{
+	if (type.TSElementName == "void")
+	{
+		return "{}";
+	}
+	return GetTSName(type);
+}
+
+string GetTSParamDefinition(ParameterDefinition p)
+{
+    return string.Format("{0}{1}: {2}", p.FromBody ? "/*[FromBody]*/ " : "", p.Name, GetTSName(p.Type));
+}
+
+string GetTSFieldValueDefinition(ParameterDefinition p)
+{
+    return string.Format("{0}: {0}", p.Name);
+}
+
+
+bool IsWebAPI(CodeClass _class)
+{
+    return GetParents(_class).Any(p => p.Name == "ApiController");
+}
+
+IEnumerable<T> TakeAllButLast<T>(IEnumerable<T> source) {
+    var it = source.GetEnumerator();
+    bool hasRemainingItems = false;
+    bool isFirst = true;
+    T item = default(T);
+
+    do {
+        hasRemainingItems = it.MoveNext();
+        if (hasRemainingItems) {
+            if (!isFirst) yield return item;
+            item = it.Current;
+            isFirst = false;
+        }
+    } while (hasRemainingItems);
+}
+
+string GetAreaLocalName(string name)
+{
+    var snippet = ".Areas.";
+    var index = name.IndexOf(snippet);
+    return index == -1 ? name : name.Substring(index + snippet.Length);
+}
+
+IEnumerable<string> GetAreaName(string name)
+{
+    var snippet = ".Areas.";
+    var index = name.IndexOf(snippet);
+    var last = (index == -1) ? name : name.Substring(index + snippet.Length);
+    return TakeAllButLast(last.Split('.'));
+}
+
+string GetAreaNamespace(string name)
+{
+    return string.Join(".", GetAreaName(name));
+}
+
+string GetAreaFileName(string fileName)
+{
+    var snippet = "\\Areas\\";
+    var index = fileName.IndexOf(snippet);
+    return index == -1 ? fileName : fileName.Substring(index + snippet.Length);
+}
+
+string GetControllerUrl(string fileName)
+{
+    var relativeName = GetAreaFileName(fileName);
+    var parts = relativeName.Split('\\').ToArray();
+    parts[parts.Length - 1] = parts[parts.Length - 1].Replace("Controller.cs", "");
+    return string.Join("/", parts);
+}
+
+string GetMappingUrl(string fileName)
+{
+    var relativeName = GetAreaFileName(fileName);
+    var parts = relativeName.Split('\\').ToArray();
+    parts[parts.Length - 1] = "{controller}/{id}";
+    return string.Join("/", parts);
+}
+
+string GetProxyName(string name)
+{
+    var className = name.Split('.').Last();
+    return "I" + GetRouteName(className) + "Service";
+}
+
+string GetServiceName(string name)
+{
+    var className = name.Split('.').Last();
+    return GetRouteName(className) + "Service";
+}
+
+string GetRouteName(string name)
+{
+    if (name.EndsWith("Controller"))
+        name = name.Substring(0, name.Length - "Controller".Length);
+    return name;
+}
+
+string GetModelName(string fullName)
+{
+    var parts = GetAreaLocalName(fullName).Split('.');
+    return string.Join(".", TakeAllButLast(parts)) + ".I" + parts.Last();
+}
+
+void Indent(int lvl)
+{
+    for(int i = 0; i < lvl; i++)
+        Write("    ");
+}
+
+bool IsNullable(EnvDTE.CodeTypeRef propType) {
+  return propType.AsFullName.Contains(".Nullable<");
+}
+#>

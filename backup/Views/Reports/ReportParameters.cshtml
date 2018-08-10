@@ -1,0 +1,53 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.ReportParametersModel
+@{
+    ViewBag.Title = "Report Parameters";
+}
+@section HeadTagsSection
+{
+<script type="text/javascript" src="../../Content/Scripts/Reports.js"></script>
+    <style>
+        select
+        {
+            width: 500px;
+        }
+    </style>
+}
+<h1>
+    Report Parameters - @Model.DisplayName</h1>
+@if (Model.ReportName == "rptBudget")
+{
+    int index = 0;
+    <h3>Budget Start Date</h3>
+    <select id="budgetIndex">
+        @foreach (var option in Model.BudgetItems)
+        {
+            <option id="@index" value="@index">@option.Name</option>
+            index++;
+        }
+    </select>
+    <br />
+    <a href="#" onclick="javascript:runBudgetReport();" class="coolButton">View</a>
+    
+}
+else if (Model.ReportName == "rptFinancialPerformance")
+{
+    <script>
+        var incomeExpenditurePlanId = '@Model.PlanId';
+    </script>
+    <h3>Comparative Period</h3>
+    <select id="comparativePeriod">
+        @foreach (var option in Model.ComparativePeriods)
+        {
+            <option id="@option.Id" value="@option.Id">@option.Name</option>
+        }
+    </select>
+    <a href="#" onclick="javascript:runFinancialPerformance();" class="coolButton">View</a>
+}
+@Html.HiddenFor(m => m.ReportName)
+@Html.HiddenFor(m => m.PlanId)
+<div id="waitingDiv">
+</div>
+<div id="waitingContents">
+    Generating report. This may take a few minutes...
+    <img style="margin: 10px auto 0px auto" alt="Progress image" src="../../Content/Images/loading.gif" />
+</div>

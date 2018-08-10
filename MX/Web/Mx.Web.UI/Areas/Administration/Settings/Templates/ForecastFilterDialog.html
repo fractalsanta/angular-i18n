@@ -1,0 +1,57 @@
+﻿<form class="form-horizontal" role="form" name="FilterForm" autocomplete="off" ng-submit="SaveFilter();">
+    <div class="modal-header">
+        <span ng-if="!Vm.EditMode">{{ ::Translations.NewForecastFilter }}</span>
+        <span ng-if="Vm.EditMode">{{ ::Translations.EditForecastFilter }}</span>
+        <button type="button" class="close" ng-click="Cancel()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="alert alert-danger" ng-show="Vm.ValidationErrorMessage">{{ Vm.ValidationErrorMessage }}</div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{ ::Translations.ForecastFilterName }}</label>
+                <div class="col-sm-9" ng-class="{'has-error': FilterForm.FilterName.$invalid}">
+                    <input type="text" select-on-focus-input class="form-control"
+                           id="FilterName" name="FilterName"
+                           ng-model="Vm.Filter.Name" ng-required="true" ng-minlength="1" maxlength="25">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{ ::Translations.ServiceTypes }}</label>
+                <div class="col-sm-9 modal-body-fixed touch-scrollable">
+                    <table class="table table-striped table-small-bottom">
+                        <tbody>
+                            <tr ng-repeat="type in Vm.ServiceTypes"
+                                ng-click="!UsedType(type.Value) && ToggleType(type.Value)"
+                                ng-disabled="UsedType(type.Value)">
+                                <td class="col-sm-1">
+                                    <div ng-hide="UsedType(type.Value)">
+                                        <i ng-hide="HasType(type.Value)" class="fa fa-square-o"></i>
+                                        <i ng-show="HasType(type.Value)" class="fa fa-check-square-o"></i>
+                                    </div>
+                                </td>
+
+                                <td class="col-sm-11" ng-class="{'mx-disabled': UsedType(type.Value) }">
+                                    <div>
+                                        {{ type.Translation }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{ ::Translations.CanEditForecast }}</label>
+                <div class="col-sm-9 control-label" style="text-align: left;" ng-click="Vm.Filter.IsForecastEditableViaGroup = !Vm.Filter.IsForecastEditableViaGroup">
+                    <i ng-hide="Vm.Filter.IsForecastEditableViaGroup" class="fa fa-square-o"></i>
+                    <i ng-show="Vm.Filter.IsForecastEditableViaGroup" class="fa fa-check-square-o"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" ng-click="Cancel();">{{ ::Translations.Cancel }}</button>
+        <button type="submit" class="btn btn-success" ng-if="!Vm.EditMode" ng-disabled="FilterForm.FilterName.$invalid || !HasTypes()">{{ ::Translations.AddForecastFilter }}</button>
+        <button type="submit" class="btn btn-success" ng-if="Vm.EditMode" ng-disabled="FilterForm.FilterName.$invalid || !HasTypes()">{{ ::Translations.SaveForecastFilter }}</button>
+    </div>
+</form>

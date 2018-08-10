@@ -1,0 +1,5 @@
+/*
+ *
+ * SelectStoreContainer constants
+ *
+ */

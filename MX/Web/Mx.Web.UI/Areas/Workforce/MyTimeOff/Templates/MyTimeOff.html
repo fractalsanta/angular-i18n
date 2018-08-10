@@ -1,0 +1,69 @@
+﻿<div class="fill-height" mx-mobile-ready>
+    <div class="mx-composite-container fill-height" ng-class="{ 'detail-mode': InDetailMode }">
+        <div class="col-xs-6 fill-height">
+            <div class="row fill-height">
+                <div class="panel panel-default container-1-toolbar fill-height">
+                    <div class="panel-heading mx-white">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                                <button type="button" class="btn btn-success" ng-click="AddNewRequest()" ng-hide="InAddMode">
+                                    <i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;{{ Translations.Add }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body touch-scrollable">
+                        <div class="row fill-height">
+                            <div class="panel panel-default">
+                                <div ng-repeat-start="request in TimeOffRequests" class="panel-heading">
+                                    <strong>
+                                        <span>
+                                            {{ request.StartDateTime | date:'EEEE, MMMM d' }}
+                                        </span>
+                                        <span ng-if="IsRequestForMultipleDays(request) && !IsRequestForAllDay(request)">
+                                            - {{ request.EndDateTime | date:'EEEE, MMMM d' }}
+                                        </span>
+                                        <span ng-if="IsRequestForAllDay(request)">
+                                            - {{ GetAllDayRequestEndDate(request) | date:'EEEE, MMMM d' }}
+                                        </span>
+                                        <span style="white-space: nowrap" ng-if="!IsRequestForAllDay(request) && !IsRequestForMultipleDays(request)">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;{{ (request.StartDateTime | date:'shortTime') + ' - ' + (request.EndDateTime | date:'shortTime') }}
+                                        </span>
+                                    </strong>
+                                </div>
+                                <div ng-repeat-end class="panel-body" ng-click="ViewRequest(request)">
+                                        <div class="pull-right">
+                                            <span class="fa fa-angle-right fa-3x"></span>
+                                        </div>
+                                        <div>
+                                            <div class="pull-left">{{ Translations.TimeOffRequest }} {{ GetStatusTranslation(request.Status) }}<br/>
+                                                {{request.EntityName}}
+                                            </div>
+                                            <div class="pull-left">
+                                                &nbsp;&nbsp;&nbsp;
+                                                <span class="fa fa-2x" ng-style="{ color: GetStatusIconColor(request.Status) }"
+                                                      ng-class="GetStatusIconClass(request.Status)"></span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="panel-footer text-center" ng-if="TimeOffRequests && (!TimeOffRequests.length)">
+                                    <h2>{{ Translations.NoTimeOffRequestsFound }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 fill-height" ng-if="SelectedRequest && !InAddMode"
+             ng-include="'/Areas/Workforce/MyTimeOff/Templates/MyTimeOffDetail.html'">
+        </div>
+        <div class="col-xs-6 fill-height" ng-if="InAddMode"
+             ng-include="'/Areas/Workforce/MyTimeOff/Templates/NewTimeOffRequest.html'"></div>
+        <div class="panel-body">
+            <div class="panel-body text-center" ng-if="TimeOffRequests && TimeOffRequests.length && !SelectedRequest">
+                <h2>{{ Translations.PleaseSelectRequest }}</h2>
+            </div>
+        </div>
+    </div>
+</div>

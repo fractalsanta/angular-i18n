@@ -1,0 +1,175 @@
+﻿<div class="panel panel-default fill-height container-3-toolbars">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-4">
+                <input type="search" class="form-control" ng-model="Model.SearchFilter" placeholder="{{ Translation.SearchItems }}">
+            </div>
+
+            <div class="col-xs-5" >
+                <div class="dropdown inline" dropdown>
+                    <mx-dropdown-button value="CategoryText"></mx-dropdown-button>
+                    <ul class="dropdown-menu pull-left height-restrained-dropdown touch-scrollable col-xs-12" role="menu">
+                        <li>
+                            <a ng-click="ClearCategoryFilter()" style="overflow: hidden;">
+                                <span>{{ ::Translation.AllCategories }}</span>
+                                <span class="label label-info pull-right">{{ TotalItems }}</span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li ng-repeat="category in Model.ReceiveOrder.Categories">
+                            <a ng-click="SetCategory(category)" style="overflow: hidden;">
+                                <span>{{ category.Name }}</span>
+                                <span class="label label-info pull-right">{{ category.TotalItems }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>  
+                <button type="button" class="btn btn-default" ng-click="AddNewItems()" title="{{ Translation.AddItems }}" ng-if="Model.ShowAddItems && Model.CanAddItems">
+                    <i class="fa fa-plus"></i>
+                    <span class="hidden-xs">
+                        &nbsp;&nbsp;{{Translation.AddItems}}
+                    </span>
+                </button>
+            </div>
+
+            <div class="col-xs-2 pull-right" ng-if="ActionsEnabled()">
+                <div class="dropdown" dropdown>
+                    <mx-dropdown-button value="Translation.Actions" class="btn-block" ng-disabled="!ActionsEnabled()"
+                                        ng-class="{ 'btn-success': !IsOfflineMode(), 'btn-danger': IsOfflineMode() }"></mx-dropdown-button>
+                    <ul class="dropdown-menu col-xs-12 pull-right" role="menu">
+                        <li ng-show="InReceivingMode() && Model.CanBePushedToTomorrow"><a role="menuitem" ng-click="PushToTomorrow()"><i class="fa fa-hand-o-right"></i>{{ Translation.PushToTomorrow }}</a></li>
+                        <li ng-show="InReceivingMode() && Model.CanCorrectReceive"><a role="menuitem" ng-click="BeginCorrectReceive()"><i class="fa fa-edit"></i>{{ Translation.CorrectReceive }}</a></li>
+                        <li ng-show="InReceivingMode() && AreThereAnyItemsToReceive()"><a role="menuitem" ng-click="FinishNow()"><i class="glyphicon glyphicon-check"></i>{{ Translation.ReceiveSelected }}</a></li>
+                        <li ng-show="ShowChangeApplyDate()"><a role="menuitem" ng-click="ChangeApplyDate()"><i class="glyphicon glyphicon-transfer"></i>{{ Translation.ChangeApplyDate }}</a></li>
+                        <li ng-show="Model.InCorrectMode"><a role="menuitem" ng-click="SaveChanges()"><i class="glyphicon glyphicon-floppy-disk"></i>{{ Translation.SaveChanges }}</a></li>
+                        <li ng-show="Model.InCorrectMode"><a role="menuitem" ng-click="CancelChanges()"><i class="fa fa-trash-o"></i>{{ Translation.CancelChanges }}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-right pull-right col-xs-1">
+                <button ng-click="Return()" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;{{ Translation.Back }}</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel-heading mx-white toolbar-double-height">
+        <div class="panel panel-default">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ Translation.OrderNumber }}</th>
+                        <th>{{ Translation.Supplier }}</th>
+                        <th>{{ HasReceived() ? Translation.ApplyDate : Translation.DeliveryDate }}</th>
+                        <th>{{ Translation.ItemsInDelivery }}
+                        <th>{{ Translation.DeliveryTotal }}</th>
+                        <th ng-show="Model.ReceiveOrder.InvoiceNumber.length > 0">{{ Translation.InvoiceNumber }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ Model.ReceiveOrder.OrderNumber }}</td>
+                        <td>{{ Model.ReceiveOrder.Supplier }}</td>
+                        <td>{{ HasReceived() ? Model.ReceiveOrder.ApplyDate : Model.ReceiveOrder.DeliveryDate | formatDate:'L' }}</td>
+                        <td>{{ Model.ReceiveOrder.ItemsInOrder }} ({{ Model.TotalDeliveryCases }} {{ Translation.Cases }})</td>
+                        <td>{{ Model.TotalDeliveryCost | currency}}</td>
+                        <td ng-show="Model.ReceiveOrder.InvoiceNumber.length > 0">{{ Model.ReceiveOrder.InvoiceNumber}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="fill-height">
+            <div class="panel panel-default fill-height container-1-toolbar" ng-if="Translation.Description">
+                <div>
+                    <div class="table-header">
+                        <div id="TableHeader">
+                            <div class="column-header">
+                                <span ng-click="SelectAllItems()">
+                                    <div ng-hide="Model.IsReadOnly || Model.InCorrectMode">
+                                        <i class="fa" ng-class="{ 'fa-square-o': !Model.IsSelectAllItems, 'fa-check-square-o': Model.IsSelectAllItems }"></i>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="column-header">
+                                <span> {{ Translation.Description }} ({{ Translation.ItemCode }})</span>
+                            </div>
+                            <div class="column-header">
+                                <span class="hidden-xs hidden-sm">{{ Translation.Unit }}</span>
+                            </div>
+                            <div class="column-header">
+                                <span>{{ Translation.Price }}</span>
+                            </div>
+                            <div class="column-header">
+                                <span>{{ Translation.Ordered }}</span>
+                            </div>
+                            <div class="column-header">
+                                <span ng-hide="!HasASN()">{{ Translation.Shipped }}</span>
+                            </div>
+                            <div class="column-header">
+                                <span>{{ Translation.Received }}</span>
+                            </div>
+                            <div class="column-header">
+                                <span>{{Translation.Returned }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <table class="table table-striped" mx-scrollable-table watch="Model.ReceiveOrder.Items" header-id="TableHeader" input-arrow-navigation>
+                        <tbody>
+                            <tr ng-repeat="Item in Model.ReceiveOrder.Items | filter: Model.SearchFilter track by Item.Id" ng-form="ActiveLine">
+                                <td class="col-xs-1" ng-disabled="ItemCheckBoxDisable(Item.Received)"
+                                    ng-click="ItemCheckBoxClicked(Item)">
+                                    <i class="fa" ng-class="{ 'fa-square-o': (!Item.Received && !Item.IsReadyToBeReceived),
+                                       'fa-check-square-o': (Item.Received || Item.IsReadyToBeReceived) }"></i>
+                                </td>
+                                <td class="col-xs-3">{{ Item.Description }} ({{ Item.ItemCode }})</td>
+                                <td class="hidden-xs hidden-sm col-md-1">{{ Item.Unit }}</td>
+                                <td class="col-xs-1" ng-class="{ 'has-error': ActiveLine.Price.$invalid }">
+                                    <span ng-if="!PriceInEditMode(Item)">{{ Item.Price | currency }}</span>
+                                    <input type="text" required select-on-focus-input
+                                           ng-if="PriceInEditMode(Item)"
+                                           class="form-control"
+                                           ng-model="Item.Price"
+                                           ng-pattern="NumericalInputBoxPattern()"
+                                           ng-change="Change(Item)"
+                                           name="Price"
+                                           minvalue="0" precision="2"
+                                           mx-virtual-keyboard-input
+                                           number-only-input />
+                                </td>
+                                <td class="col-xs-1">{{ Item.OrderedQuantity }}</td>
+                                <td class="col-xs-1" ng-hide="!HasASN()">{{Item.VendorShippedQuantity}}</td>
+                                <td class="col-xs-1" ng-class="{ 'has-error': Item.ReceivedQuantity === undefined }">
+                                    <span ng-if="IsItemReadOnly(Item)" ng-show="!Model.InCorrectMode">{{ Item.ReceivedQuantity }}</span>
+                                    <input type="text" select-on-focus-input required
+                                           number-only-input minvalue="0" precision="2"
+                                           ng-if="(!IsItemReadOnly(Item)) || Model.InCorrectMode"
+                                           ng-disabled="!Item.Received && Model.InCorrectMode"
+                                           class="form-control"
+                                           ng-model="Item.ReceivedQuantity"
+                                           ng-change="Change(Item)"
+                                           mx-virtual-keyboard-input />
+                                </td>
+                                <td class="col-xs-1">
+                                    <span ng-if="IsItemReadOnly(Item)">{{ Item.ReturnedQuantity }}</span>
+                                    <input type="text"
+                                           select-on-focus-input
+                                           number-only-input minvalue="0" precision="2"
+                                           ng-if="! IsItemReadOnly(Item)"
+                                           ng-disabled="Model.ReceiveOrder.HasBeenCopied || Model.InCorrectMode"
+                                           class="form-control"
+                                           ng-model="Item.ReturnedQuantity"
+                                           ng-change="Change(Item)"
+                                           mx-virtual-keyboard-input />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

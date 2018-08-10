@@ -1,0 +1,17 @@
+﻿<div class="modal-header">{{Translations.SelectCustomRange}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <div class="well well-sm pull-left">
+        <label>{{Translations.From}}</label>
+        <datepicker ng-model="StartDate" min-date="MinDate" max-date="EndDate || MaxDate" show-weeks="false"
+                    ng-class="{'opaque-disabled' : DisableStartDate()}"></datepicker>
+    </div>
+    <div class="well well-sm pull-right">
+        <label>{{Translations.To}}</label>
+        <datepicker ng-model="EndDate" min-date="DisableStartDate() ? MinDate : StartDate || MinDate" max-date="MaxDate" show-weeks="false"></datepicker>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translations.Cancel}}</button>
+    <button class="btn btn-success" ng-click="Confirm(StartDate, EndDate)" ng-disabled="!StartDate || !EndDate">{{Translations.Apply}}</button>
+</div>

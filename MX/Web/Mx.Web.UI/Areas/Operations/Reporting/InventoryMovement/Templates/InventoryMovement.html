@@ -1,0 +1,132 @@
+﻿<div class="fill-height" mx-mobile-ready>
+<div class="panel panel-default fill-height">
+    <div class="container-1-toolbar fill-height">
+        <div class="row panel-heading mx-white">
+            <div class="col-xs-3 col-md-2">
+                <div class="input-group">
+                    <input type="text"
+                           ng-model="Vm.SearchText" typeahead-wait-ms="1" typeahead-min-length="1"
+                           placeholder="{{::L10N.Search}}"
+                           class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="Search()">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </span>
+                    <span class="input-group-btn">
+                        <button class="btn" type="button" ng-click="ClearSearch()">
+                            <span class="fa fa-times"></span>
+                        </button>
+                    </span>
+                </div>
+
+            </div>
+            <div class="col-xs-7 col-md-8">
+                <mx-date-range-picker ng-model="Vm.Dates" change-dates="ChangeDates()" class="inline" title="{{::L10N.DatePickerTitle}}" state="Vm.State"></mx-date-range-picker> &nbsp;
+                <div class="dropdown width-restrained-dropdown inline" dropdown ng-if="Vm.Views.length">
+                    <button class="btn btn-default dropdown-toggle" dropdown-toggle type="button" id="dropDownMenuViews" data-toggle="dropdown" ng-disabled="ReportIsBeingLoaded()">
+                        <span class="pull-left">
+                            {{ Vm.SelectedView.ViewName }}
+                        </span>
+                        &nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-left height-restrained-dropdown touch-scrollable col-xs-12" role="menu" aria-labelledby="dropDownMenuViews">
+                        <li ng-repeat="view in Vm.Views" ng-class="{'active': Vm.SelectedView === view }" ng-click="GetView(view)">
+                            <a role="menuitem" tabindex="-1" class="word-break">
+                                {{view.ViewName}}
+                                <span class="pull-right pointer-cursor" ng-click="FavouriteClick($event,view)">
+                                    <i class=" fa" ng-class="{'fa-star mx-color-bluelight': view.IsDefault,'fa-star-o': !view.IsDefault }"
+                                       title="{{::L10N.VmDefault}}">&nbsp;</i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-default margin-15" ng-if="Vm.ShowViewManager" ng-click="ShowManager()"><i class="glyphicon glyphicon-cog"></i></button>
+            </div>
+            <div class="col-xs-2 text-right">
+                <a class="btn btn-default" tabindex="-1" ng-click="ExportData()">
+                    <i class="glyphicon glyphicon-export"></i>&nbsp;{{::L10N.ExportToCsvCurrentView}}
+                </a>
+            </div>
+        </div>
+        <div class="panel-bottom-padded">
+            <div class="col-xs-3 col-md-2 fill-height touch-scrollable">
+                    <ul class="nav nav-pills nav-stacked" ng-show="Vm.Categories.length > 0">
+                        <li ng-class="{'active': IsTotals()}">
+                            <div ng-click="ShowTotals()">
+                                {{::L10N.Totals}}
+                            </div>
+                        </li>
+                        <li ng-repeat="category in Vm.Categories | orderBy: ['SortOrder', 'GroupDescription']" ng-class="{'active': IsActive(category.GroupId)}">
+                            <div ng-click="SetCategory(category.GroupId)">
+                                {{category.GroupDescription}}
+                            </div>
+                        </li>
+                    </ul>
+                    <div ng-hide=" Vm.Categories.length > 0" class="alert alert-warning">{{::L10N.NoData}}</div>
+            </div>
+
+            <div class="col-xs-9 col-md-10 fill-height">
+                <div class="panel panel-default fill-height touch-scrollable">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th ng-click="IsTotals() ? SortByCategory() : SortBy('code')" class="pointer-cursor text-left">
+                                        <span>
+                                            {{ IsTotals() ? L10N.Categories : L10N.ColumnItemCode }}
+                                            <span ng-if="Vm.SortItemCode || Vm.SortCategory">
+                                                &nbsp;
+                                                <i class="fa" ng-class="{ 'fa-angle-down': !Vm.SortAscending, 'fa-angle-up': Vm.SortAscending }"></i>
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th ng-click="SortBy('description')" class="pointer-cursor text-left" ng-if="!IsTotals()">
+                                        <span>
+                                            {{ ::L10N.ColumnItemDescription }}
+                                            <span ng-if="Vm.SortItemDescription">
+                                                &nbsp;
+                                                <i class="fa" ng-class="{ 'fa-angle-down': !Vm.SortAscending, 'fa-angle-up': Vm.SortAscending }"></i>
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th ng-repeat="col in Vm.Columns" ng-click="IsTotals() ? SortCategories(col) : SortRows(col)" class="pointer-cursor text-right">
+                                        <span>
+                                            {{ L10N[col.ColumnLocalisationKey] }}
+                                            <span ng-if="col.ColumnId === Vm.SortColumnId">
+                                                &nbsp;
+                                                <i class="fa" ng-class="{ 'fa-angle-down': !Vm.SortAscending, 'fa-angle-up': Vm.SortAscending }"></i>
+                                            </span>
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody ng-if="! IsTotals()">
+                                <tr class="table-summary-row">
+                                    <td>{{ ::L10N.Total }}</td>
+                                    <td></td>
+                                    <td class="text-right" ng-repeat="col in Vm.Columns">{{ GetTotal(col) | cellFormat : col.ColumnValueType }}</td>
+                                </tr>
+                                <tr ng-repeat="row in Vm.SortMap">
+                                    <td class=" min-50">{{ GetProductByIndex(row).Code }}</td>
+                                    <td class=" min-50">{{ GetProductByIndex(row).Description }}</td>
+                                    <td class=" min-50 text-right" ng-repeat="col in Vm.Columns">{{ GetSortedValueByIndex(col, row) | cellFormat : col.ColumnValueType }}</td>
+                                </tr>
+                            </tbody>
+                            <tbody ng-if="IsTotals()">
+                                <tr class="table-summary-row">
+                                    <td>{{ ::L10N.Total }}</td>
+                                    <td class="text-right" ng-repeat="col in Vm.Columns">{{ GetTotal(col) | cellFormat : col.ColumnValueType }}</td>
+                                </tr>
+                                <tr ng-repeat="row in Vm.Categories">
+                                    <td class=" min-50">{{ row.GroupDescription }}</td>
+                                    <td class=" min-50 text-right" ng-repeat="col in Vm.Columns">{{ GetTotalByGroup(col, row.GroupId) | cellFormat : col.ColumnValueType }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

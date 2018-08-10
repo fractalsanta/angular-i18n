@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e924e3db-d67a-4d72-9f6b-18a723276456" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mx.Web.Shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e924e3db-d67a-4d72-9f6b-18a723276456" name="Default" comment="" />
+      <created>1491988765048</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1491988765048</updated>
+      <workItem from="1491988766271" duration="428000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="428000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestFrameworkSignalR.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestFrameworkSignalR.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/ITestService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/ITestService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestFramework.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/RegistrationTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/RegistrationTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestModule.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/EventsTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/EventsTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/TestController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/NG/FiltersTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/NG/FiltersTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/SettingServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/SettingServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/StateServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/StateServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/AuthServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/AuthServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/ModalServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/ModalServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/TranslationServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/TranslationServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/SystemSettingsServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/ModalServiceInstanceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/ModalServiceInstanceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/ConfirmationServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/ConfirmationServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/PopupMessageServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/PopupMessageServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/LocalStorageServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Mocks/LocalStorageServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Service/NavigationServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Service/NavigationServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Service/ConfirmationServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Service/ConfirmationServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Service/DateServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Service/DateServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Directive/mxGridHeaderDirectiveTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Directive/mxGridHeaderDirectiveTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Controllers/ConfirmationCheckboxControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Controllers/ConfirmationCheckboxControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Controllers/ConfirmationControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/Tests/Controllers/ConfirmationControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-sidenav.ctrl.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-sidenav.ctrl.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/app.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/app.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Events.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Events.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Constants.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Constants.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Extensions.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Extensions.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/AppController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/AppController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-angulartics-ga.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-angulartics-ga.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/LocalTimeTracker.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/LocalTimeTracker.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/touch-scroll-support.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/touch-scroll-support.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/RootController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/RootController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-google-analytics.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-google-analytics.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/HttpEventInterceptor.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/HttpEventInterceptor.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-header.ctrl.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/mx-header.ctrl.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/CurrencyLocalization.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/CurrencyLocalization.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/NG/Modules.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/NG/Registry.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/NG/Constants.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/NG/StateNode.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/NG/Filters.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/NG/Filters.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/UiRouterStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/UiRouterStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/ApplicationEvent.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/ApplicationEvent.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/AnchorTag.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/AnchorTag.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/HttpStatus.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Enum/HttpStatus.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ITimeRange.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ITimeRange.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IConfirmation.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IConfirmation.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ICountNavigationItem.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ICountNavigationItem.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IMasterDetailView.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IMasterDetailView.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ISignalR.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ISignalR.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IChangeStoreEventArg.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IChangeStoreEventArg.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ILogoutEventArgs.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/ILogoutEventArgs.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IConfirmationCheckbox.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IConfirmationCheckbox.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/INavigationItem.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/INavigationItem.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IPopupMessage.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Models/IPopupMessage.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Browser/BrowserDetection.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Browser/BrowserDetection.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Browser/CheckSupported.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Browser/CheckSupported.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/NavigationService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/NavigationService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SystemSettingsService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SystemSettingsService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SignalREvents.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SignalREvents.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/ConfirmationService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/ConfirmationService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/DateService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/TranslationService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/TranslationService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SignalRHub.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SignalRHub.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SignalRService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/SignalRService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/PopupMessageService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/PopupMessageService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/AuthService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/AuthService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/LocalStorage.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/LocalStorage.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/FormatterService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/FormatterService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/LayoutService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/LayoutService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/VirtualKeyboardService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Services/VirtualKeyboardService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-ios-detect.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-ios-detect.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-virtual-keyboard-input.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-virtual-keyboard-input.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/number-only-input.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/number-only-input.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/input-arrow-navigation.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/input-arrow-navigation.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-header.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-header.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/disable-text-selection.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/disable-text-selection.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-auth-token-a.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-auth-token-a.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-disable-button-if-busy.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-disable-button-if-busy.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-mobile-ready.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-mobile-ready.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-checkbox.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-checkbox.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-popup-message.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-popup-message.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mxAuthorization.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mxAuthorization.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-calendar-directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-calendar-directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/ios-disable-touchmove.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/ios-disable-touchmove.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-form-autosubmit.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-form-autosubmit.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-date-range-picker.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-date-range-picker.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-kendo-chart-resize.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-kendo-chart-resize.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/non-negative-integer-only.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/non-negative-integer-only.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/sticky.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/sticky.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-virtual-key.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-virtual-key.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-prevday-nextday-picker.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-prevday-nextday-picker.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-scrollable-table.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-scrollable-table.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-sidenav.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-sidenav.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-entity-search.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-entity-search.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-stop-event-propagation.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-stop-event-propagation.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/ng-native-input.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/ng-native-input.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/select-on-focus-input.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/select-on-focus-input.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-scroll-to-element.directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-scroll-to-element.directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-kendo-destroy-fix.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-kendo-destroy-fix.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-auto-fill-fix.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-auto-fill-fix.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-table-sync.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-table-sync.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-sortable.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-sortable.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-dropdown-button.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-dropdown-button.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-count-table-arrow-navigation.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-count-table-arrow-navigation.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-grid-header-directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-grid-header-directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-virtual-keyboard.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-virtual-keyboard.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-login-pin-keypad.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-login-pin-keypad.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-date-range-directive.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-date-range-directive.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-week-picker.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Directives/mx-week-picker.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/NotFoundController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/NotFoundController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/ConfirmationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/ConfirmationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/ConfirmationCheckboxController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/ConfirmationCheckboxController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/MxAuthorizationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/MxAuthorizationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/ForbiddenController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/ForbiddenController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/DateRangePickerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/DateRangePickerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/WeekPickerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/WeekPickerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/DateRangeController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/TypeScript/Controllers/DateRangeController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/PartnerRedirect/TypeScript/Controllers/PartnerRedirectController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Core/PartnerRedirect/TypeScript/Controllers/PartnerRedirectController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/Tests/CountServiceTests.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/Tests/CountServiceTests.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/CountStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/CountStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Services/CountService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Services/AddItemsTravelPathService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Services/AddItemsTravelPathService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Services/TravelPathService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Services/TravelPathService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/FinishCountController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/FinishCountController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/ConfigureColumnsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/ConfigureColumnsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountGroupController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountAddItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/TravelPathLocationListOnlyController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/TravelPathLocationListOnlyController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/UpdateCostController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/UpdateCostController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/ReviewController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/ReviewController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/TravelPathLocationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/TravelPathLocationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountItemsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountLocationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/CountLocationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/TravelPathController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Count/TypeScript/Controllers/TravelPathController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/ReceiveOrderStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/ReceiveOrderStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/OrderHistoryStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/OrderHistoryStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/OrderStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/OrderStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/MockReceiveOrderService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/MockReceiveOrderService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestChangeApplyDateController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestChangeApplyDateController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/Mocks.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/Mocks.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/MockModalService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/MockModalService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReturnOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReturnOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReceiveOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReceiveOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReceiveOrderDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReceiveOrderDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestFinishReceiveOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestFinishReceiveOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReturnOrderDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Tests/TestReturnOrderDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/OrderUpdateServices.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/OrderUpdateServices.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/ReceiveOrderService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/ReceiveOrderService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/ReturnOrderService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/ReturnOrderService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/AddItemsOrderVendorService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/AddItemsOrderVendorService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/SearchOrderService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/SearchOrderService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/OrderService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Services/OrderService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderHistoryContainerControllerScope.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderHistoryContainerControllerScope.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderDetailsControllerScope.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderDetailsControllerScope.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderHistoryControllerScope.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderHistoryControllerScope.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderDetailsControllerRouteParams.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderDetailsControllerRouteParams.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IReceiveOrderContainerControllerScope.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IReceiveOrderContainerControllerScope.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderDetailWithValidation.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderDetailWithValidation.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderContainerControllerScope.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Interfaces/IOrderContainerControllerScope.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ConfigureColumnsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ConfigureColumnsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/BaseApplyDateController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/BaseApplyDateController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderHistoryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderHistoryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/CustomRangeController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/CustomRangeController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReturnOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReturnOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReceiveOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReceiveOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/FinishReceiveOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/FinishReceiveOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReceiveOrderContainerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReceiveOrderContainerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ChangeApplyDateController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ChangeApplyDateController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/NewOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/NewOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderContainerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderContainerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReturnOrderDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReturnOrderDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/FinishOrderController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/FinishOrderController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderHistoryContainerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/OrderHistoryContainerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReceiveOrderDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Order/TypeScript/Controllers/ReceiveOrderDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteHistoryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteHistoryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteAddItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteAddItemsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteConfirmController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Waste/TypeScript/Controllers/WasteConfirmController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/TransferHistoryStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/TransferHistoryStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransfersService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransfersService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestOpenTransferDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestOpenTransferDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransferApiService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransferApiService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferHistoryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferHistoryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferHistoryDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferHistoryDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockModalService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockModalService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransferStoreService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransferStoreService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestActionTransferController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestActionTransferController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferAddItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferAddItemsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransferHistoryService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/MockTransferHistoryService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferPickStoreController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestTransferPickStoreController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestInitiateTransferController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestInitiateTransferController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestOpenTransfersController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Tests/TestOpenTransfersController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Services/TransfersService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Services/TransfersService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferHistoryContainerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferHistoryContainerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/InitiateTransferController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/InitiateTransferController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferPickStoreController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferPickStoreController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferHistoryDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferHistoryDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferAddItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferAddItemsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/OpenTransferDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/OpenTransferDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferDetailController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferDetailController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferHistoryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/TransferHistoryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/OpenTransfersController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/OpenTransfersController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/ActionTransferController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Transfer/TypeScript/Controllers/ActionTransferController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Production/TypeScript/Controllers/PrepAdjustItemSearchController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Production/TypeScript/Controllers/PrepAdjustItemSearchController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Production/TypeScript/Controllers/PrepAdjustController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Production/TypeScript/Controllers/PrepAdjustController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Production/TypeScript/Controllers/PrepAdjustConfirmController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/Production/TypeScript/Controllers/PrepAdjustConfirmController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/TypeScript/Controllers/AddItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Inventory/TypeScript/Controllers/AddItemsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/Tests/Mocks.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/Tests/Mocks.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/Tests/DashboardDemo.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/Tests/DashboardDemo.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/Tests/ControllerTests.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/Tests/ControllerTests.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/TypeScript/Services/DashboardService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/TypeScript/Services/DashboardService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/TypeScript/Controllers/DashboardController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Reporting/Dashboard/TypeScript/Controllers/DashboardController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyDetails/TypeScript/Controllers/MyDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyDetails/TypeScript/Controllers/MyDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyTimeOff/TypeScript/Controllers/MyTimeOffController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyTimeOff/TypeScript/Controllers/MyTimeOffController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Services/DeliveriesService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Services/DeliveriesService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/DenyDeliveryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/DenyDeliveryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/AddExtraDeliveryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/AddExtraDeliveryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/AuthorizeDeliveryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/AuthorizeDeliveryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/DeliveriesController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/Deliveries/TypeScript/Controllers/DeliveriesController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/MyScheduleStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/MyScheduleStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Tests/Mocks.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Tests/Mocks.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Tests/TestMyScheduleDetailController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Tests/TestMyScheduleDetailController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Tests/MockMyScheduleService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Tests/MockMyScheduleService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Models/Calendar.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Models/Calendar.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Services/MyScheduleService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Services/MyScheduleService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/ShareScheduleController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/ShareScheduleController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/MyScheduleDetailController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/MyScheduleDetailController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/MyScheduleWeekController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/MyScheduleWeekController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/MyScheduleController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MySchedule/TypeScript/Controllers/MyScheduleController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyTimeCard/TypeScript/Services/MyTimeCardService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyTimeCard/TypeScript/Services/MyTimeCardService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyTimeCard/TypeScript/Controllers/MyTimeCardController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyTimeCard/TypeScript/Controllers/MyTimeCardController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/AddDriverDistanceControllerTests.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/AddDriverDistanceControllerTests.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/ActionDriverDistanceControllerTests.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/ActionDriverDistanceControllerTests.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/DriverDistanceManagerServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/DriverDistanceManagerServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/DriverDistanceControllerTests.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/DriverDistanceControllerTests.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/DriverDistanceEmployeeServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Tests/DriverDistanceEmployeeServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Controllers/ActionDriverDistanceController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Controllers/ActionDriverDistanceController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Controllers/AddDriverDistanceController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Controllers/AddDriverDistanceController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Controllers/DriverDistanceController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/DriverDistance/TypeScript/Controllers/DriverDistanceController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Services/MyAvailabilityService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Services/MyAvailabilityService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Interfaces/IMyAvailabilityDelete.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Interfaces/IMyAvailabilityDelete.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Interfaces/IMyAvailabilityEntry.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Interfaces/IMyAvailabilityEntry.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityEditController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityEditController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityWeekController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityWeekController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityAddController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityAddController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityDetailController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Workforce/MyAvailability/TypeScript/Controllers/MyAvailabilityDetailController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/ProductMix/Typescript/Controllers/ProductMixController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/ViewManagerStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/ViewManagerStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Filters/CellFormatFilter.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Filters/CellFormatFilter.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Services/ViewService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Services/ViewService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Services/ReportService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Services/ReportService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Interfaces/IViewManagerRouteParams.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Interfaces/IViewManagerRouteParams.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Controllers/ViewManagerContainerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Controllers/ViewManagerContainerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Controllers/ViewManagerDetailController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Controllers/ViewManagerDetailController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Controllers/ViewManagerListController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/TypeScript/Controllers/ViewManagerListController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/AreaSummary/TypeScript/Controllers/AreaSummaryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/AreaSummary/TypeScript/Controllers/AreaSummaryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/StoreSummary/TypeScript/Controllers/StoreSummaryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/StoreSummary/TypeScript/Controllers/StoreSummaryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/InventoryMovement/Typescript/Controllers/InventoryMovementController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Operations/Reporting/InventoryMovement/Typescript/Controllers/InventoryMovementController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/TooltipHelper.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/TooltipHelper.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/ForecastingStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/ForecastingStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/EventStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/EventStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/PromotionStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/PromotionStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/MirroringStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/MirroringStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/MirroringStoreStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/MirroringStoreStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/ForecastFilterDialogServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/ForecastFilterDialogServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/DataMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/DataMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/TranslatedPosServiceTypeServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/TranslatedPosServiceTypeServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/ForecastFilterServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/ForecastFilterServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/ForecastFilterAssignServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/ForecastFilterAssignServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/DataServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/DataServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastZoneServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastZoneServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MetricAllServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MetricAllServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemHistoricalServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemHistoricalServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/HistoricalServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/HistoricalServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/DaySegmentServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/DaySegmentServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MultiFilterMetricAllServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MultiFilterMetricAllServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemMetricServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemMetricServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MultiFilterSalesItemMetricAllServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MultiFilterSalesItemMetricAllServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastSalesEvaluationServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastSalesEvaluationServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastFilterGridTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastFilterGridTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemMetricAllServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemMetricAllServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastSalesItemEvaluationServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastSalesItemEvaluationServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastingObjectServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastingObjectServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/DataServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/DataServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MetricServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/MetricServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastTransactionEvaluationServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/ForecastTransactionEvaluationServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Forecast/SalesItemServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringSalesItemDetailsControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringSalesItemDetailsControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringSalesItemAddControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringSalesItemAddControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringSalesItemsControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringSalesItemsControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/StoreMirrorIntervalServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/StoreMirrorIntervalServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringStoresControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringStoresControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringStoreControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringStoreControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/SalesItemMirrorIntervalsServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/SalesItemMirrorIntervalsServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringServiceMock.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Mirroring/MirroringServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Promotions/PromotionServiceTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Promotions/PromotionServiceTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Promotions/PromotionDetailsConrollerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Tests/Promotions/PromotionDetailsConrollerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/HistoricalObjectService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/HistoricalObjectService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/ForcastingObjectService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/ForcastingObjectService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/MirroringService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/MirroringService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/DataService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/DataService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/EventService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/EventService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/PromotionService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Services/PromotionService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastHeader.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastHeader.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/EditForecastInline.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/EditForecastInline.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastFilterGraph.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastFilterGraph.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/SalesItemsList.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/SalesItemsList.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/PlaceHolder.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/PlaceHolder.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastGraph.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastGraph.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastFilterGrid.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastFilterGrid.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastGrid.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/ForecastGrid.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/EvaluatorGrid.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/EvaluatorGrid.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/EvaluatorGraph.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/EvaluatorGraph.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/StoreList.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Directives/StoreList.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Interfaces/IPromotionRouteParams.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Interfaces/IPromotionRouteParams.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoresDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoresDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventProfileController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventProfileController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringSalesItemDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringSalesItemDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringSalesItemsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringSalesItemsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionContainerController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionContainerController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringChangeEndDateController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringChangeEndDateController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingEditController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingEditController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingViewController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingViewController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EvaluatorController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EvaluatorController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingHistoryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastingHistoryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ScheduleEventController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ScheduleEventController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionListController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionListController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoresAddController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoresAddController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventWeekController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventWeekController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoreController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoreController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/SelectSalesItemController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/SelectSalesItemController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionOverlapController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionOverlapController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/PromotionDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastHistoryController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/ForecastHistoryController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EditForecastController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EditForecastController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/SelectStoreController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/SelectStoreController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringConfirmationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringConfirmationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoresController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringStoresController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventDetailsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/EventDetailsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/AllEventsForDayController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/AllEventsForDayController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringSalesItemAddController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Forecasting/TypeScript/Controllers/MirroringSalesItemAddController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Services/UserService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Services/UserService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Services/UserSettingsService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Services/UserSettingsService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Controllers/EditUserController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Controllers/EditUserController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Controllers/UserSetupController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Controllers/UserSetupController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Controllers/AddUserController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/User/TypeScript/Controllers/AddUserController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/DataLoad/TypeScript/Controller/DataLoadController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/DataLoad/TypeScript/Controller/DataLoadController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Mocks/SiteSettingsServiceMock.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/ForecastFilterUsageSettingControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/ForecastFilterUsageSettingControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/ForecastFilterControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/ForecastFilterControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/SiteSettingsControllerTest.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/SiteSettingsControllerTest.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/ForecastFilterDialogControllerTests.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/Tests/Controllers/ForecastFilterDialogControllerTests.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/SettingsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/SettingsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/SettingsStates.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/SettingsStates.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/SettingsStatesRegistration.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/SettingsStatesRegistration.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Models/ISettingType.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Models/ISettingType.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/InventoryCountSettingsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/InventoryCountSettingsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/ForecastFilterDialogController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/ForecastFilterDialogController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/ForecastFilterController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/ForecastFilterController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/DashboardSettingsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/DashboardSettingsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/ForecastFilterUsageSettingsController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/ForecastFilterUsageSettingsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Settings/TypeScript/Controllers/SiteSettingsController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Services/LocationService.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Services/LocationService.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Controllers/EditLocationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Controllers/EditLocationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Controllers/NewLocationController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Controllers/NewLocationController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Controllers/HierarchyController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/Hierarchy/TypeScript/Controllers/HierarchyController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/MyAccount/TypeScript/Controllers/SetPinController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/MyAccount/TypeScript/Controllers/SetPinController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/MyAccount/TypeScript/Controllers/MyAccountController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/MyAccount/TypeScript/Controllers/MyAccountController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/ChangeStore/TypeScript/Controllers/ChangeStoreController.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Areas/Administration/ChangeStore/TypeScript/Controllers/ChangeStoreController.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Config/T4/ApiDefinitions.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Config/T4/ApiDefinitions.js.map" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Config/T4/ApiImplementation.js" />
+        <option value="$PROJECT_DIR$/Mx.Web.UI/Config/T4/ApiImplementation.js.map" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>

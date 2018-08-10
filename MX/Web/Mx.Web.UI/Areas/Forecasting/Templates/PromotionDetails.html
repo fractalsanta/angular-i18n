@@ -1,0 +1,195 @@
+﻿<div class="fill-height">
+    <div ng-form="Vm.Form" class="panel panel-default container-1-toolbar fill-height" ng-swipe-right="Back()" ng-swipe-disable-mouse ng-if="IsLoaded()">
+        <div class="panel-heading mx-white">
+
+            <div class="col-xs-6 col-md-3">
+                <button type="button" class="btn btn-default visible-xs visible-sm" ng-click="Back()">
+                    <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;{{::L10N.Back}}
+                </button>
+            </div>
+
+            <div>
+                <div ng-if="CanDelete()" class="dropdown pull-right" dropdown>
+                    <button type="button" class="btn dropdown-toggle btn-success" dropdown-toggle id="dropdownActions" data-toggle="dropdown">
+                        {{::L10N.Actions}}&nbsp;&nbsp;<i class="caret"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownActions">
+                        <li role="presentation" ng-if="CanEditName()" ng-class="{disabled : !CanSave()}">
+                            <a role="menuitem" tabindex="-1" ng-click="CanSave() && Save()" ng-disabled="!CanSave()">
+                                <i class="fa fa-save"></i>{{::L10N.Save}}
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" tabindex="-1" ng-click="Delete()">
+                                <i class="fa fa-trash-o"></i>{{::L10N.Delete}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button ng-if="CanEditName() && !CanDelete()" type="button" class="btn btn-success pull-right"
+                        ng-click="CanSave() && Save()" ng-disabled="!CanSave()">
+                    {{::L10N.Save}}
+                </button>
+            </div>
+
+        </div>
+        <div class="fill-height touch-scrollable panel-body">
+            <div class="form-horizontal">
+
+                <div class="form-group" ng-class="{'has-error' : Vm.Form.Name.$invalid}">
+                    <label for="Name" class="col-xs-2 control-label text-right">{{::L10N.Description}}</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="Name" name="Name" required maxlength="64"
+                               ng-model="Vm.Promotion.Name" ng-disabled="!CanEditName()" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Period" class="col-xs-2 control-label text-right">{{::L10N.Period}}</label>
+                    <div class="col-xs-10">
+                        <div class="input-group date-range-fixed-width" id="Period" ng-click="CanEditEndDate() && OpenDateRange()">
+                            <span class="form-control pull-left" ng-disabled="!CanEditEndDate()">
+                                <span class="text-nowrap" ng-class="{'half-opaque' : !CanEditStartDate() && CanEditEndDate()}">{{Vm.Promotion.StartDate | date}}</span>
+                                <span class="text-nowrap"> - {{Vm.Promotion.EndDate | date}}</span>
+                            </span>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-disabled="!CanEditEndDate()">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <mx-checkbox ng-model="Vm.Promotion.LimitedTimeOffer" ng-disabled="!CanEditLTO()" text="::L10N.LimitedTimeOffer" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <mx-checkbox ng-model="Vm.Promotion.OverwriteManager" ng-disabled="!CanEditOverwrite()" text="::L10N.OverwriteManagerForecast" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-2">
+                        <label for="Items" class="control-label pull-right">{{::L10N.PromotionalItems}}</label>
+                        <br /><br />
+                        <button class="btn btn-default pull-right" ng-click="AddItems(false)" ng-show="CanEditItems()">
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp;{{::L10N.Add}}
+                        </button>
+                    </div>
+                    <div class="col-xs-10">
+                        <table class="table table-striped table-bordered table-hover" id="Items">
+                            <thead>
+                                <tr>
+                                    <th>{{::L10N.DescriptionCode}}</th>
+                                    <th class="col-xs-2 min-120">{{::L10N.Adjustment}}</th>
+                                    <th class="col-xs-1 min-50" ng-show="CanEditItems()">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-model="promoItems.length" ui-validate="'promoItems.length != 0'" ui-validate-watch="'promoItems.length'">
+                                <tr ng-repeat="item in Vm.Promotion.Items | filter: { Impacted: false } | orderBy: ['Description', 'ItemCode'] as promoItems">
+                                    <td>{{item.Description}} ({{item.ItemCode}})</td>
+                                    <td class="col-xs-2 min-120" ng-form="cellForm">
+                                        <div class="input-group" ng-class="{'has-error' : cellForm.$invalid}">
+                                            <input type="tel" class="form-control text-right" ng-model="item.AdjustmentPercent" ng-disabled="!CanEditItems()"
+                                                   required number-only-input maxlength="9" minvalue="-100" precision="0" pattern="^[1-9]\d*$" select-on-focus-input />
+                                            <span class="input-group-addon">%</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-xs-1 min-50 text-center" ng-show="CanEditItems()">
+                                        <i class="fa fa-trash-o pointer-cursor" ng-click="DeleteItem(item)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-danger" ng-show="promoItems.length == 0">
+                            {{::L10N.PleaseAddItem}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-2">
+                        <label for="ImpactedItems" class="control-label pull-right">{{::L10N.ImpactedItems}}</label>
+                        <br /><br />
+                        <button class="btn btn-default pull-right" ng-click="AddItems(true)" ng-show="CanEditItems()">
+                            <i class="fa fa-plus"></i>&nbsp;&nbsp;{{::L10N.Add}}
+                        </button>
+                    </div>
+                    <div class="col-xs-10">
+                        <table class="table table-striped table-bordered table-hover" id="ImpactedItems">
+                            <thead>
+                                <tr>
+                                    <th>{{::L10N.DescriptionCode}}</th>
+                                    <th class="col-xs-2 min-120">{{::L10N.Adjustment}}</th>
+                                    <th class="col-xs-1 min-50" ng-show="CanEditItems()">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in Vm.Promotion.Items | filter: { Impacted: true } | orderBy: ['Description', 'ItemCode'] as impactedItems">
+                                    <td>{{item.Description}} ({{item.ItemCode}})</td>
+                                    <td class="col-xs-2 min-120" ng-form="cellForm">
+                                        <div class="input-group" ng-class="{'has-error' : cellForm.$invalid}">
+                                            <input type="tel" class="form-control text-right" ng-model="item.AdjustmentPercent" ng-disabled="!CanEditItems()"
+                                                   required number-only-input maxlength="9" minvalue="-100" precision="0" pattern="-?[1-9]\d*" select-on-focus-input />
+                                            <span class="input-group-addon">%</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-xs-1 min-50 text-center" ng-show="CanEditItems()">
+                                        <i class="fa fa-trash-o pointer-cursor" ng-click="DeleteItem(item)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10 text-danger">
+                        <span ng-if="!Vm.Promotion.UseZones && Vm.Promotion.Entities.length == 0"
+                              ng-model="Vm.Promotion.Entities.length"
+                              ui-validate="'Vm.Promotion.UseZones && Vm.Promotion.Entities.length != 0'"
+                              ui-validate-watch="'Vm.Promotion.Entities.length'">
+                            {{::L10N.PleaseSelectStore}}
+                        </span>
+                        <span ng-if="Vm.Promotion.UseZones && Vm.Promotion.Zones.length == 0"
+                              ng-model="Vm.Promotion.Zones.length"
+                              ui-validate="'!Vm.Promotion.UseZones || Vm.Promotion.Zones.length != 0'"
+                              ui-validate-watch="'Vm.Promotion.Zones.length'">
+                            {{::L10N.PleaseSelectZone}}
+                        </span>
+                        &nbsp;
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label ng-if="!CanSwitchToStores()" for="Entities" class="col-xs-2 control-label text-right">
+                        {{::Vm.Promotion.UseZones ? L10N.Zones : L10N.Stores}}
+                    </label>
+                    <div ng-if="CanSwitchToStores()" class="col-xs-2 text-right">
+                        <div class="btn-group-vertical">
+                            <label class="btn btn-default" ng-model="Vm.Promotion.UseZones" btn-radio="true">{{::L10N.Zones}}</label>
+                            <label class="btn btn-default" ng-model="Vm.Promotion.UseZones" btn-radio="false">{{::L10N.Stores}}</label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-10" id="Entities">
+                        <div ng-show="!Vm.Promotion.UseZones" js-tree="Vm.TreeConfig" ng-model="Vm.TreeData" tree-events-obj="Vm.TreeEvents" tree="Vm.Tree">
+                        </div>
+                        <div ng-show="Vm.Promotion.UseZones" class="col-xs-6 row" ng-repeat="zone in Vm.Zones">
+                            <mx-checkbox checked="Vm.Promotion.Zones.indexOf(zone.Id) != -1" text="::zone.Name" class="higher-span"
+                                         ng-click="CanEditZones() && ToggleZone(zone.Id)" ng-disabled="!CanEditZones()" />
+                        </div>
+                    </div>
+                </div>
+
+                <br /><br />
+
+            </div>
+        </div>
+    </div>
+</div>

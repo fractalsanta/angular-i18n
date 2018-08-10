@@ -1,0 +1,220 @@
+2017-01-13 09:49:47.3243 UTC ----------- MxConnect
+System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://mxdev:7542/Legacy/QueryServices/LegacyForecastingQueryService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:7542
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at Mx.Legacy.Services.Contracts.QueryServices.ILegacyForecastingQueryService.GetItemProjectionsPerDateRange(GetItemProjectionsPerDateRangeRequest request)
+   at Mx.Forecasting.Services.QueryServices.ForecastQueryServiceShim.GetItemProjectionsPerDateRange(GetItemProjectionsPerDateRangeRequest request, Nullable`1 function) in c:\MxScrum\Products\macromatix\Mobile\Areas\Forecasting\Mx.Forecasting.Services\QueryServices\ForecastQueryServiceShim.cs:line 154
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.GetForecastItemsForProjectedOrder(IList`1 allUnits, Int64 entityId, DateTime startDate, DateTime endDate, Nullable`1 templateType, Boolean useEntityItemAutoOrderType, ICollection`1 simpleOrderItemList, IEnumerable`1 allVeiList, Boolean setQuantityToZero) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 751
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.ListAutoSelectOrder(Int64 entityId, Int64 vendorId, DateTime dateTimeOfOrder, DateTime endDate, Nullable`1 orderClassId, IList`1 allUnits, IEnumerable`1 allVeiList) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 688
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.GetSalesOrderToCreateSupplyOrder(Int64 entityId, Int64 vendorId, DateTime deliveryDate, Int32 daysToCover, ActionItemInstance scheduledOrderInstance) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 642
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.CreateAutoSelectOrder(Int64 entityId, Int64 vendorId, DateTime deliveryDate, Int32 daysToCover, ActionItemInstance scheduledOrderInstance) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 623
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.CreateAutoSelectTemplate(Int64 entityId, Int64 vendorId, DateTime deliveryDate, Int32 daysToCover, Int32 actionItemInstanceId) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 613
+   at Mx.Web.UI.Areas.Inventory.Order.Api.OrderController.PostCreateAutoSelectTemplate(Int64 entityId, Int64 vendorId, String deliveryDate, Int32 daysToCover) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Inventory\Order\Api\OrderController.cs:line 82
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-13 09:50:00.7210 UTC ----------- MxConnect
+System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://mxdev:7542/Legacy/QueryServices/LegacyForecastingQueryService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:7542
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at Mx.Legacy.Services.Contracts.QueryServices.ILegacyForecastingQueryService.GetItemProjectionsPerDateRange(GetItemProjectionsPerDateRangeRequest request)
+   at Mx.Forecasting.Services.QueryServices.ForecastQueryServiceShim.GetItemProjectionsPerDateRange(GetItemProjectionsPerDateRangeRequest request, Nullable`1 function) in c:\MxScrum\Products\macromatix\Mobile\Areas\Forecasting\Mx.Forecasting.Services\QueryServices\ForecastQueryServiceShim.cs:line 154
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.GetForecastItemsForProjectedOrder(IList`1 allUnits, Int64 entityId, DateTime startDate, DateTime endDate, Nullable`1 templateType, Boolean useEntityItemAutoOrderType, ICollection`1 simpleOrderItemList, IEnumerable`1 allVeiList, Boolean setQuantityToZero) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 751
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.ListAutoSelectOrder(Int64 entityId, Int64 vendorId, DateTime dateTimeOfOrder, DateTime endDate, Nullable`1 orderClassId, IList`1 allUnits, IEnumerable`1 allVeiList) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 688
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.GetSalesOrderToCreateSupplyOrder(Int64 entityId, Int64 vendorId, DateTime deliveryDate, Int32 daysToCover, ActionItemInstance scheduledOrderInstance) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 642
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.CreateAutoSelectOrder(Int64 entityId, Int64 vendorId, DateTime deliveryDate, Int32 daysToCover, ActionItemInstance scheduledOrderInstance) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 623
+   at Mx.Inventory.Services.CommandServices.OrderCommandService.CreateAutoSelectTemplate(Int64 entityId, Int64 vendorId, DateTime deliveryDate, Int32 daysToCover, Int32 actionItemInstanceId) in c:\MxScrum\Products\macromatix\Mobile\Areas\Inventory\Mx.Inventory.Services\CommandServices\OrderCommandService.cs:line 613
+   at Mx.Web.UI.Areas.Inventory.Order.Api.OrderController.PostCreateAutoSelectTemplate(Int64 entityId, Int64 vendorId, String deliveryDate, Int32 daysToCover) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Inventory\Order\Api\OrderController.cs:line 82
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-13 10:22:59.4792 UTC ----------- MxConnect
+System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowIfCancellationRequested()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-13 12:26:46.1288 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-13 12:27:16.8725 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-01-13 12:29:11.6466 UTC ----------- MxConnect
+System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: A connection cannot be made. Ensure that the server is running. (Fault Detail is equal to An ExceptionDetail, likely created by IncludeExceptionDetailInFaults=true, whose value is:
+Microsoft.AnalysisServices.AdomdClient.AdomdConnectionException: A connection cannot be made. Ensure that the server is running. ----> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time or established connection failed because connected host has failed to respond 192.168.84.38:2383
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   --- End of inner ExceptionDetail stack trace ---
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.GetTcpClient(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.OpenTcpConnection(ConnectionInfo connectionInfo)
+   at Microsoft.AnalysisServices.AdomdClient.XmlaClient.Connect(ConnectionInfo connectionInfo, Boolean beginSession)
+   at Micr...).
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+

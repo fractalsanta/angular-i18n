@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<configuration>
+  <configSections>
+    <section name="nlog" type="NLog.Config.ConfigSectionHandler, NLog" />
+  </configSections>
+
+  <nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" autoReload="true" internalLogToConsole="true" throwExceptions="true">
+    <targets>
+
+      <target name="file" type="File"
+              layout="${longdate} UTC ----------- ${logger}${newline}${message}${newline}${stacktrace}${newline}"
+              fileName="${basedir}/Log/MxConnect--${level}--${logger}.txt"
+              archiveFileName="${basedir}/Log/archives/MxConnect--${level}--${logger}.{#}.txt"
+              archiveNumbering="Date"
+              archiveEvery="Day"
+              archiveDateFormat="yyyy-MM-dd"
+              archiveAboveSize="1048576"
+              maxArchiveFiles="14"
+              concurrentWrites="true"
+              keepFileOpen="false"
+              encoding="iso-8859-2" />
+
+      <target name="graylog" type="GrayLog" hostip="13.73.194.200" hostport="12203" facility="MxConnect"></target>
+    </targets>
+    <rules>
+      <logger name="*" minLevel="Debug" writeTo="graylog"/>
+      <logger name="*" minlevel="Debug" writeTo="file" />
+    </rules>
+  </nlog>
+
+</configuration>

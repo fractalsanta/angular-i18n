@@ -1,0 +1,149 @@
+﻿@using System.Web.Optimization
+@using Mx.Web.UI.Config.Environment
+@using Mx.Web.UI.Config.Saml
+@using Mx.Web.UI.Config.Sso
+@using Mx.Web.UI.Config.Translations
+@{   
+    Layout = null;
+    SamlHelper.CheckSamlSsoSetupAndLogin();       
+}
+
+<!DOCTYPE html>
+
+<html ng-app="App" ng-controller="Core.AppController" ng-class="{'application': Model.User.IsAuthenticated}" class="fill-height">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, maximum-scale=1.0, minimum-scale=1.0">
+    @*<meta name="apple-mobile-web-app-capable" content="yes">*@
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="mx_57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="mx_72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="mx_114x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="mx_144x144.png">
+    @Styles.Render("~/bundles/css")
+    <title ng-bind-template="{{GetTitle()}}">Loading...</title>
+</head>
+<body class="fill-height" mx-ios-detect>
+    @Scripts.Render("~/bundles/js-unsupported")
+    <script type="text/ng-template" id="/Blank.html">
+        <div class="well well-lg"></div>
+    </script>
+    <script type="text/ng-template" id="/Areas/Core/Forbidden.html">
+        <div class="well well-lg">
+            <h2>{{Loc.AccessDenied}}</h2>
+            <p>{{Loc.YouDontHaveAccess}}</p>
+            <p>{{Loc.PleaseContactYourAdmin}}</p>
+        </div>
+    </script>
+    <script type="text/ng-template" id="/Areas/Core/404.html">
+        <div class="well well-lg">
+            <h2>{{Loc.ResourceNotFound}}</h2>
+            <p>{{Loc.PageUnavailableWhileOffline}}</p>
+        </div>
+    </script>
+    <div ng-show="IsAjaxBusy()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(/Content/Images/ajax-spinner.gif) no-repeat 50% 50%; z-index: 1750; pointer-events: none;"></div>
+    <div ng-if="!AppReady" class="logon fill-height" ng-class="GetLoginScheme()">
+        <div ng-cloak ng-if="LoginTranslationsLoaded && !Model.User.IsAuthenticated">
+            <div class="login-header-container">
+                <div class="login-header hidden-xs">see it all. manage it all.</div>
+                <div class="login-alert-panel" ng-show="IsInvalidLogin">
+                    <div class="login-alert" ng-class="{'alert-fade-in':IsInvalidLogin}">
+                        <span>{{UnSuccessfulLogonMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="logon-panel" ng-class="{'login-form-shake': IsInvalidLogin}" ng-if="!ShowPINLogin()">
+                <div class="panel-heading-login-logo"></div>
+                <form role="form" novalidate name="loginCredentials" mx-auto-fill-fix ng-submit="Logon(loginCredentials)">
+                    <label for="loginUsername" class="unsupported-placeholder-label">{{Loc.Username}}</label>
+                    <input id="loginUsername"
+                           type="text"
+                           class="form-control no-shadow login-username logon-input"
+                           required
+                           ng-model="Credentials.Username"
+                           placeholder="{{Loc.Username}}"
+                           autocomplete="off">
+                    <label for="loginPassword" class="unsupported-placeholder-label">{{Loc.Password}}</label>
+                    <input id="loginPassword"
+                           type="password"
+                           class="form-control no-shadow logon-input"
+                           required
+                           ng-model="Credentials.Password"
+                           placeholder="{{Loc.Password}}"
+                           autocomplete="off">
+                    <button type="submit" class="btn btn-block no-shadow login-btn">{{Loc.Login}}</button>
+                    <br />
+                    <br />
+                </form>
+            </div>
+            <div class="logon-panel login-with-pin no-user-select" onselectstart="return false;" mx-login-pin-keypad pin="Model.PIN" logout="Logout()" logonwithpin="LogonWithPIN()" ng-class="{'login-form-shake': IsInvalidLogin}" ng-if="!AppReady && ShowPINLogin()">
+                <div class="panel-heading-login-logo"></div>
+                <form role="form" novalidate name="loginPINCredentials" mx-auto-fill-fix ng-submit="LogonWithPIN(loginCredentials)">
+                    <div class="welcome-message">
+                        <span>{{Loc.WelcomeBack}} {{PINUserName()}}!</span>&nbsp;&nbsp;
+                        <span class="logout-link pin-login" ng-click="ClearIsInvalidLogin()">{{Loc.NotYou}}?</span>
+                    </div>
+                    <div class="mini-circle-row">
+                        &nbsp;
+                        <span class="mini-circle" ng-class="{'filled': Model.PIN.length > 0 }"></span>
+                        <span class="mini-circle" ng-class="{'filled': Model.PIN.length > 1 }"></span>
+                        <span class="mini-circle" ng-class="{'filled': Model.PIN.length > 2 }"></span>
+                        <span class="mini-circle" ng-class="{'filled': Model.PIN.length > 3 }"></span>
+                    </div>
+                    <div class="pin-circle-row">
+                        <div class="pin-circle"><div class="pin-circle-text">1</div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">2</div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">3</div></div>
+                    </div>
+                    <div class="pin-circle-row">
+                        <div class="pin-circle"><div class="pin-circle-text">4</div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">5</div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">6</div></div>
+                    </div>
+                    <div class="pin-circle-row">
+                        <div class="pin-circle"><div class="pin-circle-text">7</div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">8</div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">9</div></div>
+                    </div>
+                    <div class="pin-circle-row">
+                        <div class="pin-circle logout-link"><div class="pin-circle-text fa fa-user" ng-click="ClearIsInvalidLogin()"></div></div>
+                        <div class="pin-circle"><div class="pin-circle-text">0</div></div>
+                        <div class="pin-circle pin-back"><div class="pin-circle-text fa fa-long-arrow-left"></div></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div ng-cloak ng-if="AppReady" class="fill-height">
+        <div class="fill-height mx-backgroundcolor-graylight">
+            <div class="mx-header-spacer-top" />
+            <mx-header></mx-header>
+            <mx-side-nav class="pull-left"></mx-side-nav>
+            <div class="app-level-container">
+                <div class="container-fluid fill-height">
+                    <div class="row fill-height" ng-class="{'touch-scrollable': !IsMobileReady()}">
+                        <div ui-view class="fill-height" ng-class="{'min-width-sm': !IsMobileReady()}"></div>
+                    </div>
+                </div>
+            </div>
+            <mx-virtual-keyboard></mx-virtual-keyboard>
+            <div class="mx-toast col-xs-12">
+                <mx-popup-message class="col-xs-12 col-sm-4 col-lg-3 pull-right"></mx-popup-message>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/js-libs")
+    @Scripts.Render("~/bundles/js-app")
+
+    <script type="text/javascript">
+        angular.module("Core").constant("Core.Constants", @Html.Raw(EnvironmentHelper.GetEnvironmentData()))
+                              .run(["$state", function($state) {}]);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+﻿<div class="panel panel-default fill-height">
+
+    <div class="panel-body fill-height touch-scrollable">
+        <tabset class="fill-height">
+            <tab heading="{{Translation.Application}}" select="GetApplicationMeasures()" ng-if="CanView.ApplicationReportMeasures">
+                <div class="fill-height">
+                    <div class="panel panel-default" ng-repeat="group in Groups">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="col-xs-6">
+                                            <strong>{{GetDisplayGroupName(group.Group)}} </strong>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="pull-right"> <strong> {{Translation.Enabled}} </strong></div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="measure in group.Measures">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-xs-6" ng-class="{'mx-disabled': !measure.Visible===true }">
+                                                <i class="hidden-sm hidden-xs fa fa-globe"></i>
+                                                {{GetDisplayMeasureKeyName(measure.MeasureKey)}}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default" ng-model="measure.Visible" btn-radio="true" ng-class="{'btn-primary': measure.Visible===true}" ng-click="UpdateApplicationReportMeasureConfig(measure,true)">ON</button>
+                                                    <button type="button" class="btn btn-default" ng-model="measure.Visible" btn-radio="false" ng-class="{'btn-primary': measure.Visible===false}" ng-click="UpdateApplicationReportMeasureConfig(measure,false)">OFF</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="{{Translation.Global}}" select="GetGlobalMeasures()" ng-if="CanView.GlobalReportMeasures">
+                <div class="fill-height">
+                    <div class="panel panel-default" ng-repeat="group in Groups">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="col-md-4 col-xs-3">
+                                            <strong>{{GetDisplayGroupName(group.Group)}} </strong>
+                                        </div>
+                                        <div class="col-md-4 col-xs-4">
+                                            <div class="text-center"> <strong> {{Translation.Tolerance}} </strong></div>
+                                        </div>
+                                        <div class="col-md-4 col-xs-5">
+                                            <div class="pull-right"> <strong> {{Translation.Enabled}} </strong></div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="measure in group.Measures">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-xs-2" ng-class="{'mx-disabled': !measure.Enabled===true }">
+                                                <i class="hidden-sm hidden-xs fa fa-globe"></i>
+                                                {{GetDisplayMeasureKeyName(measure.MeasureKey)}}
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-xs-7" ng-class="{'mx-disabled': !measure.Enabled===true }">
+                                                <div class="row">
+                                                    <div class="col-xs-5" ng-form="GlobalActiveMinCell">
+                                                        <div class="input-group input-group-sm ng-class: {'has-error': GlobalActiveMinCell.txtEditableToleranceMin.$invalid}">
+                                                            <input type="text" class="form-control"
+                                                                   ng-model="measure.EditableToleranceMin"
+                                                                   ng-disabled="!measure.Enabled"
+                                                                   ng-pattern="/^[+-]?\d+([.]\d+)?$/"
+                                                                   ng-blur="GlobalActiveMinCell.txtEditableToleranceMin.$valid && UpdateGlobalTolerance(measure)"
+                                                                   name="txtEditableToleranceMin">
+                                                            <span class="input-group-addon">{{measure.ToleranceSymbol}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-1">
+                                                        <i class="fa fa-arrows-h"></i>
+                                                    </div>
+                                                    <div class="col-xs-5" ng-form="GlobalActiveMaxCell">
+                                                        <div class="input-group input-group-sm ng-class: {'has-error': GlobalActiveMaxCell.txtEditableToleranceMax.$invalid}">
+                                                            <input type="text" class="form-control"
+                                                                   ng-model="measure.EditableToleranceMax"
+                                                                   ng-disabled="!measure.Enabled"
+                                                                   ng-pattern="/^[+-]?\d+([.]\d+)?$/"
+                                                                   ng-blur="GlobalActiveMaxCell.txtEditableToleranceMax.$valid && UpdateGlobalTolerance(measure)"
+                                                                   name="txtEditableToleranceMax">
+                                                            <span class="input-group-addon">{{measure.ToleranceSymbol}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-xs-3">
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default" ng-model="measure.Enabled" btn-radio="true" ng-class="{'btn-primary': measure.Enabled===true}" ng-click="UpdateGlobalReportMeasureConfig(measure,true)">ON</button>
+                                                    <button type="button" class="btn btn-default" ng-model="measure.Enabled" btn-radio="false" ng-class="{'btn-primary': measure.Enabled===false}" ng-click="UpdateGlobalReportMeasureConfig(measure,false)">OFF</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </tab>
+            <tab heading="{{Translation.Store}}" select="GetStoreMeasures()" ng-if="CanView.StoreReportMeasures">
+                <div class="fill-height">
+                    <div class="panel panel-default" ng-repeat="group in Groups">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="col-md-4 col-xs-3">
+                                            <strong>{{GetDisplayGroupName(group.Group)}} </strong>
+                                        </div>
+                                        <div class="col-md-4 col-xs-4">
+                                            <div class="text-center"> <strong> {{Translation.Tolerance}} </strong></div>
+                                        </div>
+                                        <div class="col-md-4 col-xs-5">
+                                            <div class="pull-right"> <strong> {{Translation.Enabled}} </strong></div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="measure in group.Measures">
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-xs-2" ng-class="{'mx-disabled': !measure.Enabled===true }">
+                                                <i class="hidden-sm hidden-xs fa fa-globe"></i>
+                                                {{GetDisplayMeasureKeyName(measure.MeasureKey)}}
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-xs-7" ng-class="{'mx-disabled': !measure.Enabled===true }">
+                                                <div class="row">
+                                                    <div class="col-xs-5" ng-form="StoreActiveMinCell">
+                                                        <div class="input-group input-group-sm ng-class: {'has-error': StoreActiveMinCell.txtStoreEditableToleranceMin.$invalid}">
+                                                            <input type="text" class="form-control"
+                                                                   ng-model="measure.EditableToleranceMin"
+                                                                   ng-disabled="!measure.Enabled"
+                                                                   ng-pattern="/^[+-]?\d+([.]\d+)?$/"
+                                                                   ng-blur="StoreActiveMinCell.txtStoreEditableToleranceMin.$valid && UpdateStoreTolerance(measure)"
+                                                                   name="txtStoreEditableToleranceMin">
+                                                            <span class="input-group-addon">{{measure.ToleranceSymbol}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-1">
+                                                        <i class="fa fa-arrows-h"></i>
+                                                    </div>
+                                                    <div class="col-xs-5" ng-form="StoreActiveMaxCell">
+                                                        <div class="input-group input-group-sm ng-class: {'has-error': StoreActiveMaxCell.txtStoreEditableToleranceMax.$invalid}">
+                                                            <input type="text" class="form-control"
+                                                                   ng-model="measure.EditableToleranceMax"
+                                                                   ng-disabled="!measure.Enabled"
+                                                                   ng-pattern="/^[+-]?\d+([.]\d+)?$/"
+                                                                   ng-blur="StoreActiveMinCell.txtStoreEditableToleranceMax.$valid && UpdateStoreTolerance(measure)"
+                                                                   name="txtStoreEditableToleranceMax">
+                                                            <span class="input-group-addon">{{measure.ToleranceSymbol}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-xs-3">
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default" ng-model="measure.Enabled" btn-radio="true" ng-class="{'btn-primary': measure.Enabled===true}" ng-click="UpdateStoreReportMeasureConfig(measure,true)">ON</button>
+                                                    <button type="button" class="btn btn-default" ng-model="measure.Enabled" btn-radio="false" ng-class="{'btn-primary': measure.Enabled===false}" ng-click="UpdateStoreReportMeasureConfig(measure,false)">OFF</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" ng-show="EnableRestoreDefault(measure)">
+                                            <div class="col-xs-6">
+                                                Default {{GlobalMeasureStatus}}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-default" ng-click="RestoreDefault(measure)">Restore Default</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </tab>
+        </tabset>
+    </div>
+
+
+
+</div>
+
+
+
+

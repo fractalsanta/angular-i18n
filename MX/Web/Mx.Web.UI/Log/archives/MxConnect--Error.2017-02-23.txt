@@ -1,0 +1,888 @@
+2017-02-22 13:46:38.5431 UTC ----------- MxConnect
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+ ]
+  Name:entityId - Value:53  Name:dateFrom - Value:22/02/2017 12:00:00 AM  Name:dateTo - Value:22/02/2017 12:00:00 AM
+[SQL: 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Impl.SessionImpl.ListCustomQuery(ICustomQuery customQuery, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List(NativeSQLQuerySpecification spec, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List[T](NativeSQLQuerySpecification spec, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.List[T]()
+   at Mx.OperationalReporting.Services.Repositories.SalesItemInfoRepository.GetProducts(ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services.Repositories\SalesItemInfoRepository.cs:line 157
+   at Mx.OperationalReporting.Services.QueryServices.ReportService.GetProduct(Int64 entityId, ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services\QueryServices\ReportService.cs:line 60
+   at Mx.Web.UI.Areas.Operations.Reporting.Api.ProductController.Get(Int64 entityId, String dateFrom, String dateTo, ReportType reportType, Nullable`1 viewId, String searchText) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Operations\Reporting\Api\ProductController.cs:line 74
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-02-22 13:46:38.6913 UTC ----------- MxConnect
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+ ]
+  Name:entityId - Value:53  Name:dateFrom - Value:22/02/2017 12:00:00 AM  Name:dateTo - Value:22/02/2017 12:00:00 AM
+[SQL: 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Impl.SessionImpl.ListCustomQuery(ICustomQuery customQuery, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List(NativeSQLQuerySpecification spec, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List[T](NativeSQLQuerySpecification spec, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.List[T]()
+   at Mx.OperationalReporting.Services.Repositories.SalesItemInfoRepository.GetProducts(ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services.Repositories\SalesItemInfoRepository.cs:line 157
+   at Mx.OperationalReporting.Services.QueryServices.ReportService.GetProduct(Int64 entityId, ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services\QueryServices\ReportService.cs:line 60
+   at Mx.Web.UI.Areas.Operations.Reporting.Api.ProductController.Get(Int64 entityId, String dateFrom, String dateTo, ReportType reportType, Nullable`1 viewId, String searchText) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Operations\Reporting\Api\ProductController.cs:line 74
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-02-22 13:46:47.3047 UTC ----------- MxConnect
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+ ]
+  Name:entityId - Value:53  Name:dateFrom - Value:22/02/2017 12:00:00 AM  Name:dateTo - Value:22/02/2017 12:00:00 AM
+[SQL: 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Impl.SessionImpl.ListCustomQuery(ICustomQuery customQuery, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List(NativeSQLQuerySpecification spec, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List[T](NativeSQLQuerySpecification spec, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.List[T]()
+   at Mx.OperationalReporting.Services.Repositories.SalesItemInfoRepository.GetProducts(ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services.Repositories\SalesItemInfoRepository.cs:line 157
+   at Mx.OperationalReporting.Services.QueryServices.ReportService.GetProduct(Int64 entityId, ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services\QueryServices\ReportService.cs:line 60
+   at Mx.Web.UI.Areas.Operations.Reporting.Api.ProductController.Get(Int64 entityId, String dateFrom, String dateTo, ReportType reportType, Nullable`1 viewId, String searchText) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Operations\Reporting\Api\ProductController.cs:line 74
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-02-22 13:46:47.3598 UTC ----------- MxConnect
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+ ]
+  Name:entityId - Value:53  Name:dateFrom - Value:22/02/2017 12:00:00 AM  Name:dateTo - Value:22/02/2017 12:00:00 AM
+[SQL: 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Impl.SessionImpl.ListCustomQuery(ICustomQuery customQuery, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List(NativeSQLQuerySpecification spec, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List[T](NativeSQLQuerySpecification spec, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.List[T]()
+   at Mx.OperationalReporting.Services.Repositories.SalesItemInfoRepository.GetProducts(ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services.Repositories\SalesItemInfoRepository.cs:line 157
+   at Mx.OperationalReporting.Services.QueryServices.ReportService.GetProduct(Int64 entityId, ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services\QueryServices\ReportService.cs:line 60
+   at Mx.Web.UI.Areas.Operations.Reporting.Api.ProductController.Get(Int64 entityId, String dateFrom, String dateTo, ReportType reportType, Nullable`1 viewId, String searchText) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Operations\Reporting\Api\ProductController.cs:line 74
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-02-22 13:52:16.5384 UTC ----------- MxConnect
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+ ]
+  Name:entityId - Value:53  Name:dateFrom - Value:22/02/2017 12:00:00 AM  Name:dateTo - Value:22/02/2017 12:00:00 AM
+[SQL: 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Impl.SessionImpl.ListCustomQuery(ICustomQuery customQuery, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List(NativeSQLQuerySpecification spec, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List[T](NativeSQLQuerySpecification spec, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.List[T]()
+   at Mx.OperationalReporting.Services.Repositories.SalesItemInfoRepository.GetProducts(ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services.Repositories\SalesItemInfoRepository.cs:line 157
+   at Mx.OperationalReporting.Services.QueryServices.ReportService.GetProduct(Int64 entityId, ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services\QueryServices\ReportService.cs:line 60
+   at Mx.Web.UI.Areas.Operations.Reporting.Api.ProductController.Get(Int64 entityId, String dateFrom, String dateTo, ReportType reportType, Nullable`1 viewId, String searchText) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Operations\Reporting\Api\ProductController.cs:line 74
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+
+2017-02-22 13:52:16.8356 UTC ----------- MxConnect
+NHibernate.Exceptions.GenericADOException: could not execute query
+[ 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+ ]
+  Name:entityId - Value:53  Name:dateFrom - Value:22/02/2017 12:00:00 AM  Name:dateTo - Value:22/02/2017 12:00:00 AM
+[SQL: 
+SET NOCOUNT ON;
+
+DECLARE
+    @EntityID BIGINT = @p0
+  , @StartDate DATETIME = @p1
+  , @EndDate DATETIME = @p2
+  , @TradingDateOpen DATETIME
+  , @TradingDateClose DATETIME
+;
+SELECT
+    @TradingDateOpen = [DayOpen]
+  , @TradingDateClose = [DayClose]
+FROM [dbo].[fn_GetTradingForCalendarDayRange](@EntityID, @StartDate, @EndDate)
+;
+SELECT
+    [ItemId] = SI.[SalesItemID]
+  , [ItemDescription] = SI.[Description]
+  , [ItemCode] = SI.[ItemCode]
+  , [GroupId] = SI.[SalesCategoryID]
+  , [GroupDescription] = ISC.[Description]
+FROM [dbo].[tbSalesItem] SI (NOLOCK)
+LEFT JOIN [dbo].[tbItemSalesCategory] ISC (NOLOCK) ON( ISC.[ItemSalesCategoryID] = SI.[SalesCategoryID] )
+WHERE EXISTS(
+    SELECT *
+    FROM [dbo].[tbTransactionSalesItem] TSI (NOLOCK)
+    WHERE
+        TSI.[EntityID] = @EntityID
+    AND TSI.[TransactionTime] >= @TradingDateOpen
+    AND TSI.[TransactionTime] < @TradingDateClose
+    AND TSI.[SalesItemID] = SI.[SalesItemID]
+)
+ORDER BY
+    [GroupDescription]
+  , [ItemCode]
+] ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader()
+   at NHibernate.AdoNet.AbstractBatcher.ExecuteReader(IDbCommand cmd)
+   at NHibernate.Loader.Loader.GetResultSet(IDbCommand st, Boolean autoDiscoverTypes, Boolean callable, RowSelection selection, ISessionImplementor session)
+   at NHibernate.Loader.Loader.DoQuery(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoQueryAndInitializeNonLazyCollections(ISessionImplementor session, QueryParameters queryParameters, Boolean returnProxies)
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   --- End of inner exception stack trace ---
+   at NHibernate.Loader.Loader.DoList(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Loader.Loader.ListIgnoreQueryCache(ISessionImplementor session, QueryParameters queryParameters)
+   at NHibernate.Impl.SessionImpl.ListCustomQuery(ICustomQuery customQuery, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List(NativeSQLQuerySpecification spec, QueryParameters queryParameters, IList results)
+   at NHibernate.Impl.SessionImpl.List[T](NativeSQLQuerySpecification spec, QueryParameters queryParameters)
+   at NHibernate.Impl.SqlQueryImpl.List[T]()
+   at Mx.OperationalReporting.Services.Repositories.SalesItemInfoRepository.GetProducts(ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services.Repositories\SalesItemInfoRepository.cs:line 157
+   at Mx.OperationalReporting.Services.QueryServices.ReportService.GetProduct(Int64 entityId, ReportRequest request) in c:\MxScrum\Products\macromatix\Mobile\Areas\OperationalReporting\Mx.OperationalReporting.Services\QueryServices\ReportService.cs:line 60
+   at Mx.Web.UI.Areas.Operations.Reporting.Api.ProductController.Get(Int64 entityId, String dateFrom, String dateTo, ReportType reportType, Nullable`1 viewId, String searchText) in c:\MxScrum\Products\macromatix\Mobile\Web\Mx.Web.UI\Areas\Operations\Reporting\Api\ProductController.cs:line 74
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+MxLogger.LogError => MxLogger.LogMessage => MxLogger.Log
+

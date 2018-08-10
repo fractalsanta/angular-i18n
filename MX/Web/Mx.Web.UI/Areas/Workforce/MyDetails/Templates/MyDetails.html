@@ -1,0 +1,166 @@
+﻿<div class="fill-height" ng-form="MyDetails" mx-mobile-ready>
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                    <button type="button" class="btn btn-default" ng-if="!InViewMode" ng-click="Cancel()">
+                        {{Translations.Cancel}}
+                    </button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-success" ng-if="InViewMode && CanEdit" ng-click="Edit()"> {{Translations.Edit}} </button>
+                    <button type="button" class="btn btn-success" ng-if="!InViewMode" ng-disabled="!IsDirty || MyDetails.$invalid" ng-click="Save()"> {{Translations.Save}}  </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body touch-scrollable form-horizontal">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h3>{{Translations.ContactDetails}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4"> {{Translations.Name}}:  </strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{User.FirstName }} {{ User.LastName }}</div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Phone}}:</strong>
+                <div class="col-md-3 col-sm-3 col-xs-8">
+                    <span ng-if="InViewMode">{{ User.Phone }}</span>
+                    <input type="tel"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.Phone"
+                           isphonenumber="true"
+                           number-only-input
+                           select-on-focus-input
+                           maxlength="25" />
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Mobile}}:</strong>
+                <div class="col-md-3 col-sm-3 col-xs-8">
+                    <span ng-if="InViewMode">{{ User.MobilePhone }}</span>
+                    <input type="text"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.MobilePhone"
+                           isphonenumber="true"
+                           number-only-input
+                           select-on-focus-input
+                           maxlength="25" />
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Email}}:</strong>
+                <div class="col-md-3 col-sm-3 col-xs-8" ng-class="{'has-error': MyDetails.$invalid}">
+                    <span ng-if="InViewMode">{{ User.Email }}</span>
+                    <input type="email"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.Email"
+                           select-on-focus-input
+                           maxlength="150" />
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="panel-body-divider"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{{Translations.AddressDetails}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4"> {{Translations.Home}}:  </strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{User.Address1 }} {{User.City }} {{User.State }} {{User.PostCode }}</div>
+            </div>
+            <div class="row" ng-if="User.Address2">
+                <div class="col-md-4 col-sm-4 col-xs-4"></div>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{User.Address2 }}</div>
+            </div>
+            <br />
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Mailing}}:</strong>
+                <em class="col-md-8 col-sm-8 col-xs-8 " ng-if="IsSameAddress()"> {{Translations.SameAsHome}}</em>
+                <div class="col-md-8 col-sm-8 col-xs-8" ng-if="!IsSameAddress()">
+                    {{ User.MailAddress1 }} {{User.MailCity }} {{User.MailState }} {{User.MailPostCode }}
+                </div>
+            </div>
+            <div class="row" ng-if="!IsSameAddress() && User.MailAddress2">
+                <div class="col-md-4 col-sm-4 col-xs-4"></div>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{User.MailAddress2 }}</div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="panel-body-divider"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{{Translations.EmergencyContact}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4"> {{Translations.Name}}:  </strong>
+                <div class="col-md-3 col-sm-3 col-xs-8">
+                    <span ng-if="InViewMode">{{ User.EmergencyContactName }}</span>
+                    <input type="text"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.EmergencyContactName"
+                           select-on-focus-input
+                           maxlength="50" />
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Relationship}}:</strong>
+                <div class="col-md-3 col-sm-3 col-xs-8">
+                    <span ng-if="InViewMode">{{ User.EmergencyContactRelationship }}</span>
+                    <input type="text"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.EmergencyContactRelationship"
+                           select-on-focus-input
+                           maxlength="50" />
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Phone}}:</strong>
+                <div class="col-md-3 col-sm-3 col-xs-8">
+                    <span ng-if="InViewMode">{{ User.EmergencyContactPhone }}</span>
+                    <input type="text"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.EmergencyContactPhone"
+                           isphonenumber="true"
+                           number-only-input
+                           select-on-focus-input
+                           maxlength="25" />
+                </div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{Translations.Mobile}}:</strong>
+                <div class="col-md-3 col-sm-3 col-xs-8">
+                    <span ng-if="InViewMode">{{ User.EmergencyContactMobile }}</span>
+                    <input type="text"
+                           ng-if="!InViewMode"
+                           class="form-control"
+                           ng-change="MarkPageAsDirty()"
+                           ng-model="User.EmergencyContactMobile"
+                           isphonenumber="true"
+                           number-only-input
+                           select-on-focus-input
+                           maxlength="25" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

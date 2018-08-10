@@ -1,0 +1,46 @@
+﻿<div class="modal-header">{{GetTitle()}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <form ng-submit="Search(SearchText)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" placeholder="{{Translation.SearchForItems}}" ng-model="SearchText">
+                </div>
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-default pull-right" ng-click="Search(SearchText)" ng-disabled="!SearchText"><i class="fa fa-search"></i>&nbsp;&nbsp;{{Translation.Search}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div ng-show="Items && !Items.length">
+        <div class="alert alert-warning">{{Translation.NoItemsHaveBeenFound}}</div>
+    </div>
+
+    <div class="panel panel-default modal-body-fixed touch-scrollable" ng-show="Items && Items.length">
+        <table class="table table-striped">
+            <tbody>
+                <tr ng-repeat="item in Items"
+                    ng-class="{'active': CheckItemIsSelected(item) }"
+                    ng-click="item.EnabledForSelection && AddItemRowClicked(item)"
+                    mx-repeat-scroll-top>
+                    <td class="col-xs-1">
+                        <div ng-show="item.EnabledForSelection">
+                            <i ng-hide="CheckItemIsSelected(item)" class="fa fa-square-o"></i>
+                            <i ng-show="CheckItemIsSelected(item)" class="fa fa-check-square-o"></i>
+                        </div>
+                    </td>
+                    <td ng-class="{'mx-disabled': !item.EnabledForSelection }">
+                        <div ng-disabled="!item.EnabledForSelection">
+                            {{item.Name}} ({{item.Code}})
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translation.Cancel}}</button>
+    <button class="btn btn-success" ng-show="AddSelectedItems.length > 0" ng-click="AddItemsToLocation()">{{Translation.TravelPathAddItems}} {{AddSelectedItems.length}}</button>
+</div>

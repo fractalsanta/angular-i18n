@@ -1,0 +1,32 @@
+﻿<div class="fill-height container-1-toolbar">
+    <form name="SearchForm" autocomplete="off" ng-submit="SearchItems($event)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="search" class="form-control mx-fx-salesitem-search" name="SearchParamTemp" select-on-focus-input
+                           placehold="{{ ::Model.L10N.SearchForStores }}"
+                           ng-click="OnInputClick($event)" ng-model="SearchParamTemp" ng-minlength="1" />
+                </div>
+                <div class="col-xs-3">
+                    <button type="submit" class="btn btn-default pull-right"
+                            ng-disabled="SearchForm.$invalid || !SearchParamTemp.length"
+                            ng-click="SearchItems($event)">
+                        <i class="fa fa-search ico-16"></i>&nbsp;&nbsp;{{::Model.L10N.Search}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="mx-fg-storelist touch-scrollable" disable-text-selection>
+        <div class="text-center text-info alert alert-warning"
+             ng-show="!FilteredStores.length && !IsAjaxBusy()">{{ ::Model.L10N.NoStoresResultMessage}}</div>
+        <ul ng-show="FilteredStores.length"
+            class="list-unstyled list-striped"
+            ng-click="IsAjaxBusy() || OnStoreClick($event)">
+            <li ng-class="{'activeItem': Model.SelectedStore === s}"
+                ng-repeat="s in FilteredStores | limitTo:100">
+                {{ s.Name }}
+            </li>
+        </ul>
+    </div>
+</div>

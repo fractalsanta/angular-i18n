@@ -1,0 +1,25 @@
+﻿<form class="form-horizontal" role="form" name="formDenyDelivery">
+    <div class="modal-header">{{::L10N.DeliveryDeny}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-show="!Vm.AuthorizationIsValid">{{ Vm.ValidationErrorMessage }}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>{{ ::L10N.DenyExtraDeliveryFor }} {{ Vm.EmployeeName }}</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{ 'has-error': formDenyDelivery.comment.$invalid }">
+                    <label class="col-xs-3 control-label">{{L10N.Comment}}</label>
+                    <div class="col-xs-8">
+                        <textarea name="comment" rows="5" cols="40" ng-model="Vm.DenyReason" class="form-control" required maxlength="100"></textarea>
+                    </div>
+                </div>
+                <mx-authorization user="Vm.Authorize" is-optional="false" />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="reset" class="pull-left btn btn-default" ng-click="Cancel()">{{::L10N.Cancel}}</button>
+        <button type="submit" class="btn btn-danger" ng-disabled="formDenyDelivery.$invalid" ng-click="Submit()">{{::L10N.Deny}}</button>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <h5>{{User.BusinessUser.FirstName}} {{User.BusinessUser.LastName}}</h5>
+    </div>
+    <div class="panel-body">
+        <div class="touch-scrollable fill-height">
+            <div class="list-group">
+                <div class="panel panel-default list-group-item">
+                    <div class="panel-heading">
+                        {{Translations.ManagePIN}}
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-xs-8">
+                            <button type="button" class="btn btn-success"
+                                    ng-show="PINSetting.Enabled && !PINSetting.Enabling"
+                                    ng-click="SetPIN()">
+                                <i class="fa"></i>&nbsp;&nbsp;{{Translations.UpdatePIN}}
+                            </button>
+                        </div>
+                        <div class="col-xs-4" style="min-width: 100px;">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default" btn-radio="true"
+                                        ng-model="PINSetting.Enabled"
+                                        ng-class="{'btn-primary': PINSetting.Enabled === true}"
+                                        ng-click="!PINSetting.Enabled ? TurnON() : Nothing()">
+                                    {{Translations.On}}
+                                </button>
+                                <button type="button" class="btn btn-default" btn-radio="false"
+                                        ng-model="PINSetting.Enabled"
+                                        ng-class="{'btn-primary': PINSetting.Enabled === false}"
+                                        ng-click="PINSetting.Enabled ? TurnOFF() : Nothing()">
+                                    {{Translations.Off}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

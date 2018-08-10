@@ -1,0 +1,69 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.ContactFormModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@{
+    ViewBag.Title = "Update Request Form";
+}
+<h1>
+    @Model.PageHeading
+</h1>
+@if (ViewBag.NoContactEmailExists)
+{
+    <h3>
+        No email address has been configured for this contact form.
+    </h3>
+}
+else
+{
+    <form action="@Url.Action("UpdateRequestForm")" method="post">
+    <table>
+        <tr>
+            <td>
+                Lot:
+            </td>
+            <td>
+                @if (Model.UserSession.LotNames.Count > 1)
+                {
+                    @Html.Raw(Html.StrataDropdownNoRefresh(ViewData.Model.UserSession.LotOwners, 0, ((d, i) => i.ToString()), "LotIndex"))
+                }
+                else
+                {
+                    <h2>@ViewData.Model.UserSession.LotOwners[0].Name</h2>
+                }
+            </td>
+        </tr>
+        <tr valign="top">
+            <td style="width: 160px;">
+                Message Subject
+            </td>
+            <td>
+                @Model.Subject @Html.HiddenFor(m => m.Subject)
+                <br />
+                <br />
+            </td>
+        </tr>
+        <tr valign="top">
+            <td>
+                Message Body
+            </td>
+            <td>@Html.TextAreaFor(m => m.Message, new { rows = "8", style = "margin-bottom: 8px; width: 274px;" })
+            </td>
+        </tr>
+        <tr valign="top">
+            <td>
+                Reply to Email Address
+            </td>
+            <td>@Html.TextBoxFor(m => m.EmailAddress, new { style = "width: 270px;" })
+                @Html.ValidationMessageFor(m => m.EmailAddress)
+            </td>
+        </tr>
+        <tr valign="top">
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <input type="submit" value="Send" class="coolButton" />
+            </td>
+        </tr>
+    </table>
+    </form>
+}

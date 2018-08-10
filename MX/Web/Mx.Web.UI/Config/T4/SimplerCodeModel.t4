@@ -1,0 +1,360 @@
+﻿<#+ 
+// an API-related slice of the "static reflection" converted from EnvDTE-specific types to more consumable format
+public class TypeDefinition
+{
+    public bool IsEnum { get; set; }
+    public bool IsArray { get; set; }
+    public bool IsProjectDefined { get; set; }
+    public bool IsPrimitive { get; set; }
+    public string FullName { get; set; }
+    public string TSElementName { get; set; }
+    public TypeDefinition(){}
+    public TypeDefinition(CodeTypeRef codeType)
+    {
+        FullName = codeType.AsFullName;
+    }
+}
+
+public class EnumMemberDefinition
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+}
+
+public class EnumDefinition
+{
+    public TypeDefinition Type { get; set; }
+    public IEnumerable<EnumMemberDefinition> Members { get;set; }
+}
+
+public class MemberDefinition
+{
+    public string Name { get; set; }
+    public TypeDefinition Type { get; set; }
+}
+
+public class AttributeDefinition
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+}
+
+public class MethodDefinition: MemberDefinition
+{
+    public string OriginalName { get; set; }
+    public string Method { get; set; }
+    public IEnumerable<ParameterDefinition> Parameters { get; set; }
+    public IEnumerable<AttributeDefinition> Attributes { get; set; }
+    public bool IsValid { get; set; }
+    public string ValidationError { get; set; }
+}
+
+public class ParameterDefinition: MemberDefinition
+{
+    public bool FromBody { get; set; }
+}
+
+public class ControllerDefinition
+{
+    public TypeDefinition Type { get; set; }
+    public string FilePath { get; set; }
+    public IEnumerable<MethodDefinition> Methods { get; set; }
+}
+
+public class ModelDefinition
+{
+    public TypeDefinition Type { get; set; }
+    public IEnumerable<MemberDefinition> Properties{ get; set; }
+}
+
+public class ApiCodeModel
+{
+    public IEnumerable<ControllerDefinition> Controllers { get; set; }
+    public IEnumerable<ModelDefinition> Models { get; set; }
+    public IEnumerable<EnumDefinition> Enums { get; set; }
+}
+
+TypeDefinition GetTypeDefinition(CodeProperty p) { return GetTypeDefinition(p.Type); }
+TypeDefinition GetTypeDefinition(CodeParameter p) { return GetTypeDefinition(p.Type); }
+TypeDefinition GetTypeDefinition(CodeFunction p) { return GetTypeDefinition(p.Type); }
+TypeDefinition GetTypeDefinition(CodeVariable p) { return GetTypeDefinition(p.Type); }
+TypeDefinition GetTypeDefinition(CodeTypeRef codeType)
+{
+    var type = codeType.AsString;
+    var primitiveType = GetPrimitiveType(type);
+    if (primitiveType != null) return primitiveType;
+
+    if (AllEnums.Any(x => x.FullName == type))
+        return new TypeDefinition(codeType) { IsEnum = true, IsProjectDefined = true, TSElementName = type };
+
+    var a = GetListType(type);
+    if (a != null)
+    {
+        primitiveType = GetPrimitiveType(a);
+        if (primitiveType != null)
+        {
+            primitiveType.IsArray = true;
+            return primitiveType;
+        }
+        var enumType = AllEnums.FirstOrDefault(e => e.FullName == a);
+        if (enumType != null)
+        {
+            return new TypeDefinition { FullName = a, IsEnum = true, IsProjectDefined = true, TSElementName = a, IsArray = true };
+        }
+        var classType = AllClasses.FirstOrDefault(c => c.FullName == a);
+        if (classType != null)
+            return new TypeDefinition { FullName = a, IsArray = true, IsProjectDefined = true, TSElementName = a };
+        else 
+            return new TypeDefinition(codeType) { TSElementName = "any", IsArray = true };
+    }
+    if (AllClasses.Any(c => c.FullName == type))
+        return new TypeDefinition(codeType) { IsProjectDefined = true, TSElementName = type };
+
+    return new TypeDefinition(codeType) { TSElementName = "any" };
+}
+
+TypeDefinition GetTypeDefinition(CodeClass theClass)
+{
+    var type = (CodeType)theClass;
+    return new TypeDefinition { FullName = type.FullName, IsProjectDefined = true};
+}
+
+TypeDefinition GetPrimitiveType(string type)
+{
+    switch(SimplifyType(type))
+    {
+        case "void": 
+            return new TypeDefinition{ FullName = type, IsPrimitive = true, TSElementName = "void" };
+
+        case "long":
+        case "int":
+        case "short":
+        case "decimal":
+        case "float":
+        case "double":
+        case "byte":
+            return new TypeDefinition{ FullName = type, IsPrimitive = true, TSElementName = "number" };
+
+        case "bool": 
+            return new TypeDefinition{ FullName = type, IsPrimitive = true, TSElementName = "boolean" };
+
+        case "string": 
+            return new TypeDefinition{ FullName = type, IsPrimitive = true, TSElementName = "string" };
+
+        case "System.DateTime":
+            return new TypeDefinition{ FullName = type, IsPrimitive = true, TSElementName = "string" };
+    }
+    return null;
+}
+
+string GetMethod(string name)
+{
+    var method = "GET";
+    if (name.ToLower().StartsWith("get"))
+        method = "GET";
+    else if (name.ToLower().StartsWith("post"))
+        method = "POST";
+    else if (name.ToLower().StartsWith("delete"))
+        method = "DELETE";
+    else if (name.ToLower().StartsWith("put"))
+        method = "PUT";
+    else if (name.ToLower().StartsWith("patch"))
+        method = "PATCH";
+    return method;
+}
+
+string SimplifyType(string type)
+{
+    if (type.EndsWith("?"))
+        type = type.TrimEnd('?');
+    return type;
+}
+
+string GetListType(string type)
+{
+    if (type.EndsWith("[]"))
+        return type.Substring(0, type.Length - 2);
+
+    if (type == "System.Collections.IEnumerable")
+        return "any";
+
+    var c = StripGenericPart(type, "System.Collections.Generic.IEnumerable");
+    if (c != null) return c;
+    c = StripGenericPart(type, "System.Collections.Generic.List");
+    if (c != null) return c;
+    c = StripGenericPart(type, "System.Collections.Generic.IList");
+    if (c != null) return c;
+    return null;
+}
+
+string StripGenericPart(string name, string containerType)
+{
+    if (name.StartsWith(containerType + "<"))
+    {
+        var l = containerType.Length;
+        return name.Substring(l + 1, name.Length - l - 2);
+    }
+    return null;
+}
+
+ApiCodeModel ScanApi()
+{
+    var controllers = new List<ControllerDefinition>();
+    var models = new Dictionary<string, ModelDefinition>();
+    var enums = new Dictionary<string, EnumDefinition>();
+
+    Action<TypeDefinition> markType = null; 
+    markType = t => {
+        if (t.IsEnum && !enums.ContainsKey(t.FullName))
+        {
+            var members = new List<EnumMemberDefinition>();
+            var theEnum = new EnumDefinition
+            {
+                Type = t,
+                Members = members
+            };
+            var theCodeEnum = AllEnums.FirstOrDefault(e => e.FullName == t.FullName);
+            if (theCodeEnum == null)
+            {
+                WriteLine("// enum {0} not found!", t.FullName);
+                return;
+            }
+            foreach(CodeVariable variable in theCodeEnum.Members)
+            {
+                string value = null;
+                if (variable.InitExpression != null)
+                {
+                    value = variable.InitExpression.ToString();
+                }
+                members.Add(new EnumMemberDefinition { Name = variable.Prototype, Value = value });
+            }	
+            enums[t.FullName] = theEnum;
+        }
+        if (!t.IsEnum && t.IsProjectDefined && !models.ContainsKey(t.FullName))
+        {
+            // recursively process model types to extract all referenced models and their dependencies
+            var modelDef = new ModelDefinition
+            {
+                Type = t,
+                Properties = new List<MemberDefinition>()
+            };
+            models[t.FullName] = modelDef;
+            var theClass = AllClasses.FirstOrDefault(c => c.FullName == t.FullName);
+            var members = EnumerateTSMembers(theClass).OfType<CodeProperty>();
+            foreach(CodeProperty property in members)
+            {
+                var propType = GetTypeDefinition(property);
+                if (!models.ContainsKey(propType.FullName))
+                {
+                    // Process type if it hasn't been added yet
+                    markType(propType);
+                }
+            }
+        }
+    };
+
+    
+    var tsModels = AllClasses.Where(x => HasAttribute((CodeElement)x, xa => xa.Name == "MapToTypeScript"));
+    tsModels.ToList().ForEach(t => markType(GetTypeDefinition(t)));
+
+
+    var apiClasses = AllClasses.Where(x => x.Kind == vsCMElement.vsCMElementClass && IsWebAPI(x) && !x.IsAbstract);
+    foreach (var _class in apiClasses) 
+    {
+        var elem = (CodeElement)_class;
+        var typeDef = GetTypeDefinition(_class);
+        var areaName = GetAreaNamespace(typeDef.FullName);
+        if (areaName == null) continue;
+        var path = elem.ProjectItem.FileNames[0];
+        var methods = new List<MethodDefinition>();
+        var controller = new ControllerDefinition{
+            Type = typeDef,
+            FilePath = path,
+            Methods = methods
+        };
+
+        foreach (var member in EnumerateTSMembers(_class)
+            .OfType<CodeFunction>()
+            .Where(x => x.FunctionKind == vsCMFunction.vsCMFunctionFunction)) 
+        {
+            var fct = (CodeFunction)member;
+            var resultTypeDefinition = GetTypeDefinition(fct);
+            var parameters = new List<ParameterDefinition>();
+            var attributes = new List<AttributeDefinition>();
+            var method = new MethodDefinition
+            {
+                OriginalName = fct.Name,
+                Name = RenameNoConflict(methods, fct.Name),
+                Method = GetMethod(fct.Name),
+                Type = resultTypeDefinition,
+                Parameters = parameters,
+                Attributes = attributes
+            };
+
+            for (int i = 0; i < fct.Parameters.Count; i++) {
+                var p = (CodeParameter)fct.Parameters.Item(i + 1);
+                var paramTypeDefinition = GetTypeDefinition(p);
+                var paramDef = new ParameterDefinition
+                {
+                    Name = p.Name,
+                    Type = paramTypeDefinition,
+                    FromBody = HasAttribute((CodeElement)p, xa => xa.Name == "FromBody")
+                };
+                parameters.Add(paramDef);
+            }
+
+            for (int i = 0; i < fct.Attributes.Count; i++)
+            {
+                var attr = (CodeAttribute)fct.Attributes.Item(i + 1);
+                attributes.Add(new AttributeDefinition{Name = attr.Name, Value = attr.Value.ToString()});
+            }
+            ValidateMethod(method);
+            methods.Add(method);
+
+            // pull the data types along with the generated methods
+            if (method.IsValid)
+            {
+                markType(resultTypeDefinition);
+                foreach (var param in method.Parameters)
+                {
+                    markType(param.Type);
+                }
+            }
+        }
+        controllers.Add(controller);
+    }
+
+    return new ApiCodeModel
+    {
+        Controllers = controllers,
+        Models = models.Values,
+        Enums = enums.Values
+    };
+}
+
+string RenameNoConflict(IEnumerable<MethodDefinition> methods, string name)
+{
+    int suffix = 1;
+    var test = name;
+    var lookup = new HashSet<string>(methods.Select(m => m.Name));
+    while (lookup.Contains(test))
+        test = name + (suffix++);
+    return test;
+}
+
+void ValidateMethod(MethodDefinition method)
+{
+    method.IsValid = false;
+    if (method.Method == "GET" && method.Parameters.Any(p => p.FromBody))
+    {
+        method.ValidationError = "[FromBody] parameters are not allowed in GET methods";
+        return;
+    }
+    if (method.Parameters.Count(p => p.FromBody) > 1)
+    {
+        method.ValidationError = "Only one [FromBody] parameter is allowed";
+        return;
+    }
+    method.IsValid = true;
+}
+#>

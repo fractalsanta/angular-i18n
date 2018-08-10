@@ -1,0 +1,76 @@
+﻿@import "mx-bootstrap-variables.less";
+@import "mx-color.less";
+@import "../Bootstrap/mixins.less";
+
+/*
+ Delay, in milliseconds, to animate the sliding keyboard.
+ Must match the AnimationDelay property in mx-virtual-keyboard.ts
+*/
+@animation-delay: 300ms;
+@animation-easing: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+
+html.virtual-keyboard-on-animated{
+    .app-level-container{
+        bottom: 130px !important;
+    }
+}
+
+html.virtual-keyboard-on {
+    position: fixed !important;
+    height: 100% !important;
+    width: 100% !important;
+    .mx-virtual-keyboard {
+        visibility: visible;
+        height: 130px;
+        z-index: 1100; /* 10 more than modal shadow */
+    }
+}
+
+.mx-virtual-keyboard{
+    visibility: hidden;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0px;
+    width: 100%;
+    padding-top: 3px;
+    vertical-align: bottom;
+    padding-bottom: 25px;
+    background-color: @mx-graylight;
+    -webkit-transition: height @animation-easing @animation-delay, visibility @animation-easing @animation-delay;
+    transition: height @animation-easing @animation-delay, visibility @animation-easing @animation-delay;
+    height:0;
+    .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, 
+    .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12{
+        padding:4px 4px;
+        .btn{
+            text-align: center; 
+            min-height: 54px;
+            &:hover{
+                background-color: @btn-default-bg;
+                border-color: @btn-default-border;
+            }
+        }
+        .btn-special{
+            background-color: @panel-default-heading-bg;
+            &:hover{
+                background-color: @panel-default-heading-bg;
+            }
+        }
+    }
+}
+
+.mx-virtual-keyboard-input-control:not(:disabled) {
+    cursor: default !important;
+    background-color: @input-bg !important; 
+}
+
+.selected{
+    -webkit-appearance: none;
+    @color:  @input-border-focus;
+    @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+    border-color: @color; 
+    outline: 0;
+    .box-shadow(~"inset 0px 0px 2px 1px @{color-rgba}");
+}
+
+

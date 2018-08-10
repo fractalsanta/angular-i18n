@@ -1,0 +1,9 @@
+﻿<div ng-repeat="column in Header.Columns" class="column-header {{column.Class}}"
+     ng-click="column.Fields && $parent.SortColumn(column)"
+     ng-class="{ 'pointer-cursor': column.Fields }">
+    <div>
+        <span ng-repeat="token in $parent.SplitLines(column.Title)">{{token}}<br /></span>
+        
+    </div>
+    <i class="fa sort-indicator" ng-class="{ 'fa-angle-down': !$parent.Header.IsAscending, 'fa-angle-up': $parent.Header.IsAscending, 'invisible':  column != $parent.Header.Selected }"></i>
+    </div>

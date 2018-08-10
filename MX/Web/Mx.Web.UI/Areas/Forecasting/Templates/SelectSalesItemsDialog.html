@@ -1,0 +1,14 @@
+﻿<div class="modal-header">Select Sales Item<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body modal-body-fixed">
+    <div class="fill-height container-1-toolbar ">
+        <sales-items-list class="col-xs-12" style="top: 0; padding-left: 0; padding-right: 0;"></sales-items-list>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-left" ng-click="Cancel();">{{Translation.Cancel}}</button>
+    <button class="btn btn-success"
+            ng-disabled="!SelectedSalesItem"
+            ng-click="OK()">
+        OK{{Translation.Ok}}
+    </button>
+</div>

@@ -1,0 +1,53 @@
+﻿<div ng-form="FinishCount">
+    <div class="modal-header">{{Translation.FinishCount}}</div>
+    <div class="modal-body">
+        <p class="text-right">
+            {{Translation.ItemsNotCounted}}
+            <span class="badge">{{Model.ItemsToCount}}</span>
+        </p>
+        <p class="text-right">
+            {{Translation.ItemsWithWarning}}
+            <span class="badge">{{Model.LargePositiveVarianceItems + Model.LargeNegativeVarianceItems}}</span>
+        </p>
+        <p class="text-right">
+            {{Translation.ItemsWithWarningPositive}}
+            <span class="badge">{{Model.LargePositiveVarianceItems}}</span>
+        </p>
+        <p class="text-right">
+            {{Translation.ItemsWithWarningNegative}}
+            <span class="badge">{{Model.LargeNegativeVarianceItems}}</span>
+        </p>
+    </div>
+    <div class="modal-body" ng-class="{'has-error': FinishCount.$invalid}">
+
+        <div ng-show="AllowCustomDate">
+            <div ng-click="ChangeOption('generatedDate')">
+                <input type="radio" ng-model="Model.ApplyDateRadioBtnValue" value="generatedDate">  &nbsp;&nbsp; {{Model.Detail}}
+            </div>
+            <br />
+            <div ng-click="ChangeOption('customDate')">
+                <input type="radio" ng-model="Model.ApplyDateRadioBtnValue" value="customDate">  &nbsp;&nbsp; {{Translation.CustomDate}}
+            </div>
+            <br />
+        </div>
+        <div ng-hide="IsApplyReadonly || ! Model.IsLoaded">
+            <span class="form-control" datepicker-popup="mediumDate" ng-model="Model.ApplyDate" ng-change="SetDate(Model.ApplyDate)"
+                  datepicker-options="Model.DateOptions" show-weeks="false" max-date="Model.MaxDate"
+                  is-open="Model.ShowApplyDatePopup" show-button-bar="false" ng-click="OpenApplyDate($event)">{{ Model.ApplyDate | formatDate:"LL" }}</span>
+            <div style="display:inline-block;">
+                <timepicker ng-model="Model.ApplyDate" hour-step="1" minute-step="1" show-meridian="true"
+                            ng-change="SetDate(Model.ApplyDate)"></timepicker>
+            </div>
+        </div>
+        <div ng-show="IsApplyReadonly && Model.IsLoaded">
+            <p>{{Translation.AppliedAsAt}} {{ Model.ApplyDate | formatDate:"LLL" }}</p>
+        </div>
+        <div class="alert alert-danger" ng-show="Model.PeriodClosed">{{ Translation.PeriodClosed }}</div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translation.Cancel}}</button>
+        <span>
+            <button class="btn btn-success pull-right" ng-disabled="FinishCount.$invalid || ! PageValid() || Model.PeriodClosed" ng-click="Submit()">{{Translation.SubmitCount}}</button>
+        </span>
+    </div>
+</div>

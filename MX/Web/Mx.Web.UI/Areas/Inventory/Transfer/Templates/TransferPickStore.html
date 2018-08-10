@@ -1,0 +1,37 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-5 col-md-4">
+                <input class="form-control" ng-model="Search" placeholder="{{Translations.Search}}" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row fill-height">
+            <div class="col-xs-12 col-sm-12 col-md-12 fill-height">
+                <div class="panel panel-default fill-height container-1-toolbar">
+                    <div class="panel-heading">
+                        {{ Translations.TransferZoneStores }}
+                    </div>
+                    <div class="list-group touch-scrollable">
+                        <div ng-repeat="store in GetStores() | filter: {StoreName: Search}" data-entity-id="{{ store.Id }}">
+                            <a class="list-group-item" ng-click="SelectStore(store.Id)">
+                                <div class="row">
+                                    <div class="col-xs-9 col-sm-9 col-md-9">
+                                        <h5>{{ store.StoreName }}</h5>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3">
+                                        <span class="btn btn-default pull-right">
+                                            {{ Translations.Select }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

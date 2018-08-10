@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<commands xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="UpdateWebConfig.xsd">
+
+  <command path="/StructureMap/DefaultInstance[@PluginType='Mx.Inventory.Services.Contracts.QueryServices.IApplyDate, Mx.Inventory.Services.Contracts']">
+    <delete />
+  </command>
+    <command path="/StructureMap/AddInstance[@PluggedType='Mx.Forecasting.Services.Forecasting.MirroringForecastAdjuster, Mx.Forecasting.Services']">
+        <delete />
+    </command>
+    <command path="/StructureMap/AddInstance[@PluggedType='Mx.Forecasting.Services.Forecasting.ReverseEventSystemForecastAdjuster, Mx.Forecasting.Services']">
+        <delete />
+    </command>
+    <command path="/StructureMap/AddInstance[@PluggedType='Mx.Forecasting.Services.Forecasting.ReversePastPromotionForecastAdjuster, Mx.Forecasting.Services']">
+        <delete />
+    </command>
+        <command path="/StructureMap/AddInstance[@PluggedType='Mx.Forecasting.Services.Forecasting.PromotionItemForecastAdjuster, Mx.Forecasting.Services']">
+        <delete />
+    </command>
+    <command path="/StructureMap/AddInstance[@PluggedType='Mx.Forecasting.Services.Forecasting.AutoEventSystemForecastAdjuster, Mx.Forecasting.Services']">
+        <delete />
+    </command>
+    <command path="/StructureMap/AddInstance[@PluggedType='Mx.Forecasting.Services.Forecasting.UserEventSystemForecastAdjuster, Mx.Forecasting.Services']">
+        <delete />
+    </command>
+
+  <command path="/StructureMap" variableEquals="Environment,BBI,BBIStaging,BBISAPTesting,BBISAPStaging,BBITesting,BBIQA"
+    conditionNotExists="/StructureMap/DefaultInstance[@PluggedType='Mx.Inventory.Services.ClientSpecific.BBI.BBIApplyDate, Mx.Inventory.Services']">
+    <add>
+      <![CDATA[
+        <DefaultInstance
+        PluginType="Mx.Inventory.Services.Contracts.QueryServices.IApplyDateService, Mx.Inventory.Services.Contracts"
+        PluggedType="Mx.Inventory.Services.ClientSpecific.BBI.BBIApplyDate, Mx.Inventory.Services" />
+      ]]>
+    </add>
+  </command>
+
+  <command path="/StructureMap"
+    conditionNotExists="/StructureMap/DefaultInstance[@PluginType='Mx.Forecasting.Services.Repositories.IForecastActualsQueryStrategy, Mx.Forecasting.Services.Repositories']">
+    <add>
+      <![CDATA[
+        <DefaultInstance
+          PluginType="Mx.Forecasting.Services.Repositories.IForecastActualsQueryStrategy, Mx.Forecasting.Services.Repositories"
+          PluggedType="Mx.Forecasting.Services.Repositories.ForecastActualsRangeConstraintQueryStrategy, Mx.Forecasting.Services.Repositories" />
+      ]]>
+    </add>
+  </command>
+
+  <command path="/StructureMap">
+    <add>
+      <![CDATA[
+  <AddInstance Key="ReverseEventSystemForecastAdjuster" PluginType="Mx.Forecasting.Services.Interfaces.Services.ISystemForecastAdjuster, Mx.Forecasting.Services.Interfaces" PluggedType="Mx.Forecasting.Services.Forecasting.ReverseEventSystemForecastAdjuster, Mx.Forecasting.Services">
+    <Property Name="sequence" Value="0" />
+  </AddInstance>
+  <AddInstance Key="MirroringForecastAdjuster" PluginType="Mx.Forecasting.Services.Interfaces.Services.ISystemForecastAdjuster, Mx.Forecasting.Services.Interfaces" PluggedType="Mx.Forecasting.Services.Forecasting.MirroringForecastAdjuster, Mx.Forecasting.Services">
+    <Property Name="sequence" Value="1" />
+  </AddInstance>
+  <AddInstance Key="ReversePastPromotionForecastAdjuster" PluginType="Mx.Forecasting.Services.Interfaces.Services.ISystemForecastAdjuster, Mx.Forecasting.Services.Interfaces" PluggedType="Mx.Forecasting.Services.Forecasting.ReversePastPromotionForecastAdjuster, Mx.Forecasting.Services">
+    <Property Name="sequence" Value="2" />
+  </AddInstance>
+  <AddInstance Key="PromotionItemForecastAdjuster" PluginType="Mx.Forecasting.Services.Interfaces.Services.ISystemForecastAdjuster, Mx.Forecasting.Services.Interfaces" PluggedType="Mx.Forecasting.Services.Forecasting.PromotionItemForecastAdjuster, Mx.Forecasting.Services">
+    <Property Name="sequence" Value="3" />
+  </AddInstance>    
+  <AddInstance Key="AutoEventSystemForecastAdjuster" PluginType="Mx.Forecasting.Services.Interfaces.Services.ISystemForecastAdjuster, Mx.Forecasting.Services.Interfaces" PluggedType="Mx.Forecasting.Services.Forecasting.AutoEventSystemForecastAdjuster, Mx.Forecasting.Services">
+    <Property Name="sequence" Value="4" />
+  </AddInstance>
+  <AddInstance Key="UserEventSystemForecastAdjuster" PluginType="Mx.Forecasting.Services.Interfaces.Services.ISystemForecastAdjuster, Mx.Forecasting.Services.Interfaces" PluggedType="Mx.Forecasting.Services.Forecasting.UserEventSystemForecastAdjuster, Mx.Forecasting.Services">
+    <Property Name="sequence" Value="5" />
+  </AddInstance> 
+      ]]>
+    </add>
+  </command>
+
+</commands>

@@ -1,0 +1,29 @@
+﻿<div class="modal-header">{{ ::Translations.FinishNow }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <p>{{ ::Translations.ConfirmPlaceOrderMessage }}</p><br />
+    <div ng-show="SubmissionOptions.CanAutoReceive">
+        <span ng-click="ToggleAutoReceive()" class="pointer-cursor" disable-text-selection>
+            <i class="fa ico-16" ng-class="SubmissionOptions.AutoReceive ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;{{ ::Translations.AutoReceive }}
+        </span>
+    </div>
+    <br />
+    <div ng-show="SubmissionOptions.AutoReceive">
+        <div ng-class="{'has-error': IsInvoiceNumberValid() }">
+            <label>{{ ::Translations.InvoiceNumber }}</label>
+            <input type="text" class="form-control" ng-model="SubmissionOptions.InvoiceNumber"
+                   ng-required="{{ SubmissionOptions.ReceiveWithoutInvoiceNumber }}" />
+        </div>
+        <label>{{ ::Translations.ReceiveDate }}</label>
+        <span class="form-control" datepicker-popup="mediumDate" ng-model="SubmissionOptions.ReceiveTime"
+              show-weeks="false" show-button-bar="false" is-open="SubmissionOptions.ShowReceiveDate" ng-click="OpenReceiveDate($event)">
+            {{ SubmissionOptions.ReceiveTime | date:mediumDate }}
+        </span>
+        <timepicker ng-model="SubmissionOptions.ReceiveTime" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{ ::Translations.Cancel }}</button>
+    <button class="btn btn-success" ng-disabled="IsOrderReceiveIncomplete()" ng-click="SubmissionOptions.ReceiveTime && Confirm()">
+        {{ ::Translations.Confirm }}
+    </button>
+</div>

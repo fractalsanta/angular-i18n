@@ -1,0 +1,33 @@
+﻿<div class="modal-header">
+    {{ ::Translations.ChangeApplyDate }}
+    <button type="button" class="close" ng-click="Cancel()">&times;</button>
+</div>
+<div class="modal-body">
+    <p>{{ ::Translations.ChangeApplyDateMessage }}</p>
+    <br />
+    <div ng-form="ChangeApplyDateForm">
+        <div ng-class="{'has-error': ChangeApplyDateForm.time.$invalid}">
+            <label>{{ ::Translations.NewApplyDate }}</label>
+            <span class="form-control" name="txtDate"
+                  ng-model="Model.ApplyDate" ng-required="true" ng-click="OpenApplyDate($event)"
+                  datepicker-popup="mediumDate" max-date="Model.MaxDate"
+                  show-weeks="false" show-button-bar="false" is-open="Model.ShowApplyDate"
+                  ui-validate="'IsApplyDateValid($value)'">
+                {{ Model.ApplyDate | date:mediumDate }}
+            </span>
+            <timepicker name="time" ui-validate="'IsApplyDateValid($value)'" ng-model="Model.ApplyDate" hour-step="1" minute-step="1" show-meridian="true" />
+        </div>
+    </div>
+    <div class="alert alert-danger" ng-show="Model.PeriodClosed">{{ ::Translations.PeriodClosed }}</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left"
+            ng-click="Cancel()">
+        {{ ::Translations.Cancel }}
+    </button>
+    <button class="btn btn-success"
+            ng-disabled="ChangeApplyDateForm.$invalid || Model.PeriodClosed || Model.PeriodCheckInProgress"
+            ng-click="Confirm()">
+        {{ ::Translations.Confirm }}
+    </button>
+</div>

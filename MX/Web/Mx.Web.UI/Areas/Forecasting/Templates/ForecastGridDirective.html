@@ -1,0 +1,197 @@
+﻿<div class="forecastGrid panel panel-default fill-height">
+    <div class="panel panel-default fill-height container-1-toolbar"
+         ng-class="{
+            'container-1-toolbar': Options.Part === null,
+            'container-2-toolbars mx-fg-has-day-part': Options.Part !== null
+         }" ng-click="OnClick($event)">
+        <div ng-class="{'mx-fg-totals-in-header-hide': Options.Part !== null}">
+            <h4 class="text-center text-info mx-fg-day-part" ng-if="Options.Part !== null">
+                {{ GridView.DaySegments[Options.Part].DaySegmentType.Description }}
+            </h4>
+            <div class="table-header">
+                <div id="TableHeader">
+                    <div class="mx-fg-totals-in-header">
+                        &nbsp;
+                    </div>
+                    <div class="column-header">
+                        <span></span>
+                    </div>
+                    <div class="column-header">
+                        <span>{{ ::Translations.Time }}</span>
+                        <div ng-if="GridView" class="mx-fg-totals-in-header">
+                            <span>{{ ::Translations.DayTotals }}</span>
+                        </div>
+                    </div>
+                    <div class="column-header">
+                        <span ng-if="Options.MetricKey !== 'events'">{{ ::Translations.LastYear }}</span>
+                        <div ng-if="GridView" class="mx-fg-totals-in-header">
+                            <span ng-if="Options.MetricKey === 'sales'">{{ GridView.LastYearSales[0] | currencyNoDecimalOrComma }}</span>
+                            <span ng-if="Options.MetricKey === 'transactions'">{{ GridView.LastYearTransactions[0] }}</span>
+                        </div>
+                    </div>
+                    <div class="column-header">
+                        <span ng-if="Options.MetricKey !== 'events'">{{ ::Translations.SystemForecast }}</span>
+                        <div ng-if="GridView" class="mx-fg-totals-in-header">
+                            <span ng-if="Options.MetricKey === 'sales'">{{ GridView.SystemSales[0] | currencyNoDecimalOrComma }}</span>
+                            <span ng-if="Options.MetricKey === 'transactions'">{{ GridView.SystemTransactions[0] }}</span>
+                        </div>
+                    </div>
+                    <div class="column-header">
+                        <span ng-if="Options.MetricKey === 'events'">{{ ::Translations.ManagerAdjustment }}</span>
+                        <span ng-if="Options.MetricKey !== 'events'">{{ ::Translations.ManagerForecast }}</span>
+                        <span ng-if="Options.MetricKey !== 'events'" class="text-nowrap">
+                            <button ng-if="Options.MetricKey === 'sales'" class="btn btn-default" ng-class="{ active: !InlineOptions.IsByPercentage }" ng-click="OnClickSetByPercentage(false, $event)">{{ CURRENCY_SYM }}</button>
+                            <button ng-if="Options.MetricKey === 'transactions'" class="btn btn-default" ng-class="{ active: !InlineOptions.IsByPercentage }" ng-click="OnClickSetByPercentage(false, $event)">#</button>
+                            <button type="button" class="btn btn-default" ng-class="{ active: InlineOptions.IsByPercentage }" ng-click="OnClickSetByPercentage(true, $event)">%</button>
+                        </span>
+                        <div ng-if="GridView" class="mx-fg-totals-in-header" row-index="0" ng-class="{
+                             'mx-fg-editing': 0 === EditingIndex}">
+                            <span class="form-control"
+                                  ng-disabled="ForecastObject.IsLocked || CellNotEditable(0)"
+                                  ng-class="{'mx-fg-isdisabled': ForecastObject.IsLocked || CellNotEditable(0), 'mx-fg-novalue': CellValue(0) === undefined}">
+                                <span ng-if="Options.MetricKey === 'sales'">
+                                    {{ CellValue(0) != undefined ? (CellValue(0) | currencyNoDecimalOrComma) : (GridView.SystemSales[0] | currencyNoDecimalOrComma) }}
+                                </span>
+                                <span ng-if="Options.MetricKey === 'transactions'">
+                                    {{ CellValue(0) != undefined ? CellValue(0) : GridView.SystemTransactions[0] }}
+                                </span>
+                                <span ng-if="Options.MetricKey === 'events'">
+                                    <span ng-if="CellValue(0).min == undefined">0</span>{{ CellValue(0).min }}%
+                                    <span ng-if="CellValue(0).min !== CellValue(0).max"> {{ ::Translations.To }} {{ CellValue(0).max }}%</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-fg-scrolling-grid touch-scrollable">
+            <table class="table table-striped" mx-scrollable-table watch="GridView.IntervalStarts" header-id="TableHeader">
+                <tbody>
+                    <tr ng-repeat="entry in GridView.IntervalStarts track by GridView.IntervalStarts[$index] + GridView.IntervalTypes[$index]"
+                        ng-if="ShouldRowBeRendered($index)"
+                        ng-class="{
+                        'mx-fg-hour': GridView.IntervalTypes[$index] === Options.IntervalTypes.Hour,
+                        'mx-fg-quarter-hour': GridView.IntervalTypes[$index] === Options.IntervalTypes.Interval,
+                        'mx-fg-expanded': $index === LastExpandedRowIndex,
+                        'mx-fg-refresh': LastExpandedRowIndex !== null && ($index === LastExpandedRowIndex || $index === LastExpandedRowIndex + 1 || $index === LastExpandedRowIndex + 2 || $index === LastExpandedRowIndex + 3 || $index === LastExpandedRowIndex + 4),
+                        'mx-fg-type-{{Options.IntervalTypes.Types[GridView.IntervalTypes[$index]]}}': true,
+                        'mx-fg-part-{{GridView.DaySegmentIndexes[$index]}}': GridView.IntervalTypes[$index] !== Options.IntervalTypes.Forecast,
+                        'mx-fg-editing': $index === EditingIndex
+                        }"
+                        row-index="{{ $index }}">
+                        <td class="col-sm-1" ng-class="{'mx-fg-expand': GridView.IntervalTypes[$index] === Options.IntervalTypes.Hour}">
+                            <span></span>
+                        </td>
+                        <td class="col-sm-3">
+                            <span ng-if="GridView.IntervalTypes[$index] > Options.IntervalTypes.DaySegment">
+                                {{ entry | date:'shortTime' }}
+                            </span>
+                            <span ng-if="GridView.IntervalTypes[$index] < Options.IntervalTypes.Forecast">
+                                <span>{{ entry | date:'shortDate' }}</span>
+                            </span>
+
+                            <span ng-if="Options.MetricKey !== 'events' && GridView.IntervalTypes[$index] === Options.IntervalTypes.Forecast" ng-click="NavigateToParam('part')" class="pointer-cursor">
+                                {{ ::Translations.Day }}
+                            </span>
+                            <span ng-if="Options.MetricKey !== 'events' && GridView.IntervalTypes[$index] === Options.IntervalTypes.DaySegment" ng-click="NavigateToParam('part', GridView.DaySegmentIndexes[$index])" class="pointer-cursor">
+                                <span>{{ GridView.DaySegments[GridView.DaySegmentIndexes[$index]].DaySegmentType.Description }}</span>
+                            </span>
+
+                            <span ng-if="Options.MetricKey === 'events' && !Options.ItemId && GridView.IntervalTypes[$index] === Options.IntervalTypes.Forecast">
+                                <a href="/#/Forecasting/Editor/Grid/{{ Options.Metric | capitalize }}">
+                                    {{ ::Translations.Day }}
+                                </a>
+                            </span>
+                            <span ng-if="Options.MetricKey === 'events' && Options.ItemId && GridView.IntervalTypes[$index] === Options.IntervalTypes.Forecast">
+                                <a href="/#/Forecasting/Editor/Grid/{{ Options.Metric | capitalize }}/{{ Options.ItemId }}">
+                                    {{ ::Translations.Day }}
+                                </a>
+                            </span>
+                            <span ng-if="Options.MetricKey === 'events' && !Options.ItemId && GridView.IntervalTypes[$index] === Options.IntervalTypes.DaySegment">
+                                <a href="/#/Forecasting/Editor/Grid/{{ Options.Metric | capitalize }}/{{ GridView.DaySegmentIndexes[$index] }}">
+                                    {{ GridView.DaySegments[GridView.DaySegmentIndexes[$index]].DaySegmentType.Description }}
+                                </a>
+                            </span>
+                            <span ng-if="Options.MetricKey === 'events' && Options.ItemId && GridView.IntervalTypes[$index] === Options.IntervalTypes.DaySegment">
+                                <a href="/#/Forecasting/Editor/Grid/{{ Options.Metric | capitalize }}/{{ Options.ItemId }}/{{ GridView.DaySegmentIndexes[$index] }}">
+                                    {{ GridView.DaySegments[GridView.DaySegmentIndexes[$index]].DaySegmentType.Description }}
+                                </a>
+                            </span>
+                        </td>
+                        <td class="col-sm-2">
+                            <span ng-if="GridView.IntervalTypes[$index] >= Options.IntervalTypes.DaySegment">
+                                <span ng-if="Options.MetricKey === 'sales'">{{ GridView.LastYearSales[$index] | currencyNoDecimalOrComma }}</span>
+                                <span ng-if="Options.MetricKey === 'transactions'">{{ GridView.LastYearTransactions[$index] }}</span>
+                            </span>
+                        </td>
+                        <td class="col-sm-2">
+                            <span ng-if="GridView.IntervalTypes[$index] >= Options.IntervalTypes.DaySegment">
+                                <span ng-if="Options.MetricKey === 'sales'">{{ GridView.SystemSales[$index] | currencyNoDecimalOrComma }}</span>
+                                <span ng-if="Options.MetricKey === 'transactions'">{{ GridView.SystemTransactions[$index] }}</span>
+                            </span>
+                        </td>
+                        <td class="col-sm-4">
+                            <span ng-if="GridView.IntervalTypes[$index] < Options.IntervalTypes.Forecast">
+                            </span>
+                            <span ng-if="GridView.IntervalTypes[$index] >= Options.IntervalTypes.DaySegment"
+                                  class="form-control"
+                                  ng-disabled="ForecastObject.IsLocked || CellNotEditable($index)"
+                                  ng-class="{'mx-fg-isdisabled': ForecastObject.IsLocked || CellNotEditable($index), 'mx-fg-novalue': CellValue($index) === undefined}">
+                                <span ng-if="Options.MetricKey === 'sales'">
+                                    {{ CellValue($index) != undefined ? (CellValue($index) | currencyNoDecimalOrComma) : (GridView.SystemSales[$index] | currencyNoDecimalOrComma) }}
+                                </span>
+                                <span ng-if="Options.MetricKey === 'transactions'">
+                                    {{ CellValue($index) != undefined ? CellValue($index) : GridView.SystemTransactions[$index] }}
+                                </span>
+                                <span ng-if="Options.MetricKey === 'events'">
+                                    <span ng-if="GridView.IntervalTypes[$index] === Options.IntervalTypes.Interval">
+                                        {{ CellValue($index) != undefined ? CellValue($index) : GridView.ManagerAdjustments[$index] }}%
+                                    </span>
+                                    <span ng-if="GridView.IntervalTypes[$index] !== Options.IntervalTypes.Interval">
+                                        <span ng-if="CellValue($index).min == undefined">0</span>{{ CellValue($index).min }}%
+                                        <span ng-if="CellValue($index).min !== CellValue($index).max"> {{ ::Translations.To }} {{ CellValue($index).max }}%</span>
+                                    </span>
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="mg-fg-totals" ng-if="GridView !== null && Options.Part !== null && Options.MetricKey !== 'events'"
+                        ng-class="{
+                        'mx-fg-type-{{Options.IntervalTypes.Types[GridView.IntervalTypes[Options.PartIndex]]}}': true,
+                        'mx-fg-editing': Options.PartIndex === EditingIndex
+                    }"
+                        row-index="{{ Options.PartIndex }}">
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            {{ ::Translations.Totals }}
+                        </td>
+                        <td>
+                            <span ng-if="Options.MetricKey === 'sales'">{{ GridView.LastYearSales[Options.PartIndex] | currencyNoDecimalOrComma }}</span>
+                            <span ng-if="Options.MetricKey === 'transactions'">{{ GridView.LastYearTransactions[Options.PartIndex] }}</span>
+                        </td>
+                        <td>
+                            <span ng-if="Options.MetricKey === 'sales'">{{ GridView.SystemSales[Options.PartIndex] | currencyNoDecimalOrComma }}</span>
+                            <span ng-if="Options.MetricKey === 'transactions'">{{ GridView.SystemTransactions[Options.PartIndex] }}</span>
+                        </td>
+                        <td>
+                            <span class="form-control"
+                                  ng-disabled="ForecastObject.IsLocked || CellNotEditable(Options.PartIndex)"
+                                  ng-class="{'mx-fg-isdisabled': ForecastObject.IsLocked || CellNotEditable(Options.PartIndex), 'mx-fg-novalue': CellValue(Options.PartIndex) === undefined}">
+                                <span ng-if="Options.MetricKey === 'sales'">
+                                    {{ CellValue(Options.PartIndex) != undefined ? (CellValue(Options.PartIndex) | currencyNoDecimalOrComma) : (GridView.SystemSales[Options.PartIndex] | currencyNoDecimalOrComma) }}
+                                </span>
+                                <span ng-if="Options.MetricKey === 'transactions'">
+                                    {{ CellValue(Options.PartIndex) != undefined ? CellValue(Options.PartIndex) : GridView.SystemTransactions[Options.PartIndex] }}
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <edit-forecast-inline editing="Editing" options="InlineOptions" ng-show="Editing && EditingIndex !== null" />
+        </div>
+    </div>
+</div>

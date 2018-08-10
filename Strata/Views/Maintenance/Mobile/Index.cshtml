@@ -1,0 +1,274 @@
+﻿@using Rockend.iStrata.StrataWebsite.Model
+@model MaintenanceModel
+@{
+    ViewBag.Title = "Repairs & Maintenance";
+}
+@section HeadTagsSection
+{
+    <style type="text/css">
+        table.maintJobs th
+        {
+            font-weight: bold;
+            background-image: url(/Content/Images/toggle.gif);
+            background-position: center right;
+            background-repeat: no-repeat;
+            padding-right: 10px;
+            background-color: #999999;
+            color: #FFFFFF;
+            cursor: pointer;
+            padding: 3px 1px 3px 3px;
+        }
+
+            table.maintJobs th:first-child
+            {
+                border-left: solid 1px #CCCCCC;
+            }
+
+            table.maintJobs th:last-child
+            {
+                border-right: solid 1px #CCCCCC;
+            }
+
+        table.maintJobs td
+        {
+            padding: 5px 2px 5px 3px;
+            background-color: White;
+            border-bottom: solid 1px #CCCCCC;
+        }
+
+        table.maintJobs .date
+        {
+            width: 60px;
+            border-left: solid 1px #CCCCCC;
+        }
+
+        table.maintJobs .status
+        {
+            width: 67px;
+            border-right: solid 1px #CCCCCC;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        /*table.maintJobs .propCode
+        {
+            width: 130px;
+        }*/
+
+        table.maintJobs .jobNo
+        {
+            width: 34px;
+            border-right: solid 1px #CCCCCC;
+        }
+
+        table.maintJobs .description
+        {
+            border-right: solid 1px #CCCCCC;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 120px;
+        }
+
+            table.maintJobs .description .content
+            {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 120px;
+            }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("table").tablesorter({
+                dateFormat: "mmddyyyy",
+                sortList: [[0, 1]],
+                headers: {
+                    0: { sorter: "shortDate" } //, dateFormat will parsed as the default above
+                }
+            });
+        });
+    </script>
+}
+
+    <div data-role="header" data-position="inline" data-theme="c">
+        <h2>Repairs & Maintenance</h2>
+    </div>
+    <div class="ui-content">
+        <script>
+            (function () {
+                // console.log('inline anonymous called from ui-content');
+
+                $('.mainContent').css('position', 'relative');
+                $("#showPendingWorkOrdersLink").css('display', 'none');
+                $("#showPendingQuotesLink").css('display', 'none');
+                ShowWorkOrders();
+                ShowPendingWorkOrders();
+                ShowPendingQuotes();
+
+                $("table").tablesorter({
+                    dateFormat: "mmddyyyy",
+                    sortList: [[0, 1]],
+                    headers: {
+                        0: { sorter: "shortDate" } //, dateFormat will parsed as the default above
+                    }
+                });
+
+                $('.detailLink').click(function (ev) {
+                    //console.log(window.location.pathname);
+                    //console.log(window.location);
+                    //console.log(pageStateHash);
+                    window.location.hash = pageStateHash;
+                    return true;
+                });
+            })();
+        </script>
+        <div class="mainContent">
+            <div class="menuIconContainer" style="margin-bottom: 16px;">
+                <a href="#" data-rel="back" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                    <img src="/Content/Images/menuIcon.jpg" /></a>
+            </div>
+
+            <div id="workOrdersAndQuotesContainer">
+                <h1 id="pageHeader">Work Orders</h1>
+                <div style="margin-top: 8px; font-size: 16px;">
+                    <a id="showWorkOrdersLink" href="javascript:ShowWorkOrders();">Show Work Orders</a>
+                    <a id="showQuotesLink" href="javascript:ShowQuotes();">Show Quotes</a>
+                </div>
+
+                <div id="workOrdersDiv">
+                    @if (Model != null && Model.WorkOrderSummaries != null && Model.WorkOrderSummaries.Count > 0)
+                    {
+                        <div style="width: 100%; margin-bottom: 6px; margin-top: 20px; text-align: right; font-size: 16px;">
+                            <h2 id="WorkOrdersPageHeader" style="float: left; font-size: 16px;">Open Work Orders</h2>
+                            <a id="showCompletedWorkOrdersLink" href="javascript:ShowCompletedWorkOrders();">Closed Work Items</a><a id="showPendingWorkOrdersLink" href="javascript:ShowPendingWorkOrders();">Open Work Items</a>
+                        </div>
+                        <div class="section">
+                            <table id="myTable" class="tablesorter documents maintJobs workOrdersTable" border="0" style="width: 100%; margin-left: 0px; margin-right: 0px;">
+                                <thead>
+                                    <tr>
+                                        <th class="date" data-sorter="shortDate" data-date-format="ddmmyyyy">Date
+                                        </th>
+                                        <th class="status">Status
+                                        </th>
+                                        <th class="description">Job Summary
+                                        </th>
+                                        <th class="jobNo">No
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (WorkOrderSummary job in Model.WorkOrderSummaries)
+                                    {
+                                        <tr class="@job.JobStateCssClass">
+                                            <td class="date" rowspan="1">
+                                                @job.OrderDate.ToShortDateString()
+                                            </td>
+                                            <td class="status">
+                                                @if (Model.ShowDetailLink)
+                                                {
+                                                    <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.WorkOrderID, maintType = "workOrder" })">@job.StatusString</a>
+                                                }
+                                                else
+                                                {
+                                                    @job.StatusString
+                                                }
+                                            </td>
+                                            <td class="description">
+                                                @if (Model.ShowDetailLink)
+                                                {
+                                                    <div class="content"><a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.WorkOrderID, maintType = "workOrder" })">@job.DiarySubject</a></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="content">@job.DiarySubject</div>
+                                                }
+                                            </td>
+                                            <td class="jobNo">
+                                                @job.OrderNumber
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr class="hiddenRow date jobNo" style="display: none; width: 821px;">
+                                        <td colspan="4">No jobs to display.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <span>No documents to display.</span>
+                    }
+                </div>
+
+
+                <div id="quotesDiv">
+                    @if (Model != null && Model.QuoteSummaries != null && Model.QuoteSummaries.Count > 0)
+                    {
+                        <div style="width: 100%; margin-bottom: 6px; margin-top: 20px; text-align: right;">
+                            <h2 id="QuotesPageHeader" style="float: left; font-size: 16px;">Open Quotes</h2>
+                            <a id="showCompletedQuotesLink" href="javascript:ShowCompletedQuotes();">Closed Quotes</a><a id="showPendingQuotesLink" href="javascript:ShowPendingQuotes();">Open Quotes</a>
+                        </div>
+                        <div class="section">
+                            <table id="myTable" class="tablesorter documents maintJobs quotesTable" style="width: 100%; margin-left: 0px; margin-right: 0px;">
+                                <thead>
+                                    <tr>
+                                        <th class="date" data-sorter="shortDate" data-date-format="ddmmyyyy">Date
+                                        </th>
+                                        <th class="status">Status
+                                        </th>
+                                        <th class="description">Job Summary
+                                        </th>
+                                        <th class="jobNo">No
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (QuoteSummary job in Model.QuoteSummaries)
+                                    {            
+                                        <tr class="@job.JobStateCssClass">
+                                            <td class="date">
+                                                @job.QuoteRequestDate.ToShortDateString()
+                                            </td>
+                                            <td class="status">
+                                                @if (Model.ShowDetailLink)
+                                                {
+                                                    <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.QuoteID, maintType = "quote" })">@job.StatusString</a>
+                                                }
+                                                else
+                                                {
+                                                    @job.StatusString
+                                                }
+                                            </td>
+                                            <td class="description">
+                                                @if (Model.ShowDetailLink)
+                                                {
+                                                    <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.QuoteID, maintType = "quote" })">@job.DiarySubject</a>
+                                                }
+                                                else
+                                                {
+                                                    @job.DiarySubject
+                                                }
+                                            </td>
+                                            <td class="jobNo">
+                                                @job.OrderNumber
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr class="hiddenRow date jobNo" style="display: none; width: 821px;">
+                                        <td colspan="4">No quotes to display.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <span>No quotes to display.</span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+

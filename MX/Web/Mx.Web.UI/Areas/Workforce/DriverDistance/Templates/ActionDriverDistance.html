@@ -1,0 +1,18 @@
+﻿<form class="form-horizontal" role="form" autocomplete="off">
+    <div class="modal-header">{{ Vm.ActionTitle }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-show="!Vm.AuthorizationIsValid">{{ Vm.ValidationErrorMessage }}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>{{ Vm.ActionMessage }}</strong>
+            </div>
+            <div class="panel-body">
+                <mx-authorization user="Vm.Authorization" is-valid="Vm.AuthorizationIsValid" />
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="reset" class="pull-left btn btn-default" ng-click="Cancel()">{{ ::L10N.Cancel }}</button>
+        <button type="submit" class="btn" ng-class="Vm.SubmitButtonClass" ng-disabled="!AreRequiredFieldsSet()" ng-click="Submit()">{{ Vm.SubmitButtonText }}</button>
+    </div>
+</form>

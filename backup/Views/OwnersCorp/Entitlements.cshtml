@@ -1,0 +1,132 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.OwnersCorpModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+
+@section HeadTagsSection
+{
+    <style>
+        table.data th:last-child
+        {
+            width: 170px;
+        }
+    </style>
+}
+
+<h1>
+    @ViewData.Model.UserSession.Terminology["Owners Corporation"] Entitlements</h1>
+@if (ViewData.Model.UserSession.OwnersCorpNames.Count > 1)
+{
+    @Html.Raw(Html.StrataDropdown(ViewData.Model.UserSession.OwnersCorpNames, ViewData.Model.CurrentOwnersCorpIndex, ((d, i) => Url.Action("Entitlements", new { index = i }))))
+}
+else
+{
+    <h2>@ViewData.Model.UserSession.OwnersCorpNames[0].Name</h2>
+}
+
+@if (ViewData.Model.EntitlementSets.Count() > 0)
+{
+    <div class="full-width-data-container">
+        <h2>
+            Unit Entitlement Sets
+        </h2>
+        <table border="1" class="data" cellpadding="0" cellspacing="0" style="width: 804px; table-layout: fixed;">
+            <tr>
+                <th style="width: 180px;">
+                    Entitlement Set Name
+                </th>
+                <th style="width: auto;">
+                    Total Entitlements
+                </th>
+                <th style="width: auto;">
+                    Entitlement Type
+                </th>
+                <th>
+                    Entitlement Description
+                </th>
+            </tr>
+            @foreach (LevyEntitlement set in ViewData.Model.EntitlementSets)
+            {
+                <tr>
+                    <td>
+                        @set.SetName
+                    </td>
+                    <td>
+                        @set.Total
+                    </td>
+                    <td>
+                        @set.EntitlementType
+                    </td>
+                    <td>
+                        @set.Description
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+    <div class="full-width-data-container">
+        <h2>
+            Lots and Lot Entitlements
+        </h2>
+        <table class="data" cellpadding="0" cellspacing="0" border="1" style="width: 804px;  table-layout: fixed;">
+            <tr>
+                <th style="width: 84px;">
+                    Lot
+                </th>
+                <th style="width: 84px;">
+                    Unit
+                </th>
+                @if (Model.ShowOwnerNameInEntitlements)
+                {
+                    <th style="width: auto;">
+                        Owner
+                    </th>
+                }
+                @foreach (LevyEntitlement set in ViewData.Model.EntitlementSets)
+                {
+                    <th>
+                        @set.SetName
+                    </th>
+                }
+            </tr>
+            @foreach (LotEntitlements lot in ViewData.Model.LotEntitlements)
+            {
+                <tr>
+                    <td>
+                        @lot.LotNumber
+                    </td>
+                    <td>
+                        @lot.UnitNumber
+                    </td>
+                    @if (Model.ShowOwnerNameInEntitlements)
+                    {
+                        <td>
+                            @lot.Owner
+                        </td>
+                    }
+                    @if (lot.EntitlementList == null || lot.EntitlementList.Count == 0)
+                    {
+                        <td>
+                            0.0
+                        </td>
+                    }
+                    else
+                    {
+                        foreach (Entitlement entitlement in lot.EntitlementList)
+                        {
+                            <td>
+                                @entitlement.Amount
+                            </td>
+                        }
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <br />
+    <p>No entitlements to be displayed.</p>
+}
+

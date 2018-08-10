@@ -1,0 +1,147 @@
+﻿<div class="panel panel-default fill-height container-3-toolbars">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="text-right" ng-class="{ 'col-md-12 col-sm-12 col-xs-12': !Transfer, 'col-md-10 col-sm-10 col-xs-10': Transfer }">
+                <button type="button" class="btn btn-default" ng-click="Return()">
+                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;{{ Translations.Back }}
+                </button>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2" ng-show="Transfer">
+                <div class="dropdown" dropdown>
+                    <mx-dropdown-button value="Translations.Actions" class="btn-success btn-block" ng-disabled="IsPeriodClosed"></mx-dropdown-button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li ng-if="IsReceive()"><a role="menuitem" ng-click="Receive()"><i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;{{ Translations.Receive }}</a></li>
+                        <li ng-if="!IsReceive()"><a role="menuitem" ng-click="Approve()"><i class=" glyphicon glyphicon-ok"></i>&nbsp;&nbsp;{{ Translations.Approve }}</a></li>
+                        <li ng-if="IsReceive()"><a role="menuitem" ng-click="Deny()"><i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp;{{ Translations.Cancel }}</a></li>
+                        <li ng-if="!IsReceive()"><a role="menuitem" ng-click="Deny()"><i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp;{{ Translations.Deny }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading mx-white toolbar-double-height" style="overflow: hidden;">
+        <div class="panel panel-default">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ GetToOrFromText()  }}</th>
+                        <th>{{ Translations.Date }}</th>
+                        <th>{{ Translations.Creator }}</th>
+                        <th class="col-sm-2 col-xs-1">{{ Translations.Items }}</th>
+                        <th>{{ Translations.TotalCost }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td ng-if="!IsInbound()">{{ RequestingLocationDisplayName }}</td>
+                        <td ng-if="IsInbound()">{{ SendingLocationDisplayName }}</td>
+                        <td>{{ Transfer.CreateDate | date:'medium' }}</td>
+                        <td>{{ Transfer.InitiatedBy || 'N/A' }}</td>
+                        <td>{{ Transfer.Details.length }}</td>
+                        <td>{{ GetRequestTotal() | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row fill-height">
+            <div class="col-sm-9 fill-height">
+                <div class="panel panel-default fill-height container-2-toolbars" ng-show="Transfer && Transfer.Details.length">
+                    <div class="panel-heading">{{ Translations.Items }}</div>
+                    <div class="table-header">
+                        <div id="TableHeader">
+                            <div class="column-header" ng-repeat="column in GridDefinitions">
+                                <span>{{ column.Title }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-striped" mx-scrollable-table watch="Transfer.Details" header-id="TableHeader">
+                            <tbody ng-click="OnRowSelect($event)">
+                                <tr ng-repeat="item in Transfer.Details track by item.Id"
+                                    ng-class="{ info: item === SelectedItem}">
+                                    <td>{{ item.Description }} ({{ item.ItemCode }})</td>
+                                    <td class="col-xs-2">
+                                        <input class="form-control"
+                                               ng-pattern="\d*"
+                                               ng-show="item.TransferUnit1"
+                                               ng-model="item.TransferQty1"
+                                               ng-readonly="IsReadOnly || IsInbound()"
+                                               name="TransferQty1"
+                                               ng-blur="UpdateDetails(item)"
+                                               select-on-focus-input
+                                               number-only-input minvalue="0" precision="2" />
+                                        <label>{{ item.TransferUnit1.substring(0,1).toUpperCase()+item.TransferUnit1.substring(1)}}</label>
+                                    </td>
+                                    <td class="col-xs-2">
+                                        <input class="form-control"
+                                               ng-pattern="\d*"
+                                               ng-show="item.TransferUnit2"
+                                               ng-model="item.TransferQty2"
+                                               ng-readonly="IsReadOnly || IsInbound()"
+                                               name="TransferQty2"
+                                               ng-blur="UpdateDetails(item)"
+                                               select-on-focus-input
+                                               number-only-input minvalue="0" precision="2" />
+                                        <label>{{ item.TransferUnit2.substring(0,1).toUpperCase()+item.TransferUnit2.substring(1)}}</label>
+                                    </td>
+                                    <td class="col-xs-2">
+                                        <input class="form-control"
+                                               ng-pattern="\d*"
+                                               ng-show="item.TransferUnit4"
+                                               ng-model="item.TransferQty4"
+                                               ng-readonly="IsReadOnly || IsInbound()"
+                                               name="TransferQty4"
+                                               ng-blur="UpdateDetails(item)"
+                                               select-on-focus-input
+                                               number-only-input minvalue="0" precision="2" />
+                                        <label>{{ item.TransferUnit4.substring(0,1).toUpperCase()+item.TransferUnit4.substring(1)}}</label>
+                                    </td>
+                                    <td class="col-xs-2">
+                                        <input class="form-control"
+                                               ng-pattern="\d*"
+                                               ng-show="item.TransferUnit3"
+                                               ng-model="item.TransferQty3"
+                                               ng-readonly="IsReadOnly || IsInbound()"
+                                               name="TransferQty3"
+                                               ng-blur="UpdateDetails(item)"
+                                               select-on-focus-input
+                                               number-only-input minvalue="0" precision="2" />
+                                        <label>{{ item.TransferUnit3.substring(0,1).toUpperCase()+item.TransferUnit3.substring(1)}}</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3 fill-height">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ Translations.ItemDetails }}
+                    </div>
+                    <ul class="list-group transfer-pending-item-details">
+                        <li ng-if="SelectedItem" class="list-group-item">
+                            <span>{{ Translations.ResultingOnHand }}</span>
+                            <span class="pull-right">
+                                {{ SelectedItem.OnHand | number:2}}
+                                <br />
+                                <label>{{ SelectedItem.TransferUnit3.substring(0,1).toUpperCase()+SelectedItem.TransferUnit3.substring(1)}}</label>
+                            </span>
+                        </li>
+                        <li ng-if="SelectedItem" class="list-group-item">
+                            <span>{{ Translations.BaseUnitCost }}</span>
+                            <span class="pull-right">{{ SelectedItem.UnitCost | currency }}</span>
+                        </li>
+                        <li ng-if="SelectedItem" class="list-group-item">
+                            <span>{{ Translations.ExtendedCost }}</span>
+                            <span class="pull-right">{{ (SelectedItem.TransferCost) | currency }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

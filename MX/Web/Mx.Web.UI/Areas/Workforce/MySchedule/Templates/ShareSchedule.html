@@ -1,0 +1,14 @@
+﻿<div class="modal-header">{{L10N.ShareSchedule}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form" name="ShareScheduleForm" autocomplete="off">
+        <a class="btn btn-primary btn-block" ng-href="{{vm.CalendarDataUri}}" mx-auth-token-a>
+            <span class="fa fa-calendar"></span>&nbsp;&nbsp;{{L10N.AddToCalendar}}
+        </a>
+        <a class="btn btn-primary btn-block" ng-href="{{vm.EmailLink}}">
+            <span class="fa fa-envelope"></span>&nbsp;&nbsp;{{L10N.ShareViaEmail}}
+        </a>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{L10N.Close}}</button>
+</div>

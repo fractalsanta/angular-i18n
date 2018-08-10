@@ -1,0 +1,104 @@
+﻿@import "../Bootstrap/variables.less";
+
+// ***************** Mx Customisation ***************************
+//== Colors
+@gray-darker:            darken(#1f366c, 13.5%); // #222
+@gray-dark:              #1f366c;   // #333
+@gray:                   #1f366c; // #555
+@gray-light:             lighten(#000, 60%);   // #999
+
+//== Typography
+@font-family-sans-serif:  "RobotoRegular", Helvetica, Arial, sans-serif;
+@font-size-base:          13px;
+
+//-- Iconography
+@icon-font-path:          "../../fonts/";
+
+//-- Z-index master list
+@zindex-popover:           1010;
+
+@zindex-tooltip:           1030;
+
+//== Navs
+//=== Shared nav styles
+@nav-link-padding:                          13px 15px;
+
+
+//== Modals
+//
+//##
+
+// ** Padding applied to the modal body
+@modal-inner-padding:         20px;
+
+
+//== Miscellaneous
+// ** Horizontal offset for forms and lists.
+@component-offset-horizontal: 180px;
+
+
+//== MX Overrides 
+
+@grid-float-breakpoint:     0;
+// ** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+@navbar-height:                    65px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             @border-radius-base;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+
+@navbar-default-color:             #fff;
+@navbar-default-bg:                #0099cc;
+@navbar-default-link-color:                #fff;
+@navbar-default-link-hover-color:          #fff;
+
+@component-active-bg:       #e7e8ed;
+@dropdown-link-active-bg:        @component-active-bg;
+@nav-pills-active-link-hover-bg:            @component-active-bg;
+@list-group-active-bg:          @component-active-bg;
+@nav-link-hover-bg:                         #f1f2f7;
+
+@panel-footer-bg:             #e7e8ed;
+@panel-default-heading-bg:    #e7e8ed;
+@panel-default-border:        #dcdfe8;
+@table-bg-accent:               #f8f9fb;
+
+@component-active-color:    #1f366c;
+@dropdown-link-active-color:     @component-active-color;
+@nav-pills-active-link-hover-color:         @component-active-color;
+@list-group-active-color:       @component-active-color;
+
+@badge-bg:                    #009fdc;
+@badge-active-color:          #1f366c;
+@badge-active-bg:             #fff;
+
+@link-color:            #8892ab;
+@link-hover-color:      #8892ab;
+
+@modal-backdrop-bg:           #0c162b;
+@modal-backdrop-opacity:      .4;
+
+@input-border:                   #dcdfe8;
+@input-color-placeholder:        #999999;
+
+@btn-default-color:              #1f366c;
+@btn-default-border:             #dcdfe8;
+
+@table-border-color:            #dcdfe8;
+@table-bg-active:               #e6f5fc;
+@table-bg-accent:               #f4f5f6;
+
+@dropdown-border: #1f366c;
+
+@link-color:            #8792ab;
+@link-hover-color:      #1f366c;
+
+@btn-primary-color:              #1f366c;
+@btn-primary-bg:                 #e7e8ed;
+@btn-primary-border:             #dcdfe8;
+
+@dropdown-max-height: 300px;
+@dropdown-max-width: 300px;
+
+@disabled-opacity: 0.7;

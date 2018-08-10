@@ -1,0 +1,11 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.CurrentOwnersAccountReportParametersModel
+<div class="full">
+    <h3>
+        Owner Of Lot(s)</h3>
+    <select id="ownerCorpIndex" name="ownerIndex" style="width: 500px;">
+        @for (int index = 0; index < ViewData.Model.Lots.Count; index++)
+        {
+            <option value="@index">@ViewData.Model.Lots[index]</option>
+        }
+    </select>
+</div>

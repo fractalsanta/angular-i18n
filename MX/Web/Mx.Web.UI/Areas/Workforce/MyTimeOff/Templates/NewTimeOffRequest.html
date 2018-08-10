@@ -1,0 +1,116 @@
+﻿<div class="row fill-height" mx-mobile-ready ng-form="newRequestForm">
+    <div class="panel panel-default container-1-toolbar fill-height" ng-swipe-right="DiscardNewRequest()">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-3 col-md-3 text-left">
+                    <button type="button" class="btn btn-default visible-xs" ng-click="DiscardNewRequest()">
+                        <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ Translations.Back }}
+                    </button>
+                </div>
+                <div class="col-xs-9 col-md-9 text-right">
+                    <button type="button" class="btn btn-success"
+                            ng-disabled="newRequestForm.startTime.$invalid || newRequestForm.endTime.$invalid"
+                            ng-click="SubmitRequest(NewRequest)">
+                        {{ Translations.Submit }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body touch-scrollable form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{{ Translations.AddTimeOffRequest }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="panel-body-divider"></div>
+                <br />
+            </div>
+            <div class="form-group">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.AllDay }}:</strong>
+                <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default"
+                                ng-click="SetAllDayFlag(true)"
+                                ng-class="{ 'active': NewRequest.AllDay }">
+                            {{ Translations.Yes }}
+                        </button>
+                        <button type="button" class="btn btn-default"
+                                ng-click="SetAllDayFlag(false)"
+                                ng-class="{ 'active': !NewRequest.AllDay }">
+                            {{ Translations.No }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="z-index: 100; position: relative;">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Starts }}:</strong>
+                <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                    <div class="input-group">
+                        <span class="form-control" ng-click="ToggleStartDateDisplay();">
+                            {{ NewRequest.StartDateTime | date }}
+                        </span>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="ToggleStartDateDisplay($event)">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+</div>
+
+                    <div ng-show="!NewRequest.AllDay">
+                        <timepicker name="startTime" ng-model="NewRequest.StartDateTime"
+                                    ng-change="OnStartDateTimeChange(NewRequest.StartDateTime)" ></timepicker>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="z-index: 99; position: relative;">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Ends }}:</strong>
+                <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                    <div class="input-group" style="z-index: 98;">
+                        <span class="form-control" ng-click="ToggleEndDateDisplay();">
+                            {{ NewRequest.EndDateTime | date }}
+                        </span>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="ToggleEndDateDisplay($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <div ng-show="!NewRequest.AllDay">
+                        <timepicker name="endTime" ng-model="NewRequest.EndDateTime"
+                                    ng-change="OnEndDateTimeChange(NewRequest.EndDateTime)" ></timepicker>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="panel-body-divider"></div>
+                <br />
+            </div>
+            <div class="form-group">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Reason }}:</strong>
+                <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                    <select class="form-control" ng-model="NewRequest.ReasonId"
+                            ng-options="key as value for (key, value) in TimeOffReasons"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Comment }}:</strong>
+                <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                    <textarea class="form-control vertical-resize" maxlength="50" ng-model="NewRequest.Comments"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="timeOffDatePicker.html">
+    <div class="modal-body">
+        <datepicker ng-model="Model.Date" class="well well-sm"
+                    options="DatePickerOptions"
+                    show-weeks='false'
+                    min-date="NewRequest.DateLimit"
+                    ng-change="SetDate(Model.Date)"></datepicker>
+    </div>
+</script>

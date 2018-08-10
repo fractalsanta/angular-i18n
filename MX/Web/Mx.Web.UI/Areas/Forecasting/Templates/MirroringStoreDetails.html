@@ -1,0 +1,379 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar min700" mx-mobile-ready>
+    <div class="panel-heading mx-white">
+        <div class="fill-height">
+            <div class="row">
+                <div class="col-xs-12 header">
+                    <div class="pull-left">
+                        <button type="button" class="pull-left btn btn-default" ng-click="Cancel()">
+                            <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ ::Vm.L10N.Back }}
+                        </button>
+                    </div>
+
+                    <div class="col-xs-3 col-sm-3 col-lg-2 pull-right">
+                        <span ng-if="IsReadOnly() && ShowCancelMirrorButton()">
+                            <button type="button" class="btn btn-danger pull-right" ng-click="CancelMirror()">
+                                <span class="fa fa-trash-o"></span>&nbsp;&nbsp;{{ ::Vm.L10N.CancelMirror }}
+                            </button>
+                        </span>
+                        <span ng-if="!IsReadOnly()">
+                            <button type="button" class="btn btn-success pull-right" ng-disabled="!IsValid() || IntervalDetails.TargetDateEndDate.$error.SourceDateRange" ng-click="Save()">
+                                {{ ::Vm.L10N.Save }}
+                            </button>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="touch-scrollable">
+    <form class="form-horizontal panel-body fill-height" role="form" name="IntervalDetails" autocomplete="off">
+        <div class="container fill-height">
+
+            <div class="row form-group" ng-show="ShowStoreSelector() || IsReadOnly()">
+                <div class="col-xs-12">
+                    <label class="col-xs-2  control-label">{{ ::Vm.L10N.SourceStore }}</label>
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <div ng-show="IsReadOnly() || Model.HourIntervals.length > 0" class="disable-by-fill"></div>
+                            <input type="hidden" name="SourceEntity" ng-model="Model.SourceEntity.EntityId" required />
+                            <span class="form-control"
+                                  ng-class="{'mx-fg-novalue': !Model.SourceEntity}" ng-click="SelectSourceEntity()">
+                                <span ng-if="!Model.SourceEntity">{{ ::Vm.L10N.SearchForStores }}</span>
+                                <span ng-if="Model.SourceEntity">{{ Model.SourceEntity.Name }}</span>
+                            </span>
+                            <span class="input-group-btn" ng-click="SelectSourceEntity()">
+                                <button type="button" class="btn btn-default"><i class="fa fa-search ico-16"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body-content-divider" ng-show="ShowStoreSelector()"></div>
+
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <div class="col-xs-offset-2 col-xs-6">
+                        <label class="checkbox-inline base-text" ng-disabled="IsReadOnly()">
+                            <input type="checkbox" ng-model="Model.IntervalGroup.OverwriteManager" ng-disabled="IsReadOnly()" /> {{::Vm.L10N.OverwriteManagerForecast}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12">
+                    <label class="col-xs-2  control-label">{{::Vm.L10N.MirrorAllDay}}</label>
+                    <div class="col-xs-6">
+                        <div class="btn-group">
+                            <div ng-show="IsReadOnly() || Model.HourIntervals.length > 0" class="disable-by-fill"></div>
+                            <button type="button" class="btn btn-default" ng-model="Model.IntervalGroup.IsAllDay" btn-radio="true" ng-class="{'btn-primary': Model.IsAllDay===true}" ng-click="Model.IntervalGroup.IsAllDay = true">{{::Vm.L10N.MirrorAllDayOn }}</button>
+                            <button type="button" class="btn btn-default" ng-model="Model.IntervalGroup.IsAllDay" btn-radio="false" ng-class="{'btn-primary': Model.IsAllDay===false}" ng-click="Model.IntervalGroup.IsAllDay = false">{{::Vm.L10N.MirrorAllDayOff}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="Model.IntervalGroup.IsAllDay">
+                <div ng-show="!IsReadOnly()" class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="col-xs-2 control-label">{{ ::Vm.L10N.TargetDateRange }}</label>
+                        <div class="col-xs-6">
+                            <div class="input-group" ng-click="OpenTargetDateRangeDialog(Model.TargetDateOptions);"
+                                 ng-class="{'has-error': IntervalDetails.TargetDateEndDate.$invalid}">
+                                <input type="hidden" name="TargetDateStartDate" ng-model="Model.IntervalGroup.TargetDateStartDate" required />
+                                <input type="hidden" name="TargetDateEndDate" ng-model="Model.IntervalGroup.TargetDateEndDate" required
+                                       
+                                       />
+                                <span class="form-control mx-fg-salesitempicker mx-fg-ellipsis"
+                                      ng-class="{'mx-fg-novalue': !Model.IntervalGroup.TargetDateStartDate}">
+                                    <span ng-if="!Model.IntervalGroup.TargetDateStartDate">{{ ::Vm.L10N.SelectDates }}</span>
+                                    <span ng-if="Model.IntervalGroup.TargetDateStartDate">{{ Model.IntervalGroup.TargetDateStartDate | date:'mediumDate' }} - {{ Model.IntervalGroup.TargetDateEndDate | date:'mediumDate' }}</span>
+                                </span>
+                                <span class="input-group-btn pull-left">
+                                    <button type="button" class="btn btn-default">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                                <div class="text-danger mx-fg-salesitempicker" ng-show="IntervalDetails.TargetDateEndDate.$error.SourceDateRange">{{ ::Vm.L10N.SourceDateRangeError }}</div>
+                                <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="col-xs-2  control-label">{{ ::Vm.L10N.SourceStartDate }}</label>
+                        <div class="col-xs-6">
+                            <div class="input-group" ng-class="{'has-error': IntervalDetails.SourceDateStartDate.$invalid}">
+                                <div ng-show="IsReadOnly() || !Model.IntervalGroup.TargetDateStartDate" class="disable-by-fill"></div>
+                                <span class="form-control mx-fg-salesitempicker mx-fg-ellipsis"
+                                      ng-class="{
+                                                'mx-fg-novalue': !Model.IntervalGroup.SourceDateStartDate && !Model.SourceDateOptions.Open
+                                                }"
+                                      ng-model="Model.IntervalGroup.SourceDateStartDate"
+                                      ng-click="OpenSourceStartDateDialog($event)"
+                                      datepicker-popup="mediumDate"
+                                      is-open="Model.SourceDateOptions.Open"
+                                      ng-change="OnSourceDateChange()"
+                                      show-button-bar="false" show-weeks="false"
+                                      min-date="Model.SourceDateOptions.Min" max-date="Model.SourceDateOptions.Max">
+
+                                    <span ng-if="!Model.IntervalGroup.SourceDateStartDate">{{ ::Vm.L10N.SelectDate }}</span>
+                                    <span ng-if="Model.IntervalGroup.SourceDateStartDate">{{ Model.IntervalGroup.SourceDateStartDate | date }}</span>
+                                </span>
+                                <span class="input-group-btn pull-left">
+                                    <button type="button" class="btn btn-default" ng-click="OpenSourceStartDateDialog($event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group" ng-show="Model.IntervalGroup.SourceDateEndDate">
+                    <div class="col-xs-12">
+                        <label class="col-xs-2  text-right">{{ ::Vm.L10N.SourceEndDate }}</label>
+                        <div class="col-xs-6">
+                            <label class="">{{ Model.IntervalGroup.SourceDateEndDate | date:'mediumDate' }}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="IsReadOnly() && Model.IntervalGroup.CancelledDate">
+                    <div class="col-xs-offset-2 col-xs-6">
+                        <div class="text-danger">
+                            {{::Vm.L10N.CancelledOn}} {{ Model.IntervalGroup.CancelledDate | date:'mediumDate' }}
+                            {{::Vm.L10N.CancelledByUser}} {{ Model.IntervalGroup.CancelledByUser }}
+                        </div><br />
+                    </div>
+                </div>
+
+                <div class="panel-body-content-divider"></div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="col-xs-2  control-label">{{ ::Vm.L10N.AdditionalAdjustment }}</label>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                                <input ng-model="Model.IntervalGroup.AdjustmentPercent"
+                                       ng-change="OnAdjustmentChange(Model.IntervalGroup)" ng-blur="OnAdjustmentBlur(Model.IntervalGroup)"
+                                       type="tel" class="form-control no-ms-clear" number-only-input select-on-focus-input
+                                       maxlength="9" minvalue="-100" 
+                                       precision="0" autocomplete="off" ispercent="true" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!Model.IntervalGroup.IsAllDay">
+                <div ng-if="!IsReadOnly()" class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+
+                        <label class="col-xs-2  control-label">{{ ::Vm.L10N.TargetDate }}</label>
+                        <div class="col-xs-4 col-sm-3">
+                            <div class="input-group">
+                                <div ng-show="IsReadOnly() || Model.HourIntervals.length > 0" class="disable-by-fill"></div>
+                                <span class="form-control"
+                                      ng-class="{
+                                            'mx-fg-novalue': !Model.IntervalGroup.TargetDateStartDate && !Model.TargetDateOptions.Open
+                                            }"
+                                      ng-model="Model.IntervalGroup.TargetDateStartDate"
+                                      ng-click="OpenTargetDateDialog($event)"
+                                      datepicker-popup="mediumDate"
+                                      is-open="Model.TargetDateOptions.Open"
+                                      ng-change="OnTargetDateChange()"
+                                      show-button-bar="false" show-weeks="false"
+                                      min-date="Model.TargetDateOptions.Min" max-date="Model.TargetDateOptions.Max">
+                                    <span ng-if="!Model.IntervalGroup.TargetDateStartDate">{{ ::Vm.L10N.SelectDate }}</span>
+                                    <span ng-if="Model.IntervalGroup.TargetDateStartDate">{{ Model.IntervalGroup.TargetDateStartDate | date }}</span>
+                                </span>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="OpenTargetDateDialog($event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <label ng-if="!IsReadOnly()" class="col-xs-2 control-label">{{::Vm.L10N.TargetTime}}</label>
+                        <div ng-if="!IsReadOnly()" class="col-xs-4">
+                            <table class="time-control">
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center"><span class="glyphicon glyphicon-chevron-up pointer-cursor" ng-click="UpdateTargetHour(1)"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="input-group">
+                                            <input ng-hide="IsReadOnly()" ng-model="Model.NewTargetHour"
+                                                   type="tel" class="form-control" number-only-input select-on-focus-input
+                                                   maxlength="2" minvalue="1" maxvalue="12"
+                                                   precision="0" autocomplete="off" />
+                                            <div ng-show="IsReadOnly()" class="form-control">
+                                                {{ Model.NewTargetHour }}
+                                            </div>
+                                            <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <div class="input-group">
+                                            <select class="form-control"
+                                                    ng-model="Model.NewTargetAmPm">
+                                                <option value="Am">{{ ::Vm.L10N.AM }}</option>
+                                                <option value="Pm">{{ ::Vm.L10N.PM }}</option>
+                                            </select>
+                                            <div ng-if="IsReadOnly()" class="disable-by-fill"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center"><span class="glyphicon glyphicon-chevron-down pointer-cursor" ng-click="UpdateTargetHour(-1)"></span></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="!IsReadOnly()" class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                <div ng-if="!IsReadOnly()" class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="col-xs-2  control-label">{{ ::Vm.L10N.SourceDate }}</label>
+                        <div class="col-xs-4 col-sm-3">
+                            <div class="input-group">
+                                <div ng-show="IsReadOnly() || !Model.IntervalGroup.TargetDateStartDate || Model.HourIntervals.length > 0" class="disable-by-fill"></div>
+                                <span class="form-control"
+                                      ng-class="{
+                                                'mx-fg-novalue': !Model.IntervalGroup.SourceDateStartDate && !Model.SourceDateOptions.Open
+                                                }"
+                                      ng-model="Model.IntervalGroup.SourceDateStartDate"
+                                      ng-click="OpenSourceStartDateDialog($event)"
+                                      datepicker-popup="mediumDate"
+                                      is-open="Model.SourceDateOptions.Open"
+                                      ng-change="OnSourceDateChange()"
+                                      show-button-bar="false" show-weeks="false"
+                                      min-date="Model.SourceDateOptions.Min" max-date="Model.SourceDateOptions.Max">
+
+                                    <span ng-if="!Model.IntervalGroup.SourceDateStartDate">{{ ::Vm.L10N.SelectDate }}</span>
+                                    <span ng-if="Model.IntervalGroup.SourceDateStartDate">{{ Model.IntervalGroup.SourceDateStartDate | date }}</span>
+                                </span>
+
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="OpenSourceStartDateDialog($event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <label ng-if="!IsReadOnly()" class="col-xs-2 control-label">{{::Vm.L10N.SourceTime}}</label>
+                        <div ng-if="!IsReadOnly()" class="col-xs-4">
+                            <table class="time-control">
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center"><span class="glyphicon glyphicon-chevron-up pointer-cursor" ng-click="UpdateSourceHour(1)"></span></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="input-group">
+                                            <input ng-hide="IsReadOnly()" ng-model="Model.NewSourceHour"
+                                                   type="tel" class="form-control" number-only-input select-on-focus-input
+                                                   maxlength="2" minvalue="1" maxvalue="12"
+                                                   precision="0" autocomplete="off" />
+                                            <div ng-show="IsReadOnly()" class="form-control">
+                                                {{ Model.NewSourceHour }}
+                                            </div>
+                                            <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <div class="input-group">
+                                            <select class="form-control"
+                                                    ng-model="Model.NewSourceAmPm">
+                                                <option value="Am">{{ ::Vm.L10N.AM }}</option>
+                                                <option value="Pm">{{ ::Vm.L10N.PM }}</option>
+                                            </select>
+                                            <div ng-if="IsReadOnly()" class="disable-by-fill"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center"><span class="glyphicon glyphicon-chevron-down pointer-cursor " ng-click="UpdateSourceHour(-1)"></span></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="!IsReadOnly()" class="row form-group">
+                    <div class="col-xs-12">
+                        <div class="col-xs-offset-2 col-xs-3">
+                            <button type="button" class="pull-left btn btn-default" ng-click="AddHourInterval()" ng-disabled="!CanAddHourInterval() || IntervalDetails.TargetDateEndDate.$error.SourceDateRange">
+                                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ ::Vm.L10N.MirrorAddDate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="IsReadOnly() && Model.IntervalGroup.CancelledDate">
+                    <div class="col-xs-offset-2 col-xs-6">
+                        <div class="text-danger">
+                            {{::Vm.L10N.CancelledOn}} {{ Model.IntervalGroup.CancelledDate | date:'mediumDate' }}
+                            {{::Vm.L10N.CancelledByUser}} {{ Model.IntervalGroup.CancelledByUser }}
+                        </div><br />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div ng-if="Vm.L10N.TargetDate && Model.HourIntervals.length > 0">
+                        <div class="panel panel-default">
+                            <div class="table-header">
+                                <div id="TableHeader">
+                                    <mx-grid-header header="Header"></mx-grid-header>
+                                </div>
+                            </div>
+                            <div class="touch-scrollable">
+                                <table class="table table-striped" mx-scrollable-table watch="Model.HourIntervals" header-id="TableHeader">
+                                    <tbody>
+                                        <tr ng-repeat="interval in Model.HourIntervals">
+                                            <td>{{ ::interval.TargetDateStartDate | date:'short' }}</td>
+                                            <td>{{ ::interval.SourceDateStartDate | date:'short' }}</td>
+                                            <td class="col-xs-3">
+                                                <input ng-model="interval.AdjustmentPercent" ng-change="OnAdjustmentChange(interval)"
+                                                       type="tel" class="form-control no-ms-clear" number-only-input select-on-focus-input
+                                                       maxlength="9" minvalue="-100" 
+                                                       precision="0" autocomplete="off" ispercent="true" ng-disabled="IsReadOnly()" />
+                                            </td>
+                                            <td ng-if="!IsReadOnly()" class="min-50 text-center" ng-click="RemoveHourInterval($index)">
+                                                <span class="glyphicon glyphicon-trash pointer-cursor"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+    </div>
+</div>

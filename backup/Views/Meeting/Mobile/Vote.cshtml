@@ -1,0 +1,66 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.VotingModel
+@using Rockend.iStrata.StrataWebsite.Model
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+
+@{
+    ViewBag.Title = "Vote";
+}
+
+
+<div class="mainContentContainer" id="mainContentContainer" data-role="page">
+    <div data-role="header" data-position="inline" data-theme="c">
+        <h2>Online Vote</h2>
+    </div>
+    <div class="ui-content">
+        <div class="mainContent">
+            <div class="menuIconContainer" style="margin-bottom: 16px;">
+                <a href="../Meeting/Index?index=0" data-ajax="false">
+                    <img src="../../../Content/Images/menuIcon.jpg" />
+                </a>
+            </div>
+            <h3>Executive Committee Meeting on 17/04/2018</h3>
+            <div class="wrapper cf">
+                
+                <div class="right"><h3 id="vote-close-date">Closing Date on 30/04/2018 &#64; 5:30PM</h3></div>
+            </div>
+            <form id="motions-form">
+                <div id="motions">
+
+                    @for (var i = 0; i < Model.Meeting.AgendaItems.Count; i++)
+                    {
+                        <div class="agenda-item-mobile">
+
+                            <div class="agenda-item-heading-mobile">
+                                <div class="agenda-item-heading-title" onclick="toggleBody(event, this)">
+                                    <p><span style="font-weight:bold">@(i).</span> @Model.Meeting.AgendaItems[i].Description</p>
+                                </div>
+                            </div>
+                            <div class="agenda-item-body">
+                                <p>@Model.Meeting.AgendaItems[i].MotionText</p>
+                            </div>
+                            <div class="agenda-item-footer" data-enhance="false" data-dom-cache="false">
+                                <fieldset data-role="controlgroup" data-type="horizontal">
+                                    @Html.RadioButtonFor(m => m.Meeting.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions[0].Text, new { @id = string.Format("MeetingRecordItem_Vote_1_{0}", i), @class="required"  })
+                                    <label for="@(string.Format("MeetingRecordItem_Vote_1_{0}", i))">@Model.VoteOptions[0].Text</label>
+                                    @Html.RadioButtonFor(m => m.Meeting.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions[1].Text, new { @id = string.Format("MeetingRecordItem_Vote_2_{0}", i) })
+                                    <label for="@(string.Format("MeetingRecordItem_Vote_2_{0}", i))">@Model.VoteOptions[1].Text</label>
+                                    @Html.RadioButtonFor(m => m.Meeting.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions[2].Text, new { @id = string.Format("MeetingRecordItem_Vote_3_{0}", i)  })
+                                    <label for="@(string.Format("MeetingRecordItem_Vote_3_{0}", i))">@Model.VoteOptions[2].Text</label>
+                                    
+                                </fieldset>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <a href="#confirm-submit-dlg" rel="modal:open">
+                    <input type="button" data-role="none" disabled="disabled" id="submit-votes-button" class="coolButton mobileButton" value="Submit" style="float: right" />
+                </a>
+             </form>
+        </div>
+    </div>
+</div>
+<div class="footerImageContainer">
+    <img src='@ViewBag.FooterBannerUrl' style="width: 100%; margin-top: 8px;" />
+</div>

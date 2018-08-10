@@ -1,0 +1,69 @@
+﻿<div class="modal-header">{{Translation.TravelPathManageLocations}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <div class="row" ng-form="LocationNew">
+        <div class="col-sm-9 col-xs-12">
+            <input type="text" placeholder="{{Translation.TravelPathTypeLocationName}}"
+                   ng-model="NewLocation.NewLocationName" class="form-control"
+                   name="txtLocationNameNew" required
+                   ng-blur="LocationNew.$dirty && LocationNew.txtLocationNameNew.$valid" class="col-xs-12" />
+
+        </div>
+        <div class="col-sm-3 col-xs-12">
+            <button class="pull-right btn btn-success" ng-click="AddLocationClicked(NewLocation.NewLocationName)" ng-disabled="LocationNew.txtLocationNameNew.$invalid">
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;{{Translation.AddLocation}}
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row modal-body-fixed">
+        <div class="col-xs-12 fill-height">
+            <div class="panel panel-default fill-height touch-scrollable" ng-show="TravelPathData && TravelPathData.TravelPath.length">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr ng-repeat="travelPathItem in TravelPathData.TravelPath" ng-form="LocationInlineEdit">
+                            <td ng-class="{'has-error': LocationInlineEdit.txtLocationName.$invalid}" ng-click="LocationEditClicked(travelPathItem)">
+                                <div ng-if="! IsLocationInEdit(travelPathItem)" class="pointer-cursor">
+                                    <div class="col-xs-1" ng-click="LocationEditClicked(travelPathItem)">
+                                        <i class="fa fa-pencil"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <span>{{travelPathItem.Location}}</span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <a href="" ng-click="LocationSortIconClicked(travelPathItem)" mx-stop-event-propagation="click">
+                                            <i class=" fa fa-bars fa-2x" ng-show="SelectedLocation == null">
+                                            </i>
+                                            <i class="fa fa-thumb-tack fa-2x" ng-show="travelPathItem === SelectedLocation"></i>
+                                            <i class="fa fa-bullseye fa-2x" ng-show="SelectedLocation != null && SelectedLocation != travelPathItem"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div ng-if="IsLocationInEdit(travelPathItem)">
+                                    <div class="col-xs-offset-1 col-xs-5">
+                                        <input type="text"
+                                               ng-show="IsLocationInEdit(travelPathItem)"
+                                               placeholder="Location name..."
+                                               ng-model="travelPathItem.Location" class="form-control"
+                                               name="txtLocationName" required />
+                                    </div>
+                                    <div class="col-xs-6 text-right">
+                                        <button class="btn btn-danger btn-sm" ng-if="CanDeleteLocation(travelPathItem)" ng-click="DeleteLocation(travelPathItem)" mx-stop-event-propagation="click">
+                                            <i class="fa fa-trash-o"></i>&nbsp;&nbsp;{{Translation.DeleteText}}
+                                        </button>
+                                        <button class="btn btn-success btn-sm" ng-click="RenameLocation(travelPathItem)" ng-disabled="LocationInlineEdit.txtLocationName.$invalid" mx-stop-event-propagation="click">{{Translation.Save}}</button>
+                                        <button class="btn btn-default btn-sm" ng-click="CancelEditLocation()" mx-stop-event-propagation="click">{{Translation.Cancel}}</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translation.Close}}</button>
+    <button class="btn btn-success" ng-click="Cancel()">{{Translation.DoneText}}</button>
+</div>

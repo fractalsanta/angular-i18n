@@ -1,0 +1,101 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar forecasting labeled" mx-mobile-ready
+        ng-class="{'mx-fg-reset-enabled': ShowResetButton()}">
+    <div class="panel-heading mx-white">
+        <div class="fill-height">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-left" style="position: relative; min-width: 190px; max-width: 190px;">
+                        <mx-prevday-nextday-picker options="Vm.ForecastPickerOptions" on-change="OnDatePickerChange(selectedDate)"></mx-prevday-nextday-picker>
+                        <div ng-show="IsDirty()" class="disable-by-fill"></div>
+                    </div>
+
+                    <div ng-if="!IsSalesItems" class="pull-left col-md-2 col-xs-3" style="padding-right: 0;">
+                        <label class="mx-fg-header-label">{{ ::Vm.L10N.Metric }}</label>
+                        <select id="mx-forecast-metric-dropdown" class="form-control" 
+                                ng-disabled="IsDirty()"
+                                ng-model="GetForecastingOptions().Metric"
+                                ng-options="x.value as x.name for x in MetricDropdownOptions"
+                                ng-change="NavigateToParam('metric', GetForecastingOptions().Metric)">
+					   </select>
+                    </div>
+
+                    <div ng-if="IsSalesItems" class="pull-left col-xs-6" style="padding-right: 0;">
+                        <span class="input-group" ng-click="SelectSalesItem()">
+                            <span class="form-control text-center mx-fg-salesitempicker mx-fg-ellipsis">
+                                <span ng-if="!Vm.SalesItem">{{ ::Vm.L10N.SearchForItems }}</span>
+                                <span ng-if="Vm.SalesItem">{{ Vm.SalesItem.Description }} - {{ Vm.SalesItem.ItemCode }}</span>
+                            </span>
+                            <span class="input-group-btn pull-left">
+                                <button type="button" class="btn btn-default" ng-disabled="!GetSalesItems().SalesItems.length"><i class="fa fa-search ico-16"></i></button>
+                            </span>
+                            <div ng-show="IsDirty()" class="disable-by-fill"></div>
+                        </span>
+                    </div>
+
+                    <div class="pull-right" ng-hide="IsDirty()">
+                        <span class="pull-left container-fluid">
+                            <button type="button" class="btn btn-default" ng-click="NavigateTo('Edit')"><i class="fa fa-table"></i></button>
+                        </span>
+                        <span class="pull-left">
+                            <button id="mx-forecast-history-button" type="button" ng-show="HasViewHistoryPermission()" ng-disabled="!CanViewHistory()" class="btn btn-default" ng-click="NavigateTo('History', 'gridview=flase')">{{ ::Vm.L10N.History }}</button>
+                        </span>
+                    </div>
+                    <div class="hidden-sm hidden-xs pull-right" ng-show="IsDirty()" style="white-space: nowrap;">
+                        <button class="btn btn-success" title="{{ ::Vm.L10N.Save }}"
+                                ng-click="SaveChanges()">
+                            {{ ::Vm.L10N.Save }}
+                        </button>
+                        <button class="btn btn-default" title="{{ ::Vm.L10N.Cancel }}"
+                                ng-click="ClearChangesWithConfirmation()">
+                            {{ ::Vm.L10N.Cancel }}
+                        </button>
+                    </div>
+                    <div class="hidden-lg hidden-md pull-right" ng-show="IsDirty()">
+                        <button class="btn btn-success" title="{{ ::Vm.L10N.Save }}"
+                                ng-click="SaveChanges()">
+                            <i class="glyphicon glyphicon-floppy-save"></i>
+                        </button>
+                        <button class="btn btn-default" title="{{ ::Vm.L10N.Cancel }}"
+                                ng-click="ClearChangesWithConfirmation()">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer mx-white mx-fg-reset-footer">
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <button type="button" class="btn btn-default" ng-click="ResetForecasts()"
+                        ng-disabled="!GetForecastObject().Forecast">
+                    {{ ::Vm.L10N.ForecastReset }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body mx-fg-reset-body">
+        <div ng-if="IsSalesItems && !Vm.SalesItem && GetSalesItems().SalesItems.length">
+            <div class="alert alert-warning">{{ ::Vm.L10N.SearchSalesItem }}</div>
+        </div>
+
+        <div ng-if="!IsSalesItems || Vm.SalesItem || Vm.NotHasForecastForSalesItem">
+            <div ng-if="!Vm.HasForecast && !Vm.Loading" class="alert alert-warning">{{ ::Vm.L10N.NoForecastForDay }} {{ DayString | formatDate:"L" }}</div>
+            <h4 ng-if="Vm.HasForecast && !Vm.HasData && !Vm.Loading" class="text-center text-info">{{ ::Vm.L10N.NoDataMessage }}</h4>
+        </div>
+
+        <div id="mx-forecast-display" ng-show="Vm.HasData && !Vm.Loading" class="panel panel-default fill-height">
+            <div class="panel panel-default fill-height container-1-toolbar">
+                <div class="touch-scrollable" style="top: 0;">
+                    <forecast-filter-graph options="GetForecastingOptions()" forecastobject="GetForecastObject()"></forecast-filter-graph>
+                    <forecast-filter-grid options="GetForecastingOptions()" forecastobject="GetForecastObject()"></forecast-filter-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

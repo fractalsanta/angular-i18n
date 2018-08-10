@@ -1,0 +1,2280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="RestorePackages;Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{09E7346F-2A6E-4920-8C37-2F08359C6EA4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mx.Web.UI</RootNamespace>
+    <AssemblyName>Mx.Web.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptModuleKind>none</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptOutDir Condition="$(OutDir) != ''">$(OutDir)_PublishedWebsites\Mx.Web.UI</TypeScriptOutDir>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentSpace.SAML2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Dependencies\ComponentSpace.SAML2.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="EnterpriseLibraryExtensions.Logging">
+      <HintPath>..\..\..\Mx.Binaries\EnterpriseLibraryExtensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\packages\FluentNHibernate.1.3.0.717\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
+      <HintPath>..\..\packages\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HtmlAgilityPack.1.4.0\lib\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Redis">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Redis.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MMS.Utilities">
+      <HintPath>..\..\Binaries\Dependencies\MMS.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Administration.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Administration.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Common.Interfaces">
+      <HintPath>..\..\Binaries\Dependencies\Mx.Common.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Configuration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Services.Shared\Mx.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.CustomAuthentication">
+      <HintPath>..\..\Binaries\Dependencies\Mx.CustomAuthentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Deliveries.Services">
+      <HintPath>..\..\Binaries\Build\Mx.Deliveries.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Deliveries.Services.Contracts">
+      <HintPath>..\..\Binaries\Contracts\Mx.Deliveries.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Deliveries.Services.Interfaces">
+      <HintPath>..\..\Binaries\Build\Mx.Deliveries.Services.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Financial.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Financial.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Forecasting.Services">
+      <HintPath>..\..\Binaries\Build\Mx.Forecasting.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Forecasting.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Forecasting.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Forecasting.Services.Interfaces">
+      <HintPath>..\..\Binaries\Build\Mx.Forecasting.Services.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Foundation.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Foundation.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Inventory.Services, Version=14.2.0.154, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Inventory.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Inventory.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Inventory.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Inventory.Services.Interfaces, Version=14.2.0.154, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Inventory.Services.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Inventory.Services.Models, Version=14.2.0.154, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Inventory.Services.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Inventory.Services.Repositories, Version=14.2.0.154, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Inventory.Services.Repositories.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Labor.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Labor.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Labor.Services.Interfaces, Version=16.5.0.1469, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Labor.Services.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Legacy.Services.Contracts, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Dependencies\Mx.Legacy.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.MessageQueuing">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.MessageQueuing.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.MsmqLibs">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Dependencies\Mx.MsmqLibs.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.OperationalReporting.Services">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.OperationalReporting.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.OperationalReporting.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.OperationalReporting.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.OperationalReporting.Services.Interfaces">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.OperationalReporting.Services.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.OperationalReporting.Services.Mdx">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.OperationalReporting.Services.Mdx.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.OperationalReporting.Services.Models">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.OperationalReporting.Services.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.OperationalReporting.Services.Repositories">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.OperationalReporting.Services.Repositories.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Operations.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Operations.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Reporting.Services, Version=14.6.0.392, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Reporting.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Reporting.Services.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Reporting.Services.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Reporting.Services.EventHandlers, Version=14.6.0.392, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Reporting.Services.EventHandlers.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Reporting.Services.Interfaces, Version=14.6.0.392, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Reporting.Services.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Reporting.Services.Models, Version=14.2.0.154, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Reporting.Services.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Reporting.Services.Repositories, Version=14.6.0.392, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Reporting.Services.Repositories.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Services.Shared">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Services.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Services.Shared.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Contracts\Mx.Services.Shared.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Services.Shared.Models">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Build\Mx.Services.Shared.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Mx.Shared.Contracts">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Binaries\Dependencies\Mx.Shared.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2">
+      <HintPath>..\..\packages\NHibernate.Caches.SysCache2.3.2.0.4000\lib\Net35\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\packages\NLog\NLog.2.1.0\lib\net20\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Profiling.NHibernate, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MiniProfiler.NHibernate.2.1.0.2\lib\NET40\StackExchange.Profiling.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis.StrongName, Version=1.0.316.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\StackExchange.Redis.StrongName.1.0.481\lib\net45\StackExchange.Redis.StrongName.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\Resources\Files\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Areas\Administration\ChangeStore\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Administration\DataLoad\Api\DataLoadController.cs" />
+    <Compile Include="Areas\Administration\DataLoad\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Administration\DayCharacteristic\Api\DayCharacteristicController.cs" />
+    <Compile Include="Areas\Administration\DayCharacteristic\Api\Models\DayCharacteristic.cs" />
+    <Compile Include="Areas\Administration\DayCharacteristic\Api\Models\EntityDayCharacteristic.cs" />
+    <Compile Include="Areas\Administration\Hierarchy\Api\HierarchyController.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\InventoryCountSettingsController.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\Models\InventoryCountSettingsViewModel.cs" />
+    <Compile Include="Areas\Core\Api\Enum\ConfigurationSetting.cs" />
+    <Compile Include="Areas\Core\Api\Enum\Task.cs" />
+    <Compile Include="Areas\Core\Api\Models\JsTreeNode.cs" />
+    <Compile Include="Areas\Core\Api\Models\EntityType.cs" />
+    <Compile Include="Areas\Administration\Hierarchy\Api\Models\HierarchyEntity.cs" />
+    <Compile Include="Areas\Administration\Hierarchy\Api\Models\Translations.cs" />
+    <Compile Include="Areas\Administration\MyAccount\Api\AccountController.cs" />
+    <Compile Include="Areas\Administration\MyAccount\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\Models\SettingEnums.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\Models\SettingGroup.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\Models\SiteSettings.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\Models\SettingMeasure.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\SiteSettingsController.cs" />
+    <Compile Include="Areas\Administration\Settings\Api\SettingsController.cs" />
+    <Compile Include="Areas\Administration\User\Api\Models\UserSettingEnum.cs" />
+    <Compile Include="Areas\Administration\User\Api\Models\UserSettingValue.cs" />
+    <Compile Include="Areas\Administration\User\Api\UserSettingsController.cs" />
+    <Compile Include="Areas\CommaDelimitedCollectionModelBinder.cs" />
+    <Compile Include="Areas\Core\Api\Models\Currency.cs" />
+    <Compile Include="Areas\Core\Api\Models\EntityIdWithCurrencySymbol.cs" />
+    <Compile Include="Areas\Core\Api\Models\Constants.cs" />
+    <Compile Include="Areas\Administration\User\Api\Models\Entity.cs" />
+    <Compile Include="Areas\Administration\User\Api\Models\SecurityGroup.cs" />
+    <Compile Include="Areas\Administration\User\Api\Models\Translations.cs" />
+    <Compile Include="Areas\Administration\User\Api\Models\User.cs" />
+    <Compile Include="Areas\Administration\User\Api\UserController.cs" />
+    <Compile Include="Areas\ApplicationHub.cs" />
+    <Compile Include="Areas\Core\Api\Models\SupervisorAuthorizationResponse.cs" />
+    <Compile Include="Areas\Core\Api\Models\SupervisorAuthorization.cs" />
+    <Compile Include="Areas\Core\Api\Models\SystemSettings.cs" />
+    <Compile Include="Areas\Core\Api\Models\TranslatedEnum.cs" />
+    <Compile Include="Areas\Core\Api\Services\EntityService.cs" />
+    <Compile Include="Areas\Core\Api\Services\IEntityService.cs" />
+    <Compile Include="Areas\Core\Api\Services\ISupervisorAuthorizationService.cs" />
+    <Compile Include="Areas\Core\Api\Services\SupervisorAuthorizationService.cs" />
+    <Compile Include="Areas\Core\Api\BackplaneController.cs" />
+    <Compile Include="Areas\Core\Auth\Api\PartnerLoginController.cs" />
+    <Compile Include="Areas\Core\Auth\Api\LogonImageController.cs" />
+    <Compile Include="Areas\Core\Auth\Api\Services\LogonImageService.cs" />
+    <Compile Include="Areas\Core\Auth\Api\Services\ILogonImageService.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\Models\DiagnosticServiceDetail.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\Models\DiagnosticServiceResponse.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\Services\DiagnosticController.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\SystemTests\DiagnosticDatabaseIsAvailable.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\SystemTests\DiagnosticLegacySliceOrderingIsAvailable.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\SystemTests\DiagnosticReportingSliceIsAvailable.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\SystemTests\DiagnosticLegacySliceIsAvailable.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\SystemTests\DownloadUrl.cs" />
+    <Compile Include="Areas\Core\Diagnostics\Api\SystemTests\IUrlDiagnostic.cs" />
+    <Compile Include="Areas\Core\PartnerRedirect\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Core\PartnerRedirect\Api\Models\LinkRequest.cs" />
+    <Compile Include="Areas\Core\PartnerRedirect\Api\PartnerRedirectController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Enums\EventProfileSource.cs" />
+    <Compile Include="Areas\Forecasting\Api\Enums\PromotionStatus.cs" />
+    <Compile Include="Areas\Forecasting\Api\Enums\PromotionTimeline.cs" />
+    <Compile Include="Areas\Forecasting\Api\EventCalendarController.cs" />
+    <Compile Include="Areas\Forecasting\Api\MirroringRegenerationController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\MirroringRegenerationRequest.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\PromotionFormData.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\Promotion.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\PromotionListItem.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\PromotionOverlap.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\PromotionResult.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\PromotionSalesItem.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\PromotionTranslations.cs" />
+    <Compile Include="Areas\Forecasting\Api\PromotionController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\CountVarianceController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountItemVariance.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountStatusResponse.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\TravelPathPartialUpdate.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\ChangeApplyDateResponse.cs" />
+    <Compile Include="Areas\Inventory\Production\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Inventory\Production\Api\Models\PrepAdjustedItem.cs" />
+    <Compile Include="Areas\Inventory\Production\Api\PrepAdjustFavoriteController.cs" />
+    <Compile Include="Areas\Inventory\Production\Api\PrepAdjustItemSearchController.cs" />
+    <Compile Include="Areas\Inventory\Production\Api\PrepAdjustController.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferItemsRequest.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Enums\TransferDirection.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Attributes\ReportAttribute.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Interfaces\IProductController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ColumnResponse.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastPipelineController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastPipelineRequest.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ProductGroupDetails.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ProductDetails.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ReportColumnName.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\ColumnsController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ProductData.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ReportViewType.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\ProductController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\ProductExportController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\IReportAttributeService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\IReportEntitiesService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\ReportAttributeService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\ReportEntitiesService.cs" />
+    <Compile Include="Areas\Operations\Reporting\AreaSummary\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Operations\Reporting\InventoryMovement\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Operations\Reporting\ProductMix\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\PeriodClose\Api\PeriodCloseController.cs" />
+    <Compile Include="Areas\Workforce\PeriodClose\Api\Models\PeriodClose.cs" />
+    <Compile Include="Config\SignalR\RedisTracker.cs" />
+    <Compile Include="Config\WebApi\QueryStringAuthenticationFilterAttribute.cs" />
+    <Compile Include="Areas\Forecasting\Api\EventTagNoteController.cs" />
+    <Compile Include="Areas\Forecasting\Api\EventTagController.cs" />
+    <Compile Include="Areas\Forecasting\Api\EventController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastControllerBase.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastFilterAssignController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastFilterController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastFilterDialogController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastZoneController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\Entity.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\StoreMirrorIntervalGroup.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\StoreMirrorInterval.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\SalesItemMirrorInterval.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\SystemForecastGenerationRequest.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\Zone.cs" />
+    <Compile Include="Areas\Forecasting\Api\MultiFilterSalesItemMetricAllController.cs" />
+    <Compile Include="Areas\Forecasting\Api\MultiFilterMetricAllController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\Filtered.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastFilterAssignRecord.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastFilterRecord.cs" />
+    <Compile Include="Areas\Forecasting\Api\FutureOrderController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\FutureOrder.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\FutureOrderDetail.cs" />
+    <Compile Include="Areas\Forecasting\Api\MultiFilterRESTController.cs" />
+    <Compile Include="Areas\Forecasting\Api\StoreMirrorIntervalsController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SalesItemSystemAdjustmentController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SalesItemMirrorIntervalsController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SystemAdjustmentController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SystemForecastGenerationController.cs" />
+    <Compile Include="Areas\Forecasting\Api\TransitionController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventCalendarDayInfo.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventCalendarInfo.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventProfileHistory.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventProfileTagNote.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventProfileTag.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventProfile.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\EventWeekDayInfo.cs" />
+    <Compile Include="Areas\Forecasting\Api\Services\ForecastRegenerator.cs" />
+    <Compile Include="Areas\Forecasting\Api\Services\IForecastRegenerator.cs" />
+    <Compile Include="Areas\Forecasting\Api\TranslatedPosServiceTypeController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Constants.cs" />
+    <Compile Include="Areas\Core\Auth\Api\PinChallengeController.cs" />
+    <Compile Include="Areas\Core\Api\EntityController.cs" />
+    <Compile Include="Areas\Core\Api\Models\Application.cs" />
+    <Compile Include="Areas\Core\Api\Models\EntityModel.cs" />
+    <Compile Include="Areas\Core\Api\Models\IDenormalizedData.cs" />
+    <Compile Include="Areas\Core\Api\Models\IDenormalizedDataExtensions.cs" />
+    <Compile Include="Areas\Core\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Core\Api\Models\MobileSettings.cs" />
+    <Compile Include="Areas\Core\Api\Models\Notification.cs" />
+    <Compile Include="Areas\Core\Api\Models\Notifications\L10n.cs" />
+    <Compile Include="Areas\Core\Api\Models\Translations.cs" />
+    <Compile Include="Areas\Core\Api\Models\VersionInformation.cs" />
+    <Compile Include="Areas\Core\Api\Models\Zone.cs" />
+    <Compile Include="Areas\Core\Api\Models\NotificationArea.cs" />
+    <Compile Include="Areas\Core\Api\NotificationsController.cs" />
+    <Compile Include="Areas\Core\Api\Services\CountNotificationAreaService.cs" />
+    <Compile Include="Areas\Core\Api\Services\INotificationAreaService.cs" />
+    <Compile Include="Areas\Core\Api\Services\FormsAuthenticationTokenManagementService.cs" />
+    <Compile Include="Areas\Core\Api\Services\IAuthenticationTokenManagementService.cs" />
+    <Compile Include="Areas\Core\Api\Services\ThreadPrincipalAuthenticationService.cs" />
+    <Compile Include="Areas\Core\Api\Services\PermissionAuthorizationService.cs" />
+    <Compile Include="Areas\Core\Api\Services\IAuthenticationService.cs" />
+    <Compile Include="Areas\Core\Api\Services\IAuthorizationService.cs" />
+    <Compile Include="Areas\Core\Api\Models\TokenVerificationResponse.cs" />
+    <Compile Include="Areas\Core\Api\TranslationsController.cs" />
+    <Compile Include="Areas\Core\Auth\Api\Models\Credentials.cs" />
+    <Compile Include="Areas\Core\Auth\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Core\Auth\Api\Models\LogonResponse.cs" />
+    <Compile Include="Areas\Core\Auth\Api\LogonController.cs" />
+    <Compile Include="Areas\Core\Api\MobileSettingsController.cs" />
+    <Compile Include="Areas\Core\Auth\Api\SsoLogoutController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastSalesItemEvaluationController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastTransactionEvaluationController.cs" />
+    <Compile Include="Areas\Forecasting\Api\HistoricalController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\DaySegment.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\DaySegmentType.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\DenormalizedSalesItemEvaluationResponse.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\DenormalizedTransactionEvaluationResponse.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\DenormalizedSalesEvaluationResponse.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\Forecast.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastingMetricAlls.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastingSalesItemMetricAlls.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastOperation.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastOperationCollection.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastMetricDetailsHeader.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastSalesItemMetricDetailsHeader.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\ForecastUpdateHeader.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\HistoricalBasis.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\HistoricalSalesItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Areas\Forecasting\Api\Models\MetricDetail.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\SalesItem.cs" />
+    <Compile Include="Areas\Forecasting\Api\SalesItemHistoricalController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SalesItemMetricAllController.cs" />
+    <Compile Include="Areas\Forecasting\Api\MetricAllController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\ApplyCount.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\ApplyDateSettings.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\UpdatedItemCountStatus.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\Constants.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\ElectronicOrderResult.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\CreateOrderResult.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\ReceiveOrderDetail.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\ReceiveOrder.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\OrderAddItemsController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\OverdueScheduledOrdersController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\OrderHistoryController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\ReceiveOrderDetailController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\ReturnEntireOrderController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\ReturnOrderController.cs" />
+    <Content Include="Areas\Administration\Settings\Templates\DeleteFilter.html" />
+    <Content Include="Areas\Administration\Settings\Templates\ForecastFilterUsageSettings.html" />
+    <Content Include="Areas\Administration\Settings\Templates\InventoryCountSettings.html" />
+    <Content Include="Areas\Administration\Settings\Templates\SiteSettings.html" />
+    <Content Include="Areas\Administration\Settings\Templates\Settings.html" />
+    <Content Include="Areas\Core\Templates\mx-authorization-directive.html" />
+    <Content Include="Areas\Core\Templates\mx-checkbox.html" />
+    <Content Include="Areas\Core\Templates\mx-confirmation-checkbox.html" />
+    <Content Include="Areas\Core\Templates\mx-confirmation.html" />
+    <Content Include="Areas\Core\Templates\mx-date-range-directive.html" />
+    <Content Include="Areas\Core\Templates\mx-date-range-dialog.html" />
+    <Content Include="Areas\Core\Templates\mx-date-range.html" />
+    <Content Include="Areas\Core\Templates\mx-grid-header.html" />
+    <Content Include="Areas\Core\Templates\mx-date-range-picker.html" />
+    <Content Include="Areas\Core\Templates\mx-week-picker.html" />
+    <Content Include="Areas\Forecasting\Templates\AllEventsForDayDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\EventWeek.html" />
+    <Content Include="Areas\Forecasting\Templates\EventDetails.html" />
+    <Content Include="Areas\Administration\Settings\Templates\ForecastFilterSettings.html" />
+    <Content Include="Areas\Administration\Settings\Templates\ForecastFilterDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastFilterGraphDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastFilterGridDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\Forecasting.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastingEdit.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastingHistory.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastingView.html" />
+    <Content Include="Areas\Forecasting\Templates\Mirroring.html" />
+    <Content Include="Areas\Forecasting\Templates\MirroringChangeEndDateDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\MirroringSalesItemDetails.html" />
+    <Content Include="Areas\Forecasting\Templates\MirroringSalesItems.html" />
+    <Content Include="Areas\Forecasting\Templates\MirroringSaveConfirmationDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\MirroringStoreDetails.html" />
+    <Content Include="Areas\Forecasting\Templates\MirroringStores.html" />
+    <Content Include="Areas\Forecasting\Templates\PromotionContainer.html" />
+    <Content Include="Areas\Forecasting\Templates\PromotionDetails.html" />
+    <Content Include="Areas\Forecasting\Templates\PromotionList.html" />
+    <Content Include="Areas\Forecasting\Templates\PromotionOverlapDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\SelectStoreDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\StoresListDirective.html" />
+    <Content Include="Areas\Inventory\Count\Templates\CountGroup.html" />
+    <Content Include="Areas\Inventory\Count\Templates\CountAddItems.html" />
+    <Content Include="Areas\Inventory\Order\Templates\ChangeApplyDate.html" />
+    <Content Include="Areas\Inventory\Order\Templates\OrderHistory.html" />
+    <Content Include="Areas\Inventory\Order\Templates\OrderContainer.html" />
+    <Content Include="Areas\Inventory\Order\Templates\OrderHistoryContainer.html" />
+    <Content Include="Areas\Inventory\Order\Templates\ReceiveContainer.html" />
+    <Content Include="Areas\Inventory\Order\Templates\ReturnOrderDetails.html" />
+    <Compile Include="Areas\Inventory\Order\Api\Services\OrdersOverdueNotificationAreaService.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Services\ScheduledOrdersOverdueNotificationAreaService.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferableItem.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\Transfer.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferDetail.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferHeader.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferHeaderWithEntities.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferDetailReporting.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\TransferReporting.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Services\TransferNotificationAreaService.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\TransferController.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\TransferHistoryController.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\WasteHistoryItem.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\WasteReason.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\WasteFavoriteController.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\WasteHistoryController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Attributes\ReportColumnAttribute.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\ReportExportController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\IReportMappingService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\ReportMappingService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\ReportExportService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\IReportExportService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\IReportColumnNameLocalisationService.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Services\ReportColumnNameLocalisationService.cs" />
+    <Compile Include="Areas\Operations\Reporting\StoreSummary\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ReportColumnData.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ReportColumnValueType.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ReportData.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ReportTypes.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\Models\ViewModel.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\ReportController.cs" />
+    <Compile Include="Areas\Operations\Reporting\Api\ViewController.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\ReportMeasureGenerationController.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\ClockedOnUser.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\Enums\ExtraDeliveryOrderStatus.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\Enums\TransactionDeliveryType.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Services\DeliveryNotificationAreaService.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\AvailableUsersController.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\DeliveriesAuthorizeController.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\DeliveryData.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\ExtraDeliveryRequest.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\DeliveriesController.cs" />
+    <Compile Include="Areas\Workforce\Deliveries\Api\Models\DeliveryAuthorisedRequest.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\DriverDistanceEmployeeController.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\DriverDistanceManagerController.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Models\ActionDriverDistanceRequest.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Models\CreateAuthorizedDriverDistanceRequest.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Models\CreateDriverDistanceRequest.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Models\DriverDistanceRecord.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Models\Enums\DriverDistanceStatus.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\DriverDistance\Api\Services\DriverDistanceNotificationAreaService.cs" />
+    <Compile Include="Areas\Workforce\MyAvailability\Api\Models\Availability.cs" />
+    <Compile Include="Areas\Workforce\MyAvailability\Api\Models\DayAvailability.cs" />
+    <Compile Include="Areas\Workforce\MyAvailability\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\MyDetails\Api\Models\UserContact.cs" />
+    <Compile Include="Areas\Workforce\MyDetails\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\MyDetails\Api\MyDetailsController.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Models\IcsEvent.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Models\IcsFile.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Models\TimeOffRequest.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Models\CalendarEntry.cs" />
+    <Compile Include="Areas\Workforce\MyAvailability\Api\Models\TimeRange.cs" />
+    <Compile Include="Areas\Workforce\MyAvailability\Api\MyAvailabilityController.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\MyScheduleDownloadController.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\MyTimeOffController.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Services\IcsGenerationService.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\Services\IIcsGenerationService.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\TeamScheduleController.cs" />
+    <Compile Include="Areas\Workforce\MySchedule\Api\MyScheduleController.cs" />
+    <Compile Include="Areas\Workforce\MyTimeCard\Api\Models\BreakType.cs" />
+    <Compile Include="Areas\Workforce\MyTimeCard\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\MyTimeCard\Api\Models\TimeCardBreak.cs" />
+    <Compile Include="Areas\Workforce\MyTimeCard\Api\MyTimeCardController.cs" />
+    <Compile Include="Areas\Workforce\MyTimeCard\Api\Models\TimeCardEntry.cs" />
+    <Compile Include="Areas\Workforce\MyTimeOff\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Workforce\MyTimeOff\Api\Models\NewTimeOffRequest.cs" />
+    <Compile Include="Areas\Workforce\MyTimeOff\Api\Models\NewTimeOffResult.cs" />
+    <Compile Include="Areas\Workforce\MyTimeOff\Api\TimeOffReasonController.cs" />
+    <Compile Include="Config\Converters\DateNoTimezoneConverter.cs" />
+    <Compile Include="Config\Converters\DateTimeConverter.cs" />
+    <Compile Include="Config\Helpers\DictionaryHelper.cs" />
+    <Compile Include="Config\Helpers\NumericHelper.cs" />
+    <Compile Include="Config\Startup.cs" />
+    <Compile Include="Config\Sso\SsoCookieHelper.cs" />
+    <Compile Include="Config\T4\MapToTypeScriptAttribute.cs" />
+    <Compile Include="Config\Translations\IVirtualProxyFactory.cs" />
+    <Compile Include="Config\Translations\TranslationConfig.cs" />
+    <Compile Include="Config\Environment\EnvironmentHelper.cs" />
+    <Compile Include="Config\Translations\VirtualProxyFactory.cs" />
+    <Compile Include="Areas\Core\Auth\Api\SsoController.cs" />
+    <Compile Include="Config\Saml\SamlWebApiConfig.cs" />
+    <Compile Include="Config\WebApi\APIActionFilterAttribute.cs" />
+    <Compile Include="Config\WebApi\APIExceptionFilterAttribute.cs" />
+    <Compile Include="Areas\Forecasting\Api\CharacteristicCodeController.cs" />
+    <Compile Include="Areas\Forecasting\Api\DaySegmentController.cs" />
+    <Compile Include="Areas\Forecasting\Api\CalendarController.cs" />
+    <Compile Include="Config\WebApi\ClientTimeoutAttribute.cs" />
+    <Compile Include="Config\WebApi\ErrorMessage.cs" />
+    <Compile Include="Config\WebApi\Exceptions.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastSalesEvaluationController.cs" />
+    <Compile Include="Areas\Forecasting\Api\ForecastGenerationController.cs" />
+    <Compile Include="Areas\Forecasting\Api\InventoryItemMetricController.cs" />
+    <Compile Include="Areas\Forecasting\Api\MetricController.cs" />
+    <Compile Include="Areas\Forecasting\Api\Models\Translations.cs" />
+    <Compile Include="Config\WebApi\LoadLogFilter.cs" />
+    <Compile Include="Config\WebApi\RESTController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SalesItemController.cs" />
+    <Compile Include="Areas\Forecasting\Api\SalesItemMetricController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\CountController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\TravelPathEntity.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\TravelPathItemUpdate.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\TravelPathLocationSortOrder.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\VersionedDataViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\TravelPathAddItemsController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\TravelPathController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\FinishController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\FinishCountRequest.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\TravelPathItemController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\TravelPathLocationController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\CountTypeController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountItem.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountLocation.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountReviewGroupViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountReviewItemViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountReviewViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\CountUpdate.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\InventoryCount.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\InventoryCountIndexViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\InventoryCountLocationItem.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\InventoryCountViewModelExtensions.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\InventoryEnums.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\TravelPathItem.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\TravelPath.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\UpdateCostViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\UpdateLocationSortOrderViewModel.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\Models\UpdateTravelPathViewModel.cs" />
+    <TypeScriptCompile Include="Areas\Administration\Hierarchy\TypeScript\Controllers\HierarchyController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Hierarchy\TypeScript\Controllers\EditLocationController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Hierarchy\TypeScript\Controllers\NewLocationController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Hierarchy\TypeScript\Services\LocationService.ts" />
+    <TypeScriptCompile Include="Areas\Administration\MyAccount\TypeScript\Controllers\MyAccountController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\MyAccount\TypeScript\Controllers\SetPinController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\Tests\Controllers\ForecastFilterUsageSettingControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\Tests\Controllers\SiteSettingsControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\Tests\Mocks\SiteSettingsServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Controllers\ForecastFilterUsageSettingsController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Controllers\InventoryCountSettingsController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Controllers\SiteSettingsController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Controllers\DashboardSettingsController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\SettingsController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Models\ISettingType.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\SettingsStates.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\SettingsStatesRegistration.ts" />
+    <TypeScriptCompile Include="Areas\Administration\User\TypeScript\Controllers\EditUserController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\User\TypeScript\Controllers\AddUserController.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Controllers\ConfirmationCheckboxControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\ConfirmationServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\StateServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\ConfirmationCheckboxController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\DateRangePickerController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\WeekPickerController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\MxAuthorizationController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\User\TypeScript\Controllers\UserSetupController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\User\TypeScript\Services\UserService.ts" />
+    <TypeScriptCompile Include="Areas\Administration\User\TypeScript\Services\UserSettingsService.ts" />
+    <TypeScriptCompile Include="Areas\Core\PartnerRedirect\TypeScript\Controllers\PartnerRedirectController.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Controllers\ConfirmationControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-checkbox.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-date-range-picker.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-week-picker.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Interfaces\IDateRangeOptions.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\LocalTimeTracker.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\IConfirmationCheckbox.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\IMasterDetailView.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Enum\UiRouterStates.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ForecastingController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ForecastingEditController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ForecastingHistoryController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ForecastingViewController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringChangeEndDateController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringConfirmationController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringStoreController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringSalesItemAddController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringSalesItemDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringSalesItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringStoresAddController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringStoresController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\MirroringStoresDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\PromotionContainerController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\PromotionDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\PromotionListController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\PromotionOverlapController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\SelectStoreController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\ForecastFilterGraph.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\ForecastFilterGrid.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\StoreList.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\ForecastingStates.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IEntityViewModel.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IMirroringChangeEndDateResult.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IMirrorings.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IPromotionContainerControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IPromotionDetailsControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IPromotionListControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IPromotionRouteParams.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\MirroringStoreStates.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\MirroringStates.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\PromotionStates.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Services\MirroringService.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Services\PromotionService.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\DataMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\DataServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\DataServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\ForecastFilterAssignServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\DaySegmentServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastFilterGridTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastingObjectServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastSalesEvaluationServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastSalesItemEvaluationServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastTransactionEvaluationServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\HistoricalServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\MetricAllServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\MetricServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\SalesItemHistoricalServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringStoreControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringSalesItemAddControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringSalesItemDetailsControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringSalesItemsControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\ForecastZoneServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\MirroringStoresControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\SalesItemMirrorIntervalsServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\SalesItemServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Mirroring\StoreMirrorIntervalServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\MultiFilterMetricAllServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\MultiFilterSalesItemMetricAllServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\SalesItemMetricAllServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Forecast\SalesItemMetricServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Promotions\PromotionDetailsConrollerTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\Promotions\PromotionServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\TooltipHelper.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\CurrencyLocalization.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Directive\mxGridHeaderDirectiveTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\EventsTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Interfaces\IMock.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\ModalServiceInstanceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\ModalServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\PopupMessageServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\SystemSettingsServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\LocalStorageServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\TranslationServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\NG\FiltersTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Service\DateServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Service\ConfirmationServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Service\NavigationServiceTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\TestFrameworkSignalR.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\TestFramework.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Browser\BrowserDetection.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\DateRangeController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\ConfirmationController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\ios-disable-touchmove.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-grid-header-directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-date-range-directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-form-autosubmit.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-mobile-ready.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-virtual-key.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-virtual-keyboard-input.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-virtual-keyboard.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\ng-native-input.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Events.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-calendar-directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-disable-button-if-busy.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-login-pin-keypad.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-scroll-to-element.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-table-sync.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\select-on-focus-input.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Interfaces\IConfirmationService.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Interfaces\ISystemSettingsService.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\IConfirmation.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\ITimeRange.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\IStateNode.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\StateNode.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\DateService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-auth-token-a.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\FormatterService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\LayoutService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\ConfirmationService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\SystemSettingsService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\VirtualKeyboardService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\touch-scroll-support.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Constants.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\NotFoundController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\disable-text-selection.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\input-arrow-navigation.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-count-table-arrow-navigation.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-auto-fill-fix.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-entity-search.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-kendo-chart-resize.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-kendo-destroy-fix.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-ios-detect.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-prevday-nextday-picker.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-sortable.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-stop-event-propagation.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\number-only-input.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\non-negative-integer-only.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\sticky.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Extensions.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\IDateRange.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Enum\AnchorTag.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Enum\ApplicationEvent.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Controllers\ForbiddenController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Interfaces\IPopupMessageService.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\IChangeStoreEventArg.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\ICountNavigationItem.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Enum\HttpStatus.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\ILogoutEventArgs.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\ISignalR.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\mx-google-analytics.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\mx-header.ctrl.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\Filters.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\RootController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\LocalStorage.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-dropdown-button.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\SignalREvents.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\SignalRService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\SignalRHub.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\TranslationService.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\Mocks\AuthServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Browser\CheckSupported.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\AllEventsForDayController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\EditForecastController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\EvaluatorController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\EventController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\EventWeekController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\EventDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\EventProfileController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ForecastController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Controllers\ForecastFilterController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Controllers\ForecastFilterDialogController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ForecastHistoryController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\ScheduleEventController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Controllers\SelectSalesItemController.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\EditForecastInline.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\EvaluatorGraph.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\EvaluatorGrid.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\ForecastGraph.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\ForecastGrid.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\ForecastHeader.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mxAuthorization.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\PlaceHolder.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Directives\SalesItemsList.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IEventControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IEventDetailsControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IEventProfileControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IEventWeekControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Interfaces\IForecastFilterControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\TypeScript\Interfaces\IForecastFilterDialogControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Interfaces\IMyEventTag.d.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Services\DataService.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Services\EventService.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Services\ForcastingObjectService.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Services\HistoricalObjectService.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\EventStates.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\Tests\Controllers\ForecastFilterControllerTest.ts" />
+    <TypeScriptCompile Include="Areas\Administration\Settings\Tests\Controllers\ForecastFilterDialogControllerTests.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\ForecastFilterDialogServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\ForecastFilterServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Forecasting\TypeScript\Tests\TranslatedPosServiceTypeServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\Tests\CountServiceTests.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\ConfigureColumnsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\CountAddItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\CountGroupController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\CountItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\CountLocationController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\ReviewController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\TravelPathController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\TravelPathLocationController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\TravelPathLocationListOnlyController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\CountStates.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Interfaces\IAddItemsTravelPathService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Models\IAddItemTravelPath.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Services\AddItemsTravelPathService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Services\TravelPathService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\BaseApplyDateController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ChangeApplyDateController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ConfigureColumnsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\CustomRangeController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\FinishOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\FinishReceiveOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\NewOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\OrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\OrderDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\OrderContainerController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\OrderHistoryContainerController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\OrderHistoryController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ReceiveOrderContainerController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ReceiveOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\FinishCountController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Services\CountService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ReturnOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ReturnOrderDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IAddItemsOrderVendorService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IBaseApplyDateControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\INewOrderForm.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\INewOrderControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderUpdateServices.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IDeleteOrderControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IChangeApplyDateControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IFinishReceiveOrder.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IFinishReceiveOrderScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderDetailsControllerRouteParams.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderDetailsControllerScope.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderDetailWithValidation.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderContainerControllerScope.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderHistoryContainerControllerScope.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderHistoryControllerScope.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReceiveOrderContainerControllerScope.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReceiveOrderControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReceiveOrderDetailsControllerRouteParams.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReceiveOrderDetailsControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReceiveOrderService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReturnOrderControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReturnOrderDetailsControllerRouteParams.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReturnOrderDetailsControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IOrderService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\IReturnOrderService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\ISearchOrder.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Interfaces\ISearchOrderService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Models\IAddItemOrdering.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\OrderStates.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\OrderHistoryStates.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\ReceiveOrderStates.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Services\AddItemsOrderVendorService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Services\OrderUpdateServices.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Services\ReceiveOrderService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Services\OrderService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Services\ReturnOrderService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Services\SearchOrderService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\MockModalService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\MockReceiveOrderService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\Mocks.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\TestChangeApplyDateController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\TestFinishReceiveOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\TestReceiveOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\TestReceiveOrderDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\TestReturnOrderController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Tests\TestReturnOrderDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Production\TypeScript\Controllers\PrepAdjustConfirmController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Production\TypeScript\Controllers\PrepAdjustController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Production\TypeScript\Controllers\PrepAdjustItemSearchController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Production\TypeScript\Interfaces\IPrepAdjustController.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\ActionTransferController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\InitiateTransferController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\TransferDetailController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\TransferHistoryContainerController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\TransferHistoryController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\TransferHistoryDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\OpenTransfersController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\TransferPickStoreController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\OpenTransferDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Order\TypeScript\Controllers\ReceiveOrderDetailsController.ts" />
+    <Compile Include="Areas\Inventory\Count\Api\ReviewController.cs" />
+    <Compile Include="Areas\Inventory\Count\Api\UpdateCostController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\Category.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\DeliveryAddItemViewModel.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\OrderEnums.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\ReceiveOrderHeader.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\OrderHeader.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\OrderItemHistoryHeader.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\ScheduledOrderHeader.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\OrderDetail.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\Order.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\Models\Vendor.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\ReceiveOrderController.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\OrderController.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\CreateInventoryTransferItem.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\TransferStoreController.cs" />
+    <Compile Include="Areas\Inventory\Transfer\Api\Models\StoreItem.cs" />
+    <Compile Include="Areas\Inventory\Order\Api\VendorController.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\IdValue.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\WastedItemCount.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\WastedItemUnitCount.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\Models\WasteItems.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\WasteController.cs" />
+    <Compile Include="Areas\Inventory\Waste\Api\WasteReasonController.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\DrillDownData.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\GraphPoint.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\MeasuresController.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\EntityMeasure.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\Interval.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\L10N.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\Measure.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\ReferenceData.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\ReferenceGroup.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\ReferenceInterval.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\Models\ReferenceMeasure.cs" />
+    <Compile Include="Areas\Reporting\Dashboard\Api\ReferenceDataController.cs" />
+    <Compile Include="Config\SignalR\BaseHub.cs" />
+    <Compile Include="Config\BundleConfig.cs" />
+    <Compile Include="Config\Helpers\DateHelper.cs" />
+    <Compile Include="Config\Helpers\StringHelper.cs" />
+    <Compile Include="Config\IocConfig.cs" />
+    <Compile Include="Config\IoC\StructureMapDependencyResolver.cs" />
+    <Compile Include="Config\Mapping\MapFromAttribute.cs" />
+    <Compile Include="Config\Mapping\AutoMapperConfigurator.cs" />
+    <Compile Include="Config\SamlConfig.cs" />
+    <Compile Include="Config\Saml\SamlHelper.cs" />
+    <Compile Include="Config\SignalR\SignalRHubConfig.cs" />
+    <Compile Include="Config\T4\ApiRoutingConfig.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApiRoutingConfig.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config\Translations\ITranslationService.cs" />
+    <Compile Include="Config\Translations\TranslationAttribute.cs" />
+    <Compile Include="Config\Translations\TranslationService.cs" />
+    <Compile Include="Config\T4\ApiRoutingConfigExtention.cs" />
+    <Compile Include="Config\WebApiConfig.cs" />
+    <Compile Include="Config\WebApi\AuthorizeTaskFilter.cs" />
+    <Compile Include="Config\WebApi\ElmahErrorAttribute.cs" />
+    <Compile Include="Config\WebApi\BaseIdentity.cs" />
+    <Compile Include="Config\WebApi\GlobalExceptionHandlerAttribute.cs" />
+    <Compile Include="Config\WebApi\PermissionAttribute.cs" />
+    <Compile Include="Config\WebApi\TokenAuthenticationHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Areas\Core\Api\Models\BusinessUser.cs" />
+    <Compile Include="Areas\Core\Api\Models\Permissions.cs" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Controllers\TransferAddItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Interfaces\IOpenTransferDetailsControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Interfaces\ITransferHistoryContainerControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Interfaces\ITransfersService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Services\TransfersService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\MockModalService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\MockTransferHistoryService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\MockTransferApiService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\MockTransfersService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\MockTransferStoreService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestActionTransferController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestOpenTransferDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestInitiateTransferController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestTransferAddItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestTransferHistoryController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestTransferHistoryDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestTransferPickStoreController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\Tests\TestOpenTransfersController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Transfer\TypeScript\TransferHistoryStates.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\TypeScript\Controllers\AddItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\TypeScript\Interfaces\IAddItemService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\TypeScript\Models\IAddItem.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\TypeScript\Models\IAddItemModel.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\TypeScript\Interfaces\IUpdateNoCostItemService.d.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Waste\TypeScript\Controllers\WasteAddItemsController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Waste\TypeScript\Controllers\WasteConfirmController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Waste\TypeScript\Controllers\WasteHistoryController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Waste\TypeScript\Controllers\WasteController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\AreaSummary\TypeScript\Controllers\AreaSummaryController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\AreaSummary\TypeScript\Interfaces\IAreaSummaryControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\InventoryMovement\Typescript\Controllers\InventoryMovementController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\InventoryMovement\Typescript\Interfaces\IInventoryMovementControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\ProductMix\Typescript\Controllers\ProductMixController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\ProductMix\Typescript\Interfaces\IProductMixControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\StoreSummary\TypeScript\Controllers\StoreSummaryController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Controllers\ViewManagerDetailController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Controllers\ViewManagerListController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Controllers\ViewManagerContainerController.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IReportViews.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IViewManagerRouteParams.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IViewManagerDetailControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IViewManagerListControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IViewManagerControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IViewService.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Services\ViewService.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\ViewManagerStates.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Filters\CellFormatFilter.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\StoreSummary\TypeScript\Interfaces\IStoreSummaryControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IReportController.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Interfaces\IReportService.d.ts" />
+    <TypeScriptCompile Include="Areas\Operations\Reporting\TypeScript\Services\ReportService.ts" />
+    <TypeScriptCompile Include="Areas\Reporting\Dashboard\Tests\ControllerTests.ts" />
+    <TypeScriptCompile Include="Areas\Reporting\Dashboard\Tests\DashboardDemo.ts" />
+    <TypeScriptCompile Include="Areas\Reporting\Dashboard\Tests\Mocks.ts" />
+    <TypeScriptCompile Include="Areas\Reporting\Dashboard\TypeScript\Controllers\DashboardController.ts" />
+    <TypeScriptCompile Include="Areas\Reporting\Dashboard\TypeScript\Services\DashboardService.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Controllers\DenyDeliveryController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Controllers\AuthorizeDeliveryController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Controllers\DeliveriesController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Controllers\AddExtraDeliveryController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Interfaces\IAuthorizeDeliveryControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Interfaces\IDenyDeliveryControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Interfaces\IDeliveriesControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Interfaces\IAddExtraDeliveryControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Interfaces\IDeliveriesService.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\Deliveries\TypeScript\Services\DeliveriesService.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Controllers\AddDriverDistanceController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Controllers\ActionDriverDistanceController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Controllers\DriverDistanceController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Interfaces\IAddDriverDistanceControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Interfaces\IDriverDistanceControllerRouteParams.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Interfaces\IActionDriverDistanceControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Interfaces\IDriverDistanceControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Tests\AddDriverDistanceControllerTests.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Tests\ActionDriverDistanceControllerTests.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Tests\DriverDistanceControllerTests.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Tests\DriverDistanceEmployeeServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\DriverDistance\TypeScript\Tests\DriverDistanceManagerServiceMock.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Controllers\MyAvailabilityEditController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Controllers\MyAvailabilityAddController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Controllers\MyAvailabilityController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Controllers\MyAvailabilityDetailController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Controllers\MyAvailabilityWeekController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Interfaces\IMyAvailabilityControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Interfaces\IMyAvailabilityService.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Interfaces\IMyAvailabilityDelete.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Interfaces\IMyAvailabilityEntry.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyDetails\TypeScript\Controllers\MyDetailsController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Interfaces\IMyScheduleControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Interfaces\IMyScheduleDetailControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Interfaces\IMyScheduleService.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Controllers\MyScheduleDetailController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Controllers\MyScheduleController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Controllers\ShareScheduleController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Controllers\MyScheduleWeekController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Models\Calendar.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyAvailability\TypeScript\Services\MyAvailabilityService.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Services\MyScheduleService.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\MyScheduleStates.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Tests\MockMyScheduleService.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Tests\Mocks.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MySchedule\TypeScript\Tests\TestMyScheduleDetailController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyTimeCard\TypeScript\Controllers\MyTimeCardController.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyTimeCard\TypeScript\Interfaces\IMyTimeCardControllerScope.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyTimeCard\TypeScript\Interfaces\IMyTimeCardService.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyTimeCard\TypeScript\Models\Models.d.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyTimeCard\TypeScript\Services\MyTimeCardService.ts" />
+    <TypeScriptCompile Include="Areas\Workforce\MyTimeOff\TypeScript\Controllers\MyTimeOffController.ts" />
+    <TypeScriptCompile Include="Scripts\angular-ui\validate.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\mx-angulartics-ga.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-external-modules\angular-local-storage.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-external-modules\angular-ui-router.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\cryptojs\cryptojs.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jasmine\jasmine.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\lodash\lodash.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\modernizr\modernizr.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\ngJsTree.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\signalr\signalr.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Administration\DataLoad\Templates\DataLoad.html" />
+    <Content Include="Areas\Administration\Hierarchy\Templates\Hierarchy.html" />
+    <Content Include="Areas\Administration\Hierarchy\Templates\EditLocation.html" />
+    <Content Include="Areas\Administration\Hierarchy\Templates\NewLocation.html" />
+    <Content Include="Areas\Administration\MyAccount\Templates\MyAccount.html" />
+    <Content Include="Areas\Administration\MyAccount\Templates\SetPIN.html" />
+    <Content Include="Areas\Administration\Settings\Templates\DashboardSettings.html" />
+    <Content Include="Areas\Administration\User\Templates\EditUser.html" />
+    <Content Include="Areas\Administration\User\Templates\NewUser.html" />
+    <Content Include="Areas\Administration\User\Templates\User.html" />
+    <Content Include="Areas\Core\app.html" />
+    <Content Include="Areas\Administration\ChangeStore\Templates\ChangeStore.html" />
+    <Content Include="Areas\Core\PartnerRedirect\Templates\PartnerRedirect.html" />
+    <Content Include="Areas\Core\Templates\mx-calendar-directive.html" />
+    <Content Include="Areas\Core\Templates\mx-modal-message.html" />
+    <Content Include="Areas\Core\Templates\mx-dropdown-button.html" />
+    <Content Include="Areas\Core\Templates\mx-entity-search.html" />
+    <Content Include="Areas\Core\Templates\mx-popup-message.html" />
+    <Content Include="Areas\Core\Templates\mx-prevday-nextday-picker.html" />
+    <Content Include="Areas\Core\Templates\mx-virtual-keyboard.html" />
+    <Content Include="Areas\Core\Templates\UnsupportedBrowser.html" />
+    <Content Include="Areas\Forecasting\Templates\EvaluatorGridDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\EditForecastInlineDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\EvaluatorView.html" />
+    <Content Include="Areas\Forecasting\Templates\EventProfileDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\EventView.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastActualsDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastGridDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\EditForecastDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\HeaderTemplate.html" />
+    <Content Include="Areas\Forecasting\Templates\ForecastGraphDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\EvaluatorGraphDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\SalesItemsDirective.html" />
+    <Content Include="Areas\Forecasting\Templates\ScheduleEventDialog.html" />
+    <Content Include="Areas\Forecasting\Templates\SelectSalesItemsDialog.html" />
+    <Content Include="Areas\Inventory\Count\Templates\ConfigureColumns.html" />
+    <Content Include="Areas\Inventory\Count\Templates\CountItems.html" />
+    <Content Include="Areas\Inventory\Count\Templates\CountLocation.html" />
+    <Content Include="Areas\Inventory\Count\Templates\CountLayout.html" />
+    <Content Include="Areas\Inventory\Count\Templates\FinishCount.html" />
+    <Content Include="Areas\Inventory\Count\Templates\Review.html" />
+    <Content Include="Areas\Inventory\Count\Templates\TravelPath.html" />
+    <Content Include="Areas\Inventory\Production\Templates\PrepAdjust.html" />
+    <Content Include="Areas\Inventory\Production\Templates\PrepAdjustConfirm.html" />
+    <Content Include="Areas\Inventory\Production\Templates\PrepAdjustItemSearch.html" />
+    <Content Include="Areas\Inventory\Templates\AddItems.html" />
+    <Content Include="Areas\Inventory\Count\Templates\TravelPathLocation.html" />
+    <Content Include="Areas\Inventory\Count\Templates\TravelPathLocationListOnly.html" />
+    <Content Include="Areas\Inventory\Count\Templates\UpdateCost.html" />
+    <Content Include="Areas\Inventory\Order\Templates\ConfigureColumns.html" />
+    <Content Include="Areas\Inventory\Order\Templates\CustomRange.html" />
+    <Content Include="Areas\Inventory\Order\Templates\FinishOrder.html" />
+    <Content Include="Areas\Inventory\Order\Templates\FinishReceiveOrder.html" />
+    <Content Include="Areas\Inventory\Order\Templates\NewOrder.html" />
+    <Content Include="Areas\Inventory\Order\Templates\OrderDetails.html" />
+    <Content Include="Areas\Inventory\Order\Templates\Place.html" />
+    <Content Include="Areas\Inventory\Order\Templates\Receive.html" />
+    <Content Include="Areas\Inventory\Order\Templates\Return.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\ActionTransferDialog.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\InitiateTransfer.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\TransferDetail.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\TransferHistory.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\TransferHistoryContainer.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\TransferHistoryDetails.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\TransferPickStore.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\OpenTransfers.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\OpenTransferDetails.html" />
+    <Content Include="Areas\Inventory\Order\Templates\ReceiveOrderDetails.html" />
+    <Content Include="Areas\Inventory\Transfer\Templates\TransferAddItems.html" />
+    <Content Include="Areas\Inventory\Waste\Templates\WasteHistory.html" />
+    <Content Include="Areas\Inventory\Waste\Templates\Waste.html" />
+    <Content Include="Areas\Inventory\Waste\Templates\WasteAddItems.html" />
+    <Content Include="Areas\Inventory\Waste\Templates\WasteConfirm.html" />
+    <Content Include="Areas\Operations\Reporting\AreaSummary\Templates\AreaSummary.html" />
+    <Content Include="Areas\Operations\Reporting\InventoryMovement\Templates\InventoryMovement.html" />
+    <Content Include="Areas\Operations\Reporting\ProductMix\Templates\ProductMix.html" />
+    <Content Include="Areas\Operations\Reporting\StoreSummary\Templates\StoreSummary.html" />
+    <Content Include="Areas\Operations\Reporting\Templates\ViewManagerContainer.html" />
+    <Content Include="Areas\Operations\Reporting\Templates\ViewManagerList.html" />
+    <Content Include="Areas\Operations\Reporting\Templates\ViewManagerDetails.html" />
+    <Content Include="Areas\Reporting\Dashboard\Templates\Dashboard.html" />
+    <Content Include="Areas\Reporting\Dashboard\Templates\Stores.html" />
+    <Content Include="Areas\Reporting\Dashboard\Templates\Graph.html" />
+    <Content Include="Areas\Workforce\Deliveries\Templates\AuthorizeDeliveryDialog.html" />
+    <Content Include="Areas\Workforce\Deliveries\Templates\DenyDeliveryDialog.html" />
+    <Content Include="Areas\Workforce\Deliveries\Templates\Deliveries.html" />
+    <Content Include="Areas\Workforce\Deliveries\Templates\AddExtraDeliveryDialog.html" />
+    <Content Include="Areas\Workforce\DriverDistance\Templates\ActionDriverDistance.html" />
+    <Content Include="Areas\Workforce\DriverDistance\Templates\AddDriverDistance.html" />
+    <Content Include="Areas\Workforce\DriverDistance\Templates\DriverDistance.html" />
+    <Content Include="Areas\Workforce\MyAvailability\Templates\MyAvailability.html" />
+    <Content Include="Areas\Workforce\MyAvailability\Templates\MyAvailabilityModal.html" />
+    <Content Include="Areas\Workforce\MyAvailability\Templates\MyAvailabilityDetail.html" />
+    <Content Include="Areas\Workforce\MyAvailability\Templates\MyAvailabilityWeek.html" />
+    <Content Include="Areas\Workforce\MyDetails\Templates\MyDetails.html" />
+    <Content Include="Areas\Workforce\MySchedule\Templates\MyScheduleDetail.html" />
+    <Content Include="Areas\Workforce\MySchedule\Templates\MySchedule.html" />
+    <Content Include="Areas\Workforce\MySchedule\Templates\ShareSchedule.html" />
+    <Content Include="Areas\Workforce\MySchedule\Templates\MyScheduleWeek.html" />
+    <Content Include="Areas\Workforce\MyTimeCard\Templates\MyTimeCard.html" />
+    <Content Include="Areas\Workforce\MyTimeCard\Templates\MyTimeCardWeek.html" />
+    <Content Include="Areas\Workforce\MyTimeOff\Templates\MyTimeOff.html" />
+    <Content Include="Areas\Workforce\MyTimeOff\Templates\MyTimeOffDetail.html" />
+    <Content Include="Areas\Workforce\MyTimeOff\Templates\NewTimeOffRequest.html" />
+    <Content Include="Config\T4\ApiImplementation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiImplementation.ts</LastGenOutput>
+    </Content>
+    <Content Include="Content\angular-external-modules\angular-color-picker\angularjs-color-picker.css" />
+    <Content Include="Content\Areas\Forecasting\Forecasting.css" />
+    <Content Include="Content\Areas\Inventory\Order\OrderDetails.css">
+      <DependentUpon>OrderDetails.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Areas\Inventory\Order\OrderDetails.min.css">
+      <DependentUpon>OrderDetails.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Areas\Inventory\Transfer\Transfer.css">
+      <DependentUpon>Transfer.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Areas\Inventory\Transfer\Transfer.min.css">
+      <DependentUpon>Transfer.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Bootstrap\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Bootstrap\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Bootstrap\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Bootstrap\variables.min.css">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\background.jpg" />
+    <EmbeddedResource Include="Content\Images\background\background_0.jpg" />
+    <EmbeddedResource Include="Content\Images\background\background_1.jpg" />
+    <EmbeddedResource Include="Content\Images\background\background_2.jpg" />
+    <EmbeddedResource Include="Content\Images\background\background_3.jpg" />
+    <EmbeddedResource Include="Content\Images\background\background_4.jpg" />
+    <Content Include="Content\Images\browser_logo\ico-chrome.png" />
+    <Content Include="Content\Images\browser_logo\ico-firefox.png" />
+    <Content Include="Content\Images\browser_logo\ico-ie.png" />
+    <Content Include="Content\Images\browser_logo\ico-safari.png" />
+    <Content Include="Content\Images\ajax-spinner.gif" />
+    <Content Include="Content\Images\macromatix_logo\compact\L\black_Compact_L.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\L\blue+white_Compact_L.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\L\royalblue+blue_Compact_L.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\L\white+blue_Compact_L.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\L\white+royalblue_Compact_L.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\L\white_Compact_L.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\M\black_Compact_M.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\M\blue+white_Compact_M.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\M\royalblue+blue_Compact_M.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\M\white+blue_Compact_M.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\M\white+royalblue_Compact_M.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\M\white_Compact_M.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\XL\black_Compact_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\XL\blue+white_Compact_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\XL\royalblue+blue_Compact_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\XL\white+blue_Compact_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\XL\white+royalblue_Compact_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\XL\white_Compact_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\_S\black_Compact_S.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\_S\blue+white_Compact_S.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\_S\royalblue+blue_Compact_S.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\_S\white+blue_Compact_S.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\_S\white+royalblue_Compact_S.png" />
+    <Content Include="Content\Images\macromatix_logo\compact\_S\white_Compact_S.png" />
+    <Content Include="Content\Images\macromatix_logo\full\L\black_Full_L.png" />
+    <Content Include="Content\Images\macromatix_logo\full\L\blue+white_Full_L.png" />
+    <Content Include="Content\Images\macromatix_logo\full\L\royalblue+blue_Full_L.png" />
+    <Content Include="Content\Images\macromatix_logo\full\L\white+blue_Full_L.png" />
+    <Content Include="Content\Images\macromatix_logo\full\L\white+royalblue_Full_L.png" />
+    <Content Include="Content\Images\macromatix_logo\full\L\white_Full_L.png" />
+    <Content Include="Content\Images\macromatix_logo\full\M\black_Full_M.png" />
+    <Content Include="Content\Images\macromatix_logo\full\M\blue+white_Full_M.png" />
+    <Content Include="Content\Images\macromatix_logo\full\M\royalblue+blue_Full_M.png" />
+    <Content Include="Content\Images\macromatix_logo\full\M\white+blue_Full_M.png" />
+    <Content Include="Content\Images\macromatix_logo\full\M\white+royalblue_Full_M.png" />
+    <Content Include="Content\Images\macromatix_logo\full\M\white_Full_M.png" />
+    <Content Include="Content\Images\macromatix_logo\full\XL\black_Full_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\full\XL\blue+white_Full_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\full\XL\royalblue+blue_Full_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\full\XL\white+blue_Full_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\full\XL\white+royalblue_Full_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\full\XL\white_Full_XL.png" />
+    <Content Include="Content\Images\macromatix_logo\full\_S\black_Full_S.png" />
+    <Content Include="Content\Images\macromatix_logo\full\_S\blue+white_Full_S.png" />
+    <Content Include="Content\Images\macromatix_logo\full\_S\royalblue+blue_Full_S.png" />
+    <Content Include="Content\Images\macromatix_logo\full\_S\white+blue_Full_S.png" />
+    <Content Include="Content\Images\macromatix_logo\full\_S\white+royalblue_Full_S.png" />
+    <Content Include="Content\Images\macromatix_logo\full\_S\white_Full_S.png" />
+    <Content Include="Content\Images\macromatix_logo\svg\mxlogo_white.svg" />
+    <Content Include="Content\Images\macromatix_logo\svg\royalblue_blue_Compact.svg" />
+    <Content Include="Content\Images\macromatix_logo\svg\royalblue_blue_Full.svg" />
+    <Content Include="Content\Images\macromatix_logo\svg\white_blue_Compact.svg" />
+    <Content Include="Content\Images\macromatix_logo\svg\white_blue_Full.svg" />
+    <Content Include="Content\Images\macromatix_logo\svg\white_Compact.svg" />
+    <Content Include="Content\Images\macromatix_logo\svg\white_Full.svg" />
+    <Content Include="Content\Images\mx_splash_login.svg" />
+    <Content Include="Content\Images\mx_splash_login_.svg" />
+    <Content Include="Content\Images\mx_splash_wide_login.svg" />
+    <Content Include="Content\jstree-themes\default\32px.png" />
+    <Content Include="Content\jstree-themes\default\40px.png" />
+    <Content Include="Content\jstree-themes\default\style.css" />
+    <Content Include="Content\jstree-themes\default\style.min.css" />
+    <Content Include="Content\jstree-themes\default\throbber.gif" />
+    <Content Include="Content\Macromatix\logon.css">
+      <DependentUpon>logon.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\logon.min.css">
+      <DependentUpon>logon.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-bootstrap-custom.css">
+      <DependentUpon>mx-bootstrap-custom.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-bootstrap-custom.min.css">
+      <DependentUpon>mx-bootstrap-custom.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-color-classes.css">
+      <DependentUpon>mx-color-classes.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-color-classes.min.css">
+      <DependentUpon>mx-color-classes.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-color.css">
+      <DependentUpon>mx-color.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-directives.css">
+      <DependentUpon>mx-directives.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-directives.min.css">
+      <DependentUpon>mx-directives.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-general.css">
+      <DependentUpon>mx-general.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-general.min.css">
+      <DependentUpon>mx-general.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-header.css">
+      <DependentUpon>mx-header.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-header.min.css">
+      <DependentUpon>mx-header.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-icons.css">
+      <DependentUpon>mx-icons.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-keyboard.css">
+      <DependentUpon>mx-keyboard.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-keyboard.min.css">
+      <DependentUpon>mx-keyboard.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-layout.css">
+      <DependentUpon>mx-layout.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-layout.min.css">
+      <DependentUpon>mx-layout.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-nav.css">
+      <DependentUpon>mx-nav.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-nav.min.css">
+      <DependentUpon>mx-nav.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-sidenav.css">
+      <DependentUpon>mx-sidenav.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-sidenav.min.css">
+      <DependentUpon>mx-sidenav.css</DependentUpon>
+    </Content>
+    <Content Include="diagnostics.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\icons.svg" />
+    <Content Include="fonts\Roboto-Light-webfont.svg" />
+    <Content Include="fonts\Roboto-Regular-webfont.svg" />
+    <Content Include="mx_114x144.png" />
+    <Content Include="mx_144x144.png" />
+    <Content Include="mx_57x57.png" />
+    <Content Include="mx_72x72.png" />
+    <Content Include="Content\Macromatix\mx-icons.less" />
+    <Content Include="fonts\icons.eot" />
+    <Content Include="fonts\icons.ttf" />
+    <Content Include="fonts\icons.woff" />
+    <Content Include="Content\Macromatix\mx-keyboard.less" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Macromatix\mx-jstree.less" />
+    <Content Include="Content\Macromatix\mx-jstree.css">
+      <DependentUpon>mx-jstree.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Macromatix\mx-jstree.min.css">
+      <DependentUpon>mx-jstree.css</DependentUpon>
+    </Content>
+    <None Include="NLog.config.example" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-scrollable-table.directive.ts" />
+    <Content Include="Scripts\angular-external-modules\angular-color-picker\angularjs-color-picker.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\angular-file-upload-html5-shim.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\angular-file-upload-html5-shim.min.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\angular-file-upload-shim.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\angular-file-upload-shim.min.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\angular-file-upload.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\angular-file-upload.min.js" />
+    <Content Include="Scripts\angular-external-modules\file-upload\FileAPI.flash.swf" />
+    <Content Include="Scripts\angular-external-modules\file-upload\FileAPI.min.js" />
+    <Content Include="Scripts\angular-external-modules\gm.datepickerMultiSelect\src\gm.datepickerMultiSelect.js" />
+    <Content Include="Scripts\angular-external-modules\local-storage\angular-local-storage.js" />
+    <Content Include="Scripts\angular-external-modules\ngJsTree\ngJsTree.js" />
+    <Content Include="Scripts\angular-external-modules\ngJsTree\ngJsTree.min.js" />
+    <Content Include="Scripts\angular-external-modules\sortable\sortable.js" />
+    <Content Include="Scripts\angular-external-modules\ui-router\angular-ui-router.js" />
+    <Content Include="Scripts\angular-external-modules\ui-router\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls-0.13.3.js" />
+    <Content Include="Scripts\angular-external-modules\angular-placeholder\angularjs-placeholder.js" />
+    <Content Include="Scripts\angular-external-modules\angulartics\angulartics.js" />
+    <Content Include="Scripts\angular-external-modules\angulartics\angulartics.min.js" />
+    <Content Include="Scripts\angular\angular-animate.js" />
+    <Content Include="Scripts\angular\angular-animate.min.js" />
+    <Content Include="Scripts\angular\angular-cookies.js" />
+    <Content Include="Scripts\angular\angular-cookies.min.js" />
+    <Content Include="Scripts\angular\angular-csp.css" />
+    <Content Include="Scripts\crypto-js\sha256.js" />
+    <Content Include="Scripts\cultures\globalize.culture.af-ZA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.af.js" />
+    <Content Include="Scripts\cultures\globalize.culture.am-ET.js" />
+    <Content Include="Scripts\cultures\globalize.culture.am.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-AE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-BH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-DZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-EG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-IQ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-JO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-KW.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-LB.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-LY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-MA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-OM.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-QA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-SA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-SY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-TN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar-YE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ar.js" />
+    <Content Include="Scripts\cultures\globalize.culture.arn-CL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.arn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.as-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.as.js" />
+    <Content Include="Scripts\cultures\globalize.culture.az-Cyrl-AZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.az-Cyrl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.az-Latn-AZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.az-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.az.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ba-RU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ba.js" />
+    <Content Include="Scripts\cultures\globalize.culture.be-BY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.be.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bg-BG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bg.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bn-BD.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bn-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bo-CN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bo.js" />
+    <Content Include="Scripts\cultures\globalize.culture.br-FR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.br.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bs-Cyrl-BA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bs-Cyrl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bs-Latn-BA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bs-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.bs.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ca-ES.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ca.js" />
+    <Content Include="Scripts\cultures\globalize.culture.co-FR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.co.js" />
+    <Content Include="Scripts\cultures\globalize.culture.cs-CZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.cs.js" />
+    <Content Include="Scripts\cultures\globalize.culture.cy-GB.js" />
+    <Content Include="Scripts\cultures\globalize.culture.cy.js" />
+    <Content Include="Scripts\cultures\globalize.culture.da-DK.js" />
+    <Content Include="Scripts\cultures\globalize.culture.da.js" />
+    <Content Include="Scripts\cultures\globalize.culture.de-AT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.de-CH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.de-DE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.de-LI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.de-LU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.de.js" />
+    <Content Include="Scripts\cultures\globalize.culture.dsb-DE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.dsb.js" />
+    <Content Include="Scripts\cultures\globalize.culture.dv-MV.js" />
+    <Content Include="Scripts\cultures\globalize.culture.dv.js" />
+    <Content Include="Scripts\cultures\globalize.culture.el-GR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.el.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-029.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-AU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-BZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-CA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-GB.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-IE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-JM.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-MY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-NZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-PH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-SG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-TT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-US.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-ZA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.en-ZW.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-AR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-BO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-CL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-CO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-CR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-DO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-EC.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-ES.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-GT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-HN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-MX.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-NI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-PA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-PE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-PR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-PY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-SV.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-US.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-UY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es-VE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.es.js" />
+    <Content Include="Scripts\cultures\globalize.culture.et-EE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.et.js" />
+    <Content Include="Scripts\cultures\globalize.culture.eu-ES.js" />
+    <Content Include="Scripts\cultures\globalize.culture.eu.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fa-IR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fa.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fi-FI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fi.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fil-PH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fil.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fo-FO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fo.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr-BE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr-CA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr-CH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr-FR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr-LU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr-MC.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fr.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fy-NL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.fy.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ga-IE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ga.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gd-GB.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gd.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gl-ES.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gsw-FR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gsw.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gu-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.gu.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ha-Latn-NG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ha-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ha.js" />
+    <Content Include="Scripts\cultures\globalize.culture.he-IL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.he.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hi-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hi.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hr-BA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hr-HR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hr.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hsb-DE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hsb.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hu-HU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hu.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hy-AM.js" />
+    <Content Include="Scripts\cultures\globalize.culture.hy.js" />
+    <Content Include="Scripts\cultures\globalize.culture.id-ID.js" />
+    <Content Include="Scripts\cultures\globalize.culture.id.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ig-NG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ig.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ii-CN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ii.js" />
+    <Content Include="Scripts\cultures\globalize.culture.is-IS.js" />
+    <Content Include="Scripts\cultures\globalize.culture.is.js" />
+    <Content Include="Scripts\cultures\globalize.culture.it-CH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.it-IT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.it.js" />
+    <Content Include="Scripts\cultures\globalize.culture.iu-Cans-CA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.iu-Cans.js" />
+    <Content Include="Scripts\cultures\globalize.culture.iu-Latn-CA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.iu-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.iu.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ja-JP.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ja.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ka-GE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ka.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kk-KZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kk.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kl-GL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.km-KH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.km.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kn-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ko-KR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ko.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kok-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.kok.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ky-KG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ky.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lb-LU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lb.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lo-LA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lo.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lt-LT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lt.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lv-LV.js" />
+    <Content Include="Scripts\cultures\globalize.culture.lv.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mi-NZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mi.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mk-MK.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mk.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ml-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ml.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mn-Cyrl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mn-MN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mn-Mong-CN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mn-Mong.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.moh-CA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.moh.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mr-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mr.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ms-BN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ms-MY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ms.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mt-MT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.mt.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nb-NO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nb.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ne-NP.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ne.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nl-BE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nl-NL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nn-NO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.no.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nso-ZA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.nso.js" />
+    <Content Include="Scripts\cultures\globalize.culture.oc-FR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.oc.js" />
+    <Content Include="Scripts\cultures\globalize.culture.or-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.or.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pa-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pa.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pl-PL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.prs-AF.js" />
+    <Content Include="Scripts\cultures\globalize.culture.prs.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ps-AF.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ps.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pt-BR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pt-PT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.pt.js" />
+    <Content Include="Scripts\cultures\globalize.culture.qut-GT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.qut.js" />
+    <Content Include="Scripts\cultures\globalize.culture.quz-BO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.quz-EC.js" />
+    <Content Include="Scripts\cultures\globalize.culture.quz-PE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.quz.js" />
+    <Content Include="Scripts\cultures\globalize.culture.rm-CH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.rm.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ro-RO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ro.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ru-RU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ru.js" />
+    <Content Include="Scripts\cultures\globalize.culture.rw-RW.js" />
+    <Content Include="Scripts\cultures\globalize.culture.rw.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sa-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sa.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sah-RU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sah.js" />
+    <Content Include="Scripts\cultures\globalize.culture.se-FI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.se-NO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.se-SE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.se.js" />
+    <Content Include="Scripts\cultures\globalize.culture.si-LK.js" />
+    <Content Include="Scripts\cultures\globalize.culture.si.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sk-SK.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sk.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sl-SI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sma-NO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sma-SE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sma.js" />
+    <Content Include="Scripts\cultures\globalize.culture.smj-NO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.smj-SE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.smj.js" />
+    <Content Include="Scripts\cultures\globalize.culture.smn-FI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.smn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sms-FI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sms.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sq-AL.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sq.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Cyrl-BA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Cyrl-CS.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Cyrl-ME.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Cyrl-RS.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Cyrl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Latn-BA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Latn-CS.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Latn-ME.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Latn-RS.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sr.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sv-FI.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sv-SE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sv.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sw-KE.js" />
+    <Content Include="Scripts\cultures\globalize.culture.sw.js" />
+    <Content Include="Scripts\cultures\globalize.culture.syr-SY.js" />
+    <Content Include="Scripts\cultures\globalize.culture.syr.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ta-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ta.js" />
+    <Content Include="Scripts\cultures\globalize.culture.te-IN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.te.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tg-Cyrl-TJ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tg-Cyrl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tg.js" />
+    <Content Include="Scripts\cultures\globalize.culture.th-TH.js" />
+    <Content Include="Scripts\cultures\globalize.culture.th.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tk-TM.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tk.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tn-ZA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tr-TR.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tr.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tt-RU.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tt.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tzm-Latn-DZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tzm-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.tzm.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ug-CN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ug.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uk-UA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uk.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ur-PK.js" />
+    <Content Include="Scripts\cultures\globalize.culture.ur.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uz-Cyrl-UZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uz-Cyrl.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uz-Latn-UZ.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uz-Latn.js" />
+    <Content Include="Scripts\cultures\globalize.culture.uz.js" />
+    <Content Include="Scripts\cultures\globalize.culture.vi-VN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.vi.js" />
+    <Content Include="Scripts\cultures\globalize.culture.wo-SN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.wo.js" />
+    <Content Include="Scripts\cultures\globalize.culture.xh-ZA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.xh.js" />
+    <Content Include="Scripts\cultures\globalize.culture.yo-NG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.yo.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-CHS.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-CHT.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-CN.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-Hans.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-Hant.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-HK.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-MO.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-SG.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh-TW.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zh.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zu-ZA.js" />
+    <Content Include="Scripts\cultures\globalize.culture.zu.js" />
+    <Content Include="Scripts\cultures\globalize.cultures.js" />
+    <Content Include="Scripts\fastclick.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
+    <Content Include="Scripts\jstree.js" />
+    <Content Include="Scripts\jstree.min.js" />
+    <Content Include="Scripts\kendo\angular-kendo.js" />
+    <Content Include="Scripts\angular\angular-loader.js" />
+    <Content Include="Scripts\angular\angular-loader.min.js" />
+    <Content Include="Scripts\angular\angular-mocks.js" />
+    <Content Include="Scripts\angular\angular-sanitize.js" />
+    <Content Include="Scripts\angular\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular\angular-touch.js" />
+    <Content Include="Scripts\angular\angular-touch.min.js" />
+    <Content Include="Scripts\angular\angular.js" />
+    <Content Include="Scripts\angular\angular.min.js">
+      <DependentUpon>angular.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\version.txt" />
+    <Content Include="Scripts\angular\angular.min.js.map">
+      <DependentUpon>angular.min.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\errors.json" />
+    <Content Include="Scripts\angular\version.json" />
+    <Content Include="Index.cshtml" />
+    <Content Include="Areas\Core\Templates\mx-header.html" />
+    <Content Include="Areas\Core\Templates\mx-sidenav.html" />
+    <Content Include="Content\Macromatix\mx-color.less" />
+    <Content Include="Config\T4\ApiRoutingConfig.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiRoutingConfig.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\Macromatix\mx-general.less" />
+    <Content Include="Content\Macromatix\logon.less" />
+    <Content Include="Areas\Forecasting\Templates\ForecastView.html" />
+    <Content Include="Content\Bootstrap\.csscomb.json" />
+    <Content Include="Content\Bootstrap\.csslintrc" />
+    <Content Include="Content\Bootstrap\alerts.less" />
+    <Content Include="Content\Bootstrap\badges.less" />
+    <Content Include="Content\Bootstrap\bootstrap.less" />
+    <Content Include="Content\Bootstrap\breadcrumbs.less" />
+    <Content Include="Content\Bootstrap\button-groups.less" />
+    <Content Include="Content\Bootstrap\buttons.less" />
+    <Content Include="Content\Bootstrap\carousel.less" />
+    <Content Include="Content\Bootstrap\close.less" />
+    <Content Include="Content\Bootstrap\code.less" />
+    <Content Include="Content\Bootstrap\component-animations.less" />
+    <Content Include="Content\Bootstrap\dropdowns.less" />
+    <Content Include="Content\Bootstrap\forms.less" />
+    <Content Include="Content\Bootstrap\glyphicons.less" />
+    <Content Include="Content\Bootstrap\grid.less" />
+    <Content Include="Content\Bootstrap\input-groups.less" />
+    <Content Include="Content\Bootstrap\jumbotron.less" />
+    <Content Include="Content\Bootstrap\labels.less" />
+    <Content Include="Content\Bootstrap\list-group.less" />
+    <Content Include="Content\Bootstrap\media.less" />
+    <Content Include="Content\Bootstrap\mixins.less" />
+    <Content Include="Content\Bootstrap\modals.less" />
+    <Content Include="Content\Bootstrap\navbar.less" />
+    <Content Include="Content\Bootstrap\navs.less" />
+    <Content Include="Content\Bootstrap\normalize.less" />
+    <Content Include="Content\Bootstrap\pager.less" />
+    <Content Include="Content\Bootstrap\pagination.less" />
+    <Content Include="Content\Bootstrap\panels.less" />
+    <Content Include="Content\Bootstrap\popovers.less" />
+    <Content Include="Content\Bootstrap\print.less" />
+    <Content Include="Content\Bootstrap\progress-bars.less" />
+    <Content Include="Content\Bootstrap\responsive-utilities.less" />
+    <Content Include="Content\Bootstrap\scaffolding.less" />
+    <Content Include="Content\Bootstrap\tables.less" />
+    <Content Include="Content\Bootstrap\theme.less" />
+    <Content Include="Content\Bootstrap\thumbnails.less" />
+    <Content Include="Content\Bootstrap\tooltip.less" />
+    <Content Include="Content\Bootstrap\type.less" />
+    <Content Include="Content\Bootstrap\utilities.less" />
+    <Content Include="Content\Bootstrap\variables.less" />
+    <Content Include="Content\Bootstrap\wells.less" />
+    <Content Include="Content\Macromatix\mx-color-classes.less" />
+    <Content Include=".jshintrc" />
+    <Content Include="Content\Macromatix\mx-directives.less" />
+    <Content Include="Content\Bootstrap\mixins\alerts.less" />
+    <Content Include="Content\Bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\Bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\Bootstrap\mixins\buttons.less" />
+    <Content Include="Content\Bootstrap\mixins\center-block.less" />
+    <Content Include="Content\Bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\Bootstrap\mixins\forms.less" />
+    <Content Include="Content\Bootstrap\mixins\gradients.less" />
+    <Content Include="Content\Bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\Bootstrap\mixins\grid.less" />
+    <Content Include="Content\Bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\Bootstrap\mixins\image.less" />
+    <Content Include="Content\Bootstrap\mixins\labels.less" />
+    <Content Include="Content\Bootstrap\mixins\list-group.less" />
+    <Content Include="Content\Bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\Bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\Bootstrap\mixins\opacity.less" />
+    <Content Include="Content\Bootstrap\mixins\pagination.less" />
+    <Content Include="Content\Bootstrap\mixins\panels.less" />
+    <Content Include="Content\Bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\Bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\Bootstrap\mixins\resize.less" />
+    <Content Include="Content\Bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\Bootstrap\mixins\size.less" />
+    <Content Include="Content\Bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\Bootstrap\mixins\table-row.less" />
+    <Content Include="Content\Bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\Bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\Bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\Bootstrap\responsive-embed.less" />
+    <Content Include="Content\Macromatix\mx-bootstrap-custom.less" />
+    <Content Include="Content\Macromatix\mx-bootstrap-variables.less" />
+    <Content Include="Content\Areas\Inventory\Order\OrderDetails.less" />
+    <Content Include="Content\Areas\Inventory\Transfer\Transfer.less" />
+    <Content Include="Content\Bootstrap\mixins\reset-text.less" />
+    <Content Include="Chutzpah.json" />
+    <None Include="Content\Macromatix\mx-header.less" />
+    <Content Include="Content\Macromatix\mx-sidenav.less" />
+    <Content Include="Scripts\angular\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular\angular-touch.min.js.map" />
+    <Content Include="Content\Macromatix\mx-layout.less" />
+    <Content Include="fonts\Roboto-Regular-webfont.eot" />
+    <Content Include="fonts\Roboto-Regular-webfont.ttf" />
+    <Content Include="fonts\Roboto-Regular-webfont.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Macromatix\mx-nav.less" />
+    <Content Include="MxConnect.cshtml" />
+    <Content Include="fonts\Roboto-Light-webfont.eot" />
+    <Content Include="fonts\Roboto-Light-webfont.ttf" />
+    <Content Include="fonts\Roboto-Light-webfont.woff" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\kendo\kendo.dataviz.js" />
+    <Content Include="Scripts\kendo\kendo.new.core.js" />
+    <Content Include="Scripts\lodash.js" />
+    <Content Include="Scripts\lodash.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment\moment-with-langs.js" />
+    <Content Include="Scripts\moment\moment-with-langs.min.js" />
+    <Content Include="Areas\Core\Templates\mx-timepicker.html" />
+    <Content Include="Scripts\tinycolor.js" />
+    <Content Include="UpdateStructureMapConfig.xml" />
+    <Content Include="UpdateWebConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="StructureMap.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\SAML\" />
+    <Folder Include="Areas\Administration\Settings\TypeScript\Services\" />
+    <Folder Include="Areas\Core\TypeScript\SSO\" />
+    <Folder Include="Areas\Inventory\Waste\TypeScript\Services\" />
+    <Folder Include="Areas\Operations\Reporting\StoreSummary\Tests\" />
+    <Folder Include="Areas\Workforce\Deliveries\TypeScript\Models\" />
+    <Folder Include="Areas\Workforce\Deliveries\TypeScript\Tests\" />
+    <Folder Include="Areas\Workforce\MyAvailability\TypeScript\Tests\" />
+    <Folder Include="Areas\Workforce\MyTimeCard\TypeScript\Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Areas\Administration\ChangeStore\TypeScript\Controllers\ChangeStoreController.ts" />
+    <TypeScriptCompile Include="Areas\Administration\DataLoad\TypeScript\Controller\DataLoadController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\INavigationItem.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Models\IPopupMessage.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-popup-message.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\mx-sidenav.ctrl.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\ITestService.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\RegistrationTest.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\TestController.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\TestModule.ts" />
+    <TypeScriptCompile Include="Areas\Core\Tests\TestService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\app.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\AppController.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-sidenav.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Directives\mx-header.directive.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\HttpEventInterceptor.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\NavigationService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\Constants.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\IRegistry.d.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\Modules.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\NG\Registry.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\AuthService.ts" />
+    <TypeScriptCompile Include="Areas\Core\TypeScript\Services\PopupMessageService.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\CountController.ts" />
+    <TypeScriptCompile Include="Areas\Inventory\Count\TypeScript\Controllers\UpdateCostController.ts" />
+    <TypeScriptCompile Include="Config\T4\ApiDefinitions.ts">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApiDefinitions.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Config\T4\ApiImplementation.ts">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApiImplementation.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\typings\angular-external-modules\angular-external-fileupload.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\T4\ApiDefinitions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiDefinitions.ts</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\T4\SimplerCodeModel.t4" />
+    <None Include="Config\T4\Utils.t4" />
+    <None Include="Config\T4\VSCodeModel.t4" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets" Condition="Exists('$(SolutionDir)\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.13\tools\Microsoft.Bcl.Build.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent Condition="$(BuildNumber)==''">
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Administration*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Financial*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Foundation*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Forecasting*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Inventory*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Labor*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Operations*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Reporting*.Services*.dll" "$(TargetDir)"
+      xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.Deliveries*.Services*.dll" "$(TargetDir)"
+	  xcopy /s /y "$(SolutionDir)Binaries\Build\Mx.OperationalReporting*.Services*.dll" "$(TargetDir)"
+    </PostBuildEvent>
+    <PostBuildEvent Condition="$(BuildNumber)!=''">
+      xcopy /y "$(TargetDir)Mx.Administration*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Financial*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Foundation*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Forecasting*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Inventory*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Labor*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Operations*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Reporting*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+      xcopy /y "$(TargetDir)Mx.Deliveries*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+	  xcopy /y "$(TargetDir)Mx.OperationalReporting*.Services*.dll" "$(TargetDir)_PublishedWebsites\Mx.Web.UI\bin"
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

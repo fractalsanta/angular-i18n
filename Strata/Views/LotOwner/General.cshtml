@@ -1,0 +1,71 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.LotOwnerModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+
+@functions {
+
+string RenderContact(Contact contact){
+
+    System.Text.StringBuilder content = new System.Text.StringBuilder();
+
+    
+    content.AppendLine(contact.Name);
+    content.AppendLine("<br />");
+
+    content.AppendLine(contact.Name);
+    content.AppendLine("<br />");
+
+    content.AppendLine(contact.Name);
+    content.AppendLine("<br />");
+    
+    return content.ToString();
+}
+
+}
+
+<h1>
+    Lot Owner</h1>
+<h2>
+    @Html.StrataDropdown(ViewData.Model.UserSession.LotNames, ViewData.Model.CurrentLotIndex, ((d, i) => Url.Action("General", new { index = i })))</h2>
+<div class="full-width-data-container">
+    <div class="report-section floatLeft">
+        <h3>
+            Main Contact For Owner</h3>
+        <div>
+            <hr />
+            <br />
+
+
+            <br />
+            <hr />
+            @ViewData.Model.MainContact
+        </div>
+        <h3>
+            Financial Details And Dates</h3>
+        <div>
+            @Model.FinancialEnteredDate
+        </div>
+    </div>
+    <div class="report-section floatRight">
+        <h3>
+            Name On Title</h3>
+        <div>
+            @ViewData.Model.NameOnTitle
+        </div>
+        <h3>
+            Ownership Type</h3>
+        <div>
+            @ViewData.Model.OwnershipType
+        </div>
+        <h3>
+            @ViewData.Model.UserSession.Terminology["Owners Corporation"] Details</h3>
+        <div style="border: solid 5px red; height: 40px; width: 200px;">
+            <h1>@ViewData.Model.OwnersCorpDetails</h1>
+        </div>
+        <h3>
+        </h3>
+        <div>
+            @ViewData.Model.OwnerOccupied
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "name": "aws2",
+  "version": "1.0.1",
+  "description": "test",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "node",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

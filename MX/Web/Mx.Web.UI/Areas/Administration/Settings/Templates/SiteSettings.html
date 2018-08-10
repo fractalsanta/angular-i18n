@@ -1,0 +1,35 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button type="button" class="btn btn-success" ng-click="SaveSiteSettings()">{{Translations.Save}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row touch-scrollable fill-height">
+            <div class="col-xs-12">
+                <h3>{{Translations.LoginBackground}}</h3>
+                <h4>{{Translations.LoginBackgroundSelectMessage}}</h4>
+            </div>
+            <div class="logon-sample col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="scheme in GetLoginColorSchemes() track by $index">
+                <a class="thumbnail" ng-class="{selected: scheme === SelectedSchemeName}" ng-click="SetSelectedSchemeName(scheme)">
+                    <div class="logon" ng-class="scheme">
+                        <div class="login-header-container">
+                            <div class="login-header hidden-xs">see it all. manage it all.</div>
+                        </div>
+                        <div class="logon-panel">
+                            <input type="text"
+                                   disabled
+                                   class="form-control no-shadow login-username">
+                            <input type="password"
+                                   disabled
+                                   class="form-control no-shadow">
+                            <button type="submit" class="btn btn-block no-shadow login-btn">{{Loc.Login}}</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

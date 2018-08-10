@@ -1,0 +1,46 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar" ng-hide="false">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-6 pull-left">
+                <div class="dropdown inline" dropdown>
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" dropdown-toggle>
+                        <span class="">
+                            {{ TranslatedCurrentState() }} &nbsp;
+                            <span class="caret"></span>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu3">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ui-sref=".Items">{{Translation.Items}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ui-sref=".Locations">{{Translation.Locations}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ui-sref=".Groups">{{Translation.Groups}}</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-default" href="#/Inventory/Count/TravelPath/{{CountTypeName}}"><i class="fa fa-code-fork"></i>&nbsp;&nbsp;{{Translation.TravelPath}}</a>
+                <button type="button" class="btn btn-default" ng-click="AddNewItems()" ng-disabled="IsPeriodClosed" ng-show="CheckCanAddItemsToCountPermission()">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{Translation.AddItems}}
+                </button>
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-lg-2 pull-right">
+                <div class="dropdown" dropdown>
+                    <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" dropdown-toggle
+                            ng-class="{'btn-success': !IsOfflineMode(), 'btn-danger': IsOfflineMode(), 'disabled': IsOfflineMode() }">
+                        <span class="">
+                            &nbsp;&nbsp;{{Translation.Actions}} &nbsp;
+                            <span class="caret"></span>
+                        </span>
+                    </button>
+                    <ul ng-if="!IsOfflineMode()" class="dropdown-menu col-xs-12 pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation" ng-if="CheckCountCanUpdatePermission()" ng-class="{'disabled':!CanSubmit()}"><a role="menuitem" tabindex="-1" ng-click="FinishNow()"><i class="glyphicon glyphicon-check"></i>{{Translation.FinishNow}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="FinishLater()"><i class="glyphicon glyphicon-floppy-disk"></i>{{Translation.FinishLater}}</a></li>
+                        <li role="presentation" ng-show="CheckReviewPermission()" ng-class="{'disabled':!CanSubmit()}">
+                            <a role="menuitem" tabindex="-1" ng-click="CanSubmit() && Review()"><i class="fa fa-rotate-right"></i>{{Translation.ReviewCount}}</a>
+                        </li>
+                        <li role="presentation" ng-if="CheckCountCanUpdatePermission()"><a role="menuitem" tabindex="-1" ng-click="DeleteCount()"><i class="fa fa-trash-o"></i>{{Translation.DeleteText}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ui-view=""></div>
+</div>

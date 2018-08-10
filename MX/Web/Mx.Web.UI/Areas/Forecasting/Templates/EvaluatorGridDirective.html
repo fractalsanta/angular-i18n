@@ -1,0 +1,30 @@
+﻿<div class="panel panel-default" style="margin-top: 4px;">
+    <table class="table table-striped evaluatorGrid">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="evaluator-grid tableCell" ng-repeat="date in Options.SeriesEvaluationTimes">{{date}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="evaluator-grid rowName">{{ Translations.SystemAccuracy }}</td>
+                <td class="evaluator-grid tableCell" ng-repeat="day in Evaluations">
+                    <div ng-if="day.actual && day.system">{{day.systemAccuracy}}%</div>
+                    <div ng-if="!day.actual || !day.system">{{ Translations.NothingToEvaluateIndicator }} </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="evaluator-grid rowName">{{ Translations.ManagerAccuracy }}</td>
+                <td style="text-align:center" ng-repeat="day in Evaluations"
+                    ng-class="{
+                        'evaluator-grid managerAccuracyBetter tableCell': day.managerAccuracy > day.systemAccuracy,
+                        'evaluator-grid managerAccuracyWorse tableCell': day.managerAccuracy < day.systemAccuracy,
+                        'evaluator-grid managerAccuracyEqual tableCell': day.systemAccuracy === day.managerAccuracy}">
+                    <div ng-if="day.hasBeenEdited && day.actual">{{day.managerAccuracy}}%</div>
+                    <div ng-if="!day.hasBeenEdited || !day.actual">{{ Translations.NothingToEvaluateIndicator }}</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

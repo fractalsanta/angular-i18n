@@ -1,0 +1,21 @@
+﻿<div class="panel fill-height" mx-mobile-ready>
+    <div class="mx-composite-container-sm fill-height" ng-class="IsDetailsView() ? 'detail-mode-sm' : 'list-mode-sm'">
+        <div class="col-xs-6 fill-height">
+            <div ui-view="" class="fill-height row"></div>
+        </div>
+        <div class="col-xs-6 fill-height">
+            <div ui-view="Details" class="fill-height row">
+                <div class="panel panel-default container-1-toolbar fill-height">
+                    <div class="panel-heading mx-white">
+                    </div>
+                    <div class="panel-body touch-scrollable text-center">
+                        <div class="row">
+                            <div class="col-xs-12" ng-bind="::L10N.PleaseSelectOrCreateAPromotion">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

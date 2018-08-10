@@ -1,0 +1,73 @@
+﻿@using System.Web.Optimization
+@using Mx.Configuration
+@using Mx.Web.UI
+@using Mx.Web.UI.Config.Environment
+@using Mx.Web.UI.Config.Saml
+@using Mx.Web.UI.Config.Sso
+@using Mx.Web.UI.Config.Translations
+@{
+    Layout = null;
+    SamlHelper.CheckSamlSsoSetupAndLogin();
+
+}
+
+<!DOCTYPE html>
+
+<html ng-app="App" ng-controller="Core.AppController" ng-class="{'application': Model.User.IsAuthenticated}" class="fill-height">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    @*<meta name="apple-mobile-web-app-capable" content="yes">*@
+    @Styles.Render("~/bundles/css")
+    <title ng-bind-template="{{Model.Title}}">Loading...</title>
+</head>
+<body class="fill-height ng-class: {'logon': !Model.User.IsAuthenticated}">
+    <script type="text/ng-template" id="/Blank.html">
+        <div class="well well-lg"></div>
+    </script>
+    <script type="text/ng-template" id="/Areas/Core/Forbidden.html">
+        <div class="well well-lg">
+            <h2>{{Loc.AccessDenied}}</h2>
+            <p>{{Loc.YouDontHaveAccess}}</p>
+            <p>{{Loc.PleaseContactYourAdmin}}</p>
+        </div>
+    </script>
+    <script type="text/ng-template" id="/Areas/Core/404.html">
+        <div class="well well-lg">
+            <h2>{{Loc.ResourceNotFound}}</h2>
+            <p>{{Loc.PageUnavailableWhileOffline}}</p>
+        </div>
+    </script>
+    <div ng-show="IsAjaxBusy()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(/Content/Images/ajax-spinner.gif) no-repeat 50% 50%; z-index: 1001;"></div>
+    <div ng-cloak ng-if="AppReady" class="fill-height">
+        <div ng-cloak ng-if="Model.User.IsAuthenticated" class="fill-height">
+
+            <div style="background-color: #f1f2f7;" class="fill-height">
+                <div class="container-fluid fill-height" style="padding-left: 40px">
+                    <div class="row fill-height">
+                        <div class="fill-height">
+                            <div ui-view class="fill-height mxconnect-container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-toast col-xs-12">
+                    <mx-popup-message class="col-xs-12 col-sm-4 col-lg-3 pull-right"></mx-popup-message>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/js-libs")
+    @Scripts.Render("~/bundles/js-app")
+
+    <script type="text/javascript">
+        angular.module("Core").constant("Core.Constants", @Html.Raw(EnvironmentHelper.GetEnvironmentData()));
+    </script>
+
+</body>
+</html>

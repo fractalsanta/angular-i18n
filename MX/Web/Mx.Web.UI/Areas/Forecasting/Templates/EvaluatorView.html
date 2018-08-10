@@ -1,0 +1,18 @@
+﻿<div class="forecasting panel panel-default fill-height container-2-toolbars">
+    <div class="panel-heading mx-white toolbar-double-height">
+        <forecast-header></forecast-header>
+    </div>
+    <div class="panel-body" ng-show="HasData"> 
+        <div class="panel panel-default fill-height container-1-toolbar">
+            <div class="touch-scrollable" style="top: 0;">
+                <evaluator-graph options="ForecastingOptions" islocked="IsLocked" style="min-height: 280px; margin-left: 40px;"></evaluator-graph>
+                <evaluator-grid options="ForecastingOptions" islocked="IsLocked"></evaluator-grid>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,32 @@
+﻿<div class="mx-virtual-keyboard">
+    <div class="clearfix">
+        <div class="col-xs-1">
+            <div class="text-center" mx-virtual-key="[LEFT]">
+                <span class="fa fa-angle-left fa-3x"></span>
+            </div>
+        </div>
+        <div class="col-xs-1">
+            <div class="text-center" mx-virtual-key="[RIGHT]">
+                <span class="fa fa-angle-right fa-3x"></span>
+            </div>
+        </div>
+        <div class="col-xs-9"></div>
+        <div class="col-xs-1">
+            <button class="btn btn-special btn-default btn-block" mx-virtual-key="[CLOSE]">
+                <span class="fa fa-2x fa-keyboard-o"></span>
+            </button>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div ng-repeat="key in MainKeys" class="col-xs-1">
+            <button mx-virtual-key="{{key}}" class="btn btn-default btn-block">
+                <span class="fa fa-2x">{{key}}</span>
+            </button>
+        </div>
+        <div class="col-xs-1">
+            <button class="btn btn-special btn-default btn-block" mx-virtual-key="[BACKSPACE]">
+                <span class="fa fa-long-arrow-left fa-2x"></span>
+            </button>
+        </div>
+    </div>
+</div>

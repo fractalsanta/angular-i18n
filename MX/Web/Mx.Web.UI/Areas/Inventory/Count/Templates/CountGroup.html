@@ -1,0 +1,132 @@
+﻿<!--Main content panel-->
+<div class="panel-body fill-height">
+    <div class="row fill-height">
+        <!--Areas-->
+        <div class="col-sm-3 col-xs-3 fill-height">
+            <div class="fill-height container-1-toolbar">
+                <div>
+                    <div class="input-group">
+                        <input type="text"
+                               placeholder="{{Translation.SearchItems}}"
+                               ng-model="SearchItemText"
+                               typeahead-wait-ms="1"
+                               typeahead-min-length="1"
+                               typeahead="item.Description + ' (' + item.ProductCode + ')' for item in SearchItems(SearchItemText)"
+                               typeahead-on-select="SelectSearchItem($item)"
+                               class="form-control" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="ClearSearchText()">
+                                <span class="fa fa-times" ng-click="ClearSearchText()"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <ul class="nav nav-pills nav-stacked">                        
+                        <li ng-repeat="group in Groups" ng-class="{'active': CurrentGroup() === group}">                            
+                            <div ng-click="ChangeGroup(group)">
+                                <div class="pull-right">
+                                    &nbsp;
+                                    <span class="badge" ng-class="GroupStatusClass(group)" ng-style="{'background-color' : GroupStatusColour(group)}">{{GetUncounted(group)}}</span>
+                                </div>
+                                {{group.GroupName}}
+                            </div>
+                        </li>
+                        <div ng-hide="Groups" class="alert alert-warning">{{Translation.NoGroupsForCount}}: {{$scope.CountTypeName}}</div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Counts-->
+        <div class="col-sm-9 col-xs-9 fill-height">
+            <div class="panel panel-default fill-height container-2-toolbars">
+                <div class="panel-heading">
+                    <strong>{{CurrentGroup().GroupName}}&nbsp;</strong>
+                    
+                    <pagination total-items="CurrentGroup().CountItems.length"
+                                ng-if="CurrentGroup().CountItems.length > PageSettings.ItemsPerPage"
+                                ng-model="PageSettings.CurrentPage"
+                                max-size="PageSettings.MaxNumberOfPages"
+                                class="pull-right"
+                                boundry-links="true"
+                                direction-links="false"
+                                rotate="false"
+                                num-pages="numPages"
+                                first-text="&laquo;" last-text="&raquo;"
+                                items-per-page="PageSettings.ItemsPerPage"></pagination>
+
+                </div>
+                <div class="table-header">
+                    <div id="TableHeader">
+                        <div class="column-header">{{Translation.Description}} ({{Translation.ItemCode}})</div>
+                        <div class="column-header">{{Translation.Outer}}</div>
+                        <div class="column-header" ng-show="AreaGroups.HasInner">{{Translation.Inner}}</div>
+                        <div class="column-header" ng-show="AreaGroups.HasWeight">{{Translation.Weight}}</div>
+                        <div class="column-header">{{Translation.Unit}}</div>
+                        <div class="column-header text-center">{{Translation.Counted}}</div>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <table class="table table-striped" count-table-arrow-navigation mx-scrollable-table watch="PageItems" header-id="TableHeader">
+                        <tbody>
+                            <tr ng-repeat="Item in PageItems" ng-form="ActiveLine" mx-repeat-scroll-top class="top">
+                                <td class="min-100">{{Item.Description}} ({{Item.ProductCode}})</td>
+                                <td class="min-70 ng-class: {'has-error': ActiveLine.OuterCount.$invalid}">
+                                    <input type="text"
+                                           ng-disabled="(!CheckCountCanUpdatePermission() || Item.DisableOuterUnit)"
+                                           ng-show="Item.OuterUnit"
+                                           class="form-control"
+                                           ng-model="Item.OuterCount"
+                                           ng-blur="ActiveLine.OuterCount.$valid && UpdateItem(Item,0)"
+                                           name="OuterCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2" />
+                                    <label>{{Item.OuterUnit}}</label>
+                                </td>
+                                <td ng-show="AreaGroups.HasInner" class="min-70 ng-class: {'has-error': ActiveLine.InnerCount.$invalid}">
+                                    <input type="text"
+                                           ng-disabled="!CheckCountCanUpdatePermission() || Item.DisableInnerUnit"
+                                           ng-show="Item.InnerUnit"
+                                           class="form-control"
+                                           ng-model="Item.InnerCount"
+                                           ng-blur="ActiveLine.InnerCount.$valid && UpdateItem(Item,1)"
+                                           name="InnerCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2" />
+                                    <label>{{Item.InnerUnit}}</label>
+                                </td>
+                                <td ng-show="AreaGroups.HasWeight" class="min-70 ng-class: {'has-error': ActiveLine.WeightCount.$invalid}">
+                                    <input type="text"
+                                           ng-disabled="!CheckCountCanUpdatePermission() || Item.DisableWeightUnit"
+                                           ng-show="Item.WeightUnit"
+                                           class="form-control"
+                                           ng-model="Item.WeightCount"
+                                           ng-blur="ActiveLine.WeightCount.$valid && UpdateItem(Item,3)"
+                                           name="WeightCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2" />
+                                    <label>{{Item.WeightUnit}}</label>
+                                </td>
+                                <td class="min-70 ng-class: {'has-error': ActiveLine.InventoryCount.$invalid}">
+                                    <input type="text"
+                                           ng-show="Item.InventoryUnit"
+                                           class="form-control"
+                                           ng-disabled="!CheckCountCanUpdatePermission() || Item.DisableInventoryUnit"
+                                           ng-model="Item.InventoryCount"
+                                           ng-blur="ActiveLine.InventoryCount.$valid && UpdateItem(Item,2)"
+                                           name="InventoryCount"
+                                           mx-virtual-keyboard-input
+                                           number-only-input minvalue="0" precision="2" />
+                                    <label>{{Item.InventoryUnit}}</label>
+                                </td>
+                                <td class="min-100 text-center">
+                                    <i style="padding-top: 11px" class="{{ StatusClass(Item) }}" title="{{ StatusTitle(Item) }}" ng-style="{'color': StatusColor(Item)}"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

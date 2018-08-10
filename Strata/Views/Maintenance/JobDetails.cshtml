@@ -1,0 +1,167 @@
+﻿@using Rockend.iStrata.StrataWebsite.Model
+@model MaintenanceJobDetailModel
+@{
+    ViewBag.Title = "Job Details";
+}
+@section HeadTagsSection
+{
+    <style>
+        .tradieDetails td:first-child
+        {
+            width: 150px;
+            font-weight: 500;
+        }
+
+        .tradieDetails td
+        {
+            height: 30px;
+            vertical-align: top;
+        }
+
+        .photos
+        {
+            vertical-align: top;
+        }
+
+            .photos img
+            {
+                margin-top: 0px;
+                clear: both;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .photos .imageContainer
+            {
+                text-align: center;
+                width: 150px;
+                margin-right: 10px;
+                float: left;
+                margin-bottom: 15px;
+            }
+    </style>
+}
+
+@if (Model.IsQuote)
+{
+    <h1>Quote Details</h1>
+}
+else
+{
+    <h1>Job Details</h1>
+}
+
+<div style="width: 640px; float: left;">
+    <h4><b>Job Description</b></h4>
+    @Model.DiarySubject
+    @*<p>@Model.JobDescription</p>*@
+    <br />
+    <h4>
+        <br />
+        <b>Tradesperson</b></h4>
+    <table class="tradieDetails">
+        <tr>
+            <td>Name</td>
+            <td>@Model.TradieName</td>
+        </tr>
+        <tr>
+            <td>Amount Quoted</td>
+            <td>
+                @if (Model.AmountQuoted != 0)
+                {
+                    <span>@Model.AmountQuoted.ToString("C")</span>
+                }
+                else
+                {
+                    <span>-</span>
+                }
+            </td>
+        </tr>
+        @if (!Model.IsQuote)
+        {
+            <tr>
+                <td>Total Amount Invoiced</td>
+                <td>
+                    @if (Model.AmountInvoiced != 0)
+                    {
+                        <span>@Model.AmountInvoiced.ToString("C")</span>
+                    }
+                    else
+                    {
+                        <span>-</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br />
+                    <b>Invoices:</b></td>
+            </tr>
+                    if (Model.Invoices != null && Model.Invoices.Count > 0)
+                    {
+                        foreach (Invoice inv in Model.Invoices)
+                        {
+            <tr>
+                <td>Description</td>
+                <td>@inv.Description</td>
+            </tr>
+            <tr>
+                <td>Number</td>
+                <td>@inv.RefNumber</td>
+            </tr>
+                        }
+                    }
+                    else
+                    {
+            <tr>
+                <td colspan="2" style="font-weight: normal;">No invoices to display.</td>
+            </tr>
+                    }
+        }
+    </table>
+    <br />
+    @if (Model.ImageCount > 0 && Model.AgentContentStrata.ShowMaintenanceImages)
+    {
+        <div class="photos">
+            <h4><b>Images</b></h4>
+            @for (int i = 0; i < Model.ImageDescriptions.Count; i++)
+            {
+                <div class="imageContainer">
+                    <img src="@Url.Action("MaintenancePhoto", new { index = i, jobId = Model.JobId, maintType = Model.MaintType })" />
+                    <span>@Model.ImageDescriptions[i]</span>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div style="width: 145px; float: left; margin-left: 14px; padding-left: 12px; border-left: solid 2px white;">
+    <b>@Model.StatusHeader</b><br />
+    @Model.StatusString<br />
+    <br />
+
+    @if (!Model.IsQuote)
+    {
+        <b>Job Number</b><br />
+        @Model.JobNumber<br />
+        <br />
+    }
+    else
+    {
+        <b>Quote Number</b><br />
+        @Model.OrderNumber<br />
+        <br />
+    }
+
+    <b>Manager</b><br />
+    @Model.Manager<br />
+    <br />
+
+    <b>Reported By</b><br />
+    @Model.ReportedBy<br />
+    <br />
+
+    <b>Created</b><br />
+    @Model.DateReported.ToShortDateString()
+</div>

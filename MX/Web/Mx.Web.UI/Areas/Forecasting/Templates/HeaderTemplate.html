@@ -1,0 +1,109 @@
+﻿<div class="panel-body fill-height">
+    <div class="row" ng-if="IsEvaluatorView">
+        <div class="col-md-3 col-sm-4 col-xs-4 text-center" style="min-width: 190px; max-width: 270px;">
+            <label>{{ ::Translations.WeekOf }}</label>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-2 text-center" style="min-width: 80px; max-width: 200px;">
+            <label>{{ ::Translations.Metric }}</label>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 text-center" style="min-width: 80px; max-width: 200px;">
+            <label>{{ ::Translations.DayPart }}</label>
+        </div> 
+        <div ng-if="ShowForecastFilters" class="col-md-2 col-sm-2 col-xs-2 text-center" style="min-width: 80px; max-width: 200px;">
+            <label>{{ ::Translations.ForecastFilter }}</label>
+        </div>
+    </div>
+    <div class="row" ng-if="IsEvaluatorView">
+        <div ng-if="ForecastingOptions.MetricKey !== 'events'" class="col-md-3 col-sm-4 col-xs-4" style="min-width: 190px; max-width: 270px;">
+            <mx-prevday-nextday-picker options="ForecastPickerOptions" on-change="OnDatePickerChange(selectedDate)"></mx-prevday-nextday-picker>
+        </div>
+        <div ng-if="IsEvaluatorView" class="col-md-2 col-sm-3 col-xs-2" style="min-width: 80px; max-width: 200px;">
+            <select class="form-control" ng-disabled="IsAjaxBusy()" ng-model="DropDownMetrics.type"
+                    ng-options="metric.value as metric.name for metric in Metrics"
+                    ng-change="NavigateToMetric('Evaluator/Graph', DropDownMetrics.type, ForecastingOptions.FilterId)"></select>
+        </div>
+        <div ng-if="IsEvaluatorView" class="col-md-2 col-sm-2 col-xs-2" style="min-width: 80px; max-width: 200px;">
+            <select class="form-control" ng-disabled="IsAjaxBusy()" ng-model="DropDownDaySegments.type"
+                    ng-options="segment.value as segment.name for segment in DaySegments"
+                    ng-change="NavigateTo('Evaluator/Graph', DropDownDaySegments.type, ForecastingOptions.FilterId)">
+                <option value="" ng-if="false"></option>
+            </select>
+        </div>
+        <div ng-if="IsEvaluatorView && ShowForecastFilters" class="col-md-2 col-sm-2 col-xs-2" style="min-width: 80px; max-width: 200px;">
+            <select class="form-control" ng-disabled="IsAjaxBusy()" ng-model="ForecastingOptions.FilterId"
+                    ng-options="filter.Id as filter.Name for filter in DropDownForecastFilters"
+                    ng-change="Clear(); NavigateTo('Evaluator/Graph', DropDownDaySegments.type, ForecastingOptions.FilterId)">
+                <option value="" ng-if="false"></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row" ng-if="IsEditorView && ForecastingOptions.MetricKey !== 'events'">
+    </div>
+    <div class="row" ng-if="IsEditorView && ForecastingOptions.MetricKey !== 'events'">
+        <div class="col-md-3 col-sm-4 col-xs-4" style="min-width: 190px; max-width: 270px;">
+            <mx-prevday-nextday-picker options="ForecastPickerOptions" on-change="OnSelectedDayChange(selectedDate)"></mx-prevday-nextday-picker>
+        </div>
+        <div class="col-md-offset-1 col-sm-offset-0 col-xs-offset-0 col-md-2 col-sm-2 col-xs-2 text-center">
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div class="pull-right" ng-hide="IsDirty()">
+                <button ng-if="IsGridView" type="button" class="btn btn-default" ng-click="NavigateTo('Editor/Graph')"><i class=" fa fa-bar-chart-o"></i></button>
+                <button ng-if="IsGraphView" type="button" class="btn btn-default" ng-click="NavigateTo('Editor/Grid')"><i class="fa fa-table"></i></button>
+                <button type="button" class="btn btn-default" ng-click="NavigateToHistory('History')" ng-hide="!ForecastObject.ViewHistory || (!FOSalesItem && ForecastingOptions.Metric === 'salesitems')" ng-disabled="!ForecastObject.Forecast">{{Translations.History}}</button>
+            </div>
+            <div class="hidden-sm hidden-xs pull-right" ng-show="IsDirty()" style="white-space: nowrap;">
+                <button class="btn btn-success" title="{{ Translations.Save }}"
+                        ng-click="SaveChanges()">
+                    {{ Translations.Save }}
+                </button>
+                <button class="btn btn-default" title="{{ Translations.Cancel }}"
+                        ng-click="ClearChangesWithConfirmation()">
+                    {{ Translations.Cancel }}
+                </button>
+            </div>
+            <div class="hidden-lg hidden-md pull-right" ng-show="IsDirty()">
+                <button class="btn btn-success" title="{{ Translations.Save }}"
+                        ng-click="SaveChanges()">
+                    <i class="glyphicon glyphicon-floppy-save"></i>
+                </button>
+                <button class="btn btn-default" title="{{ Translations.Cancel }}"
+                        ng-click="ClearChangesWithConfirmation()">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="IsEditorView && ForecastingOptions.MetricKey === 'events'">
+        <div class="col-xs-4">
+            <h4>{{ ForecastingOptions.EventProfile.Name }}</h4>
+        </div>
+        <div class="col-xs-4">
+        </div>
+        <div class="col-xs-4">
+            <div class="hidden-xs text-right" ng-show="IsDirty() || ForecastingOptions.MetricKey === 'events'">
+                <button class="btn btn-success" title="{{ Translations.SaveProfile }}"
+                        ng-click="SaveAdjustments()">
+                    {{ Translations.SaveProfile }}
+                </button>
+                <button class="btn btn-default" title="{{ Translations.Cancel }}"
+                        ng-click="ShouldCancelAdjustments()">
+                    {{ Translations.Cancel }}
+                </button>
+            </div>
+            <div class="hidden-lg hidden-md hidden-sm text-right" ng-show="IsDirty()">
+                <button class="btn btn-success" title="{{ Translation.SaveProfile }}"
+                        ng-click="SaveAdjustments()">
+                    <i class="glyphicon glyphicon-floppy-save"></i>
+                </button>
+                <button class="btn btn-default" title="{{ Translation.Cancel }}"
+                        ng-click="ShouldCancelAdjustments()">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

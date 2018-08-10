@@ -1,0 +1,101 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button type="button" class="btn btn-success" ng-disabled="!Vm.IsDirty" ng-click="SaveInventoryCountSettings()">{{Translations.Save}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row touch-scrollable fill-height">
+            <div class="col-xs-12">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="col-xs-10">
+                                    <strong> {{Translations.InventoryCountSettingsIndicator}} </strong>
+                                </div>
+                                <div class="col-xs-2 pull-right">
+
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="col-xs-10">
+                                    {{Translations.InventoryCountSettingsPending}}
+                                </div>
+                                <div class="col-xs-2 dropdown pull-right">
+                                    <color-picker id="PendingColor"
+                                                  name="PendingColor"
+                                                  ng-model="Vm.PendingColor"
+                                                  ng-required="true"
+                                                  ng-minlength="1"
+                                                  maxlength="25"
+                                                  color-picker-format="'hex'"
+                                                  color-picker-swatch="true"
+                                                  color-picker-swatch-pos="'right'"
+                                                  color-picker-swatch-only="false"
+                                                  color-picker-case="'upper'"
+                                                  color-picker-pos="'bottom right'"
+                                                  color-picker-on-change="ValueChanged()">
+                                    </color-picker>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="col-xs-10">
+                                    {{Translations.InventoryCountSettingsOutOfTolerance}}
+                                </div>
+                                <div class="col-xs-2 dropdown pull-right">
+                                    <color-picker id="CountedColor"
+                                                  name="OutOfToleranceColor"
+                                                  ng-model="Vm.OutOfToleranceColor"
+                                                  ng-required="true"
+                                                  ng-minlength="1"
+                                                  maxlength="25"
+                                                  color-picker-format="'hex'"
+                                                  color-picker-swatch="true"
+                                                  color-picker-swatch-pos="'right'"
+                                                  color-picker-swatch-only="false"
+                                                  color-picker-case="'upper'"
+                                                  color-picker-pos="'bottom right'"
+                                                  color-picker-on-change="ValueChanged()">
+                                    </color-picker>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="col-xs-10">
+                                    {{Translations.InventoryCountSettingsCounted}}
+                                </div>
+                                <div class="col-xs-2 dropdown pull-right">
+                                    <color-picker id="CountedColor"
+                                                  name="CountedColor"
+                                                  ng-model="Vm.CountedColor"
+                                                  ng-required="true"
+                                                  ng-minlength="1"
+                                                  maxlength="25"
+                                                  color-picker-format="'hex'"
+                                                  color-picker-swatch="true"
+                                                  color-picker-swatch-pos="'right'"
+                                                  color-picker-swatch-only="false"
+                                                  color-picker-case="'upper'"
+                                                  color-picker-pos="'bottom right'"
+                                                  color-picker-on-change="ValueChanged()">
+                                    </color-picker>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

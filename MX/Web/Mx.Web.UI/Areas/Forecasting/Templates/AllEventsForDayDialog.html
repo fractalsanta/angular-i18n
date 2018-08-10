@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+    <span>{{ Title }}</span>
+    <button type="button" class="close" ng-click="Close()">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="panel panel-default fill-height">
+        <div class="table-header">
+            <div id="EventHeader">
+                <div class="column-header">{{Translations.EventProfile}}</div>
+                <div class="column-header">{{Translations.Notes}}</div>
+            </div>
+        </div>
+        <div class="touch-scrollable">
+            <table class="table table-striped" mx-scrollable-table watch="EventData" header-id="EventHeader">
+                <tbody>
+                    <tr ng-repeat="Event in EventData" class="disable-select" mx-repeat-scroll-top>
+                        <td>
+                            {{Event.ProfileName}}
+                        </td>
+                        <td>
+                            {{Event.Notes}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-success" ng-click="Close()">{{ Translations.OK }}</button>
+</div>

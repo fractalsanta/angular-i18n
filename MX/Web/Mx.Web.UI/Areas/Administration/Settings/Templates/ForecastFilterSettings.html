@@ -1,0 +1,50 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="pull-right">
+            <button type="button" class="btn btn-success" ng-click="AddForecastFilter()">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ ::Translations.AddForecastFilter }}
+            </button>
+        </div>
+    </div>
+    <div class="panel panel-default container-1-toolbar" style="margin-bottom: 0;">
+        <div class="table-header">
+            <div id="TableHeader">
+                <div class="column-header">{{ ::Translations.ForecastFilterName }}</div>
+                <div class="column-header text-center">{{ ::Translations.CanEditForecast }}</div>
+                <div class="column-header text-center">{{ ::Translations.InUse }}</div>
+                <div class="column-header text-center">{{ ::Translations.ServiceTypes }}</div>
+                <div class="column-header"></div>
+            </div>
+        </div>
+        <div class="touch-scrollable">
+            <table class="table table-striped" mx-scrollable-table watch="Vm.ForecastFilters" header-id="TableHeader">
+                <tbody>
+                    <tr ng-repeat="ForecastFilter in Vm.ForecastFilters track by ForecastFilter.Id">
+                        <td class="col-xs-4">{{ ForecastFilter.Name }}</td>
+                        <td class="col-xs-2 text-center">
+                            <span class="glyphicon glyphicon-ok" ng-show="CanEditForecastViaFilter(ForecastFilter)"></span>
+                        </td>
+                        <td class="col-xs-2 text-center">
+                            {{ UsedByForecastFilter(ForecastFilter) }}
+                        </td>
+                        <td class="col-xs-2 text-center">
+                            {{ ForecastFilter.ForecastFilterGroupTypes.length }}
+                        </td>
+                        <td class="col-xs-2">
+                            <button type="button" class="btn btn-default btn-block btn-sm"
+                                    ng-click="ViewForecastFilter(ForecastFilter)">
+                                <i class="fa fa-pencil-square-o"></i> {{ ::Translations.Edit }}
+                            </button>
+                            <button type="button" class="btn btn-default btn-block btn-sm"
+                                    ng-disabled="InUseForecastFilter(ForecastFilter)"
+                                    ng-click="DeleteForecastFilter(ForecastFilter)">
+                                <i class="fa fa-trash-o"></i> {{ ::Translations.Delete }}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-warning" ng-if="!DoRecordsExist()">{{ ::Translations.NoForecastFiltersDefined }}</div>
+        </div>
+    </div>
+</div>

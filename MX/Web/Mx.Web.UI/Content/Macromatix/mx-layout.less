@@ -1,0 +1,600 @@
+﻿@import "mx-bootstrap-variables.less";
+@import "mx-color.less";
+@import "../Bootstrap/mixins/text-overflow.less";
+
+.modal {
+    overflow: hidden;
+    &.datepicker {
+        .modal-dialog {
+            width: 310px;
+        }
+    }
+
+    &.narrow {
+        .modal-dialog {
+            width: 360px;
+        }
+    }
+
+    &.smaller {
+        .modal-dialog {
+            width: 525px;
+        }
+    }
+
+    &.wide-sm {
+        .modal-dialog {
+            width: 660px;
+        }
+    }
+
+    &.wide {
+        .modal-dialog {
+            width: 720px;
+        } 
+    }
+}
+
+.rounded {
+    border-radius: 1.5em;
+}
+
+.table {
+    &.table-small-bottom { 
+        margin-bottom: 0;
+    }
+
+    &.collapse.in {
+        /* Fix for tables that are made to be collapsible inside a panel. */
+        display: table;
+    }
+
+    td.active,
+    th.active,
+    tr.active > td,
+    tr.active > th {
+        /* Selected row top and bottom stroke in table. */
+        background-color: #e6f5fc;
+        border-top: 1px solid #b2e2f4;
+        border-bottom: 1px solid #b2e2f4;
+    }
+
+
+    tr > th:last-child,
+    tr > td:last-child {
+        /* Make right padding on last table column somewhat more consistent with left padding on first column. */
+        padding-right: 10px;
+    }
+}
+    .table > tbody > tr.top > td  {
+        vertical-align:top;
+    }
+
+.dropdown-menu {
+    >li {
+        >a {
+            /* Dropdown menus cursor. */
+            cursor: pointer;
+            white-space: normal;
+
+            &:hover,
+            &:focus {
+                /* Drop down rollover and text color. */
+                color: #1f366c;
+                background-color: #f1f2f7;
+            }
+        }
+    }
+
+    .divider {
+        /* Add .dividers in dropdown menus to separate all selections and adjust color. */
+        margin: 0;
+        background-color: #dcdfe8;
+    }
+}
+
+
+.height-restrained-dropdown {
+    height: auto;
+    min-width: 200px;
+    max-height: @dropdown-max-height;
+    overflow-x: hidden;
+}
+
+.dropdown.width-restrained-dropdown {
+    button > span {
+            max-width: @dropdown-max-width;
+            white-space: nowrap;
+            overflow: hidden;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+        }
+    }
+
+@media screen and (max-height: @screen-xs) {
+    .mx-user-nav > .dropdown-menu.touch-scrollable {
+        position:fixed;
+        top:@navbar-height;
+        bottom:1px;
+    }
+ }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+ul[ui-sortable] > li,
+div[ui-sortable] > div {
+    cursor: pointer;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+ul[datepicker-popup-wrap] {
+    /* Fix to datepicker popup container to add back removed padding so
+        control does not overflow from container. */
+    padding: 5px !important;
+
+    table[datepicker] {
+        /* Fix to pop-up datepicker width being restricted to containing parent. */
+        min-width: 256px;
+    }
+}
+
+body.modal-open, 
+.modal-open .navbar-fixed-top, 
+.modal-open .navbar-fixed-bottom {
+    margin-right: 0;
+    overflow-y: hidden;
+}
+
+.mx-ios {
+    .modal {
+        position: absolute;
+        overflow: visible;
+        height: auto !important;
+    }
+
+    .modal-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: auto !important;
+    }
+}
+
+.input-group {
+    /* Ensure normal input groups with form-control elements match button sizes. */
+    > .form-control:not(.input-lg):not(.input-sm),
+    > .input-group-btn > .btn:not(.btn-sm):not(.btn-xs):not(.btn-lg) {
+        height: 32px;
+    }
+}
+
+.mx-toast{
+    position: absolute;
+    z-index: 10001;
+    right:0;
+    left:0;
+    pointer-events:none;
+    top: @navbar-height + 4px;
+}
+
+.app-level-container{
+    position: absolute;
+    top: @navbar-height;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    overflow: hidden;
+}
+
+.min-width-sm{
+    min-width: @screen-sm-min - 1;
+}
+
+
+.touch-scrollable-mixin() {
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+
+    > table.table {
+        /* Remove bottom padding on tables that are nested in a scrollable area. */
+        margin-bottom: 0;
+    }
+}
+
+.mx-ios .touch-scrollable {
+    .touch-scrollable-mixin;
+    overflow-y: scroll;
+}
+
+
+:not(.mx-ios){
+    .touch-scrollable{
+        .touch-scrollable-mixin;
+    }
+
+    .touch-scrollable::-webkit-scrollbar {
+        height: 8px;
+        overflow: visible;
+        width: 8px;
+    }
+
+    .touch-scrollable::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, .4);
+        background-clip: padding-box;
+        border-radius: 8px;
+        border-width: 1px 1px 1px 6px;
+        min-height: 18px;
+    }
+
+    .touch-scrollable::-webkit-scrollbar-button {
+        height: 0;
+        width: 0;
+    }
+}
+
+body.mx-ios .panel-heading * {
+    -webkit-overflow-scrolling: auto;
+}
+
+.container-fluid > .touch-scrollable {
+    overflow-y: hidden;
+}
+
+.modal-body-fixed {
+    height: 400px;
+    max-height: 400px;
+    margin-bottom:10px;
+}
+
+@media screen and (max-height: 719px) {
+    .modal-body-fixed {
+      height: 320px;
+      max-height: 320px;
+    }
+}
+
+.panel-limited-height {
+    max-height: 400px;
+}
+
+@media screen and (max-height: 719px) {
+    .panel-limited-height {
+        max-height: 320px;
+    }
+}
+
+.modal-body {
+    padding-bottom:5px;
+}
+
+.modal-footer {
+    margin-top: 0;
+}
+
+@toolbar-height: 54px;
+
+.cnt-row(@level){
+    position: relative;
+    > :not(:last-child) {
+        height: @toolbar-height;
+    }
+
+    > :last-child {
+        top: @toolbar-height * @level;
+        position:absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    .toolbar-double-height {
+        height: @toolbar-height * 2;
+    }
+}
+.container-1-toolbar {.cnt-row(1);}
+.container-2-toolbars{.cnt-row(2);}
+.container-3-toolbars{.cnt-row(3);} 
+
+.fill-height {
+    height: 100%;
+    .tab-content .tab-pane {
+        height: 100%;
+    }
+}
+
+.mxconnect-container div.panel, .modal-body-fixed div.panel {
+    margin-bottom:0;
+}
+
+.mxconnect-container div.panel-body {
+   padding: 0 15px;
+}
+
+.nav-tabs > li > a {
+    height: @toolbar-height;
+}
+
+.toolbar-table-header {
+    td, th {
+        font-weight:bold;
+        background-color: white !important;
+        border-bottom: 1px solid @table-border-color;
+    }
+}
+
+.dropdown.inline {
+    display:inline-block;
+}
+
+.panel {
+    .panel-body-divider {
+        border-bottom: 1px solid #d3d3d3;
+        margin-left: 15px;
+        margin-right: 15px;
+        height: 1px;
+    }
+    .panel-body-content-divider {
+        border-bottom: 1px solid #d3d3d3;
+        margin: 10px 0;
+        height: 1px;
+    }
+    .panel-body .color-coded-panel-body {
+        border-left-width: 5px;
+        border-left-style: solid;
+        padding-left: 10px;
+    }
+}
+
+.panel-heading > .pagination {
+    /* Remove top and bottom margin from pagination control in a panel-heading to center properly. */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.column-header {
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    padding-left: @table-cell-padding;
+    overflow: hidden;
+    padding-top:10px;
+    font-weight: bold;
+    position:absolute;
+    /* shrink the font so we can somewhat prevent column headers from showing ellipsis all the time*/
+    font-size: 12px;
+    word-break: break-word;
+
+    .sort-indicator {
+        vertical-align: top;
+    }
+
+    div {
+        display: inline-block;
+    }
+}
+
+.table-header {
+
+    overflow: hidden;
+    border-bottom: 2px solid #dcdfe8;
+
+    > div {
+        position:relative;
+        overflow: hidden;
+
+        &:last-child {
+            padding-right: 10px;
+        }
+    }
+}
+
+
+.mx-resizable-table-header > td { background-color: @mx-white !important; }
+.mx-hidden-row{
+    border:none !important;
+    visibility:hidden;
+}
+
+.mx-hidden-row > td { 
+    padding:0 !important; 
+    height: 0; 
+}
+
+.touch-scrollable {
+    table.table {
+        td {
+        min-width: 90px;
+    }
+    }
+
+    .gen-td-size(5, 20);
+}
+
+.gen-td-size(@start, @counter) when (@counter >= @start) {
+    .gen-td-size(@start,(@counter - 1));
+    @td-size: 10 * @counter;
+    table.table td.min-@{td-size} {
+        min-width: (@td-size * 1px);
+    }
+}
+
+
+.mx-composite-container{
+    width: 100%;
+    overflow: hidden;
+
+     transform:translate(0, 0);
+    -ms-transform:translate(0, 0);
+    -moz-transform:translate(0, 0);
+    -webkit-transform:translate(0, 0);
+    transition: transform 1s ease-in-out;  
+    transition: -webkit-transform 0.5s ease-in-out;  
+}
+
+.detail-mode{
+    overflow: hidden;
+  }
+
+@screen-xs-minus-one: (@screen-sm-min - 1);
+
+@media (max-width: @screen-xs-minus-one) {
+    .mx-composite-container {
+        width: 200%;
+    }
+    .list-mode{
+      transform:translate(0, 0);
+      -ms-transform:translate(0, 0);
+      -moz-transform:translate(0, 0);
+      -webkit-transform:translate(0, 0);
+      transition: transform 1s ease-in-out;  
+      transition: -webkit-transform 0.5s ease-in-out;
+    }
+    .detail-mode{
+      transform:translate(-50%, 0);
+      -ms-transform:translate(-50%, 0);     
+      -moz-transform:translate(-50%, 0);
+      -webkit-transform:translate(-50%, 0);
+      transition: transform 1s ease-in-out;  
+      transition: -webkit-transform 0.5s ease-in-out;
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .mx-composite-container-sm {
+        width: 200%;
+    }
+    .list-mode-sm {
+      transform:translate(0, 0);
+      -ms-transform:translate(0, 0);
+      -moz-transform:translate(0, 0);
+      -webkit-transform:translate(0, 0);
+      transition: transform 1s ease-in-out;  
+      transition: -webkit-transform 0.5s ease-in-out;
+    }
+    .detail-mode-sm {
+      transform:translate(-50%, 0);
+      -ms-transform:translate(-50%, 0);     
+      -moz-transform:translate(-50%, 0);
+      -webkit-transform:translate(-50%, 0);
+      transition: transform 1s ease-in-out;  
+      transition: -webkit-transform 0.5s ease-in-out;
+    }
+}
+
+.nav > li > div {
+    position: relative;
+    padding: @nav-link-padding;
+    color: @link-color;
+    background: transparent;
+}
+
+@media (max-width: @screen-xs-minus-one) {
+    .nav > li > div {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+}
+
+.nav-pills > li {
+  word-break: break-word;
+}
+
+.word-break {
+  word-break: break-word;
+}
+
+
+.nav-pills > li > div {
+    border-radius: @border-radius-base;
+}
+
+.nav-pills > li.active > div {
+    color: @component-active-color;
+    background-color: @component-active-bg;
+}
+ 
+.nav > li.mx-highlight > div {
+    background-color: lighten(@mx-highlight, 40%);
+    color: black;
+    -webkit-transition: background-color 1s ease; /* For Safari 3.1 to 6.0 */
+    transition: background-color 1s ease;
+}
+
+.nav > li.mx-highlight&.active > div {
+    background-color: @mx-highlight;
+    color: black;
+    -webkit-transition: background-color 1s ease; /* For Safari 3.1 to 6.0 */
+    transition: background-color 1s ease;
+}
+
+.table > tbody > tr.mx-highlight > td {
+    background-color: lighten(@mx-highlight, 40%);
+}
+
+.table > tbody > tr.mx-highlight&.active > td {
+    background-color: lighten(@mx-highlight, 20%);
+}
+
+.form-control::-ms-clear{
+    visibility: hidden;
+}
+
+.btn-group{
+    .btn.btn-flat{
+        &:hover, &:focus{
+            background-color: @btn-default-bg;
+            border-color: @btn-default-border;
+            cursor: default;
+        }
+        &:active{
+            box-shadow: 0 2px @btn-default-border;
+            outline: none;
+        }
+    }
+}
+
+.margin-15 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.table > tbody > tr.top > td.middle-vertical {
+    vertical-align:middle;
+}
+
+.padding-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.notification {
+    max-height: @dropdown-max-height;
+}
+
+.notification > li > h5, .notification > li > a > h5 {
+    .text-overflow();
+}
+
+tr.table-summary-row {
+    td{
+        font-weight: bold;
+    }
+}
+
+.panel-bottom-padded {
+    padding-bottom: @panel-body-padding;
+}

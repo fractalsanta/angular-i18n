@@ -1,0 +1,59 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar min700" mx-mobile-ready>
+    <div class="panel-heading mx-white">
+        <div class="fill-height">
+            <div class="row form-group">
+                <div class="col-xs-12 header">
+                    <div class="pull-left col-xs-4">
+                        <input class="form-control" ng-model="Vm.FilterText" placeholder="{{ ::Vm.L10N.SearchItems }}" />
+                    </div>
+                    <div class="pull-left col-xs-5 col-sm-4 col-md-3" >
+                        <div class="input-group" ng-click="OpenDateRange()">
+                            <span class="form-control pull-left" 
+                                  ng-class="{'mx-fg-novalue': !Vm.Dates.StartDate}">
+                                <span ng-if="!Vm.Dates.StartDate">{{ :: Vm.L10N.SelectDates }}</span>
+                                <span ng-if="Vm.Dates.StartDate">{{ Vm.Dates.StartDate | date:'mediumDate' }} - {{ Vm.Dates.EndDate | date:'mediumDate' }}</span>
+                            </span>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                            
+                    </div>
+
+                    <div class="pull-right">
+                        <button type="button" class="pull-right btn btn-success" ng-click="AddItem()">
+                            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ ::Vm.L10N.AddItem }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default fill-height">
+            <div ng-if="Vm.L10N.TargetSalesItemCode && Model.FilteredIntervals" class="panel panel-default fill-height container-1-toolbar">
+                <div class="table-header">
+                    <div id="TableHeader">
+                        <mx-grid-header header="Header()"></mx-grid-header>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <table class="table table-striped" mx-scrollable-table watch="Model.FilteredIntervals" header-id="TableHeader">
+                        <tbody>
+                            <tr ng-repeat="interval in Model.FilteredIntervals" class="pointer-cursor" ng-click="ViewDetails(interval, $index);">
+                                <td class="col-xs-5">{{ interval.TargetSalesItem.Description }} - ({{ interval.TargetSalesItem.ItemCode }})</td>
+                                <td class="col-xs-3">{{ interval.TargetDateStartDate | date:'mediumDate' }} - {{ interval.TargetDateEndDate | date:'mediumDate' }}</td>
+                                <td class="col-xs-3">{{ interval.Zone.Name }}</td>
+                                <td class="col-xs-1">
+                                    <span class="pull-right pointer-cursor fa fa-angle-right fa-3x"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

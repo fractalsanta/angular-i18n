@@ -1,0 +1,121 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.MeetingModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+
+@section headTagsSection
+{
+    <style>
+        .meeting td
+        {
+            padding: 4px;
+            padding-left: 18px;
+        }
+        .meeting td h2
+        {
+            margin-left: -15px;
+        }
+        .meeting td h3
+        {
+            margin-left: -10px;
+        }
+        .meetingHeader 
+        {
+            border-bottom: solid 1px #999;
+        }
+    </style>
+}
+<h1>
+    Meeting Details</h1>
+@if (Model.UserSession.LotNames.Count > 1)
+{
+    @Html.Raw(Html.StrataDropdown(Model.UserSession.LotNames, Model.CurrentLotIndex, ((d, i) => Url.Action("Index", new { index = i })), "ownerCorpIndex"))
+}
+else
+{
+    <h2 style="border: none;">@Model.UserSession.LotNames[0].Name</h2>
+    <input type="hidden" id="ownerCorpIndex" value = "@Model.CurrentLotIndex" />
+}
+<h2 class="meetingHeader">
+    Scheduled Meetings</h2>
+
+<div class="grid-wrapper">
+@if (Model.Meetings != null && Model.Meetings.Count > 0)
+{
+    for (var i = 0; i < Model.Meetings.Count; i++)
+    {        
+        <div class="grid-item">
+            <h1 class="meeting-header">@Model.Meetings[i].Description</h1>
+            <table class="meeting-inner-table">
+                <tr>
+                    <td>Date</td>
+                    <td>@Model.Meetings[i].MeetingDate.ToLocalTime().ToShortDateString()</td>
+                </tr>
+                <tr>
+                    <td>Time</td>
+                    <td>@Model.Meetings[i].MeetingTime</td>
+                </tr>
+                <tr>
+                    <td>Venue</td>
+                    <td>@Model.Meetings[i].VenueName</td>
+                </tr>
+                <tr>
+                    <td>Manager</td>
+                    <td>@Model.Meetings[i].Manager</td>
+                </tr>
+            </table>
+            
+            @if (Model.Meetings[i].AllowVoting)
+            {
+                if (!Model.IsVotingClosed(i))
+                {
+                    @Html.ActionLink("Vote", "Vote", "Meeting", new { index = Model.CurrentLotIndex, meeting = i }, new { @class = "coolButton gridButton" })
+                }
+                else
+                {
+                    <a href="#" class="coolButton gridButton disabled" disabled="disabled">Vote</a>
+                }
+            }
+        </div>
+    }
+}
+</div>
+<h2 class="meetingHeader">Past Meetings</h2>
+<div class="cf">
+    @if (Model.PastMeetings != null && Model.PastMeetings.Count > 0)
+    {
+        foreach (var meeting in Model.PastMeetings)
+        {
+
+            <div class="grid-item">
+                <h1 class="meeting-header">@meeting.Description</h1>
+                <table class="meeting-inner-table">
+                    <tr>
+                        <td>Date</td>
+                        <td>@meeting.MeetingDate.ToLocalTime().ToShortDateString()</td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td>@meeting.MeetingTime</td>
+                    </tr>
+                    <tr>
+                        <td>Venue</td>
+                        <td>@meeting.VenueName</td>
+                    </tr>
+                    <tr>
+                        <td>Manager</td>
+                        <td>@meeting.Manager</td>
+                    </tr>
+                </table>
+            </div>
+        }
+
+    }
+    else
+    {
+        <table cellpadding="6" class="meeting">
+            <tr>
+                <td><h3>No meetings scheduled</h3></td>
+            </tr>
+        </table>
+    }
+</div>
+@Html.ActionLink("Contact Manager", "UpdateRequestForm", "Agency", new { subject = "Meeting Query", heading = "Contact my Manager" }, new { @class = "coolButton", style = "float: left; width: 145px; height: 30px; vertical-align: middle; padding-top: 6px;" })

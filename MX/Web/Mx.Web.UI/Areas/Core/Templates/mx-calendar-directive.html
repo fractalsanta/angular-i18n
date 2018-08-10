@@ -1,0 +1,24 @@
+﻿<div class="mx-calendar-view">
+    <div class="weekdays">
+        <div ng-repeat="day in Options.Days | limitTo:7">
+            <span>{{ day.Date | date : 'EEEE' }}</span>
+        </div>
+    </div>
+    <div class="days">
+        <div class="date" ng-repeat="day in Options.Days"
+             ng-click="SelectDay(day)"
+             ng-class="{ 'today': IsToday(day), 'month': IsCurrentMonth(day), 'selected': Options.Selected === day }">
+            <div class="day">
+                <span ng-if="day.Date.getDate() === 1">{{ day.Date | date : 'MMM' }}</span>
+                {{ day.Date | date : 'd' }}
+            </div>
+            <div class="text status" ng-repeat="text in day.StatusTexts track by $index">
+                {{ text }}
+            </div>
+            <div class="text info" ng-repeat="text in day.InfoTexts track by $index">
+                {{ text }}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

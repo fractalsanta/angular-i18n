@@ -1,0 +1,48 @@
+﻿<div class="modal-header">{{ PINSetting.Enabled ? Translations.UpdatePIN : Translations.SetPIN }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<form class="form-horizontal" role="form" name="SetPINForm" autocomplete="off" ng-submit="Save();">
+    <div class="modal-body" style="padding-bottom: 0;">
+        <div class="panel panel-default panel-body" style="padding-bottom: 0;">
+            <div class="alert alert-danger" ng-show="InvalidCredentials">{{Translations.InvalidCredentials}}</div>
+            <div class="alert alert-danger" ng-show="UnequalPINs()">{{Translations.PINsDoNotMatch}}</div>
+            <input type="password" value="FF stop password save prompt triggered by having 2 or 3 password fields" style="display: none;" />
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{Translations.YourCurrentPassword}}</label>
+                <div class="col-sm-8" ng-class="{'has-error': SetPINForm.UserPassword.$invalid}">
+                    <input type="password" class="form-control" maxlength="16" autocomplete="off" autofocus select-on-focus-input
+                           id="UserPassword" name="UserPassword"
+                           ng-model="PINSetting.Password"
+                           ng-minlength="1"
+                           ng-required="HavePINs()"
+                           ng-change="Dismiss()" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{Translations.YourNewPIN}}</label>
+                <div class="col-sm-8" ng-class="{'has-error': UnequalPINs()}">
+                    <input type="password" pattern="\d*" class="form-control" maxlength="4" number-only-input select-on-focus-input
+                           id="UserPIN" name="UserPIN"
+                           ng-model="PINSetting.UserPIN"
+                           ng-minlength="4"
+                           ng-required="true" />
+                </div>
+            </div>
+            <div class="form-group" style="padding-bottom: 0;">
+                <label class="col-sm-4 control-label">{{Translations.ConfirmYourPIN}}</label>
+                <div class="col-sm-8" ng-class="{'has-error': UnequalPINs()}">
+                    <input type="password" pattern="\d*" class="form-control" maxlength="4" number-only-input select-on-focus-input
+                           id="ConfirmPIN" name="ConfirmPIN"
+                           ng-model="PINSetting.ConfirmPIN"
+                           ng-minlength="4"
+                           ng-required="true" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" ng-click="Cancel();">{{ Translations.Cancel }}</button>
+        <button type="submit" class="btn btn-success"
+                ng-disabled="SetPINForm.$invalid || !SetPINForm.$valid || UnequalPINs()">
+            {{ Translations.Save}}
+        </button>
+    </div>
+</form>

@@ -1,0 +1,17 @@
+﻿<div class="modal-header">{{Translations.ManageColumns}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <div>{{Translations.SelectValue}}</div>
+    <br />
+    <span ng-click="ChangeOption('cost')">
+        <input type="radio" ng-model="CostOptionRadioBtnValue" value="cost">&nbsp; {{Translations.OnHandValue}}
+    </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span ng-click="ChangeOption('percent')">
+        <input type="radio" ng-model="CostOptionRadioBtnValue" value="percent">&nbsp; {{Translations.FoodCost}}
+    </span>
+    <br />
+    <br />
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translations.Cancel}}</button>
+    <button class="btn btn-success" ng-click="Confirm()">{{Translations.Confirm}}</button>
+</div>

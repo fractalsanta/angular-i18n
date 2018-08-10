@@ -1,0 +1,47 @@
+﻿<div class="panel panel-default fill-height" ng-class="{ 'container-2-toolbars': !RequiresPaging(), 'container-3-toolbars': RequiresPaging() }">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-5 col-md-4">
+                <input type="search" class="form-control" ng-model="Model.FilterText" placeholder="{{ ::Translations.SearchStore }}" >
+            </div>
+            <div class="col-xs-7">
+                <mx-date-range dates="Dates" days="14" change="ChangeDates()"></mx-date-range>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading" ng-show="RequiresPaging()">
+        <pagination total-items="FilteredTransferHeaders.length"
+                    ng-model="CurrentPage"
+                    max-size="PagingOptions.numPages"
+                    class="pull-right"
+                    boundary-links="true"
+                    direction-links="false"
+                    rotate="false"
+                    first-text="&laquo;" last-text="&raquo;"
+                    items-per-page="PagingOptions.itemsPerPage"
+                    ng-change="ChangePage(CurrentPage)"></pagination>
+    </div>
+    <div class="table-header">
+        <div id="TableHeader">
+            <mx-grid-header header="Header"></mx-grid-header>
+        </div>
+    </div>
+    <div class="touch-scrollable">
+        <table class="table table-striped" mx-scrollable-table header-id="TableHeader" watch="CurrentPageTransferHeaders" refresh-callback="Model.FixHeaders">
+            <tr ng-repeat="TransferHeader in CurrentPageTransferHeaders track by TransferHeader.Id" ng-click="ViewHistoryDetails(TransferHeader.Id)" mx-repeat-scroll-top class="top" data-transfer-id="{{ TransferHeader.Id }}">
+                <td class="col-xs-1">{{ TransferHeader.DirectionName }}</td>
+                <td class="col-xs-3">{{ TransferHeader.StoreName }}</td>
+                <td class="col-xs-2">{{ TransferHeader.CreateDate | formatDate:'L' }}</td>
+                <td class="col-xs-3">{{ TransferHeader.InitiatedBy }}</td>
+                <td class="col-xs-1">{{ TransferHeader.TransferQty }}</td>
+                <td class="col-xs-1">{{ TransferHeader.StatusName }}</td>
+                <td class="col-xs-1">
+                    <button type="button" class="btn btn-default btn-block btn-sm" ng-click="ViewHistoryDetails(TransferHeader.Id)"> {{ ::Translations.View }}</button>
+                </td>
+            </tr>
+        </table>
+        <div ng-if="FilteredTransferHeaders.length == 0" class="alert alert-warning">{{ ::Translations.NoMatchingItems }}</div>
+    </div>
+</div>
+
+

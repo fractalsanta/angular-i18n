@@ -1,0 +1,179 @@
+﻿<div class="panel panel-default fill-height container-3-toolbars">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <input type="search" class="form-control" ng-model="FilterOptions.filterText" placeholder="{{ ::Translations.SearchItems }}" />
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-7">
+                <div class="dropdown inline" dropdown>
+                    <mx-dropdown-button value="FilterText"></mx-dropdown-button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="ClearFilter()">{{ ::Translations.AllItems }}</a></li>
+                        <li><a ng-click="FilterItemsInOrder()">{{ ::Translations.ItemsInOrder }}</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown inline" dropdown>
+                    <mx-dropdown-button value="CategoryText"></mx-dropdown-button>
+                    <ul class="dropdown-menu pull-left height-restrained-dropdown touch-scrollable col-xs-12" role="menu">
+                        <li>
+                            <a ng-click="ClearCategoryFilter()" style="overflow: hidden;">
+                                <span>{{ ::Translations.AllCategories }}</span>
+                                <span class="label label-info pull-right">{{ TotalItems }}</span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li ng-repeat="category in OrderData.Categories">
+                            <a ng-click="SetCategory(category)" style="overflow: hidden;">
+                                <span>{{ category.Name }}</span>
+                                <span class="label label-info pull-right">{{ category.TotalItems }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown inline" dropdown>
+                    <button ng-click="OpenColumnConfig()" class="btn btn-default"
+                            ng-class="{'btn-danger': IsOfflineMode()}" ng-disabled="IsOfflineMode()" title="{{ ::Translations.ManageColumns }}">
+                        <span class="hidden-sm hidden-xs">
+                            {{ ::Translations.ManageColumns }}
+                        </span>
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </button>
+                </div>
+                <button ng-if="IsReadOnly && CanAddItems" type="button" class="btn btn-default" ng-click="AddNewItems()" title="{{ ::Translations.AddItems }}">
+                    <i class="fa fa-plus"></i>
+                    <span class="hidden-sm hidden-xs">
+                        &nbsp;&nbsp;{{::Translations.AddItems}}
+                    </span>
+                    <span class="visible-sm-inline">&nbsp;{{::Translations.AddItemsShort }}</span>
+                </button>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <div class="dropdown" dropdown ng-if="!IsReadOnly">
+                    <mx-dropdown-button value="::Translations.Actions" class="btn-success btn-block" ng-class="{'btn-success': !IsOfflineMode(), 'btn-danger': IsOfflineMode()}" ng-disabled="IsOfflineMode()"></mx-dropdown-button>
+                    <ul class="dropdown-menu col-xs-12 pull-right" role="menu">
+                        <li ng-hide="!AllQuantitiesAreValid || PeriodClosed || !ConversionRatesValid()"><a role="menuitem" ng-click="FinishNow()"><i class="glyphicon glyphicon-check"></i>&nbsp;&nbsp;{{ ::Translations.FinishNow }}</a></li>
+                        <li><a role="menuitem" ui-sref="^"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;&nbsp;{{ ::Translations.FinishLater }}</a></li>
+                        <li class="divider"></li>
+                        <li><a role="menuitem" ng-click="Delete()"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;{{ ::Translations.Delete }}</a></li>
+                    </ul>
+                </div>
+                <button type="button" ng-if="IsReadOnly" ui-sref="^" class="btn btn-default pull-right"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;{{ ::Translations.Back }}</button>
+            </div>            
+        </div>
+    </div>
+    <div class="panel-heading mx-white toolbar-double-height">
+        <div class="panel panel-default">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="word-break">
+                        <th>{{ ::Translations.OrderNumber }}</th>
+                        <th>{{ ::Translations.Supplier }}</th>
+                        <th>{{ ::Translations.DeliveryDate }}</th>
+                        <th>{{ ::Translations.CoverUntil }}</th>
+                        <th>{{ ::Translations.ItemsInOrder }}</th>
+                        <th>{{ ::Translations.OrderTotal }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ (IsReadOnly) ? OrderData.DisplayId : Translations.Draft }}</td>
+                        <td class="word-break col-md-5 col-sm-4">{{ OrderData.VendorName }}</td>
+                        <td>{{ OrderData.DeliveryDate | parseDate | date:'mediumDate' }}</td>
+                        <td>{{ OrderData.CoverUntilDate | parseDate | date:'mediumDate' }}</td>
+                        <td ng-if="OrderData">{{ OrderData.ItemsInOrder }} ({{ TotalCases }} {{ ::Translations.Cases }})</td>
+                        <td>{{ OrderData.TotalAmount | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row fill-height">
+            <div class="col-xs-12">
+                <div ng-show="!OrderData || !OrderData.Details || !OrderData.Details.length" class="alert alert-warning">
+                    {{ ::Translations.NoMatchingItems }}
+                </div>
+            </div>
+            <div class="col-sm-9 col-xs-9 fill-height">
+                <div class="panel panel-default fill-height container-2-toolbars" ng-if="CurrentPageDetails.length">
+                    <div class="panel-heading">
+                        <strong>Items</strong>
+                        <pagination class="pull-right"
+                                    ng-if="OriginalDetails.length > PagingOptions.itemsPerPage"
+                                    ng-model="CurrentPage"
+                                    total-items="OrderData.Details.length"
+                                    max-size="PagingOptions.numPages"
+                                    items-per-page="PagingOptions.itemsPerPage"
+                                    boundary-links="true"
+                                    direction-links="false"
+                                    rotate="false"
+                                    first-text="&laquo;"
+                                    last-text="&raquo;"
+                                    ng-change="ChangePage(CurrentPage)">
+                        </pagination>
+                    </div>
+                    <div class="table-header">
+                        <div id="TableHeader">
+                            <div class="column-header">{{ ::Translations.Description }} ({{ ::Translations.ItemCode }})</div>
+                            <div class="column-header">{{ ::Translations.Unit }}</div>
+                            <div class="column-header">{{ ::Translations.Quantity }}</div>
+                            <div ng-repeat="definition in ColumnDefinitions | limitTo: 3" class="column-header">{{ ::Translations[definition.HeaderKey] }}</div>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-striped" mx-scrollable-table watch="CurrentPageDetails" header-id="TableHeader" refresh-callback="RefreshTableHeaders">
+                            <tbody ng-click="OnRowSelect($event)" input-arrow-navigation>
+                                <tr class="order-detail-row-height" ng-repeat="detail in CurrentPageDetails track by detail.Id" 
+                                    ng-class="SetOrderDetailItemCss(detail)" data-id="{{ detail.Id }}" mx-repeat-scroll-top>
+                                    <td class="min-100 word-break">{{ detail.Description }} ({{ detail.ItemCode }})</td>
+                                    <td class="min-60 word-break">{{ detail.UnitCode }}</td>
+                                    <td class="min-80" ng-if="IsReadOnly && ! detail.Updateable">{{ detail.PurchaseUnitQuantity }}</td>
+                                    <td class="min-80" ng-if="(!IsReadOnly) || detail.Updateable">
+                                        <input type="text" class="form-control"
+                                               ng-model="detail.PurchaseUnitQuantity"
+                                               ng-focus="UpdateSelectedDetails($event, detail)"
+                                               ng-blur="SendDetailUpdate(detail)"
+                                               ng-change="RecalculateTotals(detail)"
+                                               ng-click="OnInputSelect(detail)"
+                                               ng-class="{'input-invalid': !detail.QuantityIsValid}"
+                                               ng-disabled="PeriodClosed"
+                                               select-on-focus-input
+                                               number-only-input precision="2"
+                                               required mx-virtual-keyboard-input />
+                                        <label class="label-invalid" ng-if="!detail.QuantityIsValid">
+                                            {{ detail.ErrorMessage }}
+                                        </label>
+                                    </td>
+                                    <td class="min-90" ng-repeat="definition in ColumnDefinitions | limitTo: 3">{{ (definition.Filter) ? $filter(definition.Filter)(detail[definition.FieldKey]) : detail[definition.FieldKey] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-3 touch-scrollable fill-height">
+                <div ng-if="CurrentPageDetails.length">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {{ ::Translations.ItemDetails }}
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="detail in SelectedItemDetails">{{ detail.Name }} <span class="pull-right">{{ detail.Value }}</span></li>
+                        </ul>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {{ ::Translations.PreviousOrders }}
+                        </div>
+                        <ul class="list-group">
+                            <li ng-show="ItemOrderHistoryList[SelectedItem.Id]" class="list-group-item">
+                                <strong>{{ ::Translations.Date }}<span class="pull-right">{{ ::Translations.Quantity }}</span></strong>
+                            </li>
+                            <li class="list-group-item" ng-repeat="history in ItemOrderHistoryList[SelectedItem.Id]">{{ history.DateOrdered | parseDate | date:'mediumDate' }} <span class="pull-right">{{ history.OrderedQuantity }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+﻿<div class="row fill-height" mx-mobile-ready>
+    <div class="panel panel-default container-1-toolbar fill-height" ng-swipe-right="ResetDetailMode()">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-3 col-md-3 text-left">
+                    <button type="button" class="btn btn-primary visible-xs" ng-click="ResetDetailMode()">
+                        <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ Translations.Back }}
+                    </button>
+                </div>
+                <div class="col-xs-9 col-md-9 text-right" ng-if="IsRequestPending(SelectedRequest)">
+                    <button type="button" class="btn btn-danger" ng-click="RemoveRequest(SelectedRequest)">
+                        {{ Translations.RemoveRequest }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body touch-scrollable form-horizontal" ng-show="SelectedRequest">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{{ Translations.TimeOffRequest }} {{ GetStatusTranslation(SelectedRequest.Status) }}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ Translations.SubmittedOn }} {{ SelectedRequest.SubmitDateTime | date:'short' }}
+                </div>
+            </div>
+            <div class="row" ng-hide="IsRequestPending(SelectedRequest)">
+                <br />
+                <strong class="col-md-4 col-sm-4 col-xs-4">
+                    {{ GetStatusTranslation(SelectedRequest.Status) }} {{ Translations.By }}:
+                </strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    {{ SelectedRequest.ManagerActionUserFirstName }} {{ SelectedRequest.ManagerActionUserLastName }}
+                </div>
+            </div>
+            <div class="row" ng-hide="IsRequestPending(SelectedRequest)">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.ManagerComment }}:</strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{ SelectedRequest.ManagerActionComment }}</div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="panel-body-divider"></div>
+                <br />
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.AllDay }}:</strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    {{ IsRequestForAllDay(SelectedRequest) ? Translations.Yes : Translations.No }}
+                </div>
+            </div>
+            <div ng-if="IsRequestForAllDay(SelectedRequest)">
+                <div class="row">
+                    <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Starts }}:</strong>
+                    <div class="col-md-8 col-sm-8 col-xs-8">{{ SelectedRequest.StartDateTime | date:'shortDate' }}</div>
+                </div>
+                <div class="row">
+                    <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Ends }}:</strong>
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        {{ GetAllDayRequestEndDate(SelectedRequest) | date:'shortDate' }}
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!IsRequestForAllDay(SelectedRequest)">
+                <div class="row">
+                    <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Starts }}:</strong>
+                    <div class="col-md-8 col-sm-8 col-xs-8">{{ SelectedRequest.StartDateTime | date:'shortDate' }} &nbsp; {{ SelectedRequest.StartDateTime | date:'shortTime' }}</div>
+                </div>
+                <div class="row">
+                    <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Ends }}:</strong>
+                    <div class="col-md-8 col-sm-8 col-xs-8">{{ SelectedRequest.EndDateTime | date:'shortDate' }} &nbsp; {{ SelectedRequest.EndDateTime | date:'shortTime' }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <br />
+                <div class="panel-body-divider"></div>
+                <br />
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Reason }}:</strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{ TimeOffReasons[SelectedRequest.ReasonId] }}</div>
+            </div>
+            <div class="row">
+                <strong class="col-md-4 col-sm-4 col-xs-4">{{ Translations.Comment }}:</strong>
+                <div class="col-md-8 col-sm-8 col-xs-8">{{ SelectedRequest.Comments }}</div>
+            </div>
+        </div>
+    </div>
+</div>

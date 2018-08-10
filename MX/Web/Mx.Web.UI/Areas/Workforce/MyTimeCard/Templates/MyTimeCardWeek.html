@@ -1,0 +1,67 @@
+﻿<div class="row fill-height" mx-mobile-ready>
+    <div class="panel panel-default container-1-toolbar fill-height">
+        <div class="panel-heading mx-white">
+
+            <mx-week-picker change="ChangeDates" show-arrows="true"></mx-week-picker>
+
+        </div>
+        <div class="panel-body">
+            <div class="row touch-scrollable fill-height">
+                <div ng-repeat="day in Vm.Days" class="panel-default">
+                    <div class="panel-heading">
+                        <strong>
+                            <span>{{day.Date | formatDate:"dddd, D MMMM"}}</span>
+                            <span class="pull-right">{{FormatHours(day)}}</span>
+                        </strong>
+                    </div>
+
+                    <div ng-repeat-start="shift in day.Shifts" class="panel-body">
+                        <div class="color-coded-panel-body" ng-style="{'border-left-color': shift.ColorCode}">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    {{shift.StartTime | formatDate:"LT"}} - {{shift.EndTime | formatDate:"LT"}}
+                                </div>
+                                <div class="col-xs-6">
+                                    {{shift.JobName}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6"></div>
+                                <div class="col-xs-6">
+                                    <strong>{{shift.EntityName}}</strong>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row small" ng-repeat="break in shift.Breaks">
+                                <div class="col-xs-6">
+                                    {{break.Start | formatDate:"LT"}} - {{break.End | formatDate:"LT"}}
+                                </div>
+                                <div class="col-xs-6">
+                                    {{GetDescription(break)}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div ng-if="!$last" class="panel-body-divider"></div>
+                    <div ng-repeat-end></div>
+                </div>
+                <div class="panel-body-divider"></div>
+                <div class="panel-body">
+                    <div class="pull-right">
+                        <table>
+                            <tr>
+                                <td>
+                                    <strong>{{L10N.TotalHours}}:&nbsp;</strong>
+                                </td>
+                                <td class="min-50">
+                                    <strong>{{GetTotalHours(Vm.Days)}}</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

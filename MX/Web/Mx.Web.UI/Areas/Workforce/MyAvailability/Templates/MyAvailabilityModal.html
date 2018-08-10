@@ -1,0 +1,41 @@
+﻿<div class="modal-header">{{Title}} - {{GetSelectedMyAvailabilityDay().Date | formatDate:"dddd"}}</div>
+<div class="modal-body">
+    <div class="row">
+
+        <div class="col-xs-12">
+            <div class="row form-group">
+                <div class="col-xs-4">
+                    {{L10N.AllDay}}
+                </div>
+                <div class="btn-group col-xs-8">
+                    <button type="button" class="btn btn-default" ng-model="Vm.IsAllDay" btn-radio="true" ng-class="{'btn-primary': Vm.IsAllDay===true}">ON</button>
+                    <button type="button" class="btn btn-default" ng-model="Vm.IsAllDay" btn-radio="false" ng-class="{'btn-primary': Vm.IsAllDay===false}">OFF</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="row form-group" ng-show="! Vm.IsAllDay">
+                <div class="col-xs-4">
+                    {{L10N.StartTime}}
+                </div>
+                <div class="col-xs-8">
+                        <timepicker ng-model="Vm.StartTime" hour-step="1" minute-step="1" show-meridian="true" show-spinners="false"></timepicker>
+                </div>
+            </div>
+
+            <div class="row form-group" ng-show="! Vm.IsAllDay">
+                <div class="col-xs-4">
+                    {{L10N.EndTime}}
+                </div>
+                <div class="col-xs-8">
+                        <timepicker ng-model="Vm.EndTime" hour-step="1" minute-step="1" show-meridian="true" show-spinners="false"></timepicker>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{L10N.Cancel}}</button>
+    <button class="btn btn-success" ng-click="Save()">{{L10N.AvailabilitySave}}</button>
+</div>

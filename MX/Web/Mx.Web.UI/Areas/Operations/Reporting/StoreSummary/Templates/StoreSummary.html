@@ -1,0 +1,72 @@
+﻿<div class="fill-height" mx-mobile-ready>
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white row">
+            <div class="col-xs-10">
+                <mx-week-picker change="Vm.ChangeDates" selected-date="Vm.DateFrom" class="inline"></mx-week-picker>
+                <div class="dropdown width-restrained-dropdown inline" dropdown ng-if="Vm.Views.length">
+                    <button class="btn btn-default dropdown-toggle" dropdown-toggle type="button" id="dropDownMenuViews" data-toggle="dropdown" ng-disabled="ReportIsBeingLoaded()">
+                        <span class="pull-left">
+                            {{ Vm.SelectedView.ViewName }}
+                        </span>
+                        &nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-left height-restrained-dropdown touch-scrollable col-xs-12" role="menu" aria-labelledby="dropDownMenuViews">
+                        <li ng-repeat="view in Vm.Views" ng-class="{'active': Vm.SelectedView === view }" ng-click="GetView(view)">
+                            <a role="menuitem" tabindex="-1" class="word-break">
+                                {{view.ViewName}}
+                                <span class="pull-right pointer-cursor" ng-click="FavouriteClick($event,view)">
+                                    <i class=" fa" ng-class="{'fa-star mx-color-bluelight': view.IsDefault,'fa-star-o': !view.IsDefault }"
+                                       title="{{::L10N.VmDefault}}">&nbsp;</i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-default" ng-if="Vm.ShowViewManager" ng-click="ShowManager()"><i class="glyphicon glyphicon-cog"></i></button>
+            </div>
+            <div class="col-xs-2 text-right">
+                <a class="btn btn-default" tabindex="-1" ng-click="ExportData()">
+                    <i class="glyphicon glyphicon-export"></i>&nbsp;{{L10N.ExportToCsvCurrentView}}
+                </a>
+            </div>
+        </div>
+        <div class="panel-body touch-scrollable">
+            <div class="panel panel-default">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th ng-click="ResetSort()" class="pointer-cursor text-left">
+                                <span>
+                                    {{ L10N.ColumnDate }}
+                                    <span ng-if="!Vm.SortColumnId">
+                                        &nbsp;
+                                        <i class="fa" ng-class="{ 'fa-angle-down': !Vm.SortAscending, 'fa-angle-up': Vm.SortAscending }"></i>
+                                    </span>
+                                </span>
+                            </th>
+                            <th ng-repeat="col in Vm.ReportData.Columns" ng-click="SortRows(col)" class="pointer-cursor text-right">
+                                <span>
+                                    {{ L10N[col.ColumnLocalisationKey] }}
+                                    <span ng-if="col.ColumnId === Vm.SortColumnId">
+                                        &nbsp;
+                                        <i class="fa" ng-class="{ 'fa-angle-down': !Vm.SortAscending, 'fa-angle-up': Vm.SortAscending }"></i>
+                                    </span>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-summary-row">
+                            <td>{{ L10N.Total }}</td>
+                            <td class="text-right" ng-repeat="col in Vm.ReportData.Columns">{{ col.Summary | cellFormat : col.ColumnValueType }}</td>
+                        </tr>
+                        <tr ng-repeat="row in Vm.SortMap" ng-init="rowIndex = $index">
+                            <td class=" min-50">{{ GetSortedRowByIndex(row) | cellFormat : Vm.DateColumnType }}</td>
+                            <td class=" min-50 text-right" ng-repeat="col in Vm.ReportData.Columns">{{ GetSortedValueByIndex(col, row) | cellFormat : col.ColumnValueType }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

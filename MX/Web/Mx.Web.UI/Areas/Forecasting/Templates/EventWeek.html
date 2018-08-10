@@ -1,0 +1,76 @@
+﻿<div class="row fill-height" mx-mobile-ready>
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-12">
+                    <mx-week-picker change="ChangeDates" show-arrows="true"></mx-week-picker>
+
+                    <div class="dropdown pull-right" dropdown ng-if="CheckCanEditPermission()">
+                        <button class="btn btn-default btn-block dropdown-toggle btn-success" type="button" id="dropdownActions"
+                                data-toggle="dropdown" dropdown-toggle>
+                            <span class="">
+                                &nbsp;&nbsp;{{::L10N.Actions}}
+                                <span class="caret"></span>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu col-xs-12 pull-right" role="menu" aria-labelledby="dropdownActions">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   ng-click="AddEventTag()"><i class="fa fa-calendar"></i>{{::L10N.ScheduleEvent}}</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   ng-click="NewEventProfile()"><i class="fa fa-bar-chart-o"></i>{{::L10N.AddEventProfile}}</a>
+                            </li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   ng-click="EditEventProfile()"><i class="fa fa-pencil"></i>{{::L10N.EditEventProfile}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row touch-scrollable fill-height">
+                <div ng-repeat="day in Vm.Days" class="panel-default" ng-click="SelectDate(day.Date)">
+                    <div class="panel-heading">
+                        <strong>
+                            <span>{{day.Date | formatDate:"dddd, D MMMM"}}</span>
+                        </strong>
+                    </div>
+
+                    <div class="panel-body" ng-if="CheckAnyEventsScheduled(day)">
+                        <div ng-repeat="tag in day.EventWeekDayInfo.EventProfileTags" ng-show="tag">
+                            <div ng-if="$index !== 0" class="panel-body-content-divider"></div>
+                            <div ng-click="SetSelectedEventProfileTag(tag); SetDetailedView(true);" ui-sref=".detail" class="pointer-cursor">
+                                <div class="pull-right">
+                                    <span class="fa fa-angle-right fa-3x"></span>
+                                </div>
+                                <div class="padding-10">
+                                    {{tag.EventProfile.Name}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel-body" ng-if="!CheckAnyEventsScheduled(day) && CheckDateIsEditable(day.Date)" ng-click="SetDetailedView(false); SetSelectedEventProfileTag(null)">
+                        <div class="col-xs-12 pointer-cursor" ng-click="SelectDate(day.Date); AddEventTag()">
+                            <span class="pull-right padding-10 green-text">+ {{L10N.ScheduleEvent}}</span>
+                        </div>
+                    </div>
+                    <div class="panel-body" ng-if="!CheckAnyEventsScheduled(day) && !CheckDateIsEditable(day.Date)" ng-click="SetDetailedView(false); SetSelectedEventProfileTag(null)">
+                        <div class="col-xs-12">
+                            <span class="pull-right">{{L10N.NoEventsScheduled}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-default btn-success col-xs-12" ng-click="AddEventTag()">
+                        {{::L10N.ScheduleEvent}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

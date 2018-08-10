@@ -1,0 +1,48 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar min700" mx-mobile-ready>
+    <div class="panel-heading mx-white">
+        <div class="fill-height">
+            <div class="row">
+                <div class="col-xs-12 header">
+                    <div class="pull-left col-xs-2">
+                        <select id="status" class="form-control"
+                                ng-model="Vm.FilterStatus"
+                                ng-change="ChangeGroupStatus()"
+                                ng-options="status.Value as status.Title for status in GroupStatusOptions()">
+                            <option value="" ng-if="false"></option>
+                        </select>                        
+                    </div>
+
+                    <div class="pull-right">
+                        <button type="button" class="pull-right btn btn-success" ng-click="AddMirror()">
+                            <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ ::Vm.L10N.AddMirror }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default fill-height">
+            <div ng-if="Vm.L10N.Status && Model.FilteredIntervals" class="panel panel-default fill-height container-1-toolbar">
+                <div class="table-header">
+                    <div id="TableHeader">
+                        <mx-grid-header header="Header()"></mx-grid-header>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <table class="table table-striped" mx-scrollable-table watch="Model.FilteredIntervals" header-id="TableHeader">
+                        <tbody>
+                            <tr ng-repeat="interval in Model.FilteredIntervals" class="pointer-cursor" ng-click="ViewMirrorDetails(interval, $index);">
+                                <td class="col-xs-5">{{ ::StatusMap()[ interval.OverallStatus ] }}</td>
+                                <td class="col-xs-6">{{ ::interval.TargetDateStartDate | date:'mediumDate' }} - {{ interval.TargetDateEndDate | date:'mediumDate' }}</td>
+                                <td class="col-xs-1">
+                                    <span class="pull-right pointer-cursor fa fa-angle-right fa-3x"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

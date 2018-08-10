@@ -1,0 +1,197 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar min700" mx-mobile-ready>
+    <div class="panel-heading mx-white">
+        <div class="fill-height">
+            <div class="row">
+                <div class="col-xs-12 header">
+                    <div class="pull-left">
+                        <button type="button" class="pull-left btn btn-default" ng-click="Cancel()">
+                            <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ ::Vm.L10N.Back }}
+                        </button>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-lg-2 pull-right">
+                        <div class="dropdown" ng-if="Vm.SelectedSalesItemInterval.Id && !Vm.SelectedSalesItemInterval.IsMirrorClosed" dropdown>
+                            <mx-dropdown-button value="::Vm.L10N.Actions" class="btn btn-success btn-block"></mx-dropdown-button>
+                            <ul class="dropdown-menu col-xs-12 pull-right" role="menu">
+                                <li><a role="menuitem" ng-click="ChangeEndDate()"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;{{ ::Vm.L10N.ChangeEndDate }}</a></li>
+                                <li><a role="menuitem" ng-click="DeleteMirror()"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;{{ ::Vm.L10N.DeleteMirror }}</a></li>
+                            </ul>
+                        </div>
+                        <span ng-if="!Vm.SelectedSalesItemInterval.Id">
+                            <button type="button" class="btn btn-success pull-right" ng-disabled="IntervalDetails.$invalid" ng-click="Save()">
+                                {{ ::Vm.L10N.Save }}
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal fill-height" role="form" name="IntervalDetails" autocomplete="off">
+            <div class="panel panel-body panel-default fill-height touch-scrollable">
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3">{{ ::Vm.L10N.TargetSalesItem }}</label>
+                        <div class="pull-left col-xs-6 min400">
+                            <div class="input-group" ng-click="SelectTargetSalesItem()">
+                                <input type="hidden" name="TargetSalesItem" ng-model="Model.Interval.TargetSalesItem.Id" required />
+                                <span class="form-control mx-fg-salesitempicker mx-fg-ellipsis"
+                                      ng-class="{'mx-fg-novalue': !Model.Interval.TargetSalesItem.Id}">
+                                    <span ng-if="!Model.Interval.TargetSalesItem.Id">{{ ::Vm.L10N.SearchForItems }}</span>
+                                    <span ng-if="Model.Interval.TargetSalesItem.Id">{{ Model.Interval.TargetSalesItem.Description }} ({{ Model.Interval.TargetSalesItem.ItemCode }})</span>
+                                </span>
+                                <span class="input-group-btn pull-left">
+                                    <button type="button" class="btn btn-default"><i class="fa fa-search ico-16"></i></button>
+                                </span>
+                                <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3">{{ ::Vm.L10N.SourceSalesItem }}</label>
+                        <div class="pull-left col-xs-6 min400">
+                            <div class="input-group" ng-click="SelectSourceSalesItem()">
+                                <input type="hidden" name="SourceSalesItem" ng-model="Model.Interval.SourceSalesItem.Id" required />
+                                <span class="form-control mx-fg-salesitempicker mx-fg-ellipsis"
+                                      ng-class="{'mx-fg-novalue': !Model.Interval.SourceSalesItem.Id}">
+                                    <span ng-if="!Model.Interval.SourceSalesItem.Id">{{ ::Vm.L10N.SearchForItems }}</span>
+                                    <span ng-if="Model.Interval.SourceSalesItem.Id">{{ Model.Interval.SourceSalesItem.Description }} ({{ Model.Interval.SourceSalesItem.ItemCode }})</span>
+                                </span>
+                                <span class="input-group-btn pull-left">
+                                    <button type="button" class="btn btn-default"><i class="fa fa-search ico-16"></i></button>
+                                </span>
+                                <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body-content-divider"></div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3">{{ ::Vm.L10N.TargetDateRange }}</label>
+                        <div class="pull-left col-xs-4 min300">
+                            <div class="input-group" ng-click="OpenTargetDateRangeDialog(Model.TargetDateOptions);"
+                                 ng-class="{'has-error': IntervalDetails.TargetDateEndDate.$invalid}">
+                                <input type="hidden" name="TargetDateStartDate" ng-model="Model.Interval.TargetDateStartDate" required />
+                                <input type="hidden" name="TargetDateEndDate" ng-model="Model.Interval.TargetDateEndDate" required
+                                       
+                                       />
+                                <span class="form-control mx-fg-salesitempicker mx-fg-ellipsis"
+                                      ng-class="{'mx-fg-novalue': !Model.Interval.TargetDateStartDate}">
+                                    <span ng-if="!Model.Interval.TargetDateStartDate">{{ ::Vm.L10N.SelectDates }}</span>
+                                    <span ng-if="Model.Interval.TargetDateStartDate">{{ Model.Interval.TargetDateStartDate | date:'mediumDate' }} - {{ Model.Interval.TargetDateEndDate | date:'mediumDate' }}</span>
+                                </span>
+                                <span class="input-group-btn pull-left">
+                                    <button type="button" class="btn btn-default">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                                <div class="text-danger mx-fg-salesitempicker" ng-show="IntervalDetails.TargetDateEndDate.$error.SourceDateRange">{{ ::Vm.L10N.SourceDateRangeError }}</div>
+                                <div ng-show="IsReadOnly()" class="disable-by-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3">{{ ::Vm.L10N.SourceStartDate }}</label>
+                        <div class="pull-left col-xs-4 min300">
+                            <div class="input-group" ng-class="{'has-error': IntervalDetails.SourceDateStartDate.$invalid}">
+                                <input type="hidden" name="SourceDateStartDate"
+                                       ng-model="Model.Interval.SourceDateStartDate" required
+                                       ui-validate="{notsameday: SameDay}"
+                                       ui-validate-watch="{notsameday: 'Model.Interval.TargetDateStartDate'}" />
+                                <span class="form-control mx-fg-salesitempicker mx-fg-ellipsis"
+                                      ng-class="{
+                                        'mx-fg-novalue': !Model.Interval.SourceDateStartDate && !Model.SourceDateOptions.Open
+                                      }"
+                                      ng-model="Model.Interval.SourceDateStartDate"
+                                      ng-click="OpenSourceStartDateDialog($event)"
+                                      datepicker-popup="mediumDate"
+                                      is-open="Model.SourceDateOptions.Open"
+                                      ng-change="OnDateChange()"
+                                      show-button-bar="false" show-weeks="false"
+                                      min-date="Model.SourceDateOptions.Min" max-date="Model.SourceDateOptions.Max">
+
+                                    <span ng-if="!Model.Interval.SourceDateStartDate">{{ ::Vm.L10N.SelectDate }}</span>
+                                    <span ng-if="Model.Interval.SourceDateStartDate">{{ Model.Interval.SourceDateStartDate | date:mediumDate }}</span>
+                                </span>
+
+                                <span class="input-group-btn pull-left">
+                                    <button type="button" class="btn btn-default" ng-click="OpenSourceStartDateDialog($event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                                <div class="text-danger mx-fg-salesitempicker" ng-show="IntervalDetails.SourceDateStartDate.$error.notsameday">{{ ::Vm.L10N.MustStartSameDay }}</div>
+                                <div ng-show="IsReadOnly() || !Model.Interval.TargetDateStartDate" class="disable-by-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="Model.Interval.SourceDateEndDate">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3">{{ ::Vm.L10N.SourceEndDate }}</label>
+                        <div class="col-xs-3">
+                            <label class="">{{ Model.Interval.SourceDateEndDate | date:'mediumDate' }}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body-content-divider"></div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3 no-padding-top">
+                            {{ ::Vm.L10N.RestaurantZone }}<br />{{ GetZoneSelectedCount() }}
+                        </label>
+                        <div class="pull-left col-xs-3">
+                            <input type="hidden" name="ZoneId" ng-model="Model.Interval.Zone.Id" required />
+                            <select ng-if="!IsReadOnly()"
+                                    class="form-control mx-fg-salesitempicker mx-fg-ellipsis width246"
+                                    ng-class="{'mx-fg-novalue': !Model.Interval.Zone.Id}"
+                                    ng-model="Model.Interval.Zone"
+                                    ng-options="zone as zone.Name for zone in Vm.Zones track by zone.Id"
+                                    name="Zone">
+                                <option value="">{{ ::Vm.L10N.SelectZone }}</option>
+                            </select>
+                            <div ng-if="IsReadOnly()"
+                                 class="form-control width246" ng-disabled="true">
+                                {{ Model.Interval.Zone.Name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label col-xs-3">{{ ::Vm.L10N.AdditionalAdjustment }}</label>
+                        <div class="pull-left col-xs-2">
+                                <input ng-if="!IsReadOnly()" ng-model="Model.Interval.AdjustmentPercent"
+                                       ng-change="OnAdjustmentChange(Model.Interval)" ng-blur="OnAdjustmentBlur(Model.Interval)"
+                                       type="tel" class="form-control no-ms-clear" number-only-input select-on-focus-input
+                                       maxlength="9" minvalue="-100" 
+                                       precision="0" autocomplete="off" ispercent="true" />
+                                <div class="form-control min100"  ng-if="IsReadOnly()" ng-disabled="true">
+                                    {{ Model.Interval.AdjustmentPercent }}%
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <div class="col-xs-offset-3 col-xs-6">
+                            <mx-checkbox ng-model="Model.Interval.OverwriteManager" ng-disabled="IsReadOnly()" text="::Vm.L10N.OverwriteManagerForecast" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

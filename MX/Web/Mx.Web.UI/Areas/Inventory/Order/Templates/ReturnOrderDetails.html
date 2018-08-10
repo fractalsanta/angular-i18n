@@ -1,0 +1,93 @@
+﻿<div class="panel panel-default fill-height container-3-toolbars">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-7 col-xs-7">
+                <input type="search" class="form-control" ng-model="Model.SearchFilter" placeholder="{{ Translation.SearchItems }}">
+            </div>
+            <div class="text-right" ng-class="{ 'col-lg-1 col-md-1 col-sm-2 col-xs-2' : ActionsEnabled(), 'col-lg-3 col-md-3 col-sm-5 col-xs-5' : !ActionsEnabled() }">
+                <button ng-click="GoBack()" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;&nbsp;{{ Translation.Back }}</button>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 pull-right" ng-if="ActionsEnabled()">
+                <div class="dropdown" dropdown>
+                    <mx-dropdown-button value="Translation.Actions" class="btn-block" ng-disabled="!ActionsEnabled()"
+                                        ng-class="{ 'btn-success': !IsOfflineMode(), 'btn-danger': IsOfflineMode() }"></mx-dropdown-button>
+                    <ul class="dropdown-menu col-xs-12 pull-right" role="menu">
+                        <li ng-show="Model.CanReturnOrder"><a role="menuitem" ng-click="ReturnEntireOrder()"><i class="fa fa-hand-o-right"></i>{{ Translation.ReturnEntireOrder }}</a></li>
+                        <li ng-show="SelectedCanBeReturned()"><a role="menuitem" ng-click="ReturnSelected()"><i class="glyphicon glyphicon-check"></i>{{ Translation.ReturnSelected }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading mx-white toolbar-double-height">
+        <div class="panel panel-default">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ Translation.OrderNumber }}</th>
+                        <th>{{ Translation.Supplier }}</th>
+                        <th>{{ Translation.ReceiveDate }}</th>
+                        <th>{{ Translation.ItemsInDelivery }}</th>
+                        <th>{{ Translation.DeliveryTotal }}</th>
+                        <th ng-show="Model.ReceiveOrder.InvoiceNumber.length > 0">{{ Translation.InvoiceNumber }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ Model.ReceiveOrder.OrderNumber }}</td>
+                        <td>{{ Model.ReceiveOrder.Supplier }}</td>
+                        <td>{{ Model.ReceiveOrder.ApplyDate | formatDate:'L' }}</td>
+                        <td>{{ Model.ReceiveOrder.Items.length }} ({{ Model.ReceiveOrder.ReceivedCaseQuantity }} {{ Translation.Cases }})</td>
+                        <td>{{ Model.ReceiveOrder.TotalReceivedAmount | currency}}</td>
+                        <td ng-show="Model.ReceiveOrder.InvoiceNumber.length > 0">{{ Model.ReceiveOrder.InvoiceNumber}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="fill-height">
+            <div class="panel panel-default fill-height container-1-toolbar">
+                <div class="table-header">
+                    <div id="TableHeader">
+                        <div class="column-header">{{ Translation.Description }} ({{ Translation.ItemCode }})</div>
+                        <div class="column-header hidden-xs hidden-sm">{{ Translation.Unit }}</div>
+                        <div class="column-header">{{ Translation.Price }}</div>
+                        <div class="column-header">{{ Translation.Ordered }}</div>
+                        <div class="column-header">{{ Translation.Received }}</div>
+                        <div class="column-header">{{ Translation.PreviousReturned }}</div>
+                        <div class="column-header">{{ Translation.ReturnQty }}</div>
+                    </div>
+                </div>
+                <div class="touch-scrollable">
+                    <table class="table table-striped" mx-scrollable-table header-id="TableHeader" watch="Model.CurrentOrderDetails">
+                        <tbody>
+                            <tr ng-repeat="Item in Model.CurrentOrderDetails track by Item.Id" ng-form="ActiveLine" class="order-detail-row-height">
+                                <td class="word-break">{{ Item.Description }} ({{ Item.ItemCode }})</td>
+                                <td class="hidden-xs hidden-sm">{{ Item.Unit }}</td>
+                                <td>{{ Item.Price | currency }}</td>
+                                <td>{{ Item.OrderedQuantity | number : 2 }}</td>
+                                <td>{{ Item.ReceivedQuantity | number : 2 }}</td>
+                                <td>{{ Item.ReturnedQuantity | number : 2 }}</td>
+                                <td style="min-width:250px;">
+                                    <input type="text"
+                                           select-on-focus-input
+                                           number-only-input minvalue="0" precision="2"
+                                           mx-virtual-keyboard-input
+                                           ng-disabled="!ItemCanBeReturned(Item)"
+                                           class="form-control"
+                                           ng-change="ReturnAmountGreaterThanToReceivedAmount(Item)"
+                                           ng-model="Item.ToBeReturned"
+                                           ng-class="{'input-invalid': Item.ToBeReturnedGreaterThanReceived}" />
+                                    <label style="white-space: nowrap;" class="label-invalid" ng-if="Item.ToBeReturnedGreaterThanReceived">
+                                        {{ Translation.ReturnQuantityCannotExceedReceivedQuantity }}
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

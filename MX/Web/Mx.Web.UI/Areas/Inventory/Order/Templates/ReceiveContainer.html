@@ -1,0 +1,8 @@
+﻿<div class="fill-height" mx-mobile-ready>
+    <div class="col-xs-12 fill-height" ng-hide="IsDetailedState()">
+        <div ui-view="" class="fill-height"></div>
+    </div>
+    <div class="col-xs-12 fill-height" ng-show="IsDetailedState()">
+        <div ui-view="Details" class="fill-height"></div>
+    </div>
+</div>

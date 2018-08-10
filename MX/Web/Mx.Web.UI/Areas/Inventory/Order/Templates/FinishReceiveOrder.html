@@ -1,0 +1,31 @@
+﻿<div ng-form="ReceiveOrderForm">
+    <div class="modal-header">{{::Translations.FinishReceive}}</div>
+    <div class="modal-body">
+        
+        <div ng-class="{'has-error': ReceiveOrderForm.txtInvoiceNum.$invalid}">
+            <label for="txtInvoiceNum">{{::Translations.InvoiceNumber}}</label>
+            <input type="text" class="form-control" name="txtInvoiceNum" ng-required="{{ !Model.ReceiveWithoutInvoiceNumber }}" ng-model="Model.InvoiceNumber" />
+        </div>
+        <div ng-class="{'has-error': ReceiveOrderForm.time.$invalid}">
+            <label for="txtDate">{{::Translations.ReceiveDate}}</label>
+            <span class="form-control" datepicker-popup="mediumDate" max-date="Model.MaxDate" ng-model="Model.ApplyDate"
+                  ui-validate="'IsApplyDateValid($value)'" show-weeks="false" ng-required="true"
+                  is-open="Model.ShowApplyDate" show-button-bar="false" ng-click="OpenApplyDate($event)"
+                  name="txtDate">
+                {{ Model.ApplyDate | date:mediumDate }}
+            </span>
+            <div style="display: inline-block;">
+                <timepicker name="time" ui-validate="'IsApplyDateValid($value)'" ng-model="Model.ApplyDate" hour-step="1" minute-step="1" show-meridian="true"></timepicker>
+            </div>
+            <div class="alert alert-danger" ng-show="Model.PeriodClosed">{{ ::Translations.PeriodClosed }}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span>
+            <button class="btn btn-default pull-left" ng-click="Cancel()">{{::Translations.Cancel}}</button>
+            <button class="btn btn-success pull-right" 
+                    ng-disabled="ReceiveOrderForm.$invalid || Model.PeriodClosed || Model.PeriodCheckInProgress" 
+                    ng-click="Confirm()">{{::Translations.Receive}}</button>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿<div class="modal-header"><span>{{ ::Model.Confirmation.Title }}</span><button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<form class="form-horizontal" role="form" ng-submit="Submit($event);" ng>
+    <div class="modal-body">
+        <div>
+            <span>{{ ::Model.Confirmation.Message }}</span>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-11">
+                <mx-checkbox ng-model="Model.Interval.OverwriteManager" ng-disabled="Model.Interval.IsReadOnly" text="::Model.L10N.SaveCheckboxOption" />
+            </div>
+            <div class="col-xs-11">
+                <label class="text-warning" ng-show="Model.Interval.IsReadOnly">
+                    {{::Model.L10N.OverwriteManagerReadOnlyMessage}}
+                </label>
+            </div>
+        </div>
+        <br />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" ng-click="Cancel()">{{ ::Model.Confirmation.CancelText }}</button>
+        <button type="submit" class="btn {{ ::Model.ButtonClass }}" ng-click="OK()">
+            {{ ::Model.Confirmation.ConfirmText }}
+        </button>
+    </div>
+</form>

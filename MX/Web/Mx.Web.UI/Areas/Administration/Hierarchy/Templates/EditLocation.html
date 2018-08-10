@@ -1,0 +1,54 @@
+﻿<div class="modal-header">{{Translations.EditLocation}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body modal-body-fixed">
+    <form class="form-horizontal fill-height" role="form" name="UpdatedLocationForm">
+        <tabset class="container-1-toolbar fill-height">
+            <tab class="fill-height" heading="{{ Translations.ID }}" select="IdTabClick()" active="IdTabActive">
+                <div class="panel panel-default panel-body fill-height">
+                    <div>
+                        {{LocationInfo}}{{Translations.WillBeEdited}}
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">{{Translations.Number}}</label>
+                        <div class="col-xs-10">
+                            <input type="text" name="locationNumber" class="form-control" ng-model="UpdatedLocation.Number" required ng-minlength="1" maxlength="50" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">{{Translations.Name}}</label>
+                        <div class="col-xs-10">
+                            <input type="text" name="locationName" ng-model="UpdatedLocation.Name" class="form-control" required ng-minlength="1" maxlength="50" />
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab class="fill-height" heading="{{ Translations.Move }}" select="MoveTabClick()" active="MoveTabActive">
+                <div class="panel panel-default panel-body fill-height container-1-toolbar">
+                    <div ng-if="!PossibleParents || PossibleParents.length === 1">
+                        {{LocationInfo}} {{Translations.CannotBeMoved}}
+                    </div>
+                    <div ng-if="PossibleParents.length > 1">
+                        {{Translations.PossibleParentsFor}} {{LocationInfo}}
+                    </div>
+                    <div class="container-1-toolbar" ng-show="PossibleParents.length > 1">
+                        <div class="col-xs-12">
+                            <input type="search" class="form-control" ng-model="Search.FilterText" placeholder="{{Translations.SearchLocations}}">
+                        </div>
+                        <div class="panel panel-default container-1-toolbar">
+                            <div class="panel-heading">{{HierarchyLevel}}</div>
+                            <div class="list-group touch-scrollable">
+                                <div class="list-group-item" ng-click="SelectParent(location,UpdatedLocationForm)" ng-repeat="location in PossibleParents | filter:FilterOnLocation">
+                                    <input name="parentsRadio" type="radio" ng-model="ParentOptions.Value" value="{{location.Number}}">  &nbsp;&nbsp;{{ location.DisplayName }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translations.Cancel}}</button>
+    <button class="btn btn-success" ng-click="Update(UpdatedLocationForm);" ng-disabled="UpdatedLocationForm.$invalid || !UpdatedLocationForm.$dirty">{{Translations.Update}}</button>
+    <button class="btn btn-default" ng-click="UpdatedLocationForm.$dirty ? SaveAndClose(UpdatedLocationForm) : Cancel()" ng-disabled="UpdatedLocationForm.$invalid">{{Translations.SaveAndClose}}</button>
+</div>

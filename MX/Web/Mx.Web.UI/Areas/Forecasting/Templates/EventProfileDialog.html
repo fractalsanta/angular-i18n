@@ -1,0 +1,106 @@
+﻿<div class="modal-header">
+    <span ng-if="!EditMode">{{ Translation.NewEventProfile }}</span>
+    <span ng-if ="EditMode">{{ Translation.EditEventProfile }}</span>
+    <button type="button" class="close" ng-click="Cancel()">&times;</button>
+</div>
+<form class="form-horizontal" role="form" name="EventForm" autocomplete="off" ng-submit="Save();">
+    <div class="modal-body" style="padding-bottom: 0;">
+        <div class="fill-height" style="padding-bottom: 0;">
+            <div class="alert alert-danger" ng-show="InvalidProfileName">{{ErrorMessage}}</div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{Translation.EventProfileName}}</label>
+                <div class="col-sm-9" ng-if="!EditMode" ng-class="{'has-error': InvalidProfileName}">
+                    <input type="text" select-on-focus-input class="form-control" ng-model="Profile.Name"
+                           maxlength="36" ng-change="UpdateName()">
+                </div>
+                <div class="col-sm-9" ng-if="EditMode">
+                    <div>{{ProfileId}}</div>
+                    <select class="form-control" ng-disabled="IsAjaxBusy()"
+                            ng-model="ProfileIdWrapper.Id"
+                            ng-options="p.Id as p.Name for p in Profiles | orderBy:'Name'"
+                            ng-show="Profiles.length > 0"
+                            ng-change="SelectEventProfile()"
+                            ng-required>
+                        <option value="">{{Translation.SelectProfile}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" ng-show="Profile.Name.length > 0">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <input id="pastOccurrences" type="radio" ng-model="EventProfileSourceSelected.Source" value="1"
+                           ng-click="UpdateMethod();" />
+                    <label class="control-label" for="pastOccurrences">
+                        {{ Translation.ForecastAdjustmentsFromPastOccurrences }}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" ng-show="Profile.Name.length > 0">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <input id="manual" type="radio" ng-model="EventProfileSourceSelected.Source" value="2"
+                           ng-click="UpdateMethod();" checked="true" />
+                    <label class="control-label" for="manual">{{ Translation.CreateAdjustmentsManually }}</label>
+                </div>
+            </div>
+            <div class="form-group" ng-show="(Profile.Name.length) > 0 && (EventProfileSourceSelected.Source == 1)">
+                <label class="col-sm-3 control-label">{{Translation.Date}}</label>
+                <div class="col-sm-9" style="z-index: 10; padding-left: 0;">
+                    <mx-prevday-nextday-picker options="DatePickerOptions" on-change="OnDatePickerChange(selectedDate)"
+                                               class="pull-left col-sm-8" model="SelectedDate">
+                    </mx-prevday-nextday-picker>
+                    <button type="button" class="btn btn-default pull-right col-sm-4" ng-click="AddPastOccurrence(SelectedDate)"
+                            ng-disabled="SelectedDate > Yesterday ||
+                                        Profile.History.length >= 5 ||
+                                        (!EditMode && Profile.Name.length === 0) ||
+                                        (EditMode && Profile.Id === 0)">
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;{{ Translation.AddDate }}
+                    </button>
+                </div>
+            </div>
+            <div class="form-group" style="padding-bottom: 0;" ng-show="(Profile.Name.length > 0) && (EventProfileSourceSelected.Source == 1) && (Profile.History.length > 0)">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-bordered table-condensed events-past-occurrences">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-3">{{Translation.PastOccurrences}}</th>
+                                <th class="col-sm-8">{{Translation.Notes}}</th>
+                                <th class="col-sm-1"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="occurrence in Profile.History | limitTo:5">
+                                <td>{{occurrence.Date}}</td>
+                                <td>
+                                    <div>
+                                        <input type="text" select-on-focus-input class="form-control"
+                                               ng-model="occurrence.Note" maxlength="{{NoteMaxLength}}"
+                                               ng-change="MarkPageAsDirty()">
+                                    </div>
+                                </td>
+                                <td>
+                                    <i class="fa fa-trash-o" title="Remove Date" style="cursor: pointer"
+                                       ng-click="RemovePastOccurrence(occurrence.Date)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" ng-click="Cancel();">{{ Translation.Cancel }}</button>
+        <button type="submit" class="btn btn-success" ng-click="SaveProfileModalClick()"
+                ng-show="(EventProfileSourceSelected.Source == 1)"
+                ng-disabled="(!EditMode && (Profile.History.length == 0 || Profile.Name.length === 0)) ||
+                             (EditMode && (Profile.History.length === 0 || Profile.Id === 0))">
+            {{ Translation.SaveProfile}}
+        </button>
+        <button type="submit" class="btn btn-success" ng-disabled="Profile.Name.length === 0"
+                ng-show="EventProfileSourceSelected.Source == 2" ng-click="EnterAdjustments()">
+            {{ Translation.EnterAdjustments}}
+        </button>
+    </div>
+</form>

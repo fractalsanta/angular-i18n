@@ -1,0 +1,51 @@
+﻿<form class="form-horizontal" role="form" name="addExtraDeliveryForm">
+    <div class="modal-header">{{ ::L10N.AddExtraDelivery }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-show="!Vm.AuthorizationIsValid">{{ Vm.ValidationErrorMessage }}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>{{ ::L10N.ExtraDelivery }}</strong>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{ 'has-error': addExtraDeliveryForm.employee.$invalid }">
+                    <label class="col-xs-3 control-label">{{ ::L10N.Employee }}</label>
+                    <div class="col-xs-8">
+                        <select class="form-control" name="employee"
+                                ng-model="Vm.SelectedUserId"
+                                ng-options="user.Id as (user.FirstName + ' ' + user.LastName) for user in Vm.AvailableUsers | orderBy:'FirstName'"
+                                ng-disabled="IsAjaxBusy()"
+                                required>
+                            <option value selected disabled ng-show="Vm.ShowSelectUserPrompt">{{ ::L10N.PleaseSelect }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">{{ ::L10N.OrderNumber }}</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" ng-model="Vm.OrderNumber" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">{{ ::L10N.Comment }}</label>
+                    <div class="col-xs-8">
+                        <textarea class="form-control" ng-model="Vm.Comment" maxlength="100"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-if="Vm.ShowAuthorization">
+            <div class="panel-heading">
+                <strong>{{ ::L10N.Authorize }}</strong>
+            </div>
+            <div class="panel-body">
+                <mx-authorization user="Vm.Authorize" is-optional="true" />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="reset" class="pull-left btn btn-default" ng-click="Cancel()">{{ ::L10N.Cancel }}</button>
+        <button type="submit" class="btn btn-success" ng-click="Submit()" ng-disabled="addExtraDeliveryForm.$invalid">{{ ::L10N.Submit }}</button>
+    </div>
+</form>

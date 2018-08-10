@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <link href="@Url.Content("~/Content/Styles/reset-min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Styles/newstyle.css")" rel="stylesheet" type="text/css" />
+
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery-1.8.3.min.js")"></script>    
+
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts/common.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("~/Content/Scripts/jquery-1.8.3-vsdoc.js")"></script>*@
+    @RenderSection("HeadTagsSection", required: false)
+    @* Output the user defined accent colours *@
+    <style type="text/css">
+        input[type="submit"], .coolButton, .darkBox .coolButton
+        {
+            background-color: @ViewBag.ButtonColour;
+            color: @ViewBag.ButtonFontColour;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="internalContainer">
+            <div class="headerImageContainer">
+                <div style="float: right; margin-right: 5px; margin-top: 5px; margin-bottom: 3px;
+                    color: #999999; font-size: 14px;">@ViewBag.LoggedInLabel</div>
+                @if(ViewBag.HasBanner)
+                {
+                    if (!string.IsNullOrEmpty(ViewBag.AgencyUrl))
+                    {
+                        <a href="@ViewBag.AgencyUrl" target="_blank">
+                            <img src='@ViewBag.BannerUrl' alt='Banner' />
+                        </a>
+                    }
+                    else
+                    {
+                        <img src='@ViewBag.BannerUrl' alt='Banner' />
+                    }
+                }
+                else
+                {
+                    <img src="/Content/Images/defaultBanner.jpg" />
+                }
+            </div>
+            <div class="microMenu">
+                <div class="topTextContainer">@ViewBag.TopText</div>
+                @RenderPage("MicroMenu.cshtml")
+            </div>
+            @RenderPage("Menu.cshtml")
+            <div class="mainContent">
+                @RenderBody()
+            </div>
+            @if (ViewBag.HasFooterBanner)
+            {
+                <div class="footerImageContainer">
+                    @if (!string.IsNullOrEmpty(ViewBag.FooterUrl))
+                    {
+                        <a href="@ViewBag.FooterUrl" target="_blank">
+                            <img src='@ViewBag.FooterBannerUrl' />
+                        </a>
+                    }
+                    else
+                    {
+                        <img src='@ViewBag.FooterBannerUrl' />
+                    }
+                </div>
+            }
+        </div>
+        <div style="padding-left: 17px; font-size: 13px; display: none;" id="oldBrowserMessage">
+            You are using an outdated browser. The use of this site requires <a href="http://www.google.com/chrome/?brand=CHKB&utm_campaign=en&utm_source=en-ha-aunz-ct&utm_medium=ha"
+                target="_blank">Chrome</a>, <a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank">
+                    FireFox</a> or latest version of <a href="http://windows.microsoft.com/en-AU/internet-explorer/products/ie/home"
+                        target="_blank">Microsoft IE</a>.</div>
+    </div>
+</body>
+</html>

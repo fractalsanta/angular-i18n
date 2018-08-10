@@ -1,0 +1,49 @@
+﻿<div ng-if="MultiSelect" class="modal-header">{{Translation.CopyToLocations}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div ng-if="!MultiSelect" class="modal-header">{{Translation.MoveToLocation}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body modal-body-fixed">
+
+
+    <div class="panel panel-default fill-height" ng-show="TravelPathData">
+        <div class="fill-height container-1-toolbar">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{Translation.TravelPathLocations}} ({{TravelPathData.TravelPath.length}})</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="touch-scrollable">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr ng-repeat="travelPathItem in TravelPathData.TravelPath"
+                            ng-class="{'active': CheckLocationAlreadySelected(travelPathItem) }"
+                            ng-click="LocationClicked(travelPathItem)">
+                            <td ng-if="MultiSelect" class="col-xs-1">
+                                <i ng-hide="CheckLocationAlreadySelected(travelPathItem)" class="fa fa-square-o"></i>
+                                <i ng-show="CheckLocationAlreadySelected(travelPathItem)" class="fa fa-check-square-o"></i>
+                            </td>
+                            <td ng-if="!MultiSelect" class="col-xs-1">
+                                <i ng-hide="CheckLocationAlreadySelected(travelPathItem)" class="fa fa-circle-o"></i>
+                                <i ng-show="CheckLocationAlreadySelected(travelPathItem)" class="fa fa-check-circle-o"></i>
+                            </td>
+                            <td class="col-xs-11">
+                                {{travelPathItem.Location}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <div class="row">
+        <div class="col-xs-9">
+            <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translation.Close}}</button>
+        </div>
+        <div class="col-xs-3">
+            <button class="btn btn-success pull-right" ng-click="SelectLocationClicked()" ng-disabled="!SelectedLocations.length > 0"><i class="fa fa-check"></i>&nbsp;&nbsp;{{Translation.OkText}}</button>
+        </div>
+    </div>
+</div>

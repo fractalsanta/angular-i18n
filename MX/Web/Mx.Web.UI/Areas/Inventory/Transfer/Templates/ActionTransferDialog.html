@@ -1,0 +1,16 @@
+﻿<div class="modal-header">{{ ViewModel.Title }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{ ViewModel.Message }}</p>
+            <div class="form-group" ng-show="!ViewModel.IsApproval">
+                <label>{{ ViewModel.Reason }}</label>
+                <textarea class="form-control" ng-model="ViewModel.DenyMessage" maxlength="80"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{ Translations.Cancel }}</button>
+    <button class="btn btn-success" ng-disabled="ViewModel.IsDisabled" ng-click="Confirm()">{{ Translations.Confirm }}</button>
+</div>

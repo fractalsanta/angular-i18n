@@ -1,0 +1,327 @@
+﻿
+/* Document structure styles */
+/* Centre page on screen, footer always on the bottom of the window */
+/* Don't change this too much! */
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+    text-align: center;
+	font: 76% Arial, Helvetica, sans-serif;
+	background: white repeat 0 0;
+	
+}
+
+#page
+{
+	width: 852px;
+	margin: 0 auto;
+	min-height: 100%;
+	text-align: left;
+    background-color: #F3F3F3;
+}
+
+* html #page
+{
+	height: 100%;
+}
+
+#header
+{
+	height: 120px;
+	margin: 0px;
+    width: 852px;
+}
+
+#content
+{
+    padding: 0px 32px 42px 32px;
+}
+
+#footer
+{
+    height: 26px;
+    width: 852px;
+    max-width: 852px;
+    background-color: #909090;
+}
+
+html
+{
+	height: 100%;
+}
+
+body
+{
+	height: 100%;
+}
+
+#nonFooter
+{
+	position: relative;
+	min-height: 100%;
+}
+
+* html #nonFooter
+{
+	height: 100%;
+}
+
+#footer
+{
+	position: relative;
+	margin: -26px auto 0 auto;
+}
+
+/* */
+
+
+table, td
+{
+	vertical-align: top;
+}
+
+
+/* ---- DEFAULT HYPERLINKS ---- */
+
+a
+{
+	color: white;
+	text-decoration: underline;
+}
+a:hover
+{
+	color: white;
+	text-decoration: none;
+}
+
+/* ---- DEFAULT CLASSES ---- */
+
+strong
+{
+	font-weight: bold;
+}
+em
+{
+	font-style: italic;
+}
+
+/* ---- DEFAULT IMAGE STYLES ---- */
+
+img
+{
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+#header img
+{
+    height: 120px;
+    width: 852px
+}
+	
+/* ---------------------------------
+	CUSTOM STYLES
+--------------------------------- */
+
+.footerlink
+{
+    float:left;
+    height:26px;
+    line-height:26px;
+    height:26px;
+    font-weight: bold;
+    padding: 0px 10px 0px 10px;
+    color: White;  
+}
+
+.redbutton
+{
+	padding: 3px 7px 3px 7px;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	font: 76% Arial, Helvetica, sans-serif;	
+	font-size: 1.2em;
+	font-weight: bold;
+	background: #FFFFFF repeat-x 0 0;
+	background-image: url('../Images/grey_button.gif');
+	cursor: pointer;
+}
+
+.greybutton
+{
+	padding: 3px 7px 3px 7px;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	font: 76% Arial, Helvetica, sans-serif;	
+	font-size: 1.2em;
+	font-weight: bold;
+	background: #FFFFFF repeat-x 0 0;
+	background-image: url('../Images/grey_button.gif');
+}
+
+.box-b
+{
+	border: 1px solid #ccc;
+	padding: 2px 4px 2px 4px;
+	background: #FFFFFF;
+}
+
+/* dividing line */
+
+div.hr 
+{
+    clear: both;
+    height: 22px;
+    background: transparent;
+    background-image: url('../Images/line-dashed.gif');
+    background-position: left center;
+    background-repeat: repeat-x;
+}
+
+div.hr hr {
+  display: none;
+}
+
+/* full width section */
+.full 
+{
+    clear: both;
+    width: 100%;
+}
+
+/* left section */
+.left
+{
+    float:left;
+    width: 48%;
+}
+
+/* right section */
+.right
+{
+    float:right;
+    width: 48%;
+}
+
+/* text box */
+.text
+{
+	padding: 4px 8px 4px 8px;
+	border: 1px solid #ccc;
+	background: #FFFFFF;
+	clear:both;
+}
+
+.clear 
+{
+    clear: both;
+}
+.byline
+   {
+        padding:6px 0px 4px 0px;
+        float: left;
+        margin-left: 10px;
+    }
+    
+.helpText
+{
+    width:100%;
+    clear: both;
+    azimuth: center;
+    font-style: italic;
+}
+
+.helpText a
+{
+    color: Gray;
+}
+
+.helpText a:hover 
+{ 
+    color: Maroon;
+}
+
+/* large heading */
+h2
+{
+	margin: 0;
+	padding: 0;
+	font-size: 1.6em;
+	line-height: 2.2em; 
+	/*color: #800000;*/
+	color: #4B4B4B;
+}
+
+/* medium heading */
+h3
+{
+    padding: 0;
+	margin: 0;
+	font-size: 1.2em;
+	/*color: #800000;*/
+	color: #4B4B4B;
+	line-height: 2em;
+	height: 2em
+}
+
+
+/* data table */
+table.data
+{
+    background: white;
+    border-top: solid 1px #CCCCCC;
+    border-left: solid 1px #CCCCCC;
+    border-bottom: solid 1px #CCCCCC;
+}
+table.data th
+{
+    background:#666666;
+    padding: 5px;
+    color: white;
+    border-right: solid 1px White;
+    text-align: left;
+    font-size:1.1em;
+}
+table.data td
+{
+    padding: 2px;
+    color: black;
+    border-right: solid 1px #CCCCCC;
+    border-top: solid 1px #CCCCCC;
+    font-weight:bolder;
+    font-size:0.9em;
+}
+
+.vertmiddle
+{
+	vertical-align: middle;
+}  
+
+ul.validation-summary-errors 
+{
+    color: GrayText;
+    list-style-type: circle
+}
+
+/* Main menu */
+
+/* common styling */
+.menucontainer { background:#909090; } /*border: solid 1px white; } */
+.menu { float:left; margin-left: 20px; padding: 0px; }
+.menu a,
+.menu a:visited { display:block; white-space: nowrap; text-decoration:none; color:white; background:#909090; padding: 2px; height: 2em; line-height:2em; font-size:14px; overflow:hidden; }
+.menu ul { background: #909090; display: none; list-style-type: none; margin: 0px; padding: 0px; }
+
+/* specific to non IE6 browser */
+.menu:hover a { color:white; background:#4B4B4B; }
+.menu:hover ul { display:block; min-width: 170px; position:absolute; border:1px solid white; }
+.menu:hover ul a { display:block; color:white; background:#909090; padding: 2px; font-size:14px; line-height:2em; height:2em; }
+/*.menu:hover ul a:hover { color:white; background:#400000; }*/
+.menu:hover ul a:hover { color:white; background:#4B4B4B; }

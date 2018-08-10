@@ -1,0 +1,48 @@
+﻿<div class="modal-header">{{Translation.UpdateCost}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body modal-body-fixed">
+    <div class="fill-height container-1-toolbar ">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col-xs-6">{{Translation.Description}}</th>
+                    <th class="col-xs-3">{{Translation.Cost}}</th>
+                    <th class="col-xs-3">{{Translation.UOM}}</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="touch-scrollable">
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="item in NoCostItems" ng-form="FormUpdateCost" data-item-id="{{ item.ItemId }}">
+                        <td class="col-xs-6">{{item.Description}}</td>
+                        <td class="col-xs-3 ng-class: {'has-error': FormUpdateCost.ItemCost.$invalid}">
+                            <input type="text"
+                                   class="form-control"
+                                   ng-disabled="!CheckUpdateCostPermission()"
+                                   placeholder="ItemCost"
+                                   ng-model="item.ItemCost"
+                                   ng-change="ItemCostChanged()"
+                                   ng-pattern="NumericalInputBoxPattern()"
+                                   pattern="\d*"
+                                   name="ItemCost" />
+                        </td>
+                        <td class="col-xs-3">{{item.OuterUnit || item.InventoryUnit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+
+    <div class="row">
+        <div class="col-lg-3">
+            <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translation.Cancel}}</button>
+        </div>
+        <div class="col-lg-9">
+            <button class="btn btn-success pull-right" ng-disabled="HasNoCostItems || !CheckUpdateCostPermission()" ng-click="Continue()">{{Translation.Continue}}</button>
+        </div>
+    </div>
+</div>
+

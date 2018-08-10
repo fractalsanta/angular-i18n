@@ -1,0 +1,26 @@
+﻿<div style="position: relative;">
+    <div ng-if="Options.Part === null">
+        <div class="dayLinksWrapper">
+            <div ng-repeat="dayLink in DayLinks" ng-style="SetDayLinks(dayLink.svgPathWidth)">
+                <a ng-if="!Options.ItemId" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ dayLink.id }}">{{ dayLink.name }}</a>
+                <a ng-if="Options.ItemId" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ Options.ItemId }}/{{ dayLink.id }}">{{ dayLink.name }}</a>
+            </div>
+        </div>
+        <div class="{{Options.MetricKey}}" kendo-chart k-options="chart" style="min-height: 340px;"></div>
+    </div>
+
+    <div ng-if="Options.Part !== null">
+        <div class="dayPartLinksWrapper">
+            <div ng-if="DayPartLink" ng-style="SetDayLinks(DayPartLink.svgPathWidth)">
+                <a ng-if="!Options.ItemId && DayPartLink.previousShow" class="daySegmentPrevLink fa fa-chevron-left" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ DayPartLink.previousLink }}"></a>
+                <a ng-if="Options.ItemId && DayPartLink.previousShow" class="daySegmentPrevLink fa fa-chevron-left" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ Options.ItemId }}/{{ DayPartLink.previousLink }}"></a>
+                <a ng-if="!Options.ItemId" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}">Day Graph</a>
+                <a ng-if="Options.ItemId" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ Options.ItemId }}">Day Graph</a>
+                {{ DayPartLink.name }}
+                <a ng-if="!Options.ItemId && DayPartLink.nextShow" class="daySegmentNextLink fa fa-chevron-right" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ DayPartLink.nextLink }}"></a>
+                <a ng-if="Options.ItemId && DayPartLink.nextShow" class="daySegmentNextLink fa fa-chevron-right" href="#/Forecasting/Editor/Graph/{{ Options.Metric | capitalize }}/{{ Options.ItemId }}/{{ DayPartLink.nextLink }}"></a>
+            </div>
+        </div>
+        <div class="{{Options.MetricKey}}" kendo-chart k-options="chart" style="min-height: 340px;"></div>
+    </div>
+</div>

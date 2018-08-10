@@ -1,0 +1,121 @@
+﻿<!--Main content panel-->
+<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-sm-6 col-xs-6">
+                <a class="btn btn-default" href="#/Inventory/Count/TravelPath/{{ CountTypeName }}"><i class="fa fa-code-fork"></i>&nbsp;&nbsp;{{ Translation.TravelPath }}</a>
+                <div class="dropdown inline" ng-if="CanViewVariance" dropdown>
+                    <button ng-click="OpenColumnConfig()" class="btn btn-default">
+                        {{ Translation.ManageColumns }}
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-3 col-lg-2 pull-right">
+                <div class="dropdown" dropdown>
+                    <mx-dropdown-button value="Translation.Actions" class="btn-success btn-block"></mx-dropdown-button>
+                    <ul class="dropdown-menu col-sm-12 pull-right" role="menu">
+                        <li><a href="#/Inventory/Count/Edit/{{ CountTypeName }}"><i class="fa fa-eye"></i>&nbsp;&nbsp;{{ Translation.ViewActiveCount }}</a></li>
+                        <li><a ng-click="FinishNow()"><i class="glyphicon glyphicon-check"></i>&nbsp;&nbsp;{{ Translation.FinishNow }}</a></li>
+                        <li><a ng-click="FinishLater()"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;&nbsp;{{ Translation.FinishLater }}</a></li>
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row fill-height" ng-if="ReviewData">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 fill-height container-1-toolbar">
+                <ul class="nav nav-pills nav-stacked">
+                    <li ng-click="ReviewDataGroupClick()" ng-class="{'active': !SelectedGroup }">
+                        <a>
+                            <strong>
+                                <span>
+                                    {{ Translation.Total }}:
+                                </span>
+                                <span class="pull-right">
+                                    {{ GetTotal() }}
+                                </span>
+                            </strong>
+                        </a>
+                        <hr />
+                    </li>
+                </ul>
+                <div class="col-xs-12 touch-scrollable">
+                    <ul class="nav nav-pills nav-stacked">
+                    <li ng-repeat="group in ReviewData.Groups" ng-class="{'active': group === SelectedGroup }" ng-click="ReviewDataGroupClick(group)">
+
+                        <a ng-hide="group.HasItems" class="mx-backgroundcolor-graylight" ng-class="{'mx-bg-warning mx-color-blue': (!group.Name) }">
+                            <strong>
+                                <span>
+                                    {{ (!group.Name) ? Translation.NoCategory : group.Name }}
+                                </span>
+                                <span class="pull-right">{{ GetValue(group) }}</span>
+                            </strong>
+                        </a>
+
+                        <a ng-show="group.HasItems">
+                            <span class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                                {{ (!group.Name) ? Translation.NoCategory : group.Name }}
+                            </span>
+                            <span class="pull-right">
+                                {{ GetValue(group) }}
+                            </span>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 fill-height">
+                <div class="panel panel-default fill-height container-2-toolbars">
+                    <div class="panel-heading">
+                        <span>
+                            <strong>
+                                {{ (!SelectedGroup) ? Translation.Total : ((!SelectedGroup.Name) ? Translation.NoCategory : SelectedGroup.Name) }}
+                            </strong>
+                        </span>
+                        <span class="pull-right" ng-show="CanViewVariance">
+                            {{ Translation.InventoryActivity }} {{ ReviewData.ActivitySinceDate }}
+                        </span>
+                    </div>
+
+                    <div class="table-header">
+                        <div id="TableHeader">
+                            <div class="column-header">{{ Translation.Description }}</div>
+                            <div class="column-header hidden-xs hidden-sm">{{ Translation.UOM }}</div>
+                            <div class="column-header" ng-if="CanViewVariance">{{ Translation.BeginCount }}</div>
+                            <div class="column-header">{{ Translation.Counted }}</div>
+                            <div ng-if="CanViewCountVariance" class="column-header">{{ Translation.Variance }}</div>
+                            <div ng-if="CanViewVariance" class="column-header hidden-xs hidden-sm">{{ Translation.ActualUsage }}</div>
+                            <div ng-if="!CanViewCountVariance" class="column-header">{{ Translation.Cost }}</div>
+                            <div class="column-header">{{ Translation.TotalCostValue }}</div>
+                            <div class="column-header" ng-if="CanViewVariance">{{ Translation.FoodCost }}</div>
+
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-hover table-striped" mx-scrollable-table watch="ReviewDataItems" header-id="TableHeader">
+                            <tbody>
+                                <tr ng-repeat="item in ReviewDataItems" mx-repeat-scroll-top>
+                                    <td class="min-100">{{ item.Description }} ({{item.ProductCode}})</td>
+                                    <td class="hidden-xs hidden-sm">{{ item.UnitOfMeasure }}</td>
+                                    <td ng-if="CanViewVariance">{{ (item.PreviousCount !== null) ? item.PreviousCount : '-' }}</td>
+                                    <td>{{ item.CurrentCount}}</td>
+                                    <td ng-class="{
+                                    'mx-col-danger': item.CountVariancePercent > .05}" ng-if="CanViewCountVariance" >
+                                        {{item.CountVariance | number:2}}
+                                    </td>
+                                    <td ng-if="CanViewVariance" class="hidden-xs hidden-sm">{{ item.Usage | currency }}</td>
+                                    <td ng-if="!CanViewCountVariance">{{ item.Cost | currency }}</td>
+                                    <td>{{ item.CurrentCountValue | currency }}</td>
+                                    <td ng-if="CanViewVariance">{{ item.CostPercent | number:2 }} %</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

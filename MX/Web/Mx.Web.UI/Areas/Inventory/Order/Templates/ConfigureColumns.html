@@ -1,0 +1,25 @@
+﻿<div class="modal-header">{{Translations.CustomizeColumns}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <div class="row modal-body-fixed touch-scrollable">
+        <div class="col-sm-6 col-xs-6" style="position: static;"><!-- Inline styling to fix z-index issues for iOS 6.1.3. -->
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ Translations.ActiveColumns }}</div>
+                <ul class="list-group mx-column-container" mx-sortable="SortingOptions" ng-model="ActiveColumns">
+                    <li ng-repeat="column in ActiveColumns" class="list-group-item">{{ Translations[column.HeaderKey ]}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-6" style="position: static;"><!-- Inline styling to fix z-index issues for iOS 6.1.3. -->
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ Translations.Columns }}</div>
+                <ul class="list-group mx-column-container" mx-sortable="SortingOptions" ng-model="InactiveColumns">
+                    <li ng-repeat="column in InactiveColumns" class="list-group-item">{{ Translations[column.HeaderKey ]}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left" ng-click="Cancel()">{{Translations.Cancel}}</button>
+    <button class="btn btn-success" ng-click="Confirm()">{{Translations.Confirm}}</button>
+</div>

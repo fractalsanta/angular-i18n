@@ -1,0 +1,76 @@
+﻿<div class="panel panel-default fill-height container-2-toolbars">
+    <div class="panel-heading mx-white toolbar-double-height">
+        <div class="row">
+            <div class="col-sm-offset-6 col-xs-offset-6 col-sm-2 col-xs-2 text-center">
+                <label>{{ Translations.IncludeChildLocations }}</label>
+            </div>
+            <div class="col-sm-2 col-xs-2 text-center">
+                <label>{{ Translations.IncludeTerminated }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-3">
+                <mx-entity-search options="LocationSearchOptions"></mx-entity-search>
+            </div>
+            <div class="col-sm-offset-3 col-xs-offset-3 col-sm-2 col-xs-2 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-default" ng-click="ToggleDescendents(true)" ng-class="{ 'btn-primary active': IncludeDescendents }">{{ Translations.On }}</button>
+                    <button class="btn btn-default" ng-click="ToggleDescendents(false)" ng-class="{ 'btn-primary active': !IncludeDescendents }">{{ Translations.Off }}</button>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-2 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-default" ng-click="ToggleTerminated(true)" ng-class="{ 'btn-primary active': IncludeTerminated }">{{ Translations.On }}</button>
+                    <button class="btn btn-default" ng-click="ToggleTerminated(false)" ng-class="{ 'btn-primary active': !IncludeTerminated }">{{ Translations.Off }}</button>
+                </div>
+            </div>
+            <div class="col-sm-2 col-xs-2">
+                <button type="button" class="btn btn-success btn-block" ng-click="AddUser()">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ Translations.AddUser }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default fill-height container-2-toolbars">
+            <div class="panel-heading">
+                <h5>
+                    <strong>{{ Translations.SelectedLocation }}: </strong>
+                    {{ SelectedLocation.DisplayName }}
+                </h5>
+            </div>
+            <div class="table-header">
+                <div id="TableHeader">
+                    <div ng-repeat="column in GridDefinitions" class="pointer-cursor column-header" ng-click="SortColumn(column.Field)">
+                        <span>{{ column.Title }}</span>
+                        &nbsp;&nbsp;<i class="fa" ng-class="{ 'fa-angle-down': !Ascending, 'fa-angle-up': Ascending, 'invisible': SortProperty !== column.Field }"></i>
+                    </div>
+                    <div class="column-header"></div>
+                </div>
+            </div>
+            <div class="touch-scrollable">
+                <table class="table table-striped" mx-scrollable-table watch="Users" header-id="TableHeader">
+                    <tbody>
+                        <tr ng-repeat="user in Users track by user.Id" ng-class="{ 'danger': user.Status === 'Terminated' }">
+                            <td>{{ user.Entity.Number }}</td>
+                            <td>{{ user.Entity.Name }}</td>
+                            <td>{{ user.FirstName }}</td>
+                            <td>{{ user.LastName }}</td>
+                            <td>
+                                <span>{{ user.EmployeeNumber }}</span>
+                                <span ng-if="user.Status === 'Terminated'">({{ Translations.Terminated }})</span>
+                            </td>
+                            <td>{{ user.UserName }}</td>
+                            <td>
+                                <button type="button" class="btn btn-default" ng-click="EditUser($index)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{ Translations.Edit }}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-show="Users && !Users.length" class="alert alert-warning">
+                    {{ Translations.NoUsers }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

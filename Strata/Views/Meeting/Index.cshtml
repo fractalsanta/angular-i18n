@@ -1,0 +1,151 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.MeetingModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+
+@section headTagsSection
+{
+    <style>
+        .meeting td
+        {
+            padding: 4px;
+            padding-left: 18px;
+        }
+        .meeting td h2
+        {
+            margin-left: -15px;
+        }
+        .meeting td h3
+        {
+            margin-left: -10px;
+        }
+        .meetingHeader 
+        {
+            border-bottom: solid 1px #999;
+        }
+    </style>
+}
+<h1>
+    Meeting Details</h1>
+@if (Model.UserSession.LotNames.Count > 1)
+{
+    @Html.Raw(Html.StrataDropdown(Model.UserSession.LotNames, Model.CurrentLotIndex, ((d, i) => Url.Action("Index", new { index = i })), "ownerCorpIndex"))
+}
+else
+{
+    <h2 style="border: none;">@Model.UserSession.LotNames[0].Name</h2>
+    <input type="hidden" id="ownerCorpIndex" value = "@Model.CurrentLotIndex" />
+}
+<h2 class="meetingHeader">
+    Scheduled Meetings</h2>
+<table cellpadding="6" class="meeting">
+    @if (Model.Meetings != null && Model.Meetings.Count > 0)
+    {
+        foreach (var meeting in Model.Meetings)
+        {
+        <tr>
+            <td colspan="2">
+                <h2>@meeting.Description</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Date
+            </td>
+            <td>
+                @meeting.MeetingDate.ToLocalTime().ToShortDateString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Time
+            </td>
+            <td>
+                @meeting.MeetingTime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Venue
+            </td>
+            <td>
+                @meeting.VenueName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Manager
+            </td>
+            <td>
+                @meeting.Manager
+            </td>
+        </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>
+                <h3>
+                    No meetings scheduled</h3>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<h2 class="meetingHeader">
+    Past Meetings</h2>
+<table cellpadding="6" class="meeting">
+    @if (Model.PastMeetings != null && Model.PastMeetings.Count > 0)
+    {
+        foreach (var meeting in Model.PastMeetings)
+        {
+        <tr>
+            <td colspan="2">
+                <h2>@meeting.Description</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Date
+            </td>
+            <td>
+                @meeting.MeetingDate.ToLocalTime().ToShortDateString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Time
+            </td>
+            <td>
+                @meeting.MeetingTime
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Venue
+            </td>
+            <td>
+                @meeting.VenueName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Manager
+            </td>
+            <td>
+                @meeting.Manager
+            </td>
+        </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>
+                <h3>
+                    No meetings scheduled</h3>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+@Html.ActionLink("Contact Manager", "UpdateRequestForm", "Agency", new { subject = "Meeting Query", heading = "Contact my Manager" }, new { @class = "coolButton", style = "float: left; width: 145px; height: 29px; vertical-align: middle; padding-top: 6px;" })

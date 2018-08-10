@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script type="text/javascript">window.NREUM || (NREUM = {}); NREUM.info = { "beacon": "bam.nr-data.net", "errorBeacon": "bam.nr-data.net", "licenseKey": "8c086a563f", "applicationID": "17033423", "transactionName": "ZANQMksEWUFYBUFQXV1JfzB6SnpXXBJcV1VwCVwSSwpbXlwUGnBcVwNK", "queueTime": 0, "applicationTime": 100, "ttGuid": "E0367E392B3AF353", "agent": "" }</script>
+    <script type="text/javascript">window.NREUM || (NREUM = {}), __nr_require = function (e, t, n) { function r(n) { if (!t[n]) { var o = t[n] = { exports: {} }; e[n][0].call(o.exports, function (t) { var o = e[n][1][t]; return r(o || t) }, o, o.exports) } return t[n].exports } if ("function" == typeof __nr_require) return __nr_require; for (var o = 0; o < n.length; o++)r(n[o]); return r }({ 1: [function (e, t, n) { function r() { } function o(e, t, n) { return function () { return i(e, [f.now()].concat(u(arguments)), t ? null : this, n), t ? void 0 : this } } var i = e("handle"), a = e(2), u = e(3), c = e("ee").get("tracer"), f = e("loader"), s = NREUM; "undefined" == typeof window.newrelic && (newrelic = s); var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished", "addToTrace", "inlineHit", "addRelease"], d = "api-", l = d + "ixn-"; a(p, function (e, t) { s[t] = o(d + t, !0, "api") }), s.addPageAction = o(d + "addPageAction", !0), s.setCurrentRouteName = o(d + "routeName", !0), t.exports = newrelic, s.interaction = function () { return (new r).get() }; var m = r.prototype = { createTracer: function (e, t) { var n = {}, r = this, o = "function" == typeof t; return i(l + "tracer", [f.now(), e, n], r), function () { if (c.emit((o ? "" : "no-") + "fn-start", [f.now(), r, o], n), o) try { return t.apply(this, arguments) } catch (e) { throw c.emit("fn-err", [arguments, this, e], n), e } finally { c.emit("fn-end", [f.now()], n) } } } }; a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (e, t) { m[t] = o(l + t) }), newrelic.noticeError = function (e) { "string" == typeof e && (e = new Error(e)), i("err", [e, f.now()]) } }, {}], 2: [function (e, t, n) { function r(e, t) { var n = [], r = "", i = 0; for (r in e) o.call(e, r) && (n[i] = t(r, e[r]), i += 1); return n } var o = Object.prototype.hasOwnProperty; t.exports = r }, {}], 3: [function (e, t, n) { function r(e, t, n) { t || (t = 0), "undefined" == typeof n && (n = e ? e.length : 0); for (var r = -1, o = n - t || 0, i = Array(o < 0 ? 0 : o); ++r < o;)i[r] = e[t + r]; return i } t.exports = r }, {}], 4: [function (e, t, n) { t.exports = { exists: "undefined" != typeof window.performance && window.performance.timing && "undefined" != typeof window.performance.timing.navigationStart } }, {}], ee: [function (e, t, n) { function r() { } function o(e) { function t(e) { return e && e instanceof r ? e : e ? c(e, u, i) : i() } function n(n, r, o, i) { if (!d.aborted || i) { e && e(n, r, o); for (var a = t(o), u = m(n), c = u.length, f = 0; f < c; f++)u[f].apply(a, r); var p = s[y[n]]; return p && p.push([b, n, r, a]), a } } function l(e, t) { v[e] = m(e).concat(t) } function m(e) { return v[e] || [] } function w(e) { return p[e] = p[e] || o(n) } function g(e, t) { f(e, function (e, n) { t = t || "feature", y[n] = t, t in s || (s[t] = []) }) } var v = {}, y = {}, b = { on: l, emit: n, get: w, listeners: m, context: t, buffer: g, abort: a, aborted: !1 }; return b } function i() { return new r } function a() { (s.api || s.feature) && (d.aborted = !0, s = d.backlog = {}) } var u = "nr@context", c = e("gos"), f = e(2), s = {}, p = {}, d = t.exports = o(); d.backlog = s }, {}], gos: [function (e, t, n) { function r(e, t, n) { if (o.call(e, t)) return e[t]; var r = n(); if (Object.defineProperty && Object.keys) try { return Object.defineProperty(e, t, { value: r, writable: !0, enumerable: !1 }), r } catch (i) { } return e[t] = r, r } var o = Object.prototype.hasOwnProperty; t.exports = r }, {}], handle: [function (e, t, n) { function r(e, t, n, r) { o.buffer([e], r), o.emit(e, t, n) } var o = e("ee").get("handle"); t.exports = r, r.ee = o }, {}], id: [function (e, t, n) { function r(e) { var t = typeof e; return !e || "object" !== t && "function" !== t ? -1 : e === window ? 0 : a(e, i, function () { return o++ }) } var o = 1, i = "nr@id", a = e("gos"); t.exports = r }, {}], loader: [function (e, t, n) { function r() { if (!x++) { var e = h.info = NREUM.info, t = d.getElementsByTagName("script")[0]; if (setTimeout(s.abort, 3e4), !(e && e.licenseKey && e.applicationID && t)) return s.abort(); f(y, function (t, n) { e[t] || (e[t] = n) }), c("mark", ["onload", a() + h.offset], null, "api"); var n = d.createElement("script"); n.src = "https://" + e.agent, t.parentNode.insertBefore(n, t) } } function o() { "complete" === d.readyState && i() } function i() { c("mark", ["domContent", a() + h.offset], null, "api") } function a() { return E.exists && performance.now ? Math.round(performance.now()) : (u = Math.max((new Date).getTime(), u)) - h.offset } var u = (new Date).getTime(), c = e("handle"), f = e(2), s = e("ee"), p = window, d = p.document, l = "addEventListener", m = "attachEvent", w = p.XMLHttpRequest, g = w && w.prototype; NREUM.o = { ST: setTimeout, SI: p.setImmediate, CT: clearTimeout, XHR: w, REQ: p.Request, EV: p.Event, PR: p.Promise, MO: p.MutationObserver }; var v = "" + location, y = { beacon: "bam.nr-data.net", errorBeacon: "bam.nr-data.net", agent: "js-agent.newrelic.com/nr-1071.min.js" }, b = w && g && g[l] && !/CriOS/.test(navigator.userAgent), h = t.exports = { offset: u, now: a, origin: v, features: {}, xhrWrappable: b }; e(1), d[l] ? (d[l]("DOMContentLoaded", i, !1), p[l]("load", r, !1)) : (d[m]("onreadystatechange", o), p[m]("onload", r)), c("mark", ["firstbyte", u], null, "api"); var x = 0, E = e(4) }, {}] }, {}, ["loader"]);</script>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="Content/Styles/reset-min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/Styles/newstyle.css" rel="stylesheet" type="text/css" />
+    <title>Owner</title>
+    <script type="text/javascript" src="Content/Scripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="Content/Scripts/jquery.countdown.min.js"></script>
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <script type="text/javascript" src="Content/Scripts/common.js"></script>
+    <style>
+        .meeting td {
+            padding: 4px;
+            padding-left: 18px;
+        }
+
+        .meeting td h2 {
+            margin-left: -15px;
+        }
+
+        .meeting td h3 {
+            margin-left: -10px;
+        }
+
+        .meetingHeader {
+            border-bottom: solid 1px #999;
+        }
+    </style>
+    <style type="text/css">
+        input[type="submit"],
+        .coolButton,
+        .darkBox .coolButton {
+            background-color: #6B8E23;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+
+<script>
+    <!-- Modal window content -->
+    $(document).ready(function () {
+
+        $('input:radio[name="voter-type"]').change(
+            function () {
+                if ($(this).is(':checked')) {
+                    $("#grid-item-proxy .confirm-inner").toggleClass("inactive");
+                    $("#grid-item-owner .confirm-inner").toggleClass("inactive");
+                    $("#grid-item-proxy").toggleClass("highlighted");
+                    $("#grid-item-owner").toggleClass("highlighted");
+                }
+            });
+    });
+
+
+</script>
+
+<body>
+    <!-- Modal window content -->
+    <div id="ex1" class="modal">
+        <h1 style="text-shadow: 2px 2px 2px #CCCCCC;">Confirmation</h1>
+        <h2>'By selecting the Agree and Submit button below, I acknowledge that my details below are correct, and that my votes will be recorded as 'By Pre-Meeting Electronic Vote'. I acknowledge that in order for my vote to contribute towards the meeting quorum I must be financial with no amounts owing at the time the meeting commences.</h2>
+        <br />
+        <div class="grid-wrapper">
+
+            <div class="grid-item highlighted" id="grid-item-owner">
+                <header>
+                    <input class="meeting-header" type="radio" name="voter-type" value="lot-owner" id="lot-owner" checked><label for="lot-owner" style="font-size:18px">&nbsp;&nbsp;Registered Lot Owner</label>
+                </header>
+                
+                <div class="confirm-inner">
+                    <p>Name: Owner Name
+                        <br /> Representing Lot 55, Strata Plan 7987987</p>
+                        
+                </div>
+            </div>
+
+            <div class="grid-item" id="grid-item-proxy">
+                <header>
+                    <input class="meeting-header" type="radio" name="voter-type" value="proxy" id="proxy"><label for="proxy" style="font-size:18px">&nbsp;&nbsp;Proxy</label>
+                </header>
+                <!--<input class="meeting-header" type="radio" name="voter-type" value="proxy">
+                <b>Proxy</b>-->
+                
+                <div class="confirm-inner inactive">
+                    <p>Registered proxy name:
+                        <br /> Representing Lot 55, Strata Plan 7987987</p>
+                        
+                </div>
+
+            </div>
+        </div>
+        <br />
+       <!-- <a href="#" rel="modal:close">Close</a>-->
+        <a href="#ex1" rel="modal:open">
+            <input type="button" class="coolButton gridButton" value="Agree and Submit" style="width:auto;" />
+        </a>
+        <!--<a href="#" rel="modal:close">Close</a>-->
+
+        <!-- End modal window content -->
+    </div>
+
+    <!-- Modal window content -->
+    <div id="ex2" class="modal">
+        <h1 style="text-shadow: 2px 2px 2px #CCCCCC;">Voting Guidelines</h1>
+        <p>Welcome to pre-meeting electronic voting. Please read the voting guidelines before proceeding to the Electronic Voting Paper.</p>
+        <p>You can now cast your votes in 4 easy steps:</p>
+        
+        <ol>
+            <li>Click on a motion to view more details and attachments if available.</li>
+            <li>Make a selection of For, Against or Abstain.</li>
+            <li>When you've made a selection for each motion of the Agenda, select the Submit button.</li>
+            <li>Review the Confirmation screen, and select the button to agree and submit your votes.</li>
+        </ol>
+
+        <p>Please note:</p>
+
+        <ul>
+            <li>You must submit your votes before the ballot close date/time, which is displayed at the top of the Electronic Voting Page.</li>
+            <li>You can change your votes at any time before the ballot closes by logging into your profile again.</li>
+            <li>All pre-meeting votes are informal until the results are reviewed by the strata manager.</li>
+            <li>Motions that require partial resolution are subject to change after the meeting has started.</li>
+            <li>For votes to be valid, all owners must be financial and have no outstanding amounts at the start of the meeting.</li>
+            <li>Entitlements will be calculated when votes are counted, for meetings that allow votes per entitlement.</li>
+        </ul>
+       <!-- <a href="#" rel="modal:close">Close</a>-->
+        
+            <input type="button" class="coolButton gridButton" value="Proceed to Electronic Voting Paper" style="width:auto" />
+        
+        <!--<a href="#" rel="modal:close">Close</a>-->
+
+        <!-- End modal window content -->
+    </div>
+
+
+
+    <div class="container">
+        <div class="internalContainer">
+            <div class="headerImageContainer">
+                <div style="float: right; margin-right: 5px; margin-top: 5px; margin-bottom: 3px;
+            color: #999999; font-size: 14px;">Logged in as 00600010</div>
+                <a href="http://www.lookatmystrata.com.au/demo" target="_blank">
+                    <img src='https://rockendstoragesydney.blob.core.windows.net/portals/Prod/images/799187/Banner.jpg' alt='Banner' />
+                </a>
+            </div>
+            <div class="microMenu">
+                <div class="topTextContainer">Sydney&#39;s Premier Strata Agency</div>
+                <div class="menu">
+                    <a href="#">Contact</a>
+                    <span>|</span>
+                    <a href="#">FAQ</a>
+                    <span>|</span>
+                    <a href="#">Change Password</a>
+                    <span>|</span>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+            <div class="menuContainer">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="menu">
+                                <a href="#">Owners Corporation</a>
+                            </div>
+                            <div class="spacer">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="menu">
+                                <a href="#">Portfolio</a>
+                            </div>
+                            <div class="spacer">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="menu">
+                                <a href="#">Reports</a>
+                            </div>
+                            <div class="spacer">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="menu">
+                                <a href="#">Meetings</a>
+                            </div>
+                            <div class="spacer">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="menu">
+                                <a href="#">Documents</a>
+                            </div>
+                            <div class="spacer">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="menu">
+                                <a href="#">Maintenance</a>
+                            </div>
+                            <div class="spacer">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mainContent">
+                <style type="text/css">
+                </style>
+                <h1 style="text-shadow: 2px 2px 2px #CCCCCC;">Meeting Details</h1>
+                <h2>Lot Owner - Rae Lasagna / Lot 5, Unit 5, Strata Plan 4444</h2>
+                <br />
+                <a href="#ex2" rel="modal:open">Voting Guidelines</a>
+                <h1 class="meeting-category1">Scheduled Meetings</h1>
+                <div class="grid-wrapper">
+
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Annual General Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="example-base">
+                                        Closes in:
+                                        <span id="clock1"></span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                        
+                        <a href="#ex1" rel="modal:open">
+                            <input type="button" id="vote1" class="coolButton gridButton" value="Vote" />
+                        </a>
+                    </div>
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Annual General Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="example-base">
+                                        Closes in:
+                                        <span id="clock2"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="button" id="vote2" class="coolButton gridButton" value="Vote" />
+                    </div>
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Annual General Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                            
+                        </table>
+                        <a href="#">Download Agenda PDF</a>
+                        <input type="button" class="coolButton gridButton gridButtonEdit" value="Edit Vote" />
+                    </div>
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Annual General Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <a href="#">Download Agenda PDF</a>
+                        <input type="button" class="coolButton gridButton gridButtonClosed" value="Closed" />
+                    </div>
+                </div>
+
+
+                <br />
+                <h1 class="meeting-category1">Past Meetings</h1>
+                <div class="grid-wrapper">
+
+                    <div class="grid-item">
+                        <h1 class="meeting-header">First Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <a href="#">Download Agenda PDF</a>
+                    </div>
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Second Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <a href="#">Download Agenda PDF</a>
+                    </div>
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Third Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <a href="#">Download Agenda PDF</a>
+                    </div>
+                    <div class="grid-item">
+                        <h1 class="meeting-header">Fourth Meeting</h1>
+                        <table class="meeting-inner-table">
+                            <tr>
+                                <td>Date</td>
+                                <td>21/12/2018</td>
+                            </tr>
+                            <tr>
+                                <td>Time</td>
+                                <td>08:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Venue</td>
+                                <td>Dreamtime</td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td> Clark Kent</td>
+                            </tr>
+                        </table>
+                        <a href="#">Download Agenda PDF</a>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="footerImageContainer">
+                <a href="http://www.lookatmystrata.com.au/demo" target="_blank">
+                    <img src='https://rockendstoragesydney.blob.core.windows.net/portals/Prod/images/799187/FooterBanner.jpg' />
+                </a>
+            </div>
+        </div>
+        <div style="padding-left: 17px; font-size: 13px; display: none;" id="oldBrowserMessage">
+            You are using an outdated browser. The use of this site requires
+            <a href="http://www.google.com/chrome/?brand=CHKB&utm_campaign=en&utm_source=en-ha-aunz-ct&utm_medium=ha" target="_blank">Chrome</a>,
+            <a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank">
+                FireFox</a> or latest version of
+            <a href="http://windows.microsoft.com/en-AU/internet-explorer/products/ie/home" target="_blank">Microsoft IE</a>.
+        </div>
+    </div>
+    <div style="display:none;">Version: 3.1.6109.29730</div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+var userDateTime = new Date('2018-05-15 1:13 PM'); //The user's date and time
+var dateOnServer = new Date('2018-05-15 9:13 PM'); //The current date and time on server
+var timeZoneDiff = (dateOnServer - userDateTime) / 1000; //Time zone difference in secs
+debugger;
+
+var closingDateOnServer = new Date('2018-05-16 6:00 PM'); //The closing date and time on server
+var closingDateForUser = (closingDateOnServer.getTime() - timeZoneDiff) / 1000; //The closing date and time (milliseconds) for the user with his timezone difference taken into account
+debugger;
+    var date1 = new Date(new Date().valueOf() + closingDateForUser * 1000);
+    debugger; 
+    var date2 = new Date(new Date().valueOf() + 8 * 1000);
+    displayCountdown(date1, $("#clock1"), $("#vote1"));
+    displayCountdown(date2, $("#clock2"), $("#vote2"));
+
+
+    function displayCountdown(date, el, buttonEl) {
+        // 15 days from now!
+        // var date = new Date(new Date().valueOf() + 6 * 1000);
+        //var date = new Date(new Date().valueOf() + 6 * 1000);
+        el.countdown(date, function (event) {
+            $(this).html(event.strftime(''
+                + '<span>%-d</span> day '
+                + '<span>%H</span> hr '
+                + '<span>%M</span> min '
+                + '<span>%S</span> sec'));
+            // $(this).html(event.strftime('%D days %H:%M:%S'));
+        }).on('finish.countdown', function (event) {
+            $(this).html('Voting closed')
+                .parent().addClass('disabled');
+                buttonEl.prop('value', 'Closed');
+                buttonEl.addClass('gridButtonClosed');
+        });
+    }
+
+    
+
+   
+
+</script>

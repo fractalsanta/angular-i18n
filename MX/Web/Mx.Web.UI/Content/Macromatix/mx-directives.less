@@ -1,0 +1,131 @@
+﻿@import "mx-bootstrap-variables.less";
+@import "mx-color";
+
+div.mx-entity-search {
+    position: relative;
+    z-index: 100;
+
+    > div.panel {
+        position: absolute;
+        width: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+.mx-sortable {
+    li { cursor: pointer }
+    .placeholder { visibility: hidden }
+    .drag-element {
+        cursor: move;
+        position: absolute;
+        z-index: 500;
+
+        &.list-group-item {
+            border-width: 1px !important;
+
+            &:last-child {
+                border-bottom: 1px solid @list-group-border !important;
+                border-radius: 0 !important;
+            }
+        }
+    }
+}
+
+.mx-table-sync {
+    &.header-container {
+        height: auto !important;
+        min-height: 41px;
+
+        table {
+           margin-bottom: 0;
+        }
+    }
+
+    table {
+        table-layout: fixed;
+        min-width: 400px;
+
+        > thead > tr > th {
+            min-width: 0;
+        }
+    }
+}
+
+.mx-calendar-view {
+    > .weekdays > div,
+    > .days > .date {
+        float: left;
+        width: percentage(1/7);
+        border: 1px solid @table-border-color;
+        height: 60px;
+        overflow: hidden;
+        margin: 0 -1px -1px 0;
+    }
+
+    > .weekdays {
+         > div {
+            height: 32px;
+            line-height: 30px;
+            text-align: center;
+            border-top-width: 1px;
+            font-weight: bold;
+            background-color: @panel-default-heading-bg;
+            &:first-child{
+                border-top-left-radius: @border-radius-base;
+            }
+            &:last-child{
+                border-top-right-radius: @border-radius-base;
+            }
+        }
+
+        > div:nth-child(7n+7) {
+            border-right-width: 1px;
+        }
+    }
+
+    > .days {
+        > .date {
+            background-color: #fff;
+            opacity: 0.5;
+        }
+
+        > div:nth-child(7n+7) {
+            border-right-width: 1px;
+        }
+
+        .day {
+            font-style: italic;
+            padding: 2px 4px;
+        }
+
+        .text {
+            padding: 0px 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+            &.info{
+                font-weight: bold;
+            }
+            &.status {
+                font-weight: normal;
+                font-style: italic;
+            }
+        }
+    }
+
+    .date.month {
+        opacity: 1;
+    }
+
+    .date.today {
+        background-color: @panel-default-heading-bg;
+    }
+
+    .date.selected .day {
+        background-color: @mx-bluelight;
+        color: @mx-white;
+        font-weight: bold;
+    }
+}

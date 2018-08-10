@@ -1,0 +1,87 @@
+﻿<div class="modal-header">
+    <span ng-if="!SelectedEventTag">
+        {{ ::Translation.ScheduleEventTitle }}
+    </span>
+    <span ng-if="SelectedEventTag">
+        {{ ::Translation.EditEvent }}
+    </span>
+    <button type="button" class="close" ng-click="Cancel()">&times;</button>
+</div>
+<form class="form-horizontal" role="form" name="EventForm" autocomplete="off" ng-submit="Save();">
+    <div class="modal-body">
+        <div class="fill-height" style="padding-bottom: 0;">
+            <div class="alert alert-danger" ng-show="ScheduleConflict">{{ScheduleConflictErrorMessage}}</div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{::Translation.Date}}</label>
+                <div class="col-sm-9" style="z-index: 10; padding: 0;">
+                    <mx-prevday-nextday-picker options="DatePickerOptions" on-change="OnDatePickerChange(selectedDate)"
+                                               class="pull-left col-sm-9" model="NewTag.Date">
+                    </mx-prevday-nextday-picker>
+                </div>
+            </div>
+            <div class="form-group" style="padding-bottom: 0;">
+                <label class="col-sm-3 control-label">{{::Translation.Notes}}</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" maxlength="{{NoteMaxLength}}" rows="3" style="min-width: 100%; max-width: 100%;"
+                              ng-model="NewTag.Note"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">{{::Translation.EventProfile}}</label>
+                <div class="col-sm-9">
+                    <select name="EventProfileId" class="form-control" ng-disabled="IsAjaxBusy()"
+                            ng-model="NewTag.EventProfileId"
+                            ng-options="p.Id as p.Name for p in Profiles | orderBy:'Name'"
+                            ng-show="Profiles.length > 0"
+                            ng-required>
+                        <option value="">{{::Translation.SelectProfile}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr ng-if="NewTag.EventProfileId" />
+
+            <!--selected profile info, read only-->
+            <div class="form-group" style="padding-bottom: 0;" ng-if="NewTag.EventProfileId">
+                <label class="col-sm-3 control-label">{{::Translation.AdjustmentMethod}}</label>
+                <div class="col-sm-9">
+                    <div class="form-control" readonly>
+                        <span ng-if="Profile.Source === 1">{{::Translation.ForecastAdjustmentsFromPastOccurrences}}</span>
+                        <span ng-if="Profile.Source === 2">{{::Translation.CreateAdjustmentsManually}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="padding-bottom: 0;" ng-if="Profile.Source === 1 && Profile.History.length > 0">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-bordered table-condensed events-past-occurrences">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-3">{{::Translation.PastOccurrences}}</th>
+                                <th class="col-xs-9">{{::Translation.Notes}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="occur in Profile.History">
+                                <td class="col-xs-3">{{occur.Date | date : short}}</td>
+                                <td class="col-xs-9 word-break">{{occur.Note}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" ng-click="Cancel();">{{ ::Translation.Cancel }}</button>
+        <button type="submit" class="btn btn-success"
+                ng-disabled="EventForm.$invalid || !Profile || !NewTag.Date || ScheduleConflict"
+                ng-if="!SelectedEventTag">
+            {{ ::Translation.ScheduleEvent}}
+        </button>
+        <button type="submit" class="btn btn-success"
+                ng-disabled="EventForm.$invalid || !Profile || !NewTag.Date || ScheduleConflict"
+                ng-if="SelectedEventTag">
+            {{ ::Translation.Apply}}
+        </button>
+    </div>
+</form>

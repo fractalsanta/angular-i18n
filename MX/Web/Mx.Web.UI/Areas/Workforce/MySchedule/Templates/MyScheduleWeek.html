@@ -1,0 +1,58 @@
+﻿<div class="row fill-height" mx-mobile-ready>
+    <div class="panel panel-default container-1-toolbar fill-height">
+        <div class="panel-heading mx-white">
+            <mx-week-picker change="ChangeDates" show-arrows="true"></mx-week-picker>
+            <div class="pull-right">
+                <button ng-if="AnyShifts()" type="button" class="pull-right btn btn-primary" ng-click="ShareScheduleRange()">
+                    <span class="fa fa-share-square-o"></span><span class="hidden-xs">&nbsp;&nbsp;{{L10N.Share}}</span>
+                </button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row touch-scrollable fill-height">
+                <div class="panel panel-default">
+                    <div ng-repeat-start="daySchedule in vm.Schedule" class="panel-heading" ng-if="ShowDayHeader($index)">
+                        <strong>
+                            <span>{{daySchedule.StartDateTime | formatDate:"dddd, D MMMM"}}</span>
+                            <span class="pull-right">{{GetDailyHours(daySchedule.StartDateTime)}}</span>
+                        </strong>
+                    </div>
+                    <div ng-if="!ShowDayHeader($index)" class="panel-body-divider"></div>
+                    <div ng-repeat-end mx-repeat-scroll-top class="panel-body" ng-click="SetSelectedShift($index); SetDetailedView(true);" ui-sref=".detail">
+                        <div class="pull-right">
+                            <span class="fa fa-angle-right fa-3x"></span>
+                        </div>
+                        <div class="color-coded-panel-body" ng-style="{'border-left-color': GetColorCode(daySchedule)}">
+                            <div ng-if="!IsTimeOff($index)">
+                                {{daySchedule.StartDateTime | formatDate:"LT"}} - {{daySchedule.EndDateTime | formatDate:"LT"}}
+                                <br />
+                                {{daySchedule.EntityName}}
+                                <br />
+                                {{daySchedule.RoleName}}
+                            </div>
+                            <div ng-if="IsTimeOff($index)">
+                                {{GetTimeOffStatus($index).Status}} <div ng-class="GetTimeOffStatus($index).Icon"></div>
+                                <br />
+                                {{daySchedule.EntityName}}
+                                <br />
+                                {{GetTimeOffHours($index)}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" ng-if="vm.Schedule.length">
+                        <strong>
+                            <span>&nbsp;</span>
+                            <span class="pull-right">{{L10N.ScheduledHours}}: {{GetTotalHours()}}</span>
+                        </strong>
+                    </div>
+                    <div class="panel-footer" ng-if="vm.Loaded && (!vm.Schedule.length)">
+                        <strong>
+                            <span>&nbsp;</span>
+                            <span>{{L10N.NoConfirmedSchedules}} {{vm.DatesString}}</span>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

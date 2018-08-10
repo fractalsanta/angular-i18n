@@ -1,0 +1,21 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.RenderReportModel
+@using Rockend.iStrata.StrataWebsite.Model
+@{
+    Layout = null;
+}
+@{ UserSession session = Session["UserSession"] as UserSession; }
+<div class="report-section">
+    <div style="float: left; width: 200px; margin-right: 10px;">
+        <h1>@session.Terminology[Model.Report.InternalName]</h1>
+    </div>
+    <div style="float: left; width: 80px;">
+        @if (Model.Report.WebAccessReportsID != 2 && Model.Report.WebAccessReportsID != 3)
+        {
+            <a href="#" class="coolButton" data-ajax="false" onclick="javascript:RunReport('@Model.Report.ReportName')">View</a>
+        }
+        else
+        {
+            @Html.ActionLink("View", "ReportParameters", new { reportName = Model.Report.ReportName, planNumber = Model.PlanId }, new { @class = "coolButton" })
+        }
+    </div>
+</div>

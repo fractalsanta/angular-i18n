@@ -1,0 +1,45 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white panel-title">
+        <div class="row">
+            <div class="col-xs-4">
+                <b>{{ Model.HistoryTitle}}</b>
+            </div>
+            <div class="col-xs-4 text-center">
+                <b>{{ Model.BusinessDate  | date:'shortDate'}}</b>
+            </div>
+            <div class="col-xs-4 text-right">
+                <button type="button" class="btn btn-default" ng-click="Cancel()">
+                    <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ ::Vm.L10N.Back }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="forecast-history panel panel-default fill-height"
+             ng-class="{
+                    'container-1-toolbar': !Vm.SalesItem,
+                    'container-2-toolbars': Vm.SalesItem,
+                    'gridview': Model.IsGridView
+                }">
+            <div>
+                <h4 class="text-center text-info" ng-if="Vm.SalesItem">{{ Vm.SalesItem.Description }}</h4>
+                <div class="table-header">
+                    <div id="TableHeader">
+                        <div class="column-header" ng-repeat="h in Model.Header">
+                            <span title="{{h.trim()}}">{{h.trim()}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="touch-scrollable">
+                <table class="table table-striped" mx-scrollable-table watch="Model.GridView" header-id="TableHeader" style="table-layout: fixed;">
+                    <tbody>
+                        <tr ng-repeat="entry in Model.Gridview">
+                            <td ng-style="{'width': (100/Model.Header.length + '%')}" ng-repeat="item in entry track by $index">{{item}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

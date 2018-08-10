@@ -1,0 +1,67 @@
+﻿<div class="fill-height" mx-mobile-ready>
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white row">
+            <div class="col-xs-7 col-sm-4 col-md-3 col-lg-2">
+                <mx-prevday-nextday-picker options="Vm.DatePickerOptions" on-change="OnDatePickerChange(selectedDate)"></mx-prevday-nextday-picker>
+            </div>
+            <div class="col-xs-5 col-sm-8 col-md-9 col-lg-10">
+                <button type="button" class="btn btn-success pull-right" ng-click="AddExtraDelivery()">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{ ::L10N.AddExtraDelivery }}
+                </button>
+            </div>
+        </div>
+        <div class="panel-body touch-scrollable">
+            <div class="panel panel-default" ng-if="Vm.ShowDeliveriesGrid">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><span>{{ ::L10N.TotalDeliveries }}</span></th>
+                            <th><span>{{ ::L10N.Deliveries }}</span></th>
+                            <th><span>{{ ::L10N.ExtraDeliveries }}</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="top">
+                            <td class="min-50">{{ Vm.TotalDeliveriesQty }}</td>
+                            <td class="min-50">{{ Vm.DeliveriesQty }}</td>
+                            <td class="min-50">{{ Vm.ExtraDeliveriesQty }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{ ::L10N.ExtraDeliveries }}</strong>
+                </div>
+                <table class="table table-striped" ng-if="Vm.ExtraDeliveries && Vm.ExtraDeliveries.length">
+                    <thead>
+                        <tr>
+                            <th><span>{{ ::L10N.Employee }}</span></th>
+                            <th><span>{{ ::L10N.Comment }}</span></th>
+                            <th><span>{{ ::L10N.AuthorisedBy }}</span></th>
+                            <th><span>{{ ::L10N.Status }}</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ed in Vm.ExtraDeliveries">
+                            <td class="min-50">{{ ed.User.FirstName + " " + ed.User.LastName }}</td>
+                            <td class="min-50 word-break">
+                                {{ ed.Comment }}
+                                <div ng-if="ed.Status === 3 && ed.DenyReason">
+                                    <label><i class="fa fa-ban"></i>&nbsp;{{ ed.DenyReason }}</label>
+                                </div>
+                            </td>
+                            <td class="min-50">{{ ed.AuthorisedByUserName }}</td>
+                            <td class="min-170" ng-if="!Vm.CanAuthoriseExtraDeliveries || ed.Status !== 1"><div ng-class="GetStatusById(ed.Status).Icon"></div>&nbsp;&nbsp;{{ GetStatusById(ed.Status).Status }}</td>
+                            <td class="min-170" ng-if="Vm.CanAuthoriseExtraDeliveries && ed.Status === 1">
+                                <button type="button" class="btn btn-default btn-success" ng-click="AuthoriseExtraDelivery(ed)"> {{ ::L10N.Approve }} </button>
+                                <button type="button" class="btn btn-default btn-danger" ng-click="DenyExtraDelivery(ed)"> {{ ::L10N.Deny }} </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span ng-if="!Vm.ExtraDeliveries || !Vm.ExtraDeliveries.length">{{ ::L10N.NoExtraDeliveries }}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<div class="mx-fg-inline-edit">
+    <form class="form-horizontal" role="form" novalidate>
+        <input type="tel" class="form-control no-ms-clear" id="overrideInput"
+               non-negative-integer-only select-on-focus-input maxlength="7" maxvalue="100000"
+               iscurrency="{{ FormData.IsCurrency }}" autocomplete="off"
+               ng-change="UpdatePercent();" ng-model="FormData.NewValue"
+               ng-blur="Submit();" ng-show="!InlineOptions.IsByPercentage" />
+        <span ng-if="!InlineOptions.IsByPercentage">&nbsp;{{ FormData.PercentChange ? (FormData.PercentChange + "%") : "" }}</span>
+
+        <input type="tel" class="form-control no-ms-clear" id="percentInput"
+               maxlength="6" minvalue="-100" maxvalue="1000" number-only-input select-on-focus-input
+               precision="2" autocomplete="off" ispercent="true"
+               ng-change="UpdateValue()" ng-model="FormData.PercentChange"
+               ng-blur="Submit();" ng-show="InlineOptions.IsByPercentage" />
+        <span ng-if="InlineOptions.IsByPercentage && !FormData.HideValue">&nbsp;{{ FormData.NewValue }}</span>
+    </form>
+</div>

@@ -1,0 +1,59 @@
+﻿<div class="fill-height">
+    <div ng-form="Details" class="panel container-3-toolbars fill-height" ng-swipe-right="SetDetailedView(false)" ng-show="Vm.Loaded">
+        <div class="panel-heading mx-white ">
+            <div class="col-xs-6 col-md-3">
+                <button type="button" class="btn btn-default visible-xs visible-sm" ui-sref="^">
+                    <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ ::L10N.VmBack}}
+                </button>
+            </div>
+            <div>
+                <div ng-if="!Vm.NewView" class="dropdown pull-right" dropdown>
+                    <button type="button" class="btn dropdown-toggle btn-success" dropdown-toggle id="dropdownActions"
+                            data-toggle="dropdown">
+                        <span class="">{{ ::L10N.VmActions}} <span class="caret"></span></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownActions">
+                        <li role="presentation" ng-class="{'disabled': Details.$invalid}">
+                            <a role="menuitem" tabindex="-1"
+                               ng-click="Details.$valid && Save()" ng-disabled="!Details.$valid"><i class="fa fa-save"></i>{{::L10N.VmActionSave}}</a>
+                        </li>
+                        <li role="presentation" ng-if="!Vm.NewView">
+                            <a role="menuitem" tabindex="-1"
+                               ng-click="Delete()"><i class="fa fa-trash-o"></i>{{::L10N.VmActionDelete}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-default pull-right" ng-if="Vm.NewView" ng-click="Details.$valid && Save()" ng-disabled="!Details.$valid">{{::L10N.VmActionSave}}</button>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6 form-group" ng-class="{'has-error': Details.ViewName.$invalid}">
+            <label for="ViewName">{{::L10N.VmViewName}}</label>
+            <input type="text" class="form-control" name="ViewName" ng-model="Vm.View.ViewName" required maxlength="50" />
+        </div>
+        <div class="col-md-12 col-lg-6 form-group" ng-if="Vm.IsAllowedGlobalShared">
+            <mx-checkbox ng-model="Vm.IsGlobalShared" text="::L10N.VmGlobalView" />
+        </div>
+        <div class="form-group col-xs-12">
+            <label>{{::L10N.VmManageColumns}}</label>
+        </div>
+        <div class="touch-scrollable">
+            <div class="col-xs-6 column-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ L10N.VmColumns }}</div>
+                    <ul class="list-group mx-column-container" mx-sortable="SortingOptions" scroll-container=".column-group" ng-model="Vm.InactiveColumns">
+                        <li ng-repeat="col in Vm.InactiveColumns" class="list-group-item">{{ col.ColumnName }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-6 column-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ L10N.VmActiveColumns }}</div>
+                    <ul class="list-group mx-column-container" mx-sortable="SortingOptions" scroll-container=".column-group" ng-model="Vm.ActiveColumns">
+                        <li ng-repeat="column in Vm.ActiveColumns" class="list-group-item" ng-class="{'list-group-item-warning': column.ColumnId == 0}">{{ column.ColumnName }}</li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+</div>

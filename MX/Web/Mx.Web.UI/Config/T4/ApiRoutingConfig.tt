@@ -1,0 +1,40 @@
+﻿/////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//    Routing configuration for REST WebAPI services 
+//    WARNING: This file has been automatically generated. Any changes may be lost on the next run.
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System.Web.Http;
+using System.Web.Routing;
+
+namespace Mx.Web.UI.Config
+{
+	public static partial class ApiRoutingConfig
+	{
+		public static void Map(RouteCollection routes)
+		{
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="System.Core" #>
+<#@ include file="VSCodeModel.t4" #>
+<#@ include file="SimplerCodeModel.t4" #>
+<#@ include file="Utils.t4" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="EnvDTE" #>
+<#
+	var api = ScanApi();
+	var routes = api.Controllers.GroupBy(c => GetMappingUrl(c.FilePath)).Select(g => new { Url = g.Key, Controllers = g.ToArray() });
+	foreach (var route in routes)
+    {
+		Indent(3); WriteLine("routes.MapHttpRoute(\"Map {0}\", \"{0}\", new {{ id = RouteParameter.Optional }});", route.Url);
+    }
+#>			
+			ExtendMap(routes);
+		}
+	}
+}

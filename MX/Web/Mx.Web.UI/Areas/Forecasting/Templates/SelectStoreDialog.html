@@ -1,0 +1,14 @@
+﻿<div class="modal-header">{{::Model.L10N.SelectAStore }}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body modal-body-fixed">
+    <div class="fill-height container-1-toolbar ">
+        <stores-list class="col-xs-12" style="top: 0; padding-left: 0; padding-right: 0;"></stores-list>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-left" ng-click="Cancel();">{{::Model.L10N.Cancel}}</button>
+    <button class="btn btn-success"
+            ng-disabled="!Model.SelectedStore"
+            ng-click="OK()">
+        {{::Model.L10N.OK}}
+    </button>
+</div>

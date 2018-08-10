@@ -1,0 +1,84 @@
+﻿<!--Main content panel-->
+<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="inline pull-left margin-15">
+                <button type="button" class="btn btn-default" ng-click="AddNewItems()"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{::Translations.AddNewItems}}</button>
+            </div>
+            <div class="col-sm-2 col-xs-2 pull-right" style="max-width: 158px;">
+                <button class="btn btn-default btn-success btn-block" type="button" ng-click="Finish()" ng-disabled="!HasPrepAdjustmentItems">{{::Translations.Finish}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="touch-scrollable">
+            <table class="table table-striped" mx-scrollable-table count-table-arrow-navigation header-id="TableHeader" watch="vm.Items">
+                <thead>
+                    <tr style="height: 54px; line-height: 54px; vertical-align: middle;">
+                        <th ng-repeat="column in GridDefinitions"
+                            class="{{column.ColWidth}}"
+                            ng-click="column.Field && SortColumn(column.Field)"
+                            ng-class="{ 'pointer-cursor': column.Field }"
+                            style="vertical-align: top;">
+                            <span>{{ column.Title }}</span>&nbsp;&nbsp;
+                            <i class="fa"
+                               ng-class="{
+                                'fa-angle-down': !DisplayOptions.SortAscending,
+                                'fa-angle-up': DisplayOptions.SortAscending,
+                                'invisible': DisplayOptions.SortProperty !== column.Field
+                        }">
+                            </i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-form="prepAdjustForm" ng-repeat="Item in vm.Items track by (Item.Id)" mx-repeat-scroll-top class="top">
+                        <td class="word-break min-140">{{Item.Name}} ({{Item.ItemCode}})</td>
+                        <td>
+                            <input type="text" pattern="\d*" class="form-control"
+                                   select-on-focus-input
+                                   number-only-input
+                                   ng-show="Item.Outer"
+                                   ng-model="Item.Outers"
+                                   name="OuterCount"
+                                   precision="2" />
+                            <label>{{Item.Outer}}</label>
+                        </td>
+                        <td>
+                            <input type="text" pattern="\d*" class="form-control"
+                                   select-on-focus-input
+                                   number-only-input
+                                   ng-show="Item.Inner"
+                                   ng-model="Item.Inners"
+                                   name="InnerCount"
+                                   precision="2" />
+                            <label>{{Item.Inner}}</label>
+                        </td>
+                        <td class="min-90">
+                            <input type="text" pattern="\d*" class="form-control"
+                                   select-on-focus-input
+                                   number-only-input
+                                   ng-model="Item.Units"
+                                   name="UnitCount"
+                                   precision="2"
+                                   minvalue="0" />
+                            <label>{{Item.Unit}}</label>
+                        </td>
+                        <td ng-click="RemoveItem(Item)" class="min-50 middle-vertical">
+                            <i class="fa fa-trash-o"
+                               title="{{::Translations.RemoveItem}}"
+                               style="cursor: pointer"></i>
+                        </td>
+                        <td ng-click="ToggleFavorite(Item)" class="min-50 middle-vertical">
+                            <i class="fa"
+                               ng-class="{'fa-star mx-color-bluelight': Item.IsFavorite,'fa-star-o': !Item.IsFavorite}"
+                               title="{{::Translations.ToggleFavorite}}"
+                               style="cursor: pointer"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="vm.Items.length == 0" class="alert alert-warning">{{::Translations.AddNewItemToBegin}}</div>
+        </div>
+    </div>
+</div>

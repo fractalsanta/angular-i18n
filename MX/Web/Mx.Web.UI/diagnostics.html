@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html ng-app="Diagnostics" ng-controller="DiagnosticController">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link href="/Content/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <title>Mobile Diagnostics Page</title>
+</head>
+<body>
+    <div ng-show="IsAjax()" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(/Content/Images/ajax-spinner.gif) no-repeat 50% 50%; z-index: 1750; pointer-events: none;"></div>
+    <div class="fill-height mx-backgroundcolor-graylight">
+        <div class="app-level-container">
+            <div class="container fill-height" ng-hide="model.IsLoaded">
+                <br /><br />
+                <div class="alert alert-info">
+                    <div ui-view class="fill-height">Getting results from the server...</div>
+                </div>
+            </div>
+
+            <div class="container fill-height" ng-show="model.IsLoaded">
+                <br /><br />
+                <div ng-hide="model.Success" class="row alert alert-danger">
+                    <p>Diagnostics tests have completed with errors</p>
+                    <p>There may be more information on <a href="/elmah.axd">/elmah.axd</a> </p>
+                </div>
+
+                <div ng-show="model.Success" class="alert alert-success">
+                    <p>Diagnostics tests have completed successfully</p>
+                    <p>Log on to <a href="/#">Mobile site</a> to do some validation</p>
+                </div>
+                <br/>
+                <div class="list-group">
+                    <div class="row list-group-item" ng-repeat="info in model.Errors">
+                        <div class="col-sm-1">*</div>
+                        <div class="col-sm-10">{{info.Message}}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1" ng-bind-html="model.EndPointFailure"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="/Scripts/angular/angular.js"></script>
+    <script src="/Scripts/angular/angular-sanitize.js"></script>
+
+
+
+    <script type="text/javascript">
+
+        angular.module('Diagnostics', ['ngSanitize']).
+        controller('DiagnosticController', function ($scope, $http) {
+            $scope.IsAjax = function () {
+                return $scope.model.IsAjaxBusy;
+            };
+
+            $scope.IsLoaded = function () {
+                return $scope.model.IsLoaded;
+            };
+
+            $scope.model = {
+                IsLoaded: false,
+                Success: false,
+                IsAjaxBusy: true,
+                Errors: []
+            };
+            var url = '/Core/Diagnostics/Api/Services/Diagnostic';
+            $http({
+                method: 'GET',
+                responseType: "JSON",
+                url: url
+            }).success(function (data) {
+                if (data.Success) {
+                    $scope.model.Success = data.Success;
+                    $scope.model.Errors = [];
+                } else {
+                    $scope.model.Success = false;
+                    $scope.model.Errors = data.Errors;
+                }
+                $scope.model.IsLoaded = true;
+                $scope.model.IsAjaxBusy = false;
+            }).error(function (data, status, headers, config) {
+                $scope.model.Success = false;
+                $scope.model.EndPointFailure = data;
+                $scope.model.Errors = [];
+                $scope.model.IsLoaded = true;
+                $scope.model.IsAjaxBusy = false;
+            });
+        });
+    </script>
+
+
+</body>
+</html>

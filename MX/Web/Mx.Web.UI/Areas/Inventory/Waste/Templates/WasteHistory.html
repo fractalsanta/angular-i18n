@@ -1,0 +1,43 @@
+﻿<div class="panel panel-default fill-height container-2-toolbars">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="col-xs-5 col-md-4">
+                <input class="form-control" ng-model="Model.Search" placeholder="{{Translations.Search}}" />
+            </div>
+            <div class="col-xs-7">
+                <mx-date-range dates="Dates" days="14" change="ChangeDates()" ></mx-date-range>
+                <div class="dropdown inline margin-15" dropdown>
+                    <button class="btn btn-default dropdown-toggle" dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown">
+                        <span class="">
+                            {{ Model.CurrentFilter }} &nbsp;
+                            <span class="caret"></span>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu3">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="SetFilter(GetFilterEnum().AllItems)">{{::Translations.AllItems}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="SetFilter(GetFilterEnum().RawItems)">{{::Translations.RawItems}}</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="SetFilter(GetFilterEnum().FinishedItems)">{{::Translations.FinishedItems}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="table-header">
+            <div id="TableHeader">
+                <mx-grid-header header="Header" ></mx-grid-header>
+            </div>
+        </div>
+        <div class="touch-scrollable">
+            <table class="table table-striped" mx-scrollable-table header-id="TableHeader" watch="WasteItems" refresh-callback="Model.FixHeaders">
+                <tr ng-form="wasteRecordForm" ng-repeat="Item in FilteredItems" mx-repeat-scroll-top class="top">
+                    <td class="text-nowrap">{{::Item.WasteDate | date:'mediumDate'}}</td>
+                    <td class="word-break min-150">{{::Item.Description}} ({{::Item.ProductCode}})</td>
+                    <td class="min-100">{{::Item.Qty}}</td>
+                    <td>{{::Item.Reason}}</td>
+                    <td class="text-right">{{::Item.TotalValue | currencyOrDash}}</td>
+                </tr>
+            </table>
+            <div ng-if="WasteItems.length == 0" class="alert alert-warning">{{::Translations.NoItemsHaveBeenFound}}</div>
+        </div>
+    </div>
+

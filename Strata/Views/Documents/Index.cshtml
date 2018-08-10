@@ -1,0 +1,105 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.DocumentsModel
+@{
+    ViewBag.Title = "Documents";
+}
+@section HeadTagsSection
+{
+    <script type="text/javascript" src="/Content/Scripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Documents.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("table").tablesorter({
+                dateFormat: "mmddyyyy",
+
+                headers: {
+                    2: { sorter: "shortDate"} //, dateFormat will parsed as the default above
+                }
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        table.documents th
+        {
+            font-weight: bold;
+            background-image: url(/Content/Images/toggle.gif);
+            background-position: center right;
+            background-repeat: no-repeat;
+            padding-right: 10px;
+            background-color: #999999;
+            color: #FFFFFF;
+            cursor: pointer;
+            padding: 2px 3px 2px 3px;;
+        }
+        table.documents td
+        {
+            padding: 6px;
+            background-color: White;
+            border-bottom: solid 1px #CCCCCC;
+        }
+        table.documents .plan
+        {
+            width: 148px;
+            border-left: solid 1px #CCCCCC;
+        }
+        table.documents .documentType
+        {
+            min-width: 548px;
+            max-width: 560px;
+        }
+        table.documents .date
+        {
+            width: 85px;
+            border-right: solid 1px #CCCCCC;
+        }
+    </style>
+}
+<h2>
+    Documents</h2>
+@if (Model != null && Model.Documents != null && Model.Documents.Count > 0)
+{
+
+    <table id="myTable" class="tablesorter documents">
+        <thead>
+            <tr>
+                <th>
+                    Plan
+                </th>
+                <th>
+                    Document type
+                </th>
+                <th data-sorter="shortDate" data-date-format="ddmmyyyy">
+                    Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Rockend.iStrata.StrataWebsite.Model.DocumentModel doc in Model.Documents)
+            {
+            
+                <tr>
+                    <td class="plan">
+                        @doc.PlanNumber
+                    </td>
+                    <td class="documentType">
+                        <a href="#" onclick="javascript:GetDocument('@Url.Action("GetDocument", new { folderId = doc.FolderId, libraryId = doc.LibraryId, documentId = doc.DocumentId })');">@doc.DocumentType</a>
+                    </td>
+                    <td class="date">
+                        @doc.Date.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>   
+}
+else
+{
+    <span>No documents to display.</span>
+}
+<div id="waitingDiv">
+</div>
+<div id="waitingContents">
+    Retrieving Document - This may take a few minutes...
+    <img style="margin: 10px auto 0px auto" alt="Progress image" src="../../Content/Images/loading.gif" />
+</div>

@@ -1,0 +1,168 @@
+.search-view {
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 24px 32px;
+	color: rgb(74, 84, 86);
+
+	.search-options {
+		margin-left: -32px;
+		margin-right: -32px;
+		padding-left: 32px;
+		padding-right: 32px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.info-message {
+		font-size: 16px;
+		padding: 0px;
+		span {
+			&.hint {
+				color: rgb(117, 121, 125);
+			}
+		}
+	}
+
+	.md-button {
+        text-transform: none;
+        font-size: 16px;
+        font-weight: 600;
+        height: 56px;
+		margin: 0px;
+    }
+
+    .search-group {
+    	padding: 16px 0;
+    	.group-item {
+    		margin-top: 16px;
+    		&:first-child {
+    			margin-top: 0px;
+    		}
+    	}
+    	.checkbox-container {
+    		padding-top: 4px;
+    		padding-right: 8px;
+    	}
+    }
+
+	.border-input {
+		border: 1px solid rgb(204,204,204);
+		/*padding: 8px;*/
+		&.datepicker-container {
+			padding: 8px;
+			padding-right: 19px;
+		}
+		md-select {
+			margin: 0px;
+			padding: 8px;
+			.md-select-placeholder {
+				font-size: 16px;
+			}
+			&[disabled] {
+				.md-select-value {
+					background-image: none;
+				}
+			}
+		}
+		md-datepicker {
+			margin-bottom: -14px;
+			margin-right: 6px;
+			.md-datepicker-input-container {
+				margin-left: 0px;
+				border-bottom-width: 0px;
+				width: 100%;
+				.md-datepicker-input {
+					font-size: 16px;
+					max-width: none;
+					width: 100%;
+					border-width: 0;
+				}
+			}
+			&[disabled] .md-datepicker-triangle-button {
+				display: block;
+			}
+
+		}
+
+	}
+	.checkbox {
+		bodhi-checkbox {
+			margin-right: 12px;
+		}
+		font-size: 16px;
+		margin-top: 24px !important;
+	}
+}
+
+
+//Custom styles for select menus
+
+md-select {
+	&[required], &.ng-required {
+		&.ng-invalid:not(.md-no-asterisk) {
+			.md-select-value span:first-child:after {
+				content: ' *';
+				font-size: 13px;
+				vertical-align: top;
+			}
+		}
+	}
+
+	&[disabled] .md-select-value {
+		background-position: 0 bottom;
+		// This background-size is coordinated with a linear-gradient set in select-theme.scss
+		// to create a dotted line under the input.
+		background-size: 4px 1px;
+		background-repeat: repeat-x;
+		margin-bottom: -1px; // Shift downward so dotted line is positioned the same as other bottom borders
+	}
+
+	&:focus {
+		outline: 1px solid #0ca2d0;
+	}
+	&[disabled]:hover {
+		cursor: default;
+	}
+	&:not([disabled]) {
+		&:hover {
+			cursor: pointer
+		}
+		&.ng-invalid.ng-touched {
+			.md-select-value {
+				border-bottom-style: solid;
+				padding-bottom: 1px;
+			}
+		}
+		&:focus {
+			.md-select-value {
+				border-bottom-width: 2px;
+				border-bottom-style: solid;
+				padding-bottom: 0;
+			}
+			&.ng-invalid.ng-touched {
+				.md-select-value {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+.md-select-menu-container {
+
+	// enter: md-select scales in, then options fade in.
+	&.md-active {
+		top:174px !important;
+	}
+	md-option[aria-selected="true"] {
+		color: rgba(33,33,33,0.87) !important;
+		font-weight:bold;
+		background: rgb(206, 236, 246) !important;
+
+	}
+}
+
+

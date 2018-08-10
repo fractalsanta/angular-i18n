@@ -1,0 +1,44 @@
+﻿@model Rockend.iStrata.StrataCommon.BusinessEntities.Contact
+@using Rockend.iStrata.StrataWebsite.Helpers
+
+
+@if (Model.BusinessContact.ToBoolean())
+{
+    <span>Business Contact</span><br />
+    <span>@Model.Name</span>
+}
+else
+{
+    <span>Private / Residential Contact</span><br />
+    <span>@string.Concat(Model.Title, " ", Model.FirstName, " ", Model.OtherNames, " ", Model.Name)</span>
+}
+<br />
+@Html.ValueOrDefault(Model.BuildingName)
+@if (!string.IsNullOrWhiteSpace(Model.POBox))
+{
+    @Html.ValueOrDefault(Model.POBox)
+}
+else
+{
+    @Html.ValueOrDefault(string.Concat(Model.StreetNumber, " ", Model.StreetName))
+}
+@Html.ValueOrDefault(string.Concat(Model.Town, " ", Model.State, " ", Model.Postcode))
+@Html.ValueOrDefault(Model.Country)
+<br />
+@if (Model.BusinessContact.ToBoolean())
+{
+    <div class="label">Telephone 1:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone1, defaultValue: "--")</div><div class="clear"></div>
+    <div class="label">Telephone 2:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone2, defaultValue: "--")</div><div class="clear"></div>
+}
+else
+{
+    <div class="label">Home Phone:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone1, defaultValue: "--")</div><div class="clear"></div>
+    <div class="label">Work Phone:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone2, defaultValue: "--")</div><div class="clear"></div>
+}
+<div class="label">Mobile:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone3, defaultValue: "--")</div><div class="clear"></div>
+<div class="label">Fax:</div> <div class="value">@Html.ValueOrDefault(Model.Fax, defaultValue: "--")</div><div class="clear"></div>
+<div class="label">Email:</div> <div class="value">@Html.ValueOrDefault(Model.Email, defaultValue: "--")</div><div class="clear"></div>
+@if (!string.IsNullOrWhiteSpace(Model.Website))
+{ 
+    <div class="label">Website:</div> <div class="value">@Html.ValueOrDefault(Model.Website, defaultValue: "--")</div><div class="clear"></div>
+}

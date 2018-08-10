@@ -1,0 +1,11 @@
+﻿<div class="mx-entity-search">
+    <form>
+        <input type="search" class="form-control" placeholder="{{ Translations.SearchLocations }}" ng-model="SearchText" ng-change="FilterEntries()" />
+    </form>
+    <div ng-show="SearchText.trim() && HasFocus" class="panel panel-default" disable-text-selection>
+        <div class="list-group">
+            <a class="list-group-item" ng-repeat="entry in Entries" ng-class="{ 'list-group-item-info initial-cursor': entry.IsHeader }" ng-click="!entry.IsHeader && SelectEntity(entry)">{{ entry.Location.DisplayName }}</a>
+            <div class="list-group-item list-group-item-warning" ng-show="!Entries.length">{{ Translations.NoMatchingRecordsFound }}</div>
+        </div>
+    </div>
+</div>

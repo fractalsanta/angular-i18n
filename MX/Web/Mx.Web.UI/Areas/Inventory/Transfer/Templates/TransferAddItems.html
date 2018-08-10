@@ -1,0 +1,55 @@
+﻿<div class="modal-header">{{Translation.AddNewItems}}<button type="button" class="close" ng-click="Cancel()">&times;</button></div>
+<div class="modal-body">
+    <form ng-submit="Search(SearchText)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" placeholder="{{Translation.SearchForItems}}" ng-model="SearchText">
+                </div>
+                <div class="col-xs-3">
+                    <button type="button" class="btn btn-default pull-right"
+                            ng-click="Search(SearchText)"
+                            ng-disabled="!(SearchText && SearchText.length >= 1)">
+                        <i class="fa fa-search"></i>&nbsp;&nbsp;{{Translation.Search}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div ng-show="Items && !Items.length">
+        <div class="alert alert-warning">{{Translation.NoItemsHaveBeenFound}}</div>
+    </div>
+    <div class="panel panel-default" ng-show="Items && Items.length" style="max-height: 360px; overflow-y: auto;">
+        <table class="table table-striped">
+            <tbody>
+                <tr ng-repeat="item in Items"
+                    ng-class="{'active': IsSelected(item)}"
+                    ng-click="!IsPresent(item) && AddItem(item)" 
+                    data-item-id="{{ item.Id }}">
+                    <td class="col-xs-1" style="width: 10%;">
+                        <div ng-show="!IsPresent(item)">
+                            <i ng-hide="IsSelected(item)" class="fa fa-square-o"></i>
+                            <i ng-show="IsSelected(item)" class="fa fa-check-square-o"></i>
+                        </div>
+                    </td>
+                    <td style="width: 70%;" ng-class="{'mx-disabled': IsPresent(item) }">
+                        <div ng-disabled="IsPresent(item)">
+                            {{item.Description}} ({{item.Code}})
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default pull-left"
+            ng-click="Cancel()" mx-disable-button-if-busy>
+        {{Translation.Close}}
+    </button>
+    <button class="btn btn-success"
+            ng-show="AddSelectedItems.length > 0"
+            ng-click="AddItemsToQueue()">
+        {{Translation.AddItems}} {{AddSelectedItems.length}}
+    </button>
+</div>

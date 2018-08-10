@@ -1,0 +1,98 @@
+﻿<!--Main content panel-->
+<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white">
+        <div class="row">
+            <div class="dropdown inline pull-left margin-15" dropdown>
+                <button class="btn btn-default dropdown-toggle" dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" ng-disabled="WasteItems.length==0">
+                    <span>
+                        {{ TranslatedCurrentFilter() }} &nbsp;
+                        <span class="caret"></span>
+                    </span>
+                </button>
+                <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu3">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="SetFilter(GetFilterEnum().AllItems)">{{::Translations.AllItems}}</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="SetFilter(GetFilterEnum().RawItems)">{{::Translations.RawItems}}</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="SetFilter(GetFilterEnum().FinishedItems)">{{::Translations.FinishedItems}}</a></li>
+                </ul>
+            </div>
+            <div class="inline pull-left">
+                <button type="button" class="btn btn-default" ng-click="AddNewItems()"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{::Translations.AddNewItems}}</button>
+            </div>
+
+            <div class="col-sm-2 col-xs-2 pull-right" style="max-width: 158px;">
+                <button class="btn btn-default btn-success btn-block" type="button" ng-click="Finish()" ng-disabled="IsOffline || wasteForm.$invalid || !HasWaste">{{::Translations.Finish}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default container-1-toolbar">
+        <div class="table-header">
+            <div id="TableHeader">
+                <mx-grid-header header="Header" ></mx-grid-header>
+            </div>
+        </div>
+        <div class="touch-scrollable">
+            <table class="table table-striped" mx-scrollable-table count-table-arrow-navigation header-id="TableHeader" watch="FilteredWasteItems" ng-form="wasteForm">
+                <tbody>
+                    <tr ng-form="wasteRecordForm_{{$index}}" ng-repeat="Item in FilteredWasteItems track by ('' + Item.Id + Item.IsRaw)" mx-repeat-scroll-top class="top">
+                        <td class="word-break min-140">{{Item.Name}} ({{Item.ItemCode}})</td>
+                        <td ng-class="{'has-error': wasteRecordForm_{{$index}}.OuterCount.$invalid}">
+                            <input type="text" ng-pattern="\d*" class="form-control"
+                                   select-on-focus-input
+                                   number-only-input
+                                   ng-show="Item.Outer"
+                                   ng-model="Item.Counts.Outers"
+                                   name="OuterCount"
+                                   precision="2" />
+                            <label>{{Item.Outer}}</label>
+                        </td>
+                        <td ng-class="{'has-error': wasteRecordForm_{{$index}}.InnerCount.$invalid}">
+                            <input type="text" ng-pattern="\d*" class="form-control"
+                                   select-on-focus-input
+                                   number-only-input
+                                   ng-show="Item.Inner"
+                                   ng-model="Item.Counts.Inners"
+                                   name="InnerCount"
+                                   precision="2" />
+                            <label>{{Item.Inner}}</label>
+                        </td>
+                        <td class="min-90" ng-class="{'has-error': wasteRecordForm_{{$index}}.UnitCount.$invalid}">
+                            <input type="text" ng-pattern="\d*" class="form-control"
+                                   select-on-focus-input
+                                   number-only-input
+                                   ng-model="Item.Counts.Units"
+                                   name="UnitCount"
+                                   precision="2" />
+                            <label>{{Item.Unit}}</label>
+                        </td>
+                        <td class="min-150">
+                            <div class="dropdown" dropdown ng-class="{'has-error': wasteRecordForm_{{$index}}.ItemReason.$invalid}">
+                                <select class="form-control"
+                                        ng-model="Item.Counts.Reason.Id"
+                                        ng-options="reason.Id as reason.Text for reason in Reasons"
+                                        ng-required="CheckItemHasCounts(Item)"
+                                        name="ItemReason">
+                                    <option value="" selected disabled>{{::Translations.SelectReason}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="word-break min-90">{{CostPerItem(Item) | currencyOrDash}}</td>
+                        <td ng-click="RemoveItem(Item)" class="min-50 middle-vertical">
+                            <i class="fa fa-trash-o"
+                               title="{{::Translations.RemoveItem}}"
+                               style="cursor: pointer"></i>
+                        </td>
+                        <td ng-click="ToggleFavorite(Item)" class="min-50 middle-vertical">
+                            <i class="fa"
+                               ng-class="{'fa-star mx-color-bluelight': Item.IsFavorite,'fa-star-o': !Item.IsFavorite}"
+                               title="{{::Translations.ToggleFavorite}}"
+                               style="cursor: pointer"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="FilteredWasteItems.length == 0 && DisplayOptions.Filter != GetFilterEnum().AllItems " class="alert alert-warning">{{::Translations.NoItemsOfType}}</div>
+            <div ng-if="WasteItems.length == 0 && DisplayOptions.Filter == GetFilterEnum().AllItems " class="alert alert-warning">{{::Translations.AddNewItemToBegin}}</div>
+        </div>
+
+    </div>
+</div>

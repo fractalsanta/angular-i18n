@@ -1,0 +1,121 @@
+﻿<div class="panel panel-default fill-height forecasting labeled container-1-toolbar" mx-mobile-ready
+     ng-class="{
+        'mx-fg-edit-has-filters': ShowForecastFilters,
+        'mx-fg-reset-enabled': ShowResetButton(),
+        'mx-fg-show-warning': ShowSelectEditableFilterWarning()}">
+    <div class="panel-heading mx-white">
+        <div class="fill-height">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-left" style="position: relative; min-width: 190px; max-width: 190px;">
+                        <mx-prevday-nextday-picker options="Vm.ForecastPickerOptions" on-change="OnDatePickerChange(selectedDate)"></mx-prevday-nextday-picker>
+                        <div ng-show="IsDirty()" class="disable-by-fill"></div>
+                    </div>
+
+                    <div ng-if="!IsSalesItems" class="pull-left col-md-2 col-xs-3" style="padding-right: 0;">
+                        <label class="mx-fg-header-label">{{ ::Vm.L10N.Metric }}</label>
+                        <select id="mx-forecast-metric-dropdown" class="form-control"
+                                ng-disabled="IsDirty()"
+                                ng-model="GetForecastingOptions().Metric"
+                                ng-change="NavigateToParam('metric', GetForecastingOptions().Metric);">
+                            <option value="" ng-if="false"></option>
+                            <option value="sales" ng-if="Vm.L10N">{{ ::Vm.L10N.Sales }}</option>
+                            <option value="transactions" ng-if="Vm.L10N">{{ ::Vm.L10N.Transactions }}</option>
+                        </select>
+                    </div>
+
+                    <div ng-if="ShowForecastFilters" class="pull-left text-center col-md-2"
+                         ng-class="{
+                            'col-xs-2': IsSalesItems,
+                            'col-xs-3': !IsSalesItems
+                         }">
+                        <label class="mx-fg-ellipsis mx-fg-header-label">{{ ::Vm.L10N.ForecastFilter }}</label>
+                        <select class="form-control" ng-disabled="IsAjaxBusy() || IsDirty()" ng-model="Model.FilterId"
+                                ng-options="filter.Id as filter.Name for filter in GetForecastingOptions().Filters"
+                                ng-change="SelectFilter(Model.FilterId)">
+                            <option value="" ng-if="false"></option>
+                        </select>
+                    </div>
+
+                    <div ng-if="IsSalesItems" class="pull-left col-xs-4" style="padding: 0;">
+                        <span class="input-group" ng-click="SelectSalesItem()">
+                            <span class="form-control text-center mx-fg-salesitempicker mx-fg-ellipsis">
+                                <span ng-if="!Vm.SalesItem">{{ ::Vm.L10N.SearchForItems }}</span>
+                                <span ng-if="Vm.SalesItem">{{ Vm.SalesItem.Description }} - {{ Vm.SalesItem.ItemCode }}</span>
+                            </span>
+                            <span class="input-group-btn pull-left">
+                                <button type="button" class="btn btn-default" ng-disabled="!GetSalesItems().SalesItems.length"><i class="fa fa-search ico-16"></i></button>
+                            </span>
+                            <div ng-show="IsDirty()" class="disable-by-fill"></div>
+                        </span>
+                    </div>
+
+                    <div class="pull-right" ng-hide="IsDirty()">
+                        <span class="pull-left container-fluid">
+                            <button type="button" class="btn btn-default" ng-click="NavigateTo('View')"><i class="fa fa-bar-chart-o"></i></button>
+                        </span>
+                        <span class="pull-left">
+                            <button id="mx-forecast-history-button" type="button" ng-show="HasViewHistoryPermission()" ng-disabled="!CanViewHistory()" class="btn btn-default" ng-click="NavigateTo('History', 'gridview=true')">{{ ::Vm.L10N.History }}</button>
+                        </span>
+                    </div>
+                    <div class="hidden-sm hidden-xs pull-right" ng-show="IsDirty()" style="white-space: nowrap;">
+                        <button class="btn btn-success" title="{{ ::Vm.L10N.Save }}"
+                                ng-click="SaveChanges()">
+                            {{ ::Vm.L10N.Save }}
+                        </button>
+                        <button class="btn btn-default" title="{{ ::Vm.L10N.Cancel }}"
+                                ng-click="ClearChangesWithConfirmation()">
+                            {{ ::Vm.L10N.Cancel }}
+                        </button>
+                    </div>
+                    <div class="hidden-lg hidden-md pull-right" ng-show="IsDirty()">
+                        <button class="btn btn-success" title="{{ ::Vm.L10N.Save }}"
+                                ng-click="SaveChanges()">
+                            <i class="glyphicon glyphicon-floppy-save"></i>
+                        </button>
+                        <button class="btn btn-default" title="{{ ::Vm.L10N.Cancel }}"
+                                ng-click="ClearChangesWithConfirmation()">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer mx-white mx-fg-reset-footer">
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                <button type="button" class="btn btn-default" ng-click="ResetForecasts()"
+                        ng-disabled="!GetForecastObject().Forecast">
+                    {{ ::Vm.L10N.ForecastReset }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body mx-fg-reset-body">
+        <div ng-if="IsSalesItems && !Vm.SalesItem && GetSalesItems().SalesItems.length">
+            <div class="alert alert-warning">{{ ::Vm.L10N.SearchSalesItem }}</div>
+        </div>
+
+        <div ng-if="!IsSalesItems || Vm.SalesItem || Vm.NotHasForecastForSalesItem">
+            <div ng-if="!Vm.HasForecast && !Vm.Loading" class="alert alert-warning">{{ ::Vm.L10N.NoForecastForDay }} {{ DayString | formatDate:"L" }}</div>
+            <h4 ng-if="Vm.HasForecast && !Vm.HasData && !Vm.Loading" class="text-center text-info">{{ ::Vm.L10N.NoDataMessage }}</h4>
+        </div>
+
+        <div ng-show="Vm.HasData  && !Vm.Loading" class="panel panel-default fill-height" ng-class="{
+                'container-1-toolbar': ShowSelectEditableFilterWarning()
+             }">
+            <div ng-if="ShowSelectEditableFilterWarning()">
+                <div class="alert alert-warning">{{ ::Vm.L10N.SelectEditableFilter }}</div>
+            </div>
+
+            <forecast-grid options="GetForecastingOptions()" forecastobject="GetForecastObject()"></forecast-grid>
+        </div>
+    </div>
+</div>

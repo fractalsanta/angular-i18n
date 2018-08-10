@@ -1,0 +1,38 @@
+﻿<div class="panel panel-default fill-height container-1-toolbar">
+    <div class="panel-heading mx-white panel-title">
+        <div class="row">
+            <div class="col-xs-4">
+                <b>{{Translations.HistoryTitle}}</b>
+            </div>
+            <div class="col-xs-4 text-center">
+                <b>{{BusinessDate  | date:'shortDate'}}</b>
+            </div>
+            <div class="col-xs-4 text-right">
+                <button type="button" class="btn btn-default" ng-click="Cancel()">
+                    <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{ Translations.Back }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="forecast-history mx-table-sync panel panel-default fill-height container-1-toolbar">
+            <h4 class="text-center text-info" style="height: 28px;" ng-if="SalesItemDescription">{{ SalesItemDescription }}</h4>
+            <table class="table" mx-table-sync>
+                <thead>
+                    <tr>
+                        <th class="col-xs-1" ng-repeat="h in Header">{{h.trim();}}</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="touch-scrollable">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr ng-repeat="entry in Gridview">
+                            <td class="col-xs-1" ng-repeat="item in entry track by $index">{{item}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

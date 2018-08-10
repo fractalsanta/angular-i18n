@@ -1,0 +1,19 @@
+﻿<div class="btn-group" ng-if="Vm.CalendarStartingDay != null">
+    <button class="btn btn-default" ng-click="PrevWeek()" ng-if="ShowArrows"><i class="fa fa-arrow-left"></i></button>
+    <span class="btn btn-default btn-flat" ng-click="ToggleCalendarDisplay($event)"
+          datepicker-popup="mediumDate" class="pointer-cursor"
+          ng-model="Vm.ActiveDate"
+          ng-change="OnStartDateTimeChange(Vm.ActiveDate)"
+          datepicker-options="DateOptions"
+          is-open="Vm.ShowCalendar"
+          starting-day="Vm.CalendarStartingDay"
+          show-button-bar="false"
+          multi-select="Vm.SelectedDates"
+          show-weeks="false">
+        {{Vm.WeekStartDateString}} - {{Vm.WeekEndDateString}}
+    </span>
+    <button class="btn btn-default" ng-click="ToggleCalendarDisplay($event)" ng-if="!ShowArrows">
+        <i class="fa fa-calendar"></i>
+    </button>
+    <button class="btn btn-default" ng-click="NextWeek()" ng-if="ShowArrows"><i class="fa fa-arrow-right"></i></button>
+</div>

@@ -1,0 +1,148 @@
+﻿<#+
+	DTE DTE { get { return (DTE)((IServiceProvider)this.Host).GetService(typeof(DTE)); } }
+	Project ActiveProject { get { return DTE.ActiveDocument.ProjectItem.ContainingProject; } }
+
+	IEnumerable<ProjectItem> EnumerateProjectItem(ProjectItem p)
+	{
+		yield return p;
+		foreach (var sub in p.ProjectItems.Cast<ProjectItem>())
+			foreach (var sub2 in EnumerateProjectItem(sub))
+				yield return sub2;
+	}
+	IEnumerable<ProjectItem> EnumerateProjectItem(Project p)
+	{
+		foreach (var sub in p.ProjectItems.Cast<ProjectItem>())
+			foreach (var sub2 in EnumerateProjectItem(sub))
+				yield return sub2;
+	}
+	// enumerate projects and code elements
+	IEnumerable<CodeElement> EnumerateCodeElement(CodeElement element)
+	{
+		yield return element;
+		foreach (var sub in element.Children.Cast<CodeElement>()) {
+			foreach(var sub2 in EnumerateCodeElement(sub))
+				yield return sub2;
+		}
+	}
+	IEnumerable<CodeElement> EnumerateCodeElement(CodeElements elements)
+	{
+		foreach (var sub in elements.Cast<CodeElement>()) {
+			foreach(var sub2 in EnumerateCodeElement(sub))
+				yield return sub2;
+		}
+	}
+	IEnumerable<CodeElement> EnumerateCodeElement(FileCodeModel code)
+	{
+		return EnumerateCodeElement(code.CodeElements);
+	}
+
+	IEnumerable<CodeElement> EnumerateCodeElement(ProjectItem p)
+	{
+		return EnumerateCodeElement(p.FileCodeModel.CodeElements);
+	}
+
+	// cache usefull TS data
+	void ParseProject()
+	{
+		if (_allClasses == null)
+		{
+			_allClasses = new List<CodeClass>();
+			_allEnums = new List<CodeEnum>();
+			var proj = ActiveProject;
+			foreach (var item in EnumerateProjectItem(proj)) 
+			{
+				var code = item.FileCodeModel;
+				if (code == null)
+					continue;
+				foreach(var e in EnumerateCodeElement(code))
+				{
+					switch (e.Kind)
+					{
+						case vsCMElement.vsCMElementClass:
+							_allClasses.Add((CodeClass)e);
+							break;
+						case vsCMElement.vsCMElementEnum:
+							_allEnums.Add((CodeEnum)e);
+							break;
+					}
+				}
+			}
+		}
+	}
+	List<CodeClass> _allClasses;
+	List<CodeEnum> _allEnums;
+
+	List<CodeClass> AllClasses {
+		get {
+			ParseProject();
+			return _allClasses;
+		}
+	}
+
+	List<CodeEnum> AllEnums {
+		get {
+			ParseProject();
+			return _allEnums;
+		}
+	}
+
+	IEnumerable<CodeClass> GetParents(CodeClass cs)
+	{
+		foreach (var item in cs.Bases.Cast<CodeElement>().Where(x => x.Kind == vsCMElement.vsCMElementClass).Cast<CodeClass>())
+		{
+			yield return item;
+			foreach (var sup in GetParents(item))
+				yield return sup;
+		}
+	}
+
+	IEnumerable<CodeElement> EnumerateTSMembers(CodeClass _class)
+	{
+		foreach (var member in _class.Children.Cast<CodeElement>()) 
+		{
+			//if (HasAttribute(member, xa => xa.FullName.EndsWith("ToTSAttribute") && xa.Value.EndsWith("TSFlag.Ignore")))
+			//	continue;
+			switch(member.Kind) 
+			{
+				case vsCMElement.vsCMElementFunction:
+					var f = (CodeFunction)member;
+					if (f.IsShared || (f.Access & vsCMAccess.vsCMAccessPublic) == 0)
+						continue;
+					break;
+				case vsCMElement.vsCMElementProperty:
+					var p = (CodeProperty)member;
+					if ((p.Access & vsCMAccess.vsCMAccessPublic) == 0)
+						continue;
+					break;
+				case vsCMElement.vsCMElementVariable:
+					var c = (CodeVariable)member;
+					if ((c.Access & vsCMAccess.vsCMAccessPublic) == 0)
+						continue;
+					break;
+				default:
+					continue;
+			}
+			yield return member;
+		}
+	}
+
+	bool HasAttribute(CodeElement e, Predicate<CodeAttribute> _check) { return GetAttribute(e, _check) != null; }
+
+	CodeAttribute GetAttribute(CodeElement e, Predicate<CodeAttribute> _check)
+	{
+		return (
+			from x in e.Children.Cast<CodeElement>()
+			where x.Kind == vsCMElement.vsCMElementAttribute
+			let xa = (CodeAttribute)x
+			where _check(xa)
+			select xa
+		).FirstOrDefault();
+	}
+
+	// utility on CodeElement
+	string GetText(CodeElement e)
+	{
+		var edit = e.StartPoint.CreateEditPoint();
+		return edit.GetText(e.EndPoint);
+	}
+#>

@@ -1,0 +1,27 @@
+﻿<div class="fill-height">
+    <div class="panel panel-default fill-height container-1-toolbar">
+        <div class="panel-heading mx-white">
+            <button class="btn btn-default" ng-click="Back()"><i class="fa fa-arrow-left"></i> {{L10N.VmBack}} </button>
+            <button class="btn btn-success pull-right" ui-sref=".Details({ViewId:null})"><i class="fa fa-plus"></i> {{L10N.VmCreate}} </button>
+        </div>
+        <div class="touch-scrollable">
+            <ul class="list-group">
+
+                <li mx-repeat-scroll-top class="list-group-item" ng-repeat="view in GetViews()" ui-sref-active="active">
+                    <div class="col-xs-1">
+                        <i class="fa fa-2x" ng-class="{'fa-globe': IsGlobalShared(view) }" title="{{ ::L10N.VmGlobalView }}" ></i> &nbsp;
+                    </div>
+                    <div ui-sref=".Details({ViewId: {{view.ViewId}}})" class="pointer-cursor" ng-if="IsAuthorised(view)">
+                        {{view.ViewName}}
+                        <div class="pull-right">
+                            <i class="fa fa-angle-right fa-2x">&nbsp;</i>
+                        </div>
+                    </div>
+                    <div ng-if="! IsAuthorised(view)">
+                        {{view.ViewName}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

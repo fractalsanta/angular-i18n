@@ -1,0 +1,54 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.LogonModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="ui-content">
+    <div class="box darkBox">
+        <div class="mainContent">
+            <script type="text/javascript" src="/Content/Scripts/bookmark_bubble.js"></script>
+            <script type="text/javascript" src="/Content/Scripts/bookmark_example.js"></script>
+            <h2>Enter login details:</h2>
+            @using (Html.BeginForm("Logon", "Login", FormMethod.Post, new { name = "logonForm", autocomplete = "off", data_ajax = "false" }))
+            {
+                object agencyId = ViewData["AgencyID"];
+
+                if (agencyId == null || agencyId.ToString().Length == 0 || agencyId.ToString() == "0")
+                {
+                <span>Strata Agency ID</span>
+                @Html.TextBoxFor(m => m.AgencyId, new { @class = "field", autocomplete = "off", pattern = "\\d*" })
+                @Html.ValidationMessageFor(m => m.AgencyId)
+                }
+                else
+                {
+                @Html.Hidden("AgencyId", agencyId.ToString())
+                }
+                <span class="inputLabel">User Role</span>
+                @Html.DropDownListFor(m => m.UserTypeId, Model.Roles, new { @class = "field" })
+                @Html.ValidationMessageFor(m => m.UserTypeId)
+                <span class="inputLabel">Access Code</span>
+                @Html.TextBoxFor(m => m.Username, new { @class = "field", autocomplete = "off", type = "text", pattern = "\\d*" })
+                @Html.ValidationMessageFor(m => m.Username)
+                <span class="inputLabel">Password</span>
+                @Html.TextBoxFor(m => m.Password, new { @class = "field", autocomplete = "off", type = "password" })
+                @Html.ValidationMessageFor(m => m.Password)
+            
+                <a href="#" class="coolButton slightlyBiggerButStillCoolButton" style="margin-top: 15px;" data-role="none" onclick="$('form[name=logonForm]').submit();">Sign In</a>
+            
+                @Html.ValidationSummary(true)
+                <span class="validation-summary-errors">@Html.ValidationMessage("error")</span>
+                
+                if (agencyId != null && agencyId.ToString().Length > 0 && agencyId.ToString() != "0")
+                {
+                <div style="clear: both; margin-top: 15px;">
+                    @Html.ActionLink("Find my Username or Password", "ForgotPassword", null, new { style = "text-decoration: none;" })
+                </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div style="background-color: white; margin-left: 8px; margin-right: 0px; margin-top: 13px; margin-bottom: 6px; color: #5E5E5E">
+    <b style="display: block; margin-bottom: 6px; clear: both;">Don't have a username?</b>
+    <span>Talk to your manager about viewing your property details online.</span>
+</div>

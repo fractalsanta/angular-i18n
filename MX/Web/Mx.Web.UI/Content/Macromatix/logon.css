@@ -1,0 +1,437 @@
+﻿.logon {
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+.panel-heading-login-logo {
+  height: 56px;
+  width: 100%;
+  padding: 0px;
+  margin-top: 4px;
+  margin-bottom: 22px;
+  background: url(/Content/Images/macromatix_logo/svg/white_Full.svg) no-repeat center center;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.logon-panel {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-top: 140px;
+  padding: 18px 28px;
+  background-color: rgba(31, 54, 108, 0.8);
+  width: 320px;
+  left: 50%;
+  margin-left: -160px;
+  position: absolute;
+  margin-bottom: 70px;
+  height: 340px;
+}
+@media (max-width: 767px) {
+  .logon-panel {
+    margin-top: 60px;
+  }
+}
+.logon-panel.login-with-pin {
+  margin-top: 100px;
+  height: 420px;
+  text-align: center;
+}
+.no-shadow {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.login-btn,
+.login-btn:focus {
+  background-color: #21366a;
+  color: #fff;
+  border: 1px solid #fff;
+  margin-top: 30px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  font-size: 16px;
+}
+.login-btn:hover,
+.login-btn:active {
+  background-color: #305499;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.login-header-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.login-header {
+  background-color: rgba(33, 54, 106, 0.8);
+  width: 100%;
+  font-size: 24px;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  font-family: "robotolight";
+}
+.login-with-pin .welcome-message {
+  color: #fff;
+  font-size: 14px;
+}
+.login-with-pin .welcome-message .logout-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-with-pin .mini-circle-row {
+  margin-left: 4px;
+}
+.login-with-pin .mini-circle-row :first-child {
+  margin-left: 77px;
+}
+.login-with-pin .mini-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background-color: transparent;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.login-with-pin .mini-circle.filled {
+  background-color: #fff;
+}
+.login-with-pin .pin-circle-row {
+  float: left;
+  margin-left: 10px;
+}
+.login-with-pin .pin-circle-row .pin-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  -webkit-box-shadow: 0px 0px 1px #ffffff;
+  box-shadow: 0px 0px 1px #ffffff;
+  background-color: transparent;
+  float: left;
+  margin-left: 23px;
+  margin-top: 10px;
+  color: white;
+  cursor: pointer;
+}
+.login-with-pin .pin-circle-row .pin-circle .pin-circle-text {
+  font-size: 32px;
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.42857;
+  width: 48px;
+}
+@media only screen and (max-height: 580px) {
+  .login-rbc-logo {
+    display: none;
+  }
+}
+.login-alert-panel {
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  font-size: 14px;
+  height: 30px;
+  color: #fff;
+}
+.login-alert {
+  text-align: center;
+  padding: 3px 35px 3px 35px;
+  z-index: 1;
+  font-family: "robotolight";
+}
+.unsupported-placeholder-label {
+  display: none;
+}
+.k-ie9 .unsupported-placeholder-label {
+  display: block;
+}
+.logon-input {
+  height: 40px;
+  font-size: 18px;
+}
+.login-username {
+  margin-bottom: 10px;
+}
+@-moz-keyframes formShake {
+  0% {
+    margin-left: -160px;
+  }
+  10% {
+    margin-left: -180px;
+  }
+  20% {
+    margin-left: -140px;
+  }
+  30% {
+    margin-left: -180px;
+  }
+  40% {
+    margin-left: -140px;
+  }
+  50% {
+    margin-left: -180px;
+  }
+  60% {
+    margin-left: -140px;
+  }
+  70% {
+    margin-left: -180px;
+  }
+  80% {
+    margin-left: -140px;
+  }
+  90% {
+    margin-left: -180px;
+  }
+  100% {
+    margin-left: -160px;
+  }
+}
+@keyframes formShake {
+  0% {
+    margin-left: -160px;
+  }
+  10% {
+    margin-left: -180px;
+  }
+  20% {
+    margin-left: -140px;
+  }
+  30% {
+    margin-left: -180px;
+  }
+  40% {
+    margin-left: -140px;
+  }
+  50% {
+    margin-left: -180px;
+  }
+  60% {
+    margin-left: -140px;
+  }
+  70% {
+    margin-left: -180px;
+  }
+  80% {
+    margin-left: -140px;
+  }
+  90% {
+    margin-left: -180px;
+  }
+  100% {
+    margin-left: -160px;
+  }
+}
+@-webkit-keyframes formShake {
+  0% {
+    margin-left: -160px;
+  }
+  10% {
+    margin-left: -180px;
+  }
+  20% {
+    margin-left: -140px;
+  }
+  30% {
+    margin-left: -180px;
+  }
+  40% {
+    margin-left: -140px;
+  }
+  50% {
+    margin-left: -180px;
+  }
+  60% {
+    margin-left: -140px;
+  }
+  70% {
+    margin-left: -180px;
+  }
+  80% {
+    margin-left: -140px;
+  }
+  90% {
+    margin-left: -180px;
+  }
+  100% {
+    margin-left: -160px;
+  }
+}
+.login-form-shake {
+  -webkit-animation: formShake .5s;
+  -moz-animation: formShake .5s;
+  -o-animation: formShake .5s;
+  animation: formShake .5s;
+}
+@keyframes alertFadeIn {
+  0% {
+    margin-top: -160px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@-webkit-keyframes alertFadeIn {
+  0% {
+    margin-top: -160px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@-moz-keyframes alertFadeIn {
+  0% {
+    margin-top: -160px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+.alert-fade-in {
+  -moz-animation: alertFadeIn .5s;
+  -o-animation: alertFadeIn .5s;
+  -webkit-animation: alertFadeIn .5s;
+  animation: alertFadeIn .5s;
+}
+.logon-sample .thumbnail {
+  padding: 10px;
+}
+.logon-sample .thumbnail.selected {
+  background-color: #1f366c;
+}
+.logon-sample .thumbnail .logon {
+  position: relative;
+  height: 350px;
+  width: 100%;
+  background-attachment: scroll;
+}
+.logon-sample .thumbnail .login-header {
+  font-size: 5px;
+}
+.logon-sample .thumbnail .logon-panel {
+  height: 100px;
+  width: 150px;
+  margin-top: 90px;
+  margin-left: -75px;
+  padding-top: 10px;
+}
+.logon-sample .thumbnail .logon-panel input {
+  height: 10px;
+  cursor: pointer;
+}
+.logon-sample .thumbnail .logon-panel button {
+  height: 10px;
+  font-size: 7px;
+  margin-top: 15px;
+  padding-top: 3px;
+  outline: none;
+  box-shadow: none;
+}
+.logon-sample .thumbnail .logon-panel button:hover,
+.logon-sample .thumbnail .logon-panel buttonactive,
+.logon-sample .thumbnail .logon-panel buttonfocus {
+  background-color: #1f366c !important;
+  outline: none;
+  box-shadow: none;
+}
+.logon.theme0 {
+  background-image: url(/Core/Auth/Api/LogonImage?key=Mx.Web.UI.Content.Images.background.background_0.jpg);
+}
+.logon.theme1 {
+  background-image: url(/Core/Auth/Api/LogonImage?key=Mx.Web.UI.Content.Images.background.background_1.jpg);
+}
+.logon.theme2 {
+  background-image: url(/Core/Auth/Api/LogonImage?key=Mx.Web.UI.Content.Images.background.background_2.jpg);
+}
+.logon.theme3 {
+  background-image: url(/Core/Auth/Api/LogonImage?key=Mx.Web.UI.Content.Images.background.background_3.jpg);
+}
+.logon.theme4 {
+  background-image: url(/Core/Auth/Api/LogonImage?key=Mx.Web.UI.Content.Images.background.background_4.jpg);
+}
+.logon.theme5 {
+  background-color: #0c162b;
+}
+.logon.theme5 .logon-panel {
+  background-color: #dcdfe8;
+}
+.logon.theme5 .logon-panel.login-with-pin .mini-circle {
+  border: 1px solid rgba(31, 54, 108, 0.8);
+  background-color: transparent;
+}
+.logon.theme5 .logon-panel.login-with-pin .mini-circle.filled {
+  background-color: rgba(31, 54, 108, 0.8);
+}
+.logon.theme5 .logon-panel.login-with-pin .pin-circle {
+  border: 1px solid rgba(31, 54, 108, 0.8);
+  -webkit-box-shadow: 0px 0px 1px rgba(31, 54, 108, 0.8);
+  box-shadow: 0px 0px 1px rgba(31, 54, 108, 0.8);
+  color: rgba(31, 54, 108, 0.8);
+}
+.logon.theme5 .logon-panel.login-with-pin .welcome-message {
+  color: rgba(31, 54, 108, 0.8);
+}
+.logon.theme5 .logon-panel .panel-heading-login-logo {
+  height: 56px;
+  width: 100%;
+  padding: 0px;
+  margin-top: 4px;
+  margin-bottom: 22px;
+  background: url(/Content/Images/macromatix_logo/svg/royalblue_blue_Full.svg) no-repeat center center;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.logon.theme6 {
+  background-color: #1f366c;
+}
+.logon.theme6 .logon-panel {
+  background-color: #d0d3dd;
+}
+.logon.theme6 .logon-panel.login-with-pin .mini-circle {
+  border: 1px solid rgba(31, 54, 108, 0.8);
+  background-color: transparent;
+}
+.logon.theme6 .logon-panel.login-with-pin .mini-circle.filled {
+  background-color: rgba(31, 54, 108, 0.8);
+}
+.logon.theme6 .logon-panel.login-with-pin .pin-circle {
+  border: 1px solid rgba(31, 54, 108, 0.8);
+  -webkit-box-shadow: 0px 0px 1px rgba(31, 54, 108, 0.8);
+  box-shadow: 0px 0px 1px rgba(31, 54, 108, 0.8);
+  color: rgba(31, 54, 108, 0.8);
+}
+.logon.theme6 .logon-panel.login-with-pin .welcome-message {
+  color: rgba(31, 54, 108, 0.8);
+}
+.logon.theme6 .logon-panel .panel-heading-login-logo {
+  height: 56px;
+  width: 100%;
+  padding: 0px;
+  margin-top: 4px;
+  margin-bottom: 22px;
+  background: url(/Content/Images/macromatix_logo/svg/royalblue_blue_Full.svg) no-repeat center center;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.logon.theme7 {
+  background-color: #8792ab;
+}
+.logon.theme8 {
+  background-color: #d0d3dd;
+}

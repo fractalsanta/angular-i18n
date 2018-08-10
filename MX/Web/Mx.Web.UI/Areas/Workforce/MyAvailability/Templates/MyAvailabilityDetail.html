@@ -1,0 +1,53 @@
+﻿<div ng-controller="Workforce.MyAvailability.MyAvailabilityDetailController" class="row fill-height" mx-mobile-ready>
+    <div class="panel panel-default container-1-toolbar fill-height" ng-show="GetSelectedMyAvailabilityDay()" ng-swipe-right="SetDetailedView(false)">
+        <div class="panel-heading mx-white">
+            <div class="row">
+                <div class="col-xs-3 col-md-3">
+                    <button type="button" class="pull-left btn btn-primary visible-xs" ng-click="SetDetailedView(false)">
+                        <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{{L10N.Back}}
+                    </button>
+                </div>
+                <div class="col-xs-9 col-md-9">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary" ng-click="AddAvailability()" ng-show="ShowAddButton()">
+                            <i class="fa fa-plus"></i>
+                            {{L10N.Add}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body touch-scrollable">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>{{L10N.AvailabilityFor}} {{GetSelectedMyAvailabilityDay().Date | formatDate:"dddd"}}</h2>
+                </div>
+            </div>
+            <br />
+            <div class="panel panel-default" ng-hide="! GetSelectedMyAvailabilityDay().Times ||  GetSelectedMyAvailabilityDay().Times.length == 0">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr ng-repeat="time in GetSelectedMyAvailabilityDay().Times">
+                            <td class="min-50 pointer-cursor" ng-click="EditAvailabilityTime(GetSelectedMyAvailabilityDay(),time)">
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                            <td ng-click="EditAvailabilityTime(GetSelectedMyAvailabilityDay(),time)" class="pointer-cursor">
+                                <span ng-show="!time.IsAllDay" class="text-nowrap">{{time.Start | formatDate:"LT"}} - {{time.End | formatDate:"LT"}}</span>
+                                <span ng-show="time.IsAllDay">{{L10N.AllDay}}</span>
+                            </td>
+                            <td class="min-50">
+                                <a ng-click="DeleteAvailabilityTime(GetSelectedMyAvailabilityDay(),time)" class="pointer-cursor">
+                                    <i class="fa fa-trash-o fa-2x"></i>&nbsp;
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="! GetSelectedMyAvailabilityDay().Times ||  GetSelectedMyAvailabilityDay().Times.length == 0">
+                {{L10N.NoAvailability}}
+            </div>
+        </div>
+   </div>
+</div>

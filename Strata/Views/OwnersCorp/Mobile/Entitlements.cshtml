@@ -1,0 +1,96 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.OwnersCorpModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+@section HeadTagsSection
+{
+    <style>
+        .label
+        {
+            width: 220px;
+        }
+    </style>
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Entitlements</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer">
+            <a href="@Url.Action("Menu", "Mobile")" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" /></a>
+        </div>
+        <h2>
+            @ViewData.Model.UserSession.Terminology["Owners Corporation"] Entitlements</h2>
+        @if (ViewData.Model.UserSession.OwnersCorpNames.Count > 1)
+        {
+            @Html.Raw(Html.StrataDropdown(ViewData.Model.UserSession.OwnersCorpNames, ViewData.Model.CurrentOwnersCorpIndex, ((d, i) => Url.Action("Entitlements", new { index = i }))))
+        }
+        else
+        {
+            <h3 class="plan">@ViewData.Model.UserSession.OwnersCorpNames[0].Name</h3>
+        }
+        <h3>Unit Entitlement Sets</h3>
+        @foreach (LevyEntitlement set in ViewData.Model.EntitlementSets)
+        { 
+            <div>
+                Entitlement Set Name:
+            <br />
+                @set.SetName
+                <div class="clear">
+                </div>
+                <br />
+                Total Entitlements:
+            <br />
+                @set.Total
+                <div class="clear">
+                </div>
+                <br />
+                Entitlement Type:
+            <br />
+                @set.EntitlementType
+                <div class="clear">
+                </div>
+                <br />
+                Entitlement Description:
+            <br />
+                @set.Description
+            </div>
+        }
+        <div class="clear">
+        </div>
+        <br />
+        <h3>Lots and Lot Entitlements</h3>
+        @foreach (LotEntitlements lot in ViewData.Model.LotEntitlements)
+        {
+            if (Model.ShowOwnerNameInEntitlements)
+            {
+            <h4>@lot.Owner</h4>
+            }
+            
+            <div class="label">
+                Lot:
+            </div>
+            <div class="value">@lot.LotNumber</div>
+            <div class="clear">
+            </div>
+            <div class="label">
+                Unit:
+            </div>
+            <div class="value">@lot.UnitNumber</div>
+            <div class="clear">
+            </div>
+            
+            if (lot.EntitlementList != null && lot.EntitlementList.Count > 0)
+            {
+                foreach (Entitlement entitlement in lot.EntitlementList)
+                {
+            <div class="label">@entitlement.Name</div>
+            <div class="value">@entitlement.Amount</div>
+            <div class="clear">
+            </div>
+                }
+            }
+            <br />
+        }
+    </div>
+</div>

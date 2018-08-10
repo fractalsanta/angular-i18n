@@ -1,0 +1,14 @@
+﻿@{
+    Layout = null;
+}
+
+@if (Request.IsAuthenticated)
+{
+    <div class="menu">
+    @Html.ActionLink("Contact", "Contact", "Agency", null, null) <span>|</span> @Html.ActionLink("FAQ", "Faq", "Agency", null, null) <span>|</span> @Html.ActionLink("Change Password", "ChangePassword", "Account", null, null) <span>|</span> @Html.ActionLink("Logout", "Logout", "Account") 
+    </div>
+}
+else
+{
+    <div class="menu"> @Html.ActionLink("FAQ", "Faq", "Agency", null, null) </div>
+}

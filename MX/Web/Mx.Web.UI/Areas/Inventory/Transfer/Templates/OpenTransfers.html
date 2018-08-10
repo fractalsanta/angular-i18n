@@ -1,0 +1,36 @@
+﻿<div class="panel panel-default fill-height">
+    <div class="panel-body fill-height">
+        <div class="row fill-height">
+            <div class="col-xs-12 col-sm-12 fill-height">
+                <div class="panel panel-default fill-height container-2-toolbars">
+                    <div class="panel-heading">{{ Translations.TransfersToApproveAndReceive }}</div>
+                    <div class="table-header">
+                        <div id="TableHeader">
+                            <mx-grid-header header="Header"></mx-grid-header>
+                        </div>
+                    </div>
+                    <div class="touch-scrollable">
+                        <table class="table table-striped" mx-scrollable-table header-id="TableHeader" watch="OpenTransfers">
+                            <tr ng-repeat="openTransfer in OpenTransfers track by openTransfer.Id"
+                                ng-click="ViewTransfer(openTransfer.Id)" mx-repeat-scroll-top class="top" data-transfer-id="{{ openTransfer.Id }}">
+                                <td ng-if="ShowDirection" class="col-xs-1"> {{ openTransfer.DirectionName }} </td>
+                                <td class="col-xs-3">{{ openTransfer.StoreName }}</td>
+                                <td class="col-xs-2">{{ openTransfer.CreateDate | formatDate:'L' }}</td>
+                                <td style="col-xs-3">{{ openTransfer.InitiatedBy || 'N/A'}}</td>
+                                <td class="col-xs-1">{{ openTransfer.TransferQty }}</td>
+                                <td class="col-xs-1">{{ openTransfer.StatusName }}</td>
+                                <td class="col-xs-1 text-right">
+                                    <button class="btn btn-default">{{Translations.View}}</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="alert alert-warning" ng-if="OpenTransfers && !OpenTransfers.length">
+                            <div>{{ Translations.NoTransfersToApproveOrRequest }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

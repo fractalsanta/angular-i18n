@@ -1,0 +1,32 @@
+﻿<div class="fill-height container-1-toolbar">
+    <form name="SearchForm" autocomplete="off" ng-submit="SearchItems($event)">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="search" class="form-control mx-fx-salesitem-search" name="SearchParamTemp" select-on-focus-input
+                           placehold="{{ Translations.SearchForItems }}"
+                           ng-click="OnInputClick($event)" ng-model="SearchParamTemp" ng-minlength="1" />
+                </div>
+                <div class="col-xs-3">
+                    <button type="submit" class="btn btn-default pull-right"
+                            ng-disabled="SearchForm.$invalid || !SearchParamTemp.length"
+                            ng-click="SearchItems($event)">
+                        <i class="fa fa-search ico-16"></i>&nbsp;&nbsp;{{Translation.Search}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="mx-fg-salesitemslist touch-scrollable" disable-text-selection>
+        <div class="text-center text-info alert alert-warning"
+             ng-show="!FilteredForecastSalesItems.length && !IsAjaxBusy()">{{ Translations.NoSalesItemResults}}</div>
+        <ul ng-show="FilteredForecastSalesItems.length"
+            class="list-unstyled list-striped"
+            ng-click="IsAjaxBusy() || OnSalesItemClick($event)">
+            <li ng-class="{'activeItem': ForecastSalesItems.SelectedSalesItem === s}"
+                ng-repeat="s in FilteredForecastSalesItems | limitTo:100">
+                {{ s.Description }} - <b>{{ s.ItemCode }}</b>
+            </li>
+        </ul>
+    </div>
+</div>

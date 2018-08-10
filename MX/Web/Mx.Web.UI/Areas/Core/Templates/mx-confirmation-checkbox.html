@@ -1,0 +1,15 @@
+﻿<div class="modal-header">
+    {{::Model.Title}}<button type="button" class="close" ng-click="Cancel()">&times;</button>
+</div>
+
+<div class="modal-body form-group">
+    <div class="lines">{{::Model.Message}}</div>
+    <span ng-click="Model.Checked = !Model.Checked" class="pointer-cursor lines" disable-text-selection>
+        <i class="ico-16 fa" ng-class="Model.Checked ? 'fa-check-square-o' : 'fa-square-o'"></i>&nbsp;{{::Model.CheckboxText}}
+    </span>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-left" ng-click="Cancel()">{{::Model.CancelText}}</button>
+    <button type="submit" class="btn {{::ButtonClass}}" ng-click="Close()">{{::Model.ConfirmText}}</button>
+</div>
