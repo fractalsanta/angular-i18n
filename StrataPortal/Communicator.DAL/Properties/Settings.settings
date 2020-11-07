@@ -1,0 +1,38 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Communicator.DAL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RestCentralUatConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=ai8zxgvi72.database.windows.net;Initial Catalog=RestCentralUat;User ID=AARockend;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=ai8zxgvi72.database.windows.net;Initial Catalog=RestCentralUat;User ID=AARockend;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="RockendCentral_UatConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Dev;Persist Security Info=True;User ID=rockend-admin@rockend-db-dev;Password=Bvc9P8JFj@c47-%e;Connect Timeout=60&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Dev;Persist Security Info=True;User ID=rockend-admin@rockend-db-dev;Password=Bvc9P8JFj@c47-%e;Connect Timeout=60</Value>
+    </Setting>
+    <Setting Name="RockendCentral_DevConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Dev;User ID=rockend-admin;Password=Bvc9P8JFj@c47-%e;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Dev;User ID=rockend-admin;Password=Bvc9P8JFj@c47-%e;Encrypt=False;TrustServerCertificate=True</Value>
+    </Setting>
+    <Setting Name="RockendCentral_UatConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Uat;User ID=rockend-admin;Encrypt=True;TrustServerCertificate=False&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Uat;User ID=rockend-admin;Encrypt=True;TrustServerCertificate=False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

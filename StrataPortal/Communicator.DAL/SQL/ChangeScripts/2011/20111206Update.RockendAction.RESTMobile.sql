@@ -1,0 +1,2 @@
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.TenantSearch2' Where ActionName = 'TenantSearch'
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.CreditorSearch2' Where ActionName = 'CreditorSearch'

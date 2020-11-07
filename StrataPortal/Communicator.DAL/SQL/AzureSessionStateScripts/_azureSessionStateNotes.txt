@@ -1,0 +1,23 @@
+﻿refer to this blog for instructions that I used:
+http://blogs.msdn.com/b/sqlazure/archive/2010/08/04/10046103.aspx
+
+I'm not setting this db up with dbUpdater because I don't expect it to change at all,
+plus easier to just use the one session state db across all environments (doesn't matter
+if all environments share the same state db...that I can think of)
+
+Scripts can be used to setup a new db if need be (eg on your local dev machine).
+To setup in Azure dont run the ASPStateInstall script, it just creates the db which 
+needs to be done manually on SQL Azure.
+
+
+
+*** Jan 2012 ***
+*** State Bug Fix mw ***
+Script changes taken from: 
+http://social.msdn.microsoft.com/Forums/en-US/windowsazuredata/thread/cd2f0b6f-31b8-4982-ad32-79cae92211af/
+
+In Azure the State code was producing this error:
+Unable to cast object of type 'System.DBNull' to type 'System.Byte[]'
+if the size of the session data was 'big'.
+
+

@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Frequently Asked Questions";
+    var faqs = new List<Tuple<string, string>>()
+    {
+        Tuple.Create("How do I change my password?", "Click on the 'Change password' link at the top right of the screen and follow the prompts."),
+        Tuple.Create("Nothing happens when I view my reports", "Your browser may require you to give permission to download PDF files. Please check for notifications at the top of your screen when you click on the View button."),
+        Tuple.Create("I get an error message when I view my reports", "You may be trying to download a report that does not contain any data for the selected period. Please check with your Manager."),
+        Tuple.Create("Can anyone else see my reports?", "The only way to access your reports is to log in via this website using the login details provided to you by your Manager. As a precaution it is recommended that you do not share these login details with anyone."),
+        Tuple.Create("I paid my levies earlier today. When will that payment appear on my current owner account?", "The information is updated automatically when the transaction is processed by your Manager. Payments that were made electronically (EFT, BPAY) will show on your ledger when the transaction appears on your the agent's bank statement and after it has been processed by them. Payments made electronically on Fridays, weekends or public holidays can take longer to appear on the ledger."),
+        Tuple.Create("What type of transactions will I be able to see on my reports?", "The information that is available from this portal website is a duplicate of what is provided by your Manager produced in their office."),
+        Tuple.Create("I did not receive an email with my password", "If the email is not in your Junk Mailbox, please contact your Manager to make sure they have your updated email address.")
+    };
+}
+@section HeadTagsSection
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Hide all dds
+            $("dl.v_show_hide dd").hide();
+            $('dl.v_show_hide dt .state .expanded').hide();
+
+            //  When a dt is clicked, 
+            $("dl.v_show_hide dt").click(function () {
+                //  Toggle the slideVisibility of the dd directly after the clicked dt
+                //  And hide any dds that are siblings of that "just shown" dd.
+                var currentQ = $(this);
+                var currentA = currentQ.next();
+                
+                toggleState(currentA.is(':hidden'), currentQ);
+                currentA.slideToggle('fast');
+                
+                currentA.siblings('dd').each(function (index, answer) {
+                    var q = $(answer).prev();
+                    
+                    toggleState(false, q);
+                    $(answer).slideUp('fast');
+                });
+            });
+        });
+
+        function toggleState(hidden, q) {
+            if (hidden) {
+                q.find('.state .collapsed').hide();
+                q.find('.state .expanded').show();
+            }
+            else {
+                q.find('.state .collapsed').show();
+                q.find('.state .expanded').hide();
+            }
+        }
+    </script>
+    <style>
+        dl.v_show_hide dt{
+            color: rgba(97, 97, 97, 1);
+            background-color: rgba(206, 206, 206, 0.5);
+            font-size: 15px;
+            font-weight: bold;            
+            padding: 5px 5px 5px 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        dl.v_show_hide dd{            
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 10px;           
+        }
+        .state {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;            
+            float: right;
+            margin: 3px auto;
+        }
+    </style>
+}
+<dl class="v_show_hide">
+    <h1>Frequently Asked Questions</h1>
+    @foreach(var faq in faqs)
+    {
+        <dt>@faq.Item1
+            <span class="state">
+                <img class="collapsed" src="/Content/Images/arrow-down.png" />
+                <img class="expanded" src="/Content/Images/arrow-up.png" />
+            </span>
+        </dt>
+        <dd>@faq.Item2</dd>
+    }
+    <dt>The website does not display correctly on my screen
+        <span class="state">
+            <img class="collapsed" src="/Content/Images/arrow-down.png" />
+            <img class="expanded" src="/Content/Images/arrow-up.png" />
+        </span>
+    </dt>
+    <dd>
+        Your browser may need to be updated. The website is optimised for:
+        <p>
+            <ul class="ticks">
+                <li>
+                    <a href="http://windows.microsoft.com/en-AU/internet-explorer/products/ie/home"
+                       target="_blank">Microsoft IE9</a>
+                </li>
+                <li><a href="http://www.mozilla.org/en-US/firefox/new/" target="_blank">Mozilla Firefox</a></li>
+                <li>
+                    <a href="http://www.google.com/chrome/?brand=CHKB&utm_campaign=en&utm_source=en-ha-aunz-ct&utm_medium=ha"
+                       target="_blank">Google Chrome</a>
+                </li>
+            </ul>
+        </p>
+    </dd>
+</dl>

@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataWebsite.Model
+@if (Request.IsAuthenticated)
+{
+    UserSession session = Session["UserSession"] as UserSession;
+    <div class="menuContainer">
+        <table>
+            <tr>
+                <td>
+                    <div class="menu">
+                        <a href="../OwnersCorp/General">Owners Corporation</a>
+                    </div>
+                    <div class="spacer">
+                    </div>
+                </td>
+                <td>
+                    <div class="menu">
+                        <a href="../LotOwner/Contacts">Portfolio</a>
+                    </div>
+                    <div class="spacer">
+                    </div>
+                </td>
+                @if (ViewBag.IsExecutiveMember)
+                {
+                    <td>
+                        <div class="menu">
+                            <a href="../CommitteeMember/Main">Committee Member</a>
+                        </div>
+                        <div class="spacer">
+                        </div>
+                    </td>
+                }
+                @if (ViewBag.StrataShowReports)
+                {
+                    <td>
+                        <div class="menu">
+                            <a href="../Reports/Index?index=0">Reports</a>
+                        </div>
+                        <div class="spacer">
+                        </div>
+                    </td>
+                }
+                @if (ViewBag.StrataShowMeetings)
+                {
+                    <td>
+                        <div class="menu">
+                            <a href="../Meeting/Index?index=0">Meetings</a>
+                        </div>
+                        <div class="spacer">
+                        </div>
+                    </td>
+                }
+                @if (@ViewBag.ShowDocumentsTab)
+                {
+                    <td>
+                        <div class="menu">
+                            <a href="../Documents/Index">Documents</a>
+                        </div>
+                        <div class="spacer">
+                        </div>
+                    </td>
+                }
+                @if (@ViewBag.ShowMaintenanceTab)
+                {
+                    <td>
+                        <div class="menu">
+                            <a href="../Maintenance/Index">Maintenance</a>
+                        </div>
+                        <div class="spacer">
+                        </div>
+                    </td>
+                }
+            </tr>
+        </table>
+    </div>
+}

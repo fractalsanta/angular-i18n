@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RockendCentral-Uat" Class="RestCentral" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=rockend-db-dev.database.windows.net;Initial Catalog=RockendCentral-Uat;User ID=rockend-admin;Encrypt=True;TrustServerCertificate=False" SettingsObjectName="Communicator.DAL.Properties.Settings" SettingsPropertyName="RockendCentral_UatConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.__RefactorLog" Member="__RefactorLog">
+    <Type Name="__RefactorLog">
+      <Column Name="OperationKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Activation" Member="Activation">
+    <Type Name="Activation">
+      <Column Name="ActivationId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgencyApplicationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MachineName" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="AgencyApplication_Activation" Member="AgencyApplication" ThisKey="AgencyApplicationID" OtherKey="AgencyApplicationID" Type="AgencyApplication" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DataDictionary" Member="DataDictionary">
+    <Type Name="DataDictionary">
+      <Column Name="DataDictionaryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Version" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Dictionary" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" />
+      <Column Name="tStamp" Member="TStamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserType" Member="UserType">
+    <Type Name="UserType">
+      <Column Name="UserTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="UserType_UserLogin" Member="UserLogins" ThisKey="UserTypeId" OtherKey="UserTypeId" Type="UserLogin" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schedule" Member="Schedules">
+    <Type Name="Schedule">
+      <Column Name="ScheduleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DelayQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DelayType" Type="System.String" DbType="NVarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="LastRun" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Schedule_ScheduleParameter" Member="ScheduleParameters" ThisKey="ScheduleId" OtherKey="ScheduleId" Type="ScheduleParameter" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ScheduleParameter" Member="ScheduleParameters">
+    <Type Name="ScheduleParameter">
+      <Column Name="ScheduleParameterId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ScheduleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="Schedule_ScheduleParameter" Member="Schedule" ThisKey="ScheduleId" OtherKey="ScheduleId" Type="Schedule" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StaticScheduleParameter" Member="StaticScheduleParameters">
+    <Type Name="StaticScheduleParameter">
+      <Column Name="StaticScheduleParameterId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StaticScheduleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="StaticSchedule_StaticScheduleParameter" Member="StaticSchedule" ThisKey="StaticScheduleId" OtherKey="StaticScheduleId" Type="StaticSchedule" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AgentContent" Member="AgentContents">
+    <Type Name="AgentContent">
+      <Column Name="AgentContentId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgencyAccessId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Banner" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TopImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MiddleImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BottomRightImage" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LoginPageTopText" Type="System.String" DbType="VarChar(128)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OwnerReportsOn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IncExpReportsOn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ButtonColor" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="AgencyUrl" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="FooterBannerUrl" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="FooterBanner" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AgencyApplicationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ButtonTextColor" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ShowAgencyContactDetails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowPropManegerContactDetails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerShowPropertyImage" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerShowPropertyDescription" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerShowTenantDetails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowMyDetailspage" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerShowMyDetailsPage" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TenantShowMyDetailsPage" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TenantShowPropertyImage" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TenantShowTenancyDetails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserImportAccessDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasFileSmart" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FileSmartUserName" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="FileSmartPassword" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="StrataShowMeetings" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StrataContactEmail" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="RESTFileSmartUserName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="RESTFileSmartPassword" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="RESTShowDocumentsPageOwner" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RESTShowDocumentsPageTenant" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IPhoneIcon" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HasBanner" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasFooterBanner" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasIPhoneIcon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsContactEmailMandatory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="rmh.AgencyAccess" Member="AgencyAccesses">
+    <Type Name="AgencyAccess">
+      <Column Name="AgencyAccessID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgencyName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AgencyGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SageName" Type="System.String" CanBeNull="true" />
+      <Column Name="Updated" Type="System.DateTimeOffset" CanBeNull="false" />
+      <Association Name="AgencyAccess_AgencyApplication" Member="AgencyApplications" ThisKey="AgencyAccessID" OtherKey="AgencyAccessID" Type="AgencyApplication" />
+    </Type>
+  </Table>
+  <Table Name="rmh.ServiceAgencyApplication" Member="ServiceAgencyApplications">
+    <Type Name="ServiceAgencyApplication">
+      <Column Name="ServiceAgencyApplicationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgencyApplicationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Association Name="Service_ServiceAgencyApplication" Member="Service" ThisKey="ServiceID" OtherKey="ServiceID" Type="Service" IsForeignKey="true" />
+      <Association Name="AgencyApplication_ServiceAgencyApplication" Member="AgencyApplication" ThisKey="AgencyApplicationID" OtherKey="AgencyApplicationID" Type="AgencyApplication" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="rmh.Service" Member="Services">
+    <Type Name="Service">
+      <Column Name="ServiceID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ServiceName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ServicePassword" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AllAgencies" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AppCode" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Association Name="Service_ServiceAgencyApplication" Member="ServiceAgencyApplications" ThisKey="ServiceID" OtherKey="ServiceID" Type="ServiceAgencyApplication" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserLogin" Member="UserLogins">
+    <Type Name="UserLogin">
+      <Column Name="UserLoginId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicationKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="AccessGranted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLogin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccountStatusInREST" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="UserType_UserLogin" Member="UserType" ThisKey="UserTypeId" OtherKey="UserTypeId" Type="UserType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="rmh.Hits" Member="Hits">
+    <Type Name="Hit">
+      <Column Name="HitID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RequestTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ServiceKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ResponseTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="DeviceType" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="AppVersion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SpecialAppKey" Member="SpecialAppKeys">
+    <Type Name="SpecialAppKey">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AppKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TimeKey" Type="System.DateTimeOffset" DbType="DateTimeOffset" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StaticSchedule" Member="StaticSchedules">
+    <Type Name="StaticSchedule">
+      <Column Name="StaticScheduleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicationCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RunTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DelayQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DelayType" Type="System.String" DbType="NVarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="StaticSchedule_StaticScheduleParameter" Member="StaticScheduleParameters" ThisKey="StaticScheduleId" OtherKey="StaticScheduleId" Type="StaticScheduleParameter" />
+    </Type>
+  </Table>
+  <Table Name="rmh.AdminSetting" Member="AdminSettings">
+    <Type Name="AdminSetting">
+      <Column Name="AdminSettingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FtpSite" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FtpUserName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FtpPassword" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="RwacVersion" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedSageCompanyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastCheckedSchedulesDate" Type="System.DateTimeOffset" DbType="DateTimeOffset" CanBeNull="true" />
+      <Column Name="RwacBetaVersion" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DeployerMinuteInterval" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeploySecondThrottle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RwacDeploy" Member="RwacDeploys">
+    <Type Name="RwacDeploy">
+      <Column Name="RwacDeployId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AppKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentVersion" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DeployVersion" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Attempts" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastAttempt" Type="System.DateTimeOffset" DbType="DateTimeOffset" CanBeNull="true" />
+      <Column Name="UpdateConfirmed" Type="System.DateTimeOffset" DbType="DateTimeOffset" CanBeNull="true" />
+      <Column Name="IsBeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="LastError" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="rmh.AgencyInfo" Member="AgencyInfos">
+    <Type Name="AgencyInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(1024) NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTimeOffset" DbType="DateTimeOffset" CanBeNull="true" />
+      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgencyInfoMetaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="AgencyInfoMeta_AgencyInfo" Member="AgencyInfoMeta" ThisKey="AgencyInfoMetaId" OtherKey="AgencyInfoMetaId" Type="AgencyInfoMeta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="rmh.AgencyInfoMeta" Member="AgencyInfoMetas">
+    <Type Name="AgencyInfoMeta">
+      <Column Name="AgencyInfoMetaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SerialNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="SageName" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Association Name="AgencyInfoMeta_AgencyInfo" Member="AgencyInfos" ThisKey="AgencyInfoMetaId" OtherKey="AgencyInfoMetaId" Type="AgencyInfo" />
+    </Type>
+  </Table>
+  <Table Name="rmh.AgencyApplication" Member="AgencyApplications">
+    <Type Name="AgencyApplication">
+      <Column Name="AgencyApplicationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgencyAccessID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationCode" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="ApplicationKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SerialNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Listened" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Version" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rockend" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RWACVersion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Column Name="AmhMachine" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AppMachine" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AltSageClientCode" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="AppmhVersion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WordVersion" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Word64" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ExcelVersion" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Excel64" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReporterVersion" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MachineNow" Type="System.DateTimeOffset" DbType="DateTimeOffset" CanBeNull="true" />
+      <Column Name="Timezone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeOffset" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTimeOffset" DbType="DateTimeOffset NOT NULL" CanBeNull="false" />
+      <Association Name="AgencyApplication_Activation" Member="Activations" ThisKey="AgencyApplicationID" OtherKey="AgencyApplicationID" Type="Activation" />
+      <Association Name="AgencyApplication_ServiceAgencyApplication" Member="ServiceAgencyApplications" ThisKey="AgencyApplicationID" OtherKey="AgencyApplicationID" Type="ServiceAgencyApplication" />
+      <Association Name="AgencyAccess_AgencyApplication" Member="AgencyAccess" ThisKey="AgencyAccessID" OtherKey="AgencyAccessID" Type="AgencyAccess" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="rmh.RockendAction" Member="RockendActions">
+    <Type Name="RockendAction">
+      <Column Name="RockendActionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AssemblyName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BetaAssemblyName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.UpdateLastCheckedSchedulesDate" Method="UpdateLastCheckedSchedulesDate">
+    <Parameter Name="LastCheckedSchedulesDate" Parameter="lastCheckedSchedulesDate" Type="System.DateTimeOffset" DbType="DateTimeOffset" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetAppKeysWithUpdatedSchedule" Method="GetAppKeysWithUpdatedSchedule">
+    <Parameter Name="DateTimeOffsetNow" Parameter="dateTimeOffsetNow" Type="System.DateTimeOffset" DbType="DateTimeOffset" Direction="InOut" />
+    <ElementType Name="GetAppKeysWithUpdatedScheduleResult">
+      <Column Name="ApplicationKey" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="rmh.CheckAgencyGUIDAndSetRWACVersion" Method="CheckAgencyGUIDAndSetRWACVersion">
+    <Parameter Name="AgencyGUID" Parameter="agencyGUID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="ApplicationKey" Parameter="applicationKey" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ApplicationCode" Parameter="applicationCode" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="ApplicationDescription" Parameter="applicationDescription" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="SerialNumber" Parameter="serialNumber" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Version" Parameter="version" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AgencyName" Parameter="agencyName" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="RWACVersion" Parameter="rWACVersion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AppmhVersion" Parameter="appmhVersion" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CheckAgencyGUIDAndSetRWACVersionResult">
+      <Column Name="ApplicationKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgencyGUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

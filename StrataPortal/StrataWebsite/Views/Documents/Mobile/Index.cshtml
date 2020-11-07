@@ -1,0 +1,94 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.DocumentsModel
+@using Rockend.iStrata.StrataWebsite.Model
+@{
+    ViewBag.Title = "Documents";
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Documents</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer" style="margin-bottom: 16px;">
+            <a href="#" data-rel="back" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" />
+            </a>
+        </div>
+        @if (Model != null && Model.Documents != null && Model.Documents.Count > 0)
+        {
+            <div class="section" style="overflow: scroll;">
+                <script type="text/javascript">
+
+                    $(function () {
+                        var isDocsOn = "@Html.Raw(Model.AgentContentStrata.IsFsDocumentDescriptionOn.ToString().ToUpper())";
+                        var header = (isDocsOn === "TRUE")
+                            ? { 3: { sorter: "shortDate" } }
+                            : { 2: { sorter: "shortDate" } };
+
+                        $("table").tablesorter({
+                            dateFormat: "mmddyyyy",
+
+                            headers: header
+                        });
+
+
+                    });
+
+                </script>
+                <span style="margin-left: 3%; margin-bottom: 5px; display: block; ">Sort by: </span>
+                <table id="myTable" class="tablesorter documents">
+                    <thead>
+                        <tr>
+                            <th style="">
+                                Plan
+                            </th>
+                            <th style="">
+                                Document Type
+                            </th>
+                            @if (Model.AgentContentStrata.IsFsDocumentDescriptionOn)
+                            {
+                                <th style="">Description</th>
+                            }
+                            <th data-sorter="shortDate" data-date-format="ddmmyyyy" style="">
+                                Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DocumentModel doc in Model.Documents)
+                        {
+                            <tr>
+                                <td class="plan">
+                                    @doc.PlanNumber
+                                </td>
+
+                                @if (Model.AgentContentStrata.IsFsDocumentDescriptionOn)
+                                {
+                                <td class="documentType">
+                                    @Html.ActionLink(doc.DocumentType, "GetDocument", new { folderId = doc.FolderId, libraryId = doc.LibraryId, documentId = doc.DocumentId }, new { data_ajax = "false" })
+                                </td>
+                                    <!-- only add description if it is switched on -->
+                                <td class="description">@doc.Description</td>
+                                }
+                                else
+                                {
+                                    <td class="documentType" style="width: 150px;">
+                                        @Html.ActionLink(doc.DocumentType, "GetDocument", new { folderId = doc.FolderId, libraryId = doc.LibraryId, documentId = doc.DocumentId }, new { data_ajax = "false" })
+                                    </td>
+                                }
+
+
+                                <td class="date">
+                                    @doc.Date.ToShortDateString()
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <span>No documents to display.</span>
+        }
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<ion-grid>
+  <ion-row align-items-center>
+    <ion-col text-center>
+      <label for="gauge1">Active Properties</label>
+      <kendo-arcgauge #arc [value]="monthData.ActiveProp" color="#2AB6A8" id="gauge1">
+        <kendo-arcgauge-scale [rangeSize]="20"></kendo-arcgauge-scale>
+        <ng-template kendoArcGaugeCenterTemplate let-value="activeProperties">
+          {{ monthData.ActiveProp }}
+        </ng-template>
+      </kendo-arcgauge>
+    </ion-col>
+    <ion-col text-center>
+      <label for="gauge2">Active Leases</label>
+      <kendo-arcgauge #arc [value]="monthData.TDActiveLeases" color="#2AB6A8" id="gauge2">
+        <kendo-arcgauge-scale [rangeSize]="20"></kendo-arcgauge-scale>
+        <ng-template kendoArcGaugeCenterTemplate let-value="activeLeases">
+          {{ monthData.TDActiveLeases }}
+        </ng-template>
+      </kendo-arcgauge>
+    </ion-col>
+  </ion-row>
+  <ion-row align-items-center>
+    <ion-col text-center>
+      <label for="gauge3">In Arrears</label>
+      <kendo-arcgauge #arc [value]="monthData.TDTenancyInArrearsCount" color="#2AB6A8" id="gauge3">
+        <kendo-arcgauge-scale [rangeSize]="20"></kendo-arcgauge-scale>
+        <ng-template kendoArcGaugeCenterTemplate let-value="inArrears">
+          {{ monthData.TDTenancyInArrearsCount }}
+        </ng-template>
+      </kendo-arcgauge>
+    </ion-col>
+    <ion-col text-center>
+      <label for="gauge4">Vacant Properties</label>
+      <kendo-arcgauge #arc [value]="monthData.TDVacantProp" color="#2AB6A8" id="gauge4">
+        <kendo-arcgauge-scale [rangeSize]="20"></kendo-arcgauge-scale>
+        <ng-template kendoArcGaugeCenterTemplate let-value="vacantProperties">
+          {{ monthData.TDVacantProp }}
+        </ng-template>
+      </kendo-arcgauge>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

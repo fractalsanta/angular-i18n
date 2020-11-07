@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6007ED36-BA04-4388-A6FA-BF425534B8FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Communicator.DAL</RootNamespace>
+    <AssemblyName>Communicator.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>
+    </NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BuildBox|AnyCPU'">
+    <OutputPath>bin\BuildBox\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\iRock.DAL.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Security\RWAC.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling, Version=5.1.1209.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\EnterpriseLibrary.WindowsAzure.TransientFaultHandling.5.1.1212.0\lib\NET4\Microsoft.Practices.EnterpriseLibrary.WindowsAzure.TransientFaultHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.TransientFaultHandling.Core, Version=5.1.1209.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\WindowsAzure.ServiceBus.4.0.0\lib\net45-full\Microsoft.ServiceBus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.WindowsAzure.StorageClient.1.0.0\lib\net\Microsoft.WindowsAzure.StorageClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Rx-Core.2.2.5\lib\net40\System.Reactive.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Rx-Interfaces.2.2.5\lib\net40\System.Reactive.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Rx-Linq.2.2.5\lib\net40\System.Reactive.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Rx-PlatformServices.2.2.5\lib\net40\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activation.cs" />
+    <Compile Include="AdminSetting.cs" />
+    <Compile Include="AgencyInfo.cs" />
+    <Compile Include="AgencyInfoMeta.cs" />
+    <Compile Include="AgentContent.cs" />
+    <Compile Include="CommunicatorData.cs">
+      <DependentUpon>CommunicatorData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="CommunicatorData.designer.cs">
+      <DependentUpon>CommunicatorData.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Entities\AgentContentRest.cs" />
+    <Compile Include="Entities\AgentContentStrata.cs" />
+    <Compile Include="Entities\MessageCache.cs" />
+    <Compile Include="Helpers\RetryExtensions.cs" />
+    <Compile Include="Helpers\RetryQueryable.cs" />
+    <Compile Include="Helpers\RetryQueryProvider.cs" />
+    <Compile Include="CentralRepository.cs" />
+    <Compile Include="IGenericRepository.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RestCentral.cs" />
+    <Compile Include="Models\AgentContentModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AgencyAccess.cs" />
+    <Compile Include="AgencyApplication.cs" />
+    <Compile Include="RockendAction.cs" />
+    <Compile Include="RwacDeploy.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="ServiceAgencyApplication.cs" />
+    <Compile Include="Schedule.cs" />
+    <Compile Include="SpecialAppKey.cs" />
+    <Compile Include="StaticSchedule.cs" />
+    <Compile Include="UserLogin.cs" />
+    <Compile Include="UserType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Security\RWAC.pfx">
+      <Link>RWAC.pfx</Link>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CommunicatorData.dbml">
+      <SubType>Designer</SubType>
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CommunicatorData.designer.cs</LastGenOutput>
+    </None>
+    <None Include="CommunicatorData.dbml.layout">
+      <DependentUpon>CommunicatorData.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\bannerStrata.jpg" />
+    <Content Include="SQL\AzureSessionStateScripts\ASPStateWithSizeBugFix.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111020.RockendAction.Update.ForgotPassword2.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111023.RockendAction.Update.ForgotPassword3.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\devineBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agile\Agile.Shared\Agile.Diagnostics\Agile.Diagnostics.csproj">
+      <Project>{CFD72DBA-BFF0-4CB5-92C8-308C877D78B1}</Project>
+      <Name>Agile.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Communicator.Image\Communicator.ImageHelper.csproj">
+      <Project>{4512116D-8080-407C-82ED-26391178EFE0}</Project>
+      <Name>Communicator.ImageHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommunicatorDto\CommunicatorDto.csproj">
+      <Project>{AEC7A417-1083-4EB7-B379-9DDD15A65B65}</Project>
+      <Name>CommunicatorDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rockend.Common\Rockend.Common.csproj">
+      <Project>{EAFF3738-13FF-4B30-AA87-645A0D7C99BA}</Project>
+      <Name>Rockend.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL\1.databaseSetup.sql" />
+    <Content Include="SQL\2.DbUpdaterSetup.sql" />
+    <Content Include="SQL\3.NotAzure.create.login.AARockend.sql" />
+    <Content Include="SQL\AzureSessionStateScripts\ASPStateInstall.sql" />
+    <Content Include="SQL\AzureSessionStateScripts\_azureSessionStateNotes.txt" />
+    <Content Include="SQL\AzureSessionStateScripts\InstallSqlState.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110801.create.vw_Hits.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110810.drop.UsageStats.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110811.drop.UsageActivity.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110819.Create.DataDictionary.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110905.Add.WebRequest.TimeStamp.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110905.Alter.AddRequest.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110905.CreateColumn.ButtonColor.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110919.Hits.AddColumn.Notes.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110920.vw_Hits.recompile.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20110925.Create.Logging.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111006.Update.OwnerInfoAction.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111007.Add.RockendAction.Namespace.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111007.Insert.RockendAction.PropertySearch.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111007.Update.RockendAction.Namespaces.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111009.AlterTable.Logging.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111009.CreateColumn.Listened.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111010.procs.LoggingAll.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111016.AgentContent.ClusterPK.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111025.Insert.RockendAction.OwnerTenantSearch.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111026.Activation.Create.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111026.Insert.RockendAction.NewActions.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111026.Insert.RockendAction.SaleSearch.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111118.addDailyCheck.Action.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111206.RockendAction.Create.SMH.LoginCheck.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111206Update.RockendAction.RESTMobile.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111209.Create.vw_ActivatedClients.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111209.Create.vw_HitCountByAppKey.sql" />
+    <Content Include="SQL\ChangeScripts\2011\20111223.Insert.RockendAction.CopyRESTFile.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120127_UpdatePropertySearchProcessor.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120129.addColumn.UserLogin.LastLogin.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120129.create.DeleteOldLoggingRecords.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120201.addColumn.ServiceAgencyApplication.IsActive.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120201.insert.Service.RESTMobile.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120202.modify.addRequest.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120227.CheckAgencyGUID.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120229.UpdateActions.RemoveRockendLogger.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120307.AddAction.UploadLogs.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120314.Add.StrataMobileActions.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120317.Action.AddDelayFor.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120318.Action.AddRetInfo.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120323.Update.RockendAction.RESTMobile.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120328.Add.Service.StrataMobile.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120329.Add.ServiceStrataMobile.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120329.Update.RwacUpdateAction.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables2.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables3.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables4.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables5.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables6.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables7.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables8.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Create.ScheduleTables9.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120409.Update.DailyCheckAction.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120411.Add.RockendAction.RefreshSQL.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120416.Add.Services.KPIREIWA.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120420.Insert.StaticSchedule.RP.RefreshSQL.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120420.Update.ActionsForIndexes.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20120503.Add.REIWAKPIActions.sql" />
+    <Content Include="SQL\ChangeScripts\2012\20121108.Update to CheckAgencyGuid.sql" />
+    <Content Include="SQL\ChangeScripts\20160421.AgentContentREST.Add.ShowOwnerContacts.sql" />
+    <Content Include="SQL\ChangeScripts\20150930.AgentContentStrata.Add.IsFsDocumentDescriptionsOn.sql" />
+    <Content Include="SQL\ChangeScripts\20150409.AgencyAccess.Add.Created.sql" />
+    <Content Include="SQL\ChangeScripts\20150212.AgentContent.Add.IsToShowInspectionsTab.sql" />
+    <Content Include="SQL\ChangeScripts\20141223.AgentContent.Add.IsContactEmailMandatory.sql" />
+    <Content Include="SQL\ChangeScripts\20150729.AgencyApp.Add.MachineNames.sql" />
+    <Content Include="SQL\ChangeScripts\20150714.Create.SpecialAppKey.sql" />
+    <Content Include="SQL\ChangeScripts\20150417.PROC.CheckAgencyGUID.sql" />
+    <Content Include="SQL\ChangeScripts\20150811.Create.AgencyMerge.TableAndProc.sql" />
+    <Content Include="SQL\ChangeScripts\20150820.AgencyInfo.CreateTable.sql" />
+    <Content Include="SQL\ChangeScripts\20151112.RwacAutoUpdateChanges.sql" />
+    <Content Include="SQL\ChangeScripts\20160114.AgencyInfoMetaInfo.CreateScript.sql" />
+    <Content Include="SQL\ChangeScripts\20160121.SpecialAppKeyType.Create.sql" />
+    <Content Include="SQL\ChangeScripts\20160310-kpi schedule updates.sql" />
+    <Content Include="SQL\ChangeScripts\20161028.RockendAction.Add.BetaAssemblyName.sql" />
+    <Content Include="SQL\ChangeScripts\20161031.AgencyInfoMeta.add.LastSource.sql" />
+    <Content Include="SQL\ChangeScripts\20180718.AgentContentStrata.Add.MeetingAndReportsSettings.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.AgentContentDelete.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.AgentContentInsert.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.AgentContentSelect.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.AgentContentSelectAll.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.AgentContentUpdate.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionDelete.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionInsert.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionScriptsRunDelete.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionScriptsRunInsert.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionScriptsRunSelect.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionScriptsRunUpdate.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionSelect.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.DatabaseVersionUpdate.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.LoggingAll.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.UserLoginDelete.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.UserLoginInsert.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.UserLoginSelect.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.UserLoginSelectAll.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\dbo.UserLoginUpdate.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\rmh.AddRequest.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\rmh.CheckAgencyGUID.sql" />
+    <Content Include="SQL\ChangeScripts\Procs\rmh.CheckAgencyGUIDAndSetRWACVersion.sql" />
+    <Content Include="SQL\ChangeScripts\Setup\003.create.schema.rmh.sql" />
+    <Content Include="SQL\ChangeScripts\Setup\005.create.Tables.sql" />
+    <Content Include="SQL\ChangeScripts\Setup\006.create.procs.sql" />
+    <Content Include="SQL\ChangeScripts\Setup\Data\010.Insert.UserTypes.sql" />
+    <Content Include="SQL\ChangeScripts\Setup\Data\011.Insert.Service.RESTPortal.sql" />
+    <Content Include="SQL\ChangeScripts\Setup\Data\012.Insert.RockendActions.sql" />
+    <Content Include="SQL\ChangeScripts\Views\dbo.vw_Hits.sql" />
+    <Content Include="SQL\DatabaseInstanceNamePrefix.txt" />
+    <Content Include="SQL\HowToSetupNewDatabase.txt" />
+    <Content Include="SQL\notNeeded_\002.create.user.rockend.sql" />
+    <Content Include="SQL\notNeeded_\004.create.role.sql" />
+    <Content Include="SQL\notNeeded_\ExistingDBS_Only.DatabaseVersionScriptsRun_Insert.sql" />
+    <Content Include="SQL\UsefulScripts\CreateColumn.Template.sql" />
+    <Content Include="SQL\UsefulScripts\_checkDbVersioning.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQL\ChangeScripts\Triggers\" />
+    <Folder Include="SQL\ChangeScripts\_NonTransactional\" />
+    <Folder Include="SQL\ChangeScripts\_PostRunScripts\" />
+    <Folder Include="SQL\ChangeScripts\_PreRunScripts\" />
+    <Folder Include="SQL\ChangeScripts\_Testing\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

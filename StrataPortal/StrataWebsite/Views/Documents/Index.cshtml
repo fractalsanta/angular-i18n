@@ -1,0 +1,137 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.DocumentsModel
+@{
+    ViewBag.Title = "Documents";
+}
+@section HeadTagsSection
+{
+
+    <script type="text/javascript" src="/Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.fileDownload.js"></script>
+<script type="text/javascript" src="/Content/Scripts/Documents.js"></script>
+    <script type="text/javascript">
+
+        $(function() {
+            var isDocsOn = "@Html.Raw(Model.AgentContentStrata.IsFsDocumentDescriptionOn.ToString().ToUpper())";
+            var header = (isDocsOn === "TRUE")
+                ? { 3: { sorter: "shortDate" } } 
+                : { 2: { sorter: "shortDate" } };
+
+            $("table").tablesorter({
+                dateFormat: "mmddyyyy",
+
+                headers: header
+            });
+           
+
+        });
+
+    </script>
+    <style type="text/css">
+       
+        table.documents th
+        {
+            font-weight: bold;
+            background-image: url(/Content/Images/toggle.gif);
+            background-position: center right;
+            background-repeat: no-repeat;
+            padding-right: 10px;
+            background-color: #999999;
+            color: #FFFFFF;
+            cursor: pointer;
+            padding: 2px 3px 2px 3px;
+        }
+        table.documents td
+        {
+            padding: 6px;
+            background-color: White;
+            border-bottom: solid 1px #CCCCCC;
+        }
+        table.documents .plan
+        {
+            width: 148px;
+            border-left: solid 1px #CCCCCC;
+            border-right: solid 1px #CCCCCC;
+        }
+        table.documents .documentType
+        {
+            border-right: solid 1px #CCCCCC;
+        }
+        table.documents .description
+        {
+            border-right: solid 1px #CCCCCC;
+        }
+        table.documents .date
+        {
+            width: 85px;
+            border-right: solid 1px #CCCCCC;
+        }
+    </style>
+}
+<h2>
+    Documents</h2>
+@if (Model != null && Model.Documents != null && Model.Documents.Count > 0)
+{
+
+    <table id="myTable" class="tablesorter documents">
+        <thead>
+            <tr>
+                <th>
+                    Plan
+                </th>
+                <th>
+                    Document type
+                </th>                
+                @if (Model.AgentContentStrata.IsFsDocumentDescriptionOn)
+                {
+                    <th>Description</th>
+                }
+                <th data-sorter="shortDate" data-date-format="ddmmyyyy">
+                    Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Rockend.iStrata.StrataWebsite.Model.DocumentModel doc in Model.Documents)
+            {
+            
+                <tr>
+                    <td class="plan">
+                        @doc.PlanNumber
+                    </td>
+                    <!-- only add description if it is switched on and width needs adjusting -->
+                    @if (Model.AgentContentStrata.IsFsDocumentDescriptionOn)
+                    {
+                        <td class="documentType" style="width: 280px">
+			                <a href="@Url.Action("GetDocument", new {folderId = doc.FolderId, libraryId = doc.LibraryId, documentId = doc.DocumentId})" class="fileDownloadSimpleRichExperience">@doc.DocumentType</a>
+                        </td>
+                        <td class="description" style="width: 280px">@doc.Description</td>
+                    }
+                    else
+                    {
+                        <td class="documentType" style="width: 550px">
+			                <a href="@Url.Action("GetDocument", new {folderId = doc.FolderId, libraryId = doc.LibraryId, documentId = doc.DocumentId})" class="fileDownloadSimpleRichExperience">@doc.DocumentType</a>
+                        </td>
+                    }
+                    <td class="date">
+                        @doc.Date.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>   
+}
+else
+{
+    <span>No documents to display.</span>
+}
+@if (TempData["Error"] != null && (bool)TempData["Error"])
+{
+    <p id="errorMessage" style="color:red;">@TempData["ErrorMessage"]</p>
+}
+<div id="waitingDiv">
+</div>
+<div id="waitingContents">
+    Retrieving Document - This may take a few minutes...
+    <img style="margin: 10px auto 0px auto" alt="Progress image" src="../../Content/Images/loading.gif" />
+</div>

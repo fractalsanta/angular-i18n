@@ -1,0 +1,29 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.RenderReportModel
+@using Rockend.iStrata.StrataWebsite.Model
+@{
+    Layout = null;
+}
+@{ UserSession session = Session["UserSession"] as UserSession; }
+<div class="report-section">
+    <div class="reportLabel">
+        <h3>@session.Terminology[Model.Report.InternalName]</h3>
+    </div>
+    <div class="reportButton">
+        @if (Model.Report.WebAccessReportsID != 2
+            && Model.Report.WebAccessReportsID != 3
+            && Model.Report.WebAccessReportsID != 4)
+        {
+            <a href="@Url.Action("GetParameterlessReport", new { reportName= Model.Report.ReportName, planId=Model.PlanId })"
+               class="fileDownloadSimpleRichExperience coolButton">View</a>
+        }
+        else if (Model.Report.WebAccessReportsID == 4)
+        {
+            <a href="@Url.Action("rptCurrentOwnerAccountRun", new {planId = Model.PlanId, ownerId = Model.OwnerId})"
+               class="fileDownloadSimpleRichExperience coolButton">View</a>
+        }
+        else
+        {
+            @Html.ActionLink("View", "ReportParameters", new { reportName = Model.Report.ReportName, planId = Model.PlanId }, new { @class = "coolButton" })
+        }
+    </div>
+</div>

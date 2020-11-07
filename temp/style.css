@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 852px;
+  }
+
+  .main-container {
+    background-color: #f4f5f5;
+    width: 822px;
+    padding: 15px;
+    color: #5e5e5e;
+    min-height: 500px;
+    margin-top: 4px;
+    width: 100%;
+  }
+}
+/*Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+  .mobile-only {
+    display: block;
+  }
+}
+.mobile-only {
+  display: none;
+}
+.navbar {
+  flex: 0 0 852px;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.footer {
+}
+
+.footer .footer-logo {
+  color: #fff;
+  font-family: 'Titillium Web', sans-serif;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.micro-menu {
+  justify-content: space-between;
+  flex: 0 0 100%;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+.micro-menu a {
+  text-decoration: none;
+  color: #4f4f4f;
+  display: inline;
+}
+.flex-grow {
+  flex: 1 0 auto;
+}

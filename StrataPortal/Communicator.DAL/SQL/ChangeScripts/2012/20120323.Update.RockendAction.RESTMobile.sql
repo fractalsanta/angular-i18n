@@ -1,0 +1,6 @@
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.Mobile', Namespace = '' Where ActionName = 'LoginCheck'
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.Mobile', Namespace = '' Where ActionName = 'CreditorSearch'
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.Mobile', Namespace = '' Where ActionName = 'OwnerSearch'
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.Mobile', Namespace = '' Where ActionName = 'TenantSearch'
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.Mobile', Namespace = '' Where ActionName = 'PropertySearch'
+Update rmh.RockendAction Set AssemblyName = 'Rockend.REST.Processor.Mobile', Namespace = '' Where ActionName = 'SaleSearch'

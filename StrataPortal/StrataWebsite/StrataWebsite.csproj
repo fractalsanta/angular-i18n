@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCCACEA7-6145-4A6A-87BD-95352122B6E8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rockend.iStrata.StrataWebsite</RootNamespace>
+    <AssemblyName>StrataWebsite</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\..\Solutions\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\..\..\Solutions\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\..\..\Solutions\packages\Autofac.Mvc3.2.6.3.862\lib\NET40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK">
+      <HintPath>..\..\Shared\Lib\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Communicator.Image, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d8368a3f546b36c2, processorArchitecture=MSIL" />
+    <Reference Include="Elmah">
+      <HintPath>..\..\..\Solutions\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation, Version=3.1.12.6, Culture=neutral, PublicKeyToken=e967ae578dabd98e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\51Degrees.mobi.3.1.12.6\lib\NET40\FiftyOne.Foundation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\Solutions\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.RedisSessionStateProvider, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.Web.RedisSessionStateProvider.2.2.2\lib\net40\Microsoft.Web.RedisSessionStateProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\WindowsAzure.Storage.8.1.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.WindowsAzure.StorageClient.1.0.0\lib\net\Microsoft.WindowsAzure.StorageClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonAgentListener, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="NewRelic.Api.Agent, Version=6.7.67.0, Culture=neutral, PublicKeyToken=06552fced0b33d87, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\NewRelic.Azure.WebSites.x64.6.7.67.0\lib\NewRelic.Api.Agent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis.StrongName, Version=1.2.1.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\StackExchange.Redis.StrongName.1.2.1\lib\net45\StackExchange.Redis.StrongName.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\..\Solutions\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\..\Solutions\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\..\Solutions\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\..\..\Solutions\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solutions\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.AspNet.Mvc.3.0.50813.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>..\..\..\Solutions\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorizeStrataAttribute.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AgencyController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Controllers\MeetingController.cs" />
+    <Compile Include="Controllers\MobileController.cs" />
+    <Compile Include="Controllers\OwnersCorpController.cs" />
+    <Compile Include="Controllers\CommitteeMemberController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LotOwnerController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\SystemController.cs" />
+    <Compile Include="Data\ImageDescriptionContainer.cs" />
+    <Compile Include="Data\SessionData.cs" />
+    <Compile Include="ElmahHandleErrorAttribute.cs" />
+    <Compile Include="FileDownloadAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AppKeyHelper.cs" />
+    <Compile Include="Helpers\BinaryResult.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Helpers\DropdownHelper.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\FormatHelper.cs" />
+    <Compile Include="Helpers\HttpMessenger.cs" />
+    <Compile Include="Helpers\IMessenger.cs" />
+    <Compile Include="Helpers\MaintenanceHelper.cs" />
+    <Compile Include="Helpers\ModelHtmlHelper.cs" />
+    <Compile Include="Helpers\NullTempDataProvider.cs" />
+    <Compile Include="Helpers\StrataHttpMessenger.cs" />
+    <Compile Include="Helpers\ReportHelper.cs" />
+    <Compile Include="Helpers\StrataWebException.cs" />
+    <Compile Include="MobileViewEngine.cs" />
+    <Compile Include="Mobile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Model\AgencyModel.cs" />
+    <Compile Include="Model\ChangePasswordModel.cs" />
+    <Compile Include="Model\ContactFormModel.cs" />
+    <Compile Include="Model\DocumentDistributionModel.cs" />
+    <Compile Include="Model\DocumentModel.cs" />
+    <Compile Include="Model\DocumentRetrievalModel.cs" />
+    <Compile Include="Model\DocumentsModel.cs" />
+    <Compile Include="Model\DropdownItem.cs" />
+    <Compile Include="Model\ExecutiveMemberModel.cs" />
+    <Compile Include="Model\LogonModel.cs" />
+    <Compile Include="Model\LotOwnerModel.cs" />
+    <Compile Include="Model\MaintenanceJobDetailModel.cs" />
+    <Compile Include="Model\MaintenanceModel.cs" />
+    <Compile Include="Model\MeetingModel.cs" />
+    <Compile Include="Model\MessageModel.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\OwnersCorpModel.cs" />
+    <Compile Include="Model\RenderReportModel.cs" />
+    <Compile Include="Model\ReportParametersModel.cs" />
+    <Compile Include="Model\ReportDownloadModel.cs" />
+    <Compile Include="Model\ReportsModel.cs" />
+    <Compile Include="Model\RetrievePasswordModel.cs" />
+    <Compile Include="Model\UserSession.cs" />
+    <Compile Include="Model\VotingModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Shared\PreLogin.Master.cs">
+      <DependentUpon>PreLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\PreLogin.Master.designer.cs">
+      <DependentUpon>PreLogin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\PostLogin.Master.cs">
+      <DependentUpon>PostLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\PostLogin.Master.designer.cs">
+      <DependentUpon>PostLogin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\WebsiteMailHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\arrow-down.png" />
+    <Content Include="Content\Images\arrow-up.png" />
+    <Content Include="Content\Images\committee_members.jpg" />
+    <Content Include="Content\Scripts\jquery.countdown.min.js" />
+    <Content Include="Content\Scripts\jquery.modal.min.js" />
+    <Content Include="Content\Scripts\vote.js" />
+    <Content Include="Content\Styles\jquery.modal.min.css" />
+    <Content Include="newrelic\Extensions\CoreInstrumentation.xml" />
+    <Content Include="newrelic\Extensions\JetBrains.Annotations.dll" />
+    <Content Include="newrelic\Extensions\JetBrains.Annotations.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Agent.AttributeFilter.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Agent.Configuration.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Agent.Core.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Agent.LabelsService.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Agent.LazyMap.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Collections.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Core.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Dispatchers.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Memoization.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Parsing.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Parsing.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.CallStack.AsyncLocal.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.TransactionContext.Asp.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.TransactionContext.Default.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.TransactionContext.Wcf3.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Asp35.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Asp35.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.CastleMonoRail2.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.CastleMonoRail2.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Couchbase.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Couchbase.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.CustomInstrumentation.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.CustomInstrumentation.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.CustomInstrumentationAsync.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.HttpClient.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.HttpClient.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.HttpWebRequest.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.HttpWebRequest.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.MongoDb.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.MongoDb.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Msmq.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Msmq.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Mvc3.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Mvc3.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.NServiceBus.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.NServiceBus.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.OpenRasta.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.OpenRasta.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Owin.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Owin.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.RabbitMq.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.RabbitMq.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.ScriptHandlerFactory.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.ScriptHandlerFactory.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.ServiceStackRedis.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.ServiceStackRedis.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Sql.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Sql.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.SqlAsync.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.SqlAsync.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.StackExchangeRedis.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.StackExchangeRedis.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Wcf3.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.Wcf3.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebApi1.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebApi1.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebApi2.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebApi2.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebOptimization.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebOptimization.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebServices.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WebServices.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WrapperUtilities.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Providers.Wrapper.WrapperUtilities.Instrumentation.xml" />
+    <Content Include="newrelic\Extensions\NewRelic.Reflection.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.SystemExtensions.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.SystemInterfaces.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.Trie.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.TypeInstantiation.dll" />
+    <Content Include="newrelic\Extensions\NewRelic.WeakActions.dll" />
+    <Content Include="newrelic\NewRelic.Agent.Core.dll" />
+    <Content Include="newrelic\NewRelic.Agent.Extensions.dll" />
+    <Content Include="newrelic\NewRelic.Profiler.dll" />
+    <Content Include="offline.htm" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\appleIcon.jpg" />
+    <Content Include="Content\Images\arrow.gif" />
+    <Content Include="Content\Images\bottomBarBg.jpg" />
+    <Content Include="Content\Images\defaultBanner.jpg" />
+    <Content Include="Content\Images\executive.jpg" />
+    <Content Include="Content\Images\executive_login.jpg" />
+    <Content Include="Content\Images\icons-18-white.png" />
+    <Content Include="Content\Images\menuBg.jpg" />
+    <Content Include="Content\Images\menuIcon.jpg" />
+    <Content Include="Content\Images\new-banner.jpg" />
+    <Content Include="Content\Images\owner.jpg" />
+    <Content Include="Content\Images\owner_login.jpg" />
+    <Content Include="Content\Images\strata-management.jpg" />
+    <Content Include="Content\Images\StrataSite.jpg" />
+    <Content Include="Content\Images\toggle.gif" />
+    <Content Include="Content\Images\topBarBg.jpg" />
+    <Content Include="Content\Images\units.jpg" />
+    <Content Include="Content\Scripts\bookmark_bubble.js" />
+    <Content Include="Content\Scripts\bookmark_example.js" />
+    <Content Include="Content\Scripts\Documents.js" />
+    <Content Include="Content\Scripts\jquery-1.5.2.min.js" />
+    <Content Include="Content\Scripts\jquery-1.8.3-vsdoc.js" />
+    <Content Include="Content\Scripts\jquery-1.8.3.js" />
+    <Content Include="Content\Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Content\Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Content\Scripts\jquery.mobile-1.3.0.min.js" />
+    <Content Include="Content\Scripts\jquery.tablesorter.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\Scripts\jquery.validate.min.js" />
+    <Content Include="Content\Scripts\Maintenance.js" />
+    <Content Include="Content\Scripts\Mobile.js" />
+    <Content Include="Content\Styles\jquery.mobile-1.3.0.min.css" />
+    <Content Include="Content\Styles\jquery.mobile.button.css" />
+    <Content Include="Content\Styles\jquery.mobile.theme.css" />
+    <Content Include="Content\Styles\mobile.css" />
+    <Content Include="Content\Styles\newstyle.css" />
+    <Content Include="Content\Styles\reset-min.css" />
+    <Content Include="Content\Styles\styles.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Images\bg.gif" />
+    <Content Include="Content\Images\line-dashed.gif" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\nav-bg-off.gif" />
+    <Content Include="Content\Images\red_button.gif" />
+    <Content Include="Content\Images\secure_site.gif" />
+    <Content Include="Content\Images\Strata.ico" />
+    <Content Include="Content\Scripts\common.js" />
+    <Content Include="51Degrees.config" />
+    <Content Include="Mobile\Default.aspx" />
+    <Content Include="newrelic\newrelic.config" />
+    <Content Include="newrelic\Extensions\extension.xsd">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="newrelic\newrelic.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.0.js" />
+    <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
+    <Content Include="Scripts\jquery.fileDownload.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\PostLogin.Master" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Web.Prod.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Support.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Uat.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <Content Include="Views\Meeting\Vote.cshtml" />
+    <Content Include="Views\Meeting\Mobile\Vote.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Styles\IE6.css" />
+    <Content Include="Content\Styles\Main.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\RockendWebAccessLegalNotice.pdf" />
+    <Content Include="Content\Images\Australia.ico" />
+    <Content Include="Content\Images\grey_button.gif" />
+    <Content Include="Content\Images\IESecurity.png" />
+    <Content Include="Content\Images\IEToolsMenu.png" />
+    <Content Include="Content\Images\tile.gif" />
+    <Content Include="Content\Scripts\Reports.js" />
+    <Content Include="Content\Scripts\MicrosoftAjax.js" />
+    <Content Include="Content\Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Views\Shared\PreLogin.Master" />
+    <Content Include="Views\Shared\NewLayout.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Login\Logon.cshtml" />
+    <Content Include="Views\Shared\MicroMenu.cshtml" />
+    <Content Include="Views\LotOwner\General.cshtml" />
+    <Content Include="Views\_viewstart.cshtml" />
+    <Content Include="Views\LotOwner\Contacts.cshtml" />
+    <Content Include="Views\OwnersCorp\Entitlements.cshtml" />
+    <Content Include="Views\OwnersCorp\General.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Reports\Budget.cshtml" />
+    <Content Include="Views\Reports\CurrentOwnerAccount.cshtml" />
+    <Content Include="Views\Reports\GenericOwnersCorp.cshtml" />
+    <Content Include="Views\Reports\GenericExecutivesCorp.cshtml" />
+    <Content Include="Views\Agency\Contact.cshtml" />
+    <Content Include="Views\Agency\ContactForm.cshtml" />
+    <Content Include="Views\CommitteeMember\Main.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\Message.cshtml" />
+    <Content Include="Views\Agency\Help.cshtml" />
+    <Content Include="Views\Shared\RenderContact.cshtml" />
+    <Content Include="Views\Agency\UpdateRequestForm.cshtml" />
+    <Content Include="Views\Agency\ContactReceived.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Reports\ReportPartial.cshtml" />
+    <Content Include="Views\Reports\ReportParameters.cshtml" />
+    <Content Include="Views\Meeting\Index.cshtml" />
+    <Content Include="Views\Agency\FAQ.cshtml" />
+    <Content Include="Views\Documents\Index.cshtml" />
+    <Content Include="Views\Sales\Demo.cshtml" />
+    <Content Include="Views\Shared\Mobile.cshtml" />
+    <Content Include="Views\Login\Mobile\Logon.cshtml" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Mobile\Menu.cshtml" />
+    <Content Include="Views\Reports\Mobile\Index.cshtml" />
+    <Content Include="Views\Reports\Mobile\ReportPartial.cshtml" />
+    <Content Include="Views\OwnersCorp\Mobile\General.cshtml" />
+    <Content Include="Views\OwnersCorp\Mobile\Entitlements.cshtml" />
+    <Content Include="Views\LotOwner\Mobile\Contacts.cshtml" />
+    <Content Include="Views\Meeting\Mobile\Index.cshtml" />
+    <Content Include="Views\Documents\Mobile\Index.cshtml" />
+    <Content Include="Views\CommitteeMember\Mobile\Main.cshtml" />
+    <Content Include="Views\Agency\Mobile\UpdateRequestForm.cshtml" />
+    <Content Include="Views\Agency\Mobile\Contact.cshtml" />
+    <Content Include="Views\Agency\Mobile\ContactForm.cshtml" />
+    <Content Include="Views\Agency\Mobile\FAQ.cshtml" />
+    <Content Include="Views\Account\Mobile\ChangePassword.cshtml" />
+    <Content Include="Views\Reports\Mobile\ReportParameters.cshtml" />
+    <Content Include="Views\Login\Mobile\ForgotPassword.cshtml" />
+    <Content Include="Views\Agency\Mobile\ContactReceived.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
+    <Content Include="Views\Maintenance\JobDetails.cshtml" />
+    <Content Include="Views\Maintenance\Mobile\JobDetails.cshtml" />
+    <Content Include="Views\Maintenance\Mobile\Index.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Projects\Agile\Agile.Diagnostics.AzureDb\Agile.Diagnostics.AzureDb.csproj">
+      <Project>{670E5898-F910-499D-971B-A2171E62C675}</Project>
+      <Name>Agile.Diagnostics.AzureDb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Agile\Agile.Shared\Agile.Diagnostics\Agile.Diagnostics.csproj">
+      <Project>{CFD72DBA-BFF0-4CB5-92C8-308C877D78B1}</Project>
+      <Name>Agile.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\CommunicatorDto\CommunicatorDto.csproj">
+      <Project>{AEC7A417-1083-4EB7-B379-9DDD15A65B65}</Project>
+      <Name>CommunicatorDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Communicator.DAL\Communicator.DAL.csproj">
+      <Project>{6007ED36-BA04-4388-A6FA-BF425534B8FE}</Project>
+      <Name>Communicator.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Rockend.Cms\Rockend.Cms.csproj">
+      <Project>{2DEEE246-3A7A-41E4-94A1-6DAE516CC087}</Project>
+      <Name>Rockend.Cms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Common\Common.csproj">
+      <Project>{6EBF7D21-8FB5-4B31-9EA2-F6D291029406}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Rockend.Azure\Rockend.Azure.csproj">
+      <Project>{E0650E6E-D0F4-4036-B3C5-80E663062C34}</Project>
+      <Name>Rockend.Azure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Rockend.Common\Rockend.Common.csproj">
+      <Project>{EAFF3738-13FF-4B30-AA87-645A0D7C99BA}</Project>
+      <Name>Rockend.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Rockend.Web.Security\Rockend.Web.Security.csproj">
+      <Project>{17393653-8F6A-4FA3-A72D-ED3713C7B8E3}</Project>
+      <Name>Rockend.Web.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Rockend.WebAccess.Mail\Rockend.WebAccess.Mail.csproj">
+      <Project>{6EBF3216-32B3-4739-BE8A-0D2C1F6F7EEB}</Project>
+      <Name>Rockend.WebAccess.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Rockend.WebAccess.RockendMessage\Rockend.WebAccess.RockendMessage.csproj">
+      <Project>{2C66F4BE-92C7-4C01-A473-DD6A8BFF2BB9}</Project>
+      <Name>Rockend.WebAccess.RockendMessage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\StrataCommon\StrataCommon.csproj">
+      <Project>{4F730F78-9A2F-448E-9D08-B55BC00D8547}</Project>
+      <Name>StrataCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Uat|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Support|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54565</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://strataportal.local</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <RunOctoPack Condition="'$(OctoPackTarget)'=='$(AssemblyName)'">true</RunOctoPack>
+    <!-- Run OctoPack on every build which is really convenient for testing your package process works as expected -->
+    <OctoPackEnforceAddingFiles>true</OctoPackEnforceAddingFiles>
+    <!-- Package files included by convention because it's a web project, and package files specified by the <files> node of the nuspec -->
+    <OctoPackPublishPackageToFileShare>..\..\artifacts</OctoPackPublishPackageToFileShare>
+    <!-- Publish the resultant package to the ..\..\artifacts folder -->
+  </PropertyGroup>
+  <Import Project="..\..\..\Solutions\packages\OctoPack.3.4.7\tools\OctoPack.targets" Condition="Exists('..\..\..\Solutions\packages\OctoPack.3.4.7\tools\OctoPack.targets')" />
+  <Target Name="EnsureOctoPackImported" BeforeTargets="BeforeBuild" Condition="'$(OctoPackImported)' == ''">
+    <Error Condition="!Exists('..\..\..\Solutions\packages\OctoPack.3.4.7\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="You are trying to build with OctoPack, but the NuGet targets file that OctoPack depends on is not available on this computer. This is probably because the OctoPack package has not been committed to source control, or NuGet Package Restore is not enabled. Please enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\..\..\Solutions\packages\OctoPack.3.4.7\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="OctoPack cannot be run because NuGet packages were restored prior to the build running, and the targets file was unavailable when the build started. Please build the project again to include these packages in the build. You may also need to make sure that your build server does not delete packages prior to each build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

@@ -1,0 +1,5 @@
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.RockendMessage\obj\Release\Rockend.WebAccess.RockendMessage.csprojResolveAssemblyReference.cache
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.RockendMessage\bin\Release\Rockend.WebAccess.RockendMessage.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.RockendMessage\bin\Release\Rockend.WebAccess.RockendMessage.pdb
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.RockendMessage\obj\Release\Rockend.WebAccess.RockendMessage.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.RockendMessage\obj\Release\Rockend.WebAccess.RockendMessage.pdb

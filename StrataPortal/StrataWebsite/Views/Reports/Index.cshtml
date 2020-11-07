@@ -1,0 +1,159 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.ReportsModel
+@using Rockend.iStrata.StrataWebsite.Model
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+@{
+    ViewBag.Title = "Reports";
+}
+@section HeadTagsSection
+{
+    <style>
+        div.report-section:first-child
+        {
+            margin-right: 70px;
+        }
+        div.report-section:last-child
+        {
+            float: right;
+        }
+        div.report-section:first-child
+        {
+            float: left;
+        }
+        h2
+        {
+            margin-top: 10px;
+            border-bottom: solid 1px #CCCCCC;
+        }
+        .report-section h3
+        {
+            border-bottom: none;
+        }
+    </style>
+
+    <script type="text/javascript" src="/Scripts/jquery-ui-1.12.0.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.fileDownload.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Reports.js"></script>
+}
+<h1>
+    Reports</h1>
+@if (Model.UserSession.LotNames.Count > 1)
+{
+    @Html.Raw(Html.StrataDropdown(Model.UserSession.LotNames, Model.CurrentLotIndex, ((d, i) => Url.Action("Index", new { index = i })), "ownerCorpIndex"))
+    <input type="hidden" id="ownerCorpIndex" value = "@Model.CurrentLotIndex" />
+}
+else
+{
+    <h2 style="border: none;">@Model.UserSession.LotNames[0].Name</h2>
+    <input type="hidden" id="ownerCorpIndex" value = "@Model.CurrentLotIndex" />
+}
+@if (Model.HasOwnerReports)
+{
+    <h2>
+        Owner Statements</h2>
+    <div class="full-width-data-container">
+        @{ var reportId4 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 4); }
+        @if (reportId4 != null)
+        {
+            RenderReportModel reportId4Model = new RenderReportModel(reportId4, Model.PlanId);
+            reportId4Model.OwnerId = Model.OwnerId;
+            @Html.Partial("ReportPartial", reportId4Model)
+        }
+    </div>
+    <div class="clear">
+    </div>    
+}
+@if (Model.HasFinancialStatmentReports)
+{
+    <h2>
+        Financial Statements</h2>
+    <div class="full-width-data-container">
+        @{ var reportId1 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 1); }
+        @if (reportId1 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId1, Model.PlanId))
+        }
+        @{ var reportId2 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 2); }
+        @if (reportId2 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId2, Model.PlanId))
+        }
+    </div>
+    <div class="full-width-data-container">
+        @{ var reportId3 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 3); }
+        @if (reportId3 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId3, Model.PlanId))
+        }
+        @{ var reportId6 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 6); }
+        @if (reportId6 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId6, Model.PlanId))
+        }
+    </div>
+    <div class="clear">
+    </div>    
+}
+@if (Model.HasExecutiveReports)
+{
+    <h2>
+        Committee Reports</h2>
+    <div class="full-width-data-container">
+        @{ var reportId7 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 7); }
+        @if (reportId7 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId7, Model.PlanId))
+        }
+        @{ var reportId9 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 9); }
+        @if (reportId9 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId9, Model.PlanId))
+        }
+    </div>
+    <div class="full-width-data-container">
+        @{ var reportId10 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 10); }
+        @if (reportId10 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId10, Model.PlanId))
+        }
+        @{ var reportId11 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 11); }
+        @if (reportId11 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId11, Model.PlanId))
+        }
+    </div>
+    <div class="full-width-data-container">
+        @{ var reportId12 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 12); }
+        @if (reportId12 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId12, Model.PlanId))
+        }
+        @{ var reportId13 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 13); }
+        @if (reportId13 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId13, Model.PlanId))
+        }
+    </div>
+    <div class="clear">
+    </div>
+}
+@if (Model.HasOtherReports)
+{
+    <h2>
+        Other Reports</h2>
+    <div class="full-width-data-container">
+        @{ var reportId5 = Model.ReportsForCurrentUser.FirstOrDefault(r => r.WebAccessReportsID == 5); }
+        @if (reportId5 != null)
+        {
+            @Html.Partial("ReportPartial", new RenderReportModel(reportId5, Model.PlanId))
+        }
+    </div>
+    <div class="clear">
+    </div>
+}
+<div id="waitingDiv">
+</div>
+<div id="waitingContents">
+    Generating report. This may take a few minutes...
+    <img style="margin: 10px auto 0px auto" alt="Progress image" src="../../Content/Images/loading.gif" />
+</div>

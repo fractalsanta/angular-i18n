@@ -1,0 +1,4 @@
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.Web.Security\bin\Release\Rockend.Web.Security.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.Web.Security\bin\Release\Rockend.Web.Security.pdb
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.Web.Security\obj\Release\Rockend.Web.Security.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.Web.Security\obj\Release\Rockend.Web.Security.pdb

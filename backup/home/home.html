@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="presentPopover($event)">
+        <ion-icon name="people"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: #F9F9F9;" #popoverContent class="popover-page">
+
+  <div *ngIf="selectedItem">
+    <button ion-button outline icon-start small color="danger" (click)="clearFilter()">
+      <ion-icon name="remove-circle"></ion-icon>
+      Remove "{{selectedItem.title}}" filter
+    </button>
+  </div>
+
+</ion-content>

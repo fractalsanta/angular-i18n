@@ -1,0 +1,7 @@
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\obj\Release\Communicator.ImageHelper.csprojResolveAssemblyReference.cache
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\bin\Release\Communicator.Image.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\bin\Release\Communicator.Image.pdb
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\bin\Release\Agile.Diagnostics.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\bin\Release\Agile.Diagnostics.pdb
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\obj\Release\Communicator.Image.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Communicator.Image\obj\Release\Communicator.Image.pdb

@@ -1,0 +1,6 @@
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.2\OfficeBox.csprojAssemblyReference.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.2\OfficeBox.csproj.CoreCompileInputs.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.2\OfficeBox.AssemblyInfoInputs.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.2\OfficeBox.AssemblyInfo.cs
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.2\OfficeBox.RazorAssemblyInfo.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.2\OfficeBox.RazorAssemblyInfo.cs

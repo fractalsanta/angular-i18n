@@ -1,0 +1,8 @@
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\obj\Release\Rockend.WebAccess.Mail.csprojResolveAssemblyReference.cache
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\bin\Release\Rockend.WebAccess.Mail.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\bin\Release\Rockend.WebAccess.Mail.pdb
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\bin\Release\Agile.Diagnostics.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\bin\Release\AWSSDK.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\bin\Release\Agile.Diagnostics.pdb
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\obj\Release\Rockend.WebAccess.Mail.dll
+C:\dev\Communicator\Trunk\Development\Communicator\Projects\Rockend.WebAccess.Mail\obj\Release\Rockend.WebAccess.Mail.pdb

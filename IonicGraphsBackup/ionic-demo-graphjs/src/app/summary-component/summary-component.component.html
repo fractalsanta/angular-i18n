@@ -1,0 +1,40 @@
+<hr>
+<div class="col-md-6">
+  <div>
+    <p class="data-point">
+      <strong>{{(province.waterInStorage / province.fsc) * 100}}</strong>
+    </p>
+    <p class="data-label">Latest level</p>
+  </div>
+  <br>
+  <div>
+    <p class="data-point">
+      <strong>{{province.fsc}}</strong>
+    </p>
+    <p class="data-label">Total dam capacity (1 000 000m&#x00B3;)</p>
+  </div>
+  <br>
+</div>
+<div class="col-md-6">
+  <div>
+    <p class="data-point">
+      <strong>{{ province.capital.name }}</strong>
+    </p>
+    <p class="data-label">Capital</p>
+  </div>
+  <br>
+  <div>
+    <p class="data-point">
+      <strong>{{ latitude }}</strong>
+    </p>
+    <p class="data-label">Latitude</p>
+  </div>
+  <br>
+  <div>
+    <p class="data-point">
+      <strong>{{ longitude }}</strong>
+    </p>
+    <p class="data-label">Longitude</p>
+  </div>
+  <br>
+</div>

@@ -1,0 +1,44 @@
+<div>
+  <label for="topSuburbsChart">{{title}}</label>
+  <kendo-chart renderAs="svg" style="width: 100%" (seriesClick)="onSeriesClick($event)" id="topSuburbsChart">
+    <kendo-chart-legend position="custom" font="10px Arial, sans-serif" orientation="horizontal" [offsetX]="28"
+      [offsetY]="5">
+    </kendo-chart-legend>
+
+    <kendo-chart-axis-defaults>
+      <kendo-chart-axis-defaults-labels font="Roboto"></kendo-chart-axis-defaults-labels>
+    </kendo-chart-axis-defaults>
+
+    <kendo-chart-value-axis>
+      <kendo-chart-value-axis-item [name]="'axis1'" [labels]="{ padding:{top: 10}, rotation: -25 }"></kendo-chart-value-axis-item>
+    </kendo-chart-value-axis>
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item [categories]="labels" [labels]="{ padding:{top: 10}, rotation: -25 }">
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+    <!--
+    <kendo-chart-series>
+      <kendo-chart-series-item (click)="onSelectEnd($event)" type="column" color="#34B4A7" [spacing]="0.1" [gap]="1"
+        name="Active Properties" categoryField="Name" [data]="chartData.data" field="TDActiveProp">
+        <kendo-chart-series-item-labels font="10px Arial, sans-serif" background="transparent" [visible]="true"></kendo-chart-series-item-labels>
+      </kendo-chart-series-item>
+
+      <kendo-chart-series-item (selectEnd)="onSelectEnd($event)" type="column" color="#466873" name="Active Leases"
+        categoryField="Name" [data]="chartData.data" field="TDActiveLeases">
+        <kendo-chart-series-item-labels font="10px Arial, sans-serif" background="transparent" [visible]="true"></kendo-chart-series-item-labels>
+      </kendo-chart-series-item>
+
+      <kendo-chart-series-item (selectEnd)="onSelectEnd($event)" type="column" color="#fa7f7f" name="Vacant Properties"
+        categoryField="Name" [data]="chartData.data" field="TDVacantProp">
+        <kendo-chart-series-item-labels font="10px Arial, sans-serif" background="transparent" [visible]="true"></kendo-chart-series-item-labels>
+      </kendo-chart-series-item>
+    </kendo-chart-series> -->
+    <kendo-chart-series>
+      <kendo-chart-series-item *ngFor="let key of chartDataKeys; let i = index" [color]="barColors[i]" [type]="chartData[key].type"
+        [data]="chartData[key].data" [name]="chartData[key].name" [axis]="chartData[key].axis" [style]="'smooth'"
+        [markers]="{size:0}">
+        <kendo-chart-series-item-labels font="10px Arial, sans-serif" background="transparent" [visible]="true"></kendo-chart-series-item-labels>
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
+</div>

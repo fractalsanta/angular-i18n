@@ -1,0 +1,35 @@
+﻿@{
+                // ViewBag.Title = "Menu";
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Menu</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuContainer">
+            <a href="../OwnersCorp/General" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right" data-prefetch>Owners Corporation</a>
+            <a href="../LotOwner/Contacts" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right" data-prefetch>Portfolio</a>
+            @if (ViewBag.IsExecutiveMember)
+            {
+                <a href="../CommitteeMember/Main" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right" data-prefetch>Committee Member</a>
+            }
+            <a href="../Reports/Index?index=0" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right" data-prefetch>Reports</a>
+            @if (ViewBag.StrataShowMeetings)
+            {       
+                <a href="../Meeting/Index?index=0" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right" data-prefetch>Meetings</a>
+            }
+            @if (@ViewBag.ShowDocumentsTab)
+            {       
+                <a href="../Documents/Index" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right">Documents</a>
+            }
+            @if (@ViewBag.ShowMaintenanceTab)
+            {       
+                <a href="../Maintenance/Index" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right">Maintenance</a>
+            }
+            <a href="#" lang="#" onclick="unloadBodyAndLogout('@Url.Action("Logout", "Account")')" data-role="button" data-transition="slide" data-icon="arrow-r" data-iconpos="right" data-ajax="false">Logout</a>
+        </div>
+        <br />
+        @Html.ActionLink("Contact", "Contact", "Agency", null, null) <span>|</span> @Html.ActionLink("FAQ", "Faq", "Agency", null, null)
+        <span>|</span> @Html.ActionLink("Change Password", "ChangePassword", "Account", null, null)
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!-- Generated template for the OverviewComponent component -->
+<ion-grid>
+  <ion-row col-12>
+    <ion-col>
+      <b>Current Overview</b>
+    </ion-col>
+  </ion-row>
+  <ion-row class="left">
+    <ion-col col-6>
+      <div>
+        <b>{{ monthData.TDActiveTenancies }}</b> <br>
+        Active Tenancies
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div>
+        <b>{{ tenancyArrearsAmt }}</b> <br>
+        Arrears Amount
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="left">
+    <ion-col col-6>
+      <div>
+        <b>{{ monthData.TDVacantProp }}</b> <br>
+        Vacant Properties
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div>
+        <b>{{ monthData.TDVacantPropPercentage.toFixed(2) }}% </b><br>
+        Vacancy Rate</div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="left">
+    <ion-col col-6>
+      <div>
+        <b>{{ monthData.TDTenancyInArrearsCount}} </b><br>
+        In Arrears
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div>
+        <b>{{ monthData.TDTenancyInArrearsPercentage.toFixed(2)}}% </b><br>
+        Arrears Rate</div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

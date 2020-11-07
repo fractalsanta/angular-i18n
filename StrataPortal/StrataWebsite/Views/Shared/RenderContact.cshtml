@@ -1,0 +1,88 @@
+﻿@model Rockend.iStrata.StrataCommon.BusinessEntities.Contact
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+@using Rockend.iStrata.StrataWebsite.Helpers;
+@using System.Linq;
+
+@{
+    // Additional Contact details. Note these only populate for Strata 7.5 and above
+    var cdEmail = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.StartsWith("Email"));
+    var cdMobile = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.Equals("Mobile", StringComparison.InvariantCultureIgnoreCase));
+    var cdFax = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.Equals("Fax", StringComparison.InvariantCultureIgnoreCase));
+}
+
+@if (Model.BusinessContact.ToBoolean())
+{
+    <span>Business Contact</span><br />
+    <span>@Model.Name</span>
+}
+else
+{
+    <span>Private / Residential Contact</span><br />
+    <span>@string.Concat(Model.Title, " ", Model.FirstName, " ", Model.OtherNames, " ", Model.Name)</span>
+}
+<br />
+@Html.ValueOrDefault(Model.BuildingName)
+@if (!string.IsNullOrWhiteSpace(Model.POBox))
+{
+    @Html.ValueOrDefault(Model.POBox)
+}
+else
+{
+    @Html.ValueOrDefault(string.Concat(Model.StreetNumber, " ", Model.StreetName))
+}
+@Html.ValueOrDefault(string.Concat(Model.Town, " ", Model.State, " ", Model.Postcode))
+@Html.ValueOrDefault(Model.Country)
+<br />
+@if (Model.BusinessContact.ToBoolean())
+{
+    var cdPhone1 = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.Equals("Phone 1", StringComparison.InvariantCultureIgnoreCase));
+    var cdPhone2 = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.Equals("Phone 2", StringComparison.InvariantCultureIgnoreCase));
+    
+    <div class="label">Telephone 1:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone1, defaultValue: "--")</div><div class="clear"></div>
+    foreach (var cd in cdPhone1)
+    {
+        @Html.HtmlFor(cd)
+    }
+    <div class="label">Telephone 2:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone2, defaultValue: "--")</div><div class="clear"></div>
+    foreach (var cd in cdPhone2)
+    {
+        @Html.HtmlFor(cd)
+    }
+}
+else
+{
+    var cdPhone1 = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.Equals("Home Phone", StringComparison.InvariantCultureIgnoreCase));
+    var cdPhone2 = Model.Details == null ? new List<ContactDetail>() : ((List<ContactDetail>)Model.Details).Where(d => d.Type.Equals("Work Phone", StringComparison.InvariantCultureIgnoreCase));
+
+    <div class="label">Home Phone:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone1, defaultValue: "--")</div><div class="clear"></div>
+    foreach (var cd in cdPhone1)
+    {
+        @Html.HtmlFor(cd)
+    }
+    <div class="label">Work Phone:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone2, defaultValue: "--")</div><div class="clear"></div>
+    foreach (var cd in cdPhone2)
+    {
+        @Html.HtmlFor(cd)
+    }
+}
+<div class="label">Mobile:</div> <div class="value">@Html.ValueOrDefault(Model.Telephone3, defaultValue: "--")</div><div class="clear"></div>
+@foreach (var cd in cdMobile)
+{
+    @Html.HtmlFor(cd)
+}
+<div class="label">Fax:</div> <div class="value">@Html.ValueOrDefault(Model.Fax, defaultValue: "--")</div><div class="clear"></div>
+@foreach (var cd in cdFax)
+{
+    @Html.HtmlFor(cd)
+}
+<div class="label">Email:</div> <div class="value">@Html.ValueOrDefault(Model.Email, defaultValue: "--")</div><div class="clear"></div>
+@foreach (var cd in cdEmail)
+{ 
+    @Html.HtmlFor(cd)
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.Website))
+{ 
+    <div class="label">Website:</div> <div class="value">@Html.ValueOrDefault(Model.Website, defaultValue: "--")</div><div class="clear"></div>
+}

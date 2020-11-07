@@ -1,0 +1,28 @@
+{
+  "name": "typescript-complete",
+  "version": "1.0.0",
+  "description": "Complete TypeScript Course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server",
+    "build": "gulp"
+  },
+  "keywords": [
+    "typescript",
+    "course"
+  ],
+  "author": "Maximilian Schwarzmueller",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.3.22",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "lite-server": "^2.2.2",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "systemjs": "^0.19.47"
+  }
+}

@@ -1,0 +1,11 @@
+C:\Dev\OfficeA\bin\Debug\netcoreapp2.2\OfficeA.deps.json
+C:\Dev\OfficeA\bin\Debug\netcoreapp2.2\OfficeA.runtimeconfig.json
+C:\Dev\OfficeA\bin\Debug\netcoreapp2.2\OfficeA.runtimeconfig.dev.json
+C:\Dev\OfficeA\bin\Debug\netcoreapp2.2\OfficeA.dll
+C:\Dev\OfficeA\bin\Debug\netcoreapp2.2\OfficeA.pdb
+C:\Dev\OfficeA\obj\Debug\netcoreapp2.2\OfficeA.csprojAssemblyReference.cache
+C:\Dev\OfficeA\obj\Debug\netcoreapp2.2\OfficeA.csproj.CoreCompileInputs.cache
+C:\Dev\OfficeA\obj\Debug\netcoreapp2.2\OfficeA.AssemblyInfoInputs.cache
+C:\Dev\OfficeA\obj\Debug\netcoreapp2.2\OfficeA.AssemblyInfo.cs
+C:\Dev\OfficeA\obj\Debug\netcoreapp2.2\OfficeA.dll
+C:\Dev\OfficeA\obj\Debug\netcoreapp2.2\OfficeA.pdb

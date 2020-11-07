@@ -1,0 +1,4 @@
+<div class="col-md-12">
+  <canvas baseChart [datasets]="data" [labels]="labels" [options]="barChartOptions" [legend]="true" (chartClick)="chartClicked.emit($event)"
+    chartType="bar"></canvas>
+</div>

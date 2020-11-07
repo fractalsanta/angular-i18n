@@ -1,0 +1,12 @@
+1. Create the DB
+	- locally you can use 'databaseSetup.sql'
+	- In Azure, login to the portal and create a new DB from there
+2. Ensure the database has a user, AARockend, pwd diamond 
+3. Run 2.DbUpdaterSetup.sql
+4. Configure DbUpdater with the new database details
+	- Add new ConnectionString to app.config
+		(note that the environment must map to an environment)
+5. Run DbUpdater, passing in the environment specified in step 3 and the path (iRock directory)
+	- note: If any of the scripts fail then all will be rolled back
+
+Done!

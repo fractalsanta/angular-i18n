@@ -1,0 +1,81 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.LogonModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+<div style="float: left; margin-right: 0px;">
+    <div class="" style="height: auto; width: 500px; padding: 8px;">
+        <div style="float: left;">
+        <h1>Portal Login Page</h1>
+            <h2 style="margin-bottom: 10px;">
+                This Portal allows you to:</h2>
+            <ul style="width: 420px;">
+                <li>View your contact details recorded for your properties</li>
+                <li>View the agent and tenant details recorded for your properties</li>
+                <li>Contact the agency to update your details</li>
+                <li>View your levy paid to dates</li>
+                <li>View general financial details for your properties</li>
+                <li>View lot entitlements for your properties</li>
+                @if (ViewBag.StrataShowMeetings)
+                {
+                    <li>View your meetings</li>
+                }
+                @if (Model.DocumentsAreEnabled())
+                {
+                    <li>View and download property documents</li>
+                }
+                <li>Retrieve your username and password</li>
+                <li>Change your password</li>
+                <br />
+                <li>Committee members can view Strata Committee contact details</li>
+            </ul>
+            <h2>
+                Don't have a Username?</h2>
+            <p style="margin-bottom: 15px; font-size: 14px;">
+                Talk to your manager about viewing your details online.<br />
+                <br />
+                Our portal gives you online access to important information about your property.</p>
+        </div>
+    </div>
+</div>
+<div style="float: left;">
+    <div class="box darkBox">
+        <h2>
+            Enter login details:</h2>
+        @using (Html.BeginForm("Logon", "Login", FormMethod.Post, new { name = "logonForm", autocomplete = "off" }))
+        {
+            object agencyId = ViewData["AgencyID"];
+                       
+            if (agencyId == null || agencyId.ToString().Length == 0 || agencyId.ToString() == "0")
+            {
+            <span>Strata Agency ID</span>
+            @Html.TextBoxFor(m => m.AgencyId, new { @class = "field", autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.AgencyId)
+            }
+            else
+            {
+                @Html.Hidden("AgencyId", agencyId.ToString())
+            }
+            <span>User Role</span>
+            @Html.DropDownListFor(m => m.UserTypeId, Model.Roles, new { @class = "field" })
+            @Html.ValidationMessageFor(m => m.UserTypeId)
+            <span>Access Code</span>
+            @Html.TextBoxFor(m => m.Username, new { @class = "field", autocomplete = "off" })
+            @Html.ValidationMessageFor(m => m.Username)
+            <span>Password</span>
+            @Html.TextBoxFor(m => m.Password, new { @class = "field", autocomplete = "off", type = "password" })
+            @Html.ValidationMessageFor(m => m.Password)
+            <input class="coolButton" type="submit" value="Login" />
+            
+            @Html.ValidationSummary(true)
+            <span class="validation-summary-errors">@Html.ValidationMessage("error")</span>
+                        
+            if (agencyId != null && agencyId.ToString().Length > 0 && agencyId.ToString() != "0")
+            {
+            <div style="clear: both; margin-top: 15px;">
+                @Html.ActionLink("Find my Username or Password", "ForgotPassword")
+            </div>
+            }
+        }
+    </div>
+</div>

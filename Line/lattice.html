@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <title>React App</title>
+</head>
+
+<body onload="init()">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+
+    <canvas id="board" width="1000" height="1000" style="border:2px solid #ccc;">
+    </canvas>
+    <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
+
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        var points = [];
+        var lines = [];
+        var linePoint = [];
+
+        var cv = document.getElementById('board');
+        var ctx = cv.getContext('2d'),
+
+            prevX = 0,
+            currX = 0,
+            prevY = 0,
+            currY = 0,
+            dot_flag = false;
+
+        var rect = cv.getBoundingClientRect();
+        //Draw grid   
+        drawX(ctx);
+        w = cv.width;
+        h = cv.height;
+
+        var flag = false;
+        var stPoint;
+        var endPoint;
+
+        var x = "black",
+            y = 2;
+
+        //Event listeners for mouse actions
+        cv.addEventListener("mousemove", function (e) {
+            drawX(ctx);
+            findxy('move', e)
+        }, false);
+        cv.addEventListener("mousedown", function (e) {
+            mouseDown(e);
+            findxy('down', e)
+        }, false);
+        cv.addEventListener("mouseup", function (e) {
+            mouseUp(e)
+            findxy('up', e)
+        }, false);
+        cv.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+
+
+        function mouseDown(e) {
+            mouseDown = true;
+            stPoint = new Point(e.layerX, e.layerY); //get start point for line
+            console.log(stPoint);
+        }
+
+        function mouseUp(e) {
+            mouseDown = false;
+            endPoint = new lineP(e.layerX, e.layerY); //get end point
+            linePoint.push(endPoint); //store line points for next draw
+
+            console.log(linePoint); //last point dropped
+        }
+
+
+
+        function drawX(ctx) {
+            console.log('dfsdf');
+            ctx.strokeStyle = "#CCC";
+            ctx.lineWidth = 3;
+
+            for (i = 100; i <= 1000; i = i + 100) {
+
+                ctx.beginPath(); //Start path
+
+                for (j = 100; j <= 1000; j = j + 100) {
+                    ctx.beginPath(); //Start path
+                    ctx.arc(i, j, 3, 0, 2 * Math.PI);
+                    ctx.moveTo(i, j);
+                    endPoint = new Point(i, j);
+                    ctx.fill();
+
+                }
+            }
+        }
+
+        // function save() {
+        //             document.getElementById("canvasimg").style.border = "2px solid";
+        //             var dataURL = cv.toDataURL();
+        //             document.getElementById("canvasimg").src = dataURL;
+        //             document.getElementById("canvasimg").style.display = "inline";
+        //         }
+        //   function drawY(ctx) {
+        //     console.log('dd');
+        //     for(j=100; j <= 1000; j = j + 100) {
+        //        console.log(j);
+        //        ctx.beginPath();
+        //       ctx.moveTo(0, j);
+        //       ctx.lineTo(j+3, j);
+        //       ctx.stroke();
+        //      ctx.closePath();
+        //     }
+        //   }
+        function draw() {
+            ctx.beginPath();
+            ctx.moveTo(prevX, prevY);
+
+            ctx.lineTo(currX, currY);
+            ctx.strokeStyle = "#CCC";
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+
+        //Execute lattice mouse events
+        function findxy(res, e) {
+            if (res == 'down') {
+                prevX = Math.round(currX / 100) * 100;
+                prevY = Math.round(currY / 100) * 100;
+                currX = e.clientX - cv.offsetLeft;
+                currY = e.clientY - cv.offsetTop;
+
+                flag = true;
+                dot_flag = true;
+                if (dot_flag) {
+                    prevX = currX;
+                    prevY = currY;
+                    ctx.beginPath();
+                    ctx.fillStyle = x;
+                    ctx.fillRect(currX, currY, 5, 2);
+                    ctx.closePath();
+                    dot_flag = false;
+                    console.log('ini')
+                }
+            }
+            if (res == 'up' || res == "out") {
+                flag = false;
+            }
+            if (res == 'move') {
+                if (flag) {
+                    prevX = currX;
+                    prevY = currY;
+                    currX = e.clientX - cv.offsetLeft;
+                    currY = e.clientY - cv.offsetTop;
+                    redraw(); //the line draw function, 
+
+                }
+            }
+        }
+        function redraw() {
+            ctx.beginPath();
+            ctx.moveTo(Math.round(prevX / 100) * 100, Math.round(prevY / 100) * 100);
+            var targetCoordX = Math.round(currX / 100) * 100;
+            var targetCoordY = Math.round(currY / 100) * 100;
+
+
+            ctx.lineTo(targetCoordX, targetCoordY);
+
+            ctx.moveTo(targetCoordX, targetCoordY);
+
+            ctx.stroke();
+            ctx.arc(prevX, currY, 1, 0, 2 * Math.PI, false);
+            ctx.closePath();
+        }
+
+        //Point interface
+        function Point(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        function lineP(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        function color(obj) {
+            x == 'green';
+            y = 2;
+
+        }
+    }
+
+</script>

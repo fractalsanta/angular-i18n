@@ -1,0 +1,49 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.ReportParametersModel
+@{
+    ViewBag.Title = "Report Parameters";
+}
+@section HeadTagsSection
+{
+    <script type="text/javascript" src="../../Content/Scripts/Reports.js"></script>
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Report Parameters - @Model.DisplayName</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer">
+            <a href="@Url.Action("Menu", "Mobile")" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" /></a>
+        </div>
+        @if (Model.ReportName == "rptBudget")
+        {
+            int index = 0;
+            <h3>Budget Start Date</h3>
+            <select id="budgetIndex">
+                @foreach (var option in Model.BudgetItems)
+                {
+                    <option id="@index" value="@index">@option.Name</option>
+                    index++;
+                }
+            </select>
+            <br />
+            <a href="#" onclick="javascript:runBudgetReport();" class="coolButton">View</a>
+        }
+        else if (Model.ReportName == "rptFinancialPerformance")
+        {
+            <script>
+                var incomeExpenditurePlanId = '@Model.PlanId';
+            </script>
+            <h3>Comparative Period</h3>
+            <select id="comparativePeriod">
+                @foreach (var option in Model.ComparativePeriods)
+                {
+                    <option id="@option.Id" value="@option.Id">@option.Name</option>
+                }
+            </select>
+            <a href="#" onclick="javascript:runFinancialPerformance();" class="coolButton">View</a>
+        }
+        @Html.HiddenFor(m => m.ReportName)
+        @Html.HiddenFor(m => m.PlanId)
+    </div>
+</div>

@@ -1,0 +1,183 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.VotingModel
+@using Rockend.iStrata.StrataWebsite.Model
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+
+<style>
+    .agenda-item-heading-mobile {
+        cursor: pointer;
+        padding: 5px;
+        color: rgba(97, 97, 97, 1);
+        background-color: rgba(206, 206, 206, 0.5);
+    }
+    .motion-state {
+        width: 10px;
+        margin-top: 5px;
+        margin-right: 5px;
+        float: right;
+    }
+</style>
+
+@{ ViewBag.Title = "Vote"; }
+<div class="mainContentContainer" id="mainContentContainer" data-role="page">
+    <div data-role="header" data-position="inline" data-theme="c">
+        <h2>Online Vote</h2>
+    </div>
+    <div class="ui-content">
+        <div class="mainContent">
+            <div class="menuIconContainer" style="margin-bottom: 16px;">
+                <a href="@Url.Action("Menu", "Mobile")" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                    <img src="/Content/Images/menuIcon.jpg" />
+                </a>
+            </div>
+            <div style="clear:both">
+                <h3>Electronic Voting Paper for @Model.Meeting.Description on @Model.Meeting.MeetingDate.ToLocalTime().ToShortDateString()</h3>
+            </div>
+            <input type="button" data-role="none" class="coolButton mobileButton" id="open-guidelines" value="Voting Guidelines" />
+            <div data-role="popup" id="popupBasic">
+                <h1>Voting Instructions</h1>
+                <p>Welcome to pre-meeting electronic voting. Please read the voting guidelines before proceeding to the Electronic Voting Paper.</p>
+                <p>You can now cast your votes in 4 easy steps:</p>
+
+                <ol>
+                    <li>Click on a motion to view more details.</li>
+                    <li>Make a selection of Yes, No or Abstain.</li>
+                    <li>When you've made a selection for each motion of the voting paper, select the Submit button.</li>
+                    <li>Review the Declaration screen, and select the button to agree and submit your votes.</li>
+                </ol>
+
+                <p>Please note:</p>
+
+                <ul>
+                    <li>You must submit your votes before the voting cut-off date/time, which is displayed at the top of the Electronic Voting Page.</li>
+                    <li>You can change your votes at any time before voting closes by logging into your profile again.</li>
+                    <li>All pre-meeting votes are informal until the results are reviewed by the strata manager.</li>
+                    <li>For votes to be valid, all owners must be financial and have no body corporate debt at the start of the meeting.</li>
+                </ul>
+                <p id="vote-closing-warning" style="padding: 5px 5px; text-align: center">
+                    <b>Please Note: </b> Voting closes in <span id="prompt-mins-remaining"></span> minutes.
+                </p>
+                <input type="button" class="coolButton mobileButton" id="close-guidelines" data-role="none" value="Proceed to Electronic Voting Paper" />
+            </div>
+
+            <!-- Modal window content -->
+
+            <div data-role="popup" id="popupDeclaration" data-overlay-theme="b">
+                <h1>Declaration</h1>
+                <p>By selecting the Agree and Submit button below, I acknowledge that my details below are correct, and that my votes will be recorded as 'By Pre-Meeting Electronic Vote'. I acknowledge that in order for my vote to contribute towards the meeting quorum I must be financial with no amounts owing at the time the meeting commences.</p>
+                <div class="grid-wrapper" id="declaration-wrapper">
+                    <div class="grid-item-mobile highlighted" id="grid-item-owner">
+                        <fieldset data-role="controlgroup">
+                            @Html.RadioButton("declaration-rb", "owner", new { @id = "owner", @checked = "checked" })<label for="owner">Registered Lot Owner</label>
+                        </fieldset>
+
+                        <div class="confirm-inner">
+                            <p>
+                                Name: @Model.OwnerName
+                                <br /> Representing @Model.LotName
+                                <br /> Levy entitlement: @Model.LevyAmount
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-mobile inactive" id="grid-item-proxy">
+                        <fieldset data-role="controlgroup">
+                            @Html.RadioButton("declaration-rb", "proxy", new { @id = "proxy" })<label for="proxy">Proxy/Nominee</label>
+                        </fieldset>
+
+                        <div class="confirm-inner">
+                            <p>
+                                Registered proxy/nominee name: @Html.TextBox("proxy-name", Model.ProxyName, new { @id = "proxy-name", @class = "field", autocomplete = "off", disabled = "disabled" })
+                                <br /> Representing @Model.LotName
+                                <br /> Nominated by: @Model.OwnerName, @Model.LotName
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-bottom:5px;">
+                    <input type="button" onclick="cancelVote()" data-role="none" class="coolButton mobileButton" value="Cancel" style="width:48%;margin: 0 auto;display:inline-block" />
+                    <input type="button" onclick="submitVote()" data-role="none" class="coolButton mobileButton" value="Agree and Submit" style="width:48%;margin: 0 auto;display:inline-block" />
+                </div>
+            </div>
+
+            <div id="time-warning-modal" data-role="popup" data-overlay-theme="b">
+                <h1>Voting Closing</h1>
+                <div style="padding:10px">
+                    <p id="vote-closed-warning">Sorry, voting has now closed for this meeting</p>
+                    <input type="button" id="close-time-warning" class="coolButton" data-role="none" value="OK" style="margin: 0 auto;" />                
+                </div>                
+            </div>
+            <!-- End modal window content -->
+
+            <div class="wrapper cf">
+                <div style="float:right; padding-top:5px;padding-bottom:5px;">
+                    <h3>@Model.VotingCutoffDescription()</h3>
+                    Time remaining: <span id="clock"></span>                    
+                    <input type="hidden" id="vote-cutoff-date" value="@(Model.VotingCutoffDateTimeUTC.ToString("yyyy/MM/dd hh:mm tt"))" />
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Vote", "Meeting", FormMethod.Post, new { @id = "voting-form", autocomplete = "off", data_ajax = "false" }))
+            {
+                @Html.HiddenFor(m => m.CurrentLotIndex)
+                @Html.HiddenFor(m => m.DeclarationBy, new { @id = "DeclarationBy" });
+                @Html.HiddenFor(m => m.ProxyName, new { @id = "ProxyName" });
+                <div id="motions">
+                    @for (var i = 0; i < Model.AgendaItems.Count; i++)
+                    {
+                        <div class="agenda-item-mobile">
+
+                            <div class="agenda-item-heading-mobile">
+                                <div class="agenda-item-heading-title" onclick="toggleBody(event, this)">
+                                    <p>
+                                        <span style="font-weight:bold">@Model.AgendaItems[i].SortOrder .</span> @Model.AgendaItems[i].Description
+                                        <span class="motion-state">
+                                            <img src="/Content/Images/arrow-down.png" />
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="agenda-item-body">
+                                @Html.Hidden("body_" + i.ToString(), Model.AgendaItems[i].Description)
+                                <p>@Model.AgendaItems[i].MotionText</p>
+                            </div>
+                            <div class="agenda-item-footer" data-enhance="false" data-dom-cache="false">
+                                @{ 
+                                    var yesOpts = !Model.IsVoteOptionSelected(Model.AgendaItems[i].MeetingRecordItem, Model.VoteOptions[0].Value) ?
+                                        (object)new { @id = string.Format("MeetingRecordItem_Vote_1_{0}", i), @class = "required" } :
+                                        (object)new { @id = string.Format("MeetingRecordItem_Vote_1_{0}", i), @class = "required", @checked = "checked" };
+
+                                    var noOpts = !Model.IsVoteOptionSelected(Model.AgendaItems[i].MeetingRecordItem, Model.VoteOptions[1].Value) ?
+                                       (object)new { @id = string.Format("MeetingRecordItem_Vote_2_{0}", i) } :
+                                       (object)new { @id = string.Format("MeetingRecordItem_Vote_2_{0}", i), @checked = "checked" };
+
+                                    var abstainOpts = !Model.IsVoteOptionSelected(Model.AgendaItems[i].MeetingRecordItem, Model.VoteOptions[2].Value) ?
+                                        (object)new { @id = string.Format("MeetingRecordItem_Vote_3_{0}", i) } :
+                                        (object)new { @id = string.Format("MeetingRecordItem_Vote_3_{0}", i), @checked = "checked" };
+                                }
+                                <fieldset data-role="controlgroup" data-type="horizontal">
+                                    @Html.RadioButtonFor(m => m.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions[0].Value, yesOpts)
+                                    <label for="@(string.Format("MeetingRecordItem_Vote_1_{0}", i))">@Model.VoteOptions[0].Text</label>
+                                    @Html.RadioButtonFor(m => m.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions[1].Value, noOpts)
+                                    <label for="@(string.Format("MeetingRecordItem_Vote_2_{0}", i))">@Model.VoteOptions[1].Text</label>
+                                    @Html.RadioButtonFor(m => m.AgendaItems[i].MeetingRecordItem.Vote, Model.VoteOptions[2].Value, abstainOpts)
+                                    <label for="@(string.Format("MeetingRecordItem_Vote_3_{0}", i))">@Model.VoteOptions[2].Text</label>
+                                </fieldset>
+                                @Html.HiddenFor(m => m.AgendaItems[i].MeetingRecordItem.MeetingRecordID)
+                                @Html.HiddenFor(m => m.AgendaItems[i].MeetingRecordItem.MeetingRegisterID)
+                                @Html.HiddenFor(m => m.AgendaItems[i].MeetingRecordItem.LotID)
+                                @Html.HiddenFor(m => m.AgendaItems[i].MeetingRecordItem.AgendaWizardID)
+                                @Html.HiddenFor(mbox => mbox.AgendaItems[i].MeetingRecordItem.DateChanged)
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <input type="button" class="coolButton mobileButton" data-role="none" value="Submit" disabled="disabled" id="submit-votes-button" style="float: right" />
+            }
+        </div>
+    </div>
+</div>
+<div class="footerImageContainer">
+    <img src='@ViewBag.FooterBannerUrl' style="width: 100%; margin-top: 8px;" />
+</div>

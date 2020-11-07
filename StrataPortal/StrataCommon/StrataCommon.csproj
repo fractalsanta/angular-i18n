@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F730F78-9A2F-448E-9D08-B55BC00D8547}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rockend.iStrata.StrataCommon</RootNamespace>
+    <AssemblyName>StrataCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\Solutions\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Security\RWAC.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\..\Solutions\packages\Rx-Core.2.2.5\lib\net40\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\..\Solutions\packages\Rx-Interfaces.2.2.5\lib\net40\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\..\Solutions\packages\Rx-Linq.2.2.5\lib\net40\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\..\..\Solutions\packages\Rx-PlatformServices.2.2.5\lib\net40\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessEntities\Agency.cs" />
+    <Compile Include="BusinessEntities\Agency55.cs" />
+    <Compile Include="BusinessEntities\Agency65.cs" />
+    <Compile Include="BusinessEntities\AgencyInfo.cs" />
+    <Compile Include="BusinessEntities\AgendaResolution.cs" />
+    <Compile Include="BusinessEntities\AgendaWizard.cs" />
+    <Compile Include="BusinessEntities\AgendaWizard100.cs" />
+    <Compile Include="BusinessEntities\AgendaWizard75.cs" />
+    <Compile Include="BusinessEntities\AgendaWizardAttachment.cs" />
+    <Compile Include="BusinessEntities\AssociationType.cs" />
+    <Compile Include="BusinessEntities\AuditTrail.cs" />
+    <Compile Include="BusinessEntities\BankAccount.cs" />
+    <Compile Include="BusinessEntities\BankAccountMapping.cs" />
+    <Compile Include="BusinessEntities\Budget.cs" />
+    <Compile Include="BusinessEntities\BudgetItem.cs" />
+    <Compile Include="BusinessEntities\Claim.cs" />
+    <Compile Include="BusinessEntities\ComplianceRegister.cs" />
+    <Compile Include="BusinessEntities\ComplianceRegisterType.cs" />
+    <Compile Include="BusinessEntities\Config.cs" />
+    <Compile Include="BusinessEntities\Contact.cs" />
+    <Compile Include="BusinessEntities\ContactDetail.cs" />
+    <Compile Include="BusinessEntities\ContactInfo.cs" />
+    <Compile Include="BusinessEntities\ContractRegister.cs" />
+    <Compile Include="BusinessEntities\ContractType.cs" />
+    <Compile Include="BusinessEntities\Creditor.cs" />
+    <Compile Include="BusinessEntities\DebtRecovery.cs" />
+    <Compile Include="BusinessEntities\DebtRecoveryAction.cs" />
+    <Compile Include="BusinessEntities\DiaryEntry.cs" />
+    <Compile Include="BusinessEntities\DiaryHeader.cs" />
+    <Compile Include="BusinessEntities\DistributionDetail.cs" />
+    <Compile Include="BusinessEntities\EntitlementType.cs" />
+    <Compile Include="BusinessEntities\ExecutiveDescription.cs" />
+    <Compile Include="BusinessEntities\ExecutiveInfo.cs" />
+    <Compile Include="BusinessEntities\ExecutiveMember.cs" />
+    <Compile Include="BusinessEntities\ExecutivePosition.cs" />
+    <Compile Include="BusinessEntities\IAgency.cs" />
+    <Compile Include="BusinessEntities\ILot.cs" />
+    <Compile Include="BusinessEntities\Insurance.cs" />
+    <Compile Include="BusinessEntities\Insurance75.cs" />
+    <Compile Include="BusinessEntities\IOwner.cs" />
+    <Compile Include="BusinessEntities\KeyRegister.cs" />
+    <Compile Include="BusinessEntities\KeyType.cs" />
+    <Compile Include="BusinessEntities\Levy.cs" />
+    <Compile Include="BusinessEntities\LevyEntitlement.cs" />
+    <Compile Include="BusinessEntities\LevySummary.cs" />
+    <Compile Include="BusinessEntities\Lot75.cs" />
+    <Compile Include="BusinessEntities\Lot.cs" />
+    <Compile Include="BusinessEntities\LotInfo.cs" />
+    <Compile Include="BusinessEntities\LotRegister.cs" />
+    <Compile Include="BusinessEntities\LotRegisterType.cs" />
+    <Compile Include="BusinessEntities\MeetingAttendee.cs" />
+    <Compile Include="BusinessEntities\MeetingRecord.cs" />
+    <Compile Include="BusinessEntities\MeetingRecord105.cs" />
+    <Compile Include="BusinessEntities\MeetingRegister.cs" />
+    <Compile Include="BusinessEntities\MeetingRegister100.cs" />
+    <Compile Include="BusinessEntities\MeetingRegister60.cs" />
+    <Compile Include="BusinessEntities\MeetingStep.cs" />
+    <Compile Include="BusinessEntities\MeetingType.cs" />
+    <Compile Include="BusinessEntities\MeetingType60.cs" />
+    <Compile Include="BusinessEntities\MeetingWizardStatus.cs" />
+    <Compile Include="BusinessEntities\MultipleCreditorType.cs" />
+    <Compile Include="BusinessEntities\Oid.cs" />
+    <Compile Include="BusinessEntities\Owner75.cs" />
+    <Compile Include="BusinessEntities\Owner.cs" />
+    <Compile Include="BusinessEntities\OwnersCorporation.cs" />
+    <Compile Include="BusinessEntities\OwnersCorporation100.cs" />
+    <Compile Include="BusinessEntities\OwnersCorporation65.cs" />
+    <Compile Include="BusinessEntities\OwnersLotCorpInfo.cs" />
+    <Compile Include="BusinessEntities\PolicyCoverage.cs" />
+    <Compile Include="BusinessEntities\PolicyType.cs" />
+    <Compile Include="BusinessEntities\QuoteEntry.cs" />
+    <Compile Include="BusinessEntities\Receipt.cs" />
+    <Compile Include="BusinessEntities\ReceiptAllocation.cs" />
+    <Compile Include="BusinessEntities\Reminder7.cs" />
+    <Compile Include="BusinessEntities\ReminderUserList7.cs" />
+    <Compile Include="BusinessEntities\ReminderUserManager7.cs" />
+    <Compile Include="BusinessEntities\ReportDataContainer.cs" />
+    <Compile Include="BusinessEntities\RMImage.cs" />
+    <Compile Include="BusinessEntities\StreetAddress.cs" />
+    <Compile Include="BusinessEntities\Terminology.cs" />
+    <Compile Include="BusinessEntities\TerminologyDictionary.cs" />
+    <Compile Include="BusinessEntities\TranEntry.cs" />
+    <Compile Include="BusinessEntities\TranHeader.cs" />
+    <Compile Include="BusinessEntities\UnitEntitlement.cs" />
+    <Compile Include="BusinessEntities\UnitEntitlementSet85.cs" />
+    <Compile Include="BusinessEntities\UnitEntitlementSet.cs" />
+    <Compile Include="BusinessEntities\User.cs" />
+    <Compile Include="BusinessEntities\User7.cs" />
+    <Compile Include="BusinessEntities\User65.cs" />
+    <Compile Include="BusinessEntities\WebAccessActivity.cs" />
+    <Compile Include="BusinessEntities\WebAccessConfig85.cs" />
+    <Compile Include="BusinessEntities\WebAccessConfig75.cs" />
+    <Compile Include="BusinessEntities\WebAccessConfig.cs" />
+    <Compile Include="BusinessEntities\WebAccessOCReports.cs" />
+    <Compile Include="BusinessEntities\WebAccessReports.cs" />
+    <Compile Include="BusinessEntities\WebAccessStatus.cs" />
+    <Compile Include="BusinessEntities\WorkOrder.cs" />
+    <Compile Include="Helpers\AgencyHelper.cs" />
+    <Compile Include="Helpers\EntityHelper.cs" />
+    <Compile Include="Request\JsonRequest.cs" />
+    <Compile Include="Request\MeetingAgendaRequest.cs" />
+    <Compile Include="Response\MeetingAgendaReponse.cs" />
+    <Compile Include="Response\MeetingAgendaItemResponse.cs" />
+    <Compile Include="Response\VoteResponse.cs" />
+    <Compile Include="StrataMasterRepository.cs" />
+    <Compile Include="Helpers\VersionHelper.cs" />
+    <Compile Include="Request\AgencyRequest.cs" />
+    <Compile Include="Request\BudgetReportRequest.cs" />
+    <Compile Include="Request\LoginRequest.cs" />
+    <Compile Include="Request\ExecutiveRequest.cs" />
+    <Compile Include="Request\LotRequest.cs" />
+    <Compile Include="Request\OwnerRequest.cs" />
+    <Compile Include="Request\PasswordChangeRequest.cs" />
+    <Compile Include="Request\ReportRequest.cs" />
+    <Compile Include="Response\AgencyResponse.cs" />
+    <Compile Include="Response\BudgetReportResponse.cs" />
+    <Compile Include="Response\ExecutiveResponse.cs" />
+    <Compile Include="Response\FileSmartDownloadResponse.cs" />
+    <Compile Include="Response\FileSmartSearchResponse.cs" />
+    <Compile Include="Response\LoginResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\LotResponse.cs" />
+    <Compile Include="Response\MeetingResponse.cs" />
+    <Compile Include="Response\OwnerResponse.cs" />
+    <Compile Include="Response\PasswordChangeResponse.cs" />
+    <Compile Include="Response\ReportResponse.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="StrataDBHelper.cs" />
+    <Compile Include="StringExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agile\Agile.Shared\Agile.Diagnostics\Agile.Diagnostics.csproj">
+      <Project>{CFD72DBA-BFF0-4CB5-92C8-308C877D78B1}</Project>
+      <Name>Agile.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rockend.Common\Rockend.Common.csproj">
+      <Project>{eaff3738-13ff-4b30-aa87-645a0d7c99ba}</Project>
+      <Name>Rockend.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Security\RWAC.pfx">
+      <Link>RWAC.pfx</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BusinessEntities\_GenerateNewClassWithSql.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

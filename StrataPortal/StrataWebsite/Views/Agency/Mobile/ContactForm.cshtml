@@ -1,0 +1,51 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.ContactFormModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Contact Agency</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer" style="margin-bottom: 16px;">
+            <a href="@Url.Action("Menu", "Mobile")" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" /></a>
+        </div>
+        @if (ViewBag.NoContactEmailExists)
+        {
+            <h3>No email address has been configured for this contact form.
+            </h3>
+        }
+        else
+        {
+            <form action="@Url.Action("ContactForm")" name="contactAgencyForm" method="post">
+                <br />
+                <b>Lot:</b><br />
+
+                @if (Model.UserSession.LotNames.Count > 1)
+                {
+                    @Html.Raw(Html.StrataDropdownNoRefresh(ViewData.Model.UserSession.LotOwners, 0, ((d, i) => i.ToString()), "LotIndex"))
+                }
+                else
+                {
+                    <h2>@ViewData.Model.UserSession.LotOwners[0].Name</h2>
+                }
+
+                <br />
+                <b>Message Subject:</b><br />
+                @Html.TextBoxFor(m => m.Subject, new { style = "width: 170px;" })
+
+                <b>Message Body</b>
+                
+                @Html.TextAreaFor(m => m.Message, new { rows = "8", style = "margin-bottom: 8px; width: 100%; height: 100px; -webkit-appearance: none; -webkit-border-radius: 0;" })
+
+                <b>Reply to Email Address</b><br />
+                @Html.TextBoxFor(m => m.EmailAddress, new { style = "width: 100%;" })
+                @Html.ValidationMessageFor(m => m.EmailAddress)
+
+
+                <a href="#" class="coolButton slightlyBiggerButStillCoolButton" style="margin-top: 15px;" data-role="none" onclick="$('form[name=contactAgencyForm]').submit();">Send</a>
+
+            </form>
+        }
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.GenericOwnersCorpReportParametersModel
+<div class="full">
+    <h3>
+        @ViewData.Model.OwnersCorporationTerminology</h3>
+    <select id="ownerCorpIndex" name="ownerCorpIndex" style="width: 500px;">
+        @for (int index = 0; index < ViewData.Model.OwnersCorporations.Count; index++)
+        { 
+            <option value="@index">@ViewData.Model.OwnersCorporations[index]</option>
+        }
+    </select>
+</div>

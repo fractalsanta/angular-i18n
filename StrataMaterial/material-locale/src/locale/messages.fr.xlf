@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="headerText" datatype="html">
+        <source>Welcome to the English header!</source>
+        <target>Bonjour! blah blah</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6aad85d8d95875685a376fae3e306aeef5823a93" datatype="html">
+        <source>Here are some links to help you start:</source>
+        <target>Links le Francais</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

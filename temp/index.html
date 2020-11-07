@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Strata Portal HTML</title>
+    <meta name="description" content="Strata Portal HTML" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <img
+            src="Banner.jpg"
+          />
+		</div>
+		<div class="row">
+		<div class="micro-menu d-flex justify-content-between" >
+				<div >
+						13000017
+				</div>
+				<div class="flex-column flex-grow"></div>
+				<div class="flex-column " style="text-align: right">
+					<a href="#" onclick="showPage('contact')">Contact</a>&nbsp;|&nbsp; 
+					<a href="#" onclick="showPage('FAQ')">FAQ</a>&nbsp;|&nbsp;
+					<a href="#" onclick="showPage('changepassword')">Change Password</a>&nbsp;|&nbsp;
+					<a href="#" onclick="showPage('logout')">Logout</a>
+				</div>
+		</div>
+		
+		
+			</div>
+        
+      </div>
+	</header>
+	
+	<!-- nav bar-->
+	<div class="container">
+		<div class="row">
+				
+			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+				  <button class="navbar-toggler" type="button"  data-toggle="collapse"  data-target="#navbarSupportedContent1" aria-controls="navbarToggleExternalContent" aria-expanded="false"  aria-label="Toggle navigation">
+				  	<span class="navbar-toggler-icon"></span>
+					</button> 
+				<div  id="navbarSupportedContent1" class="collapse navbar-collapse">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item"><a class="nav-link" href="#">Owners Corporation</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('portfolio')">Portfolio</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('reports')">Reports</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('meetings')">Meetings</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" onclick="showPage('maintenance')">Maintenance</a></li>
+					</ul>
+		  		</div>
+			</nav>
+		  </div>
+
+	</div>
+
+
+    <!-- header -->
+    <section id="content-section" class="content-section">
+      <div class="container main-container">
+        <div class="row">
+          <div class="col-4">
+            <div class="text-center single-content">
+              <i class="fa fa-code"></i>
+              <h3>Content Grid1</h3>
+              <p>
+                probant an malis deserunt commodo labore labore do pariatur, culpa concursionibus singulis multos consequat. Nostrud anim
+                eiusmod, ita aliqua fabulas.
+              </p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="text-center single-content">
+              <i class="fa fa-flask"></i>
+              <h3>Content Grid2</h3>
+              <p>
+                probant an malis deserunt commodo labore labore do pariatur, culpa concursionibus singulis multos consequat. Nostrud anim
+                eiusmod, ita aliqua fabulas.
+              </p>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="text-center single-content">
+              <i class="fa fa-database"></i>
+              <h3>Content Grid3</h3>
+              <p>
+                probant an malis deserunt commodo labore labore do pariatur, culpa concursionibus singulis multos consequat. Nostrud anim
+                eiusmod, ita aliqua fabulas.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+			<img src="FooterBanner.jpg" />
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<script>
+function showPage(text) {
+	$('.main-container').html(text);
+}
+//  $('.navbar-toggler').on('click', function(e) {
+// 	 e.stopPropagation();
+//  })
+</script>

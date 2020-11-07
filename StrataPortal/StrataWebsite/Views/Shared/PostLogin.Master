@@ -1,0 +1,59 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PostLogin.Master.cs"
+    Inherits="Rockend.iStrata.StrataWebsite.Views.Shared.PostLogin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>STRATA Web Access</title>
+    <link href="/Content/Styles/reset-min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Styles/newstyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <div class="internalContainer">
+            <div class="headerImageContainer">
+                <div style="float: right; margin-right: 5px; margin-top: 5px; margin-bottom: 3px; color: #999999; font-size: 14px;"><%= ViewBag.LoggedInLabel %></div>
+                <% if (!string.IsNullOrEmpty(ViewBag.AgencyUrl))
+                   { %>
+                <a href="<%=ViewBag.AgencyUrl %>" target="_blank">
+                    <img src='<%= Url.Action("BannerImage", "Login") %>' alt='Banner' />
+                </a>
+                <% }
+                   else
+                   { %>
+                <img src='<%= Url.Action("BannerImage", "Login") %>' alt='Banner' />
+                <% } %>
+            </div>
+            <div class="microMenu">
+                <%= ViewBag.TopText %>
+                <div id="menu">
+                    <a href="/Agency/Contact">Contact Agency</a></div>
+            </div>
+            <% Html.RenderPartial("GlobalMenu"); %>
+            <div class="mainContent">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+            <% if (ViewBag.HasFooterBanner)
+               { %>
+            <div class="footerImageContainer">
+                <% if (!string.IsNullOrEmpty(ViewBag.FooterUrl))
+                   { %>
+                <a href="<%= ViewBag.FooterUrl %>" target="_blank">
+                    <img src='<%= Url.Action("FooterImage", "Login") %>' /></a>
+                <% }
+                   else
+                   { %>
+                <img src='<%=Url.Action("FooterImage", "Login") %>' />
+                <% } %>
+            </div>
+            <% } %>
+            <div class="footer">
+                <div style="float: left;">
+                    Powered by&nbsp;<a href="http://www.rockend.com.au/Page2.aspx?element=123&category=1">Rockend</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

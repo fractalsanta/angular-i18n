@@ -1,0 +1,172 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.LotOwnerModel
+@using Rockend.iStrata.StrataCommon.BusinessEntities
+@using Rockend.iStrata.StrataWebsite.Helpers
+@using Rockend.iStrata.StrataWebsite.Model
+@section HeadTagsSection {
+    <style>
+        .label {
+            width: 110px;
+        }
+    </style>
+}
+<div data-role="header" data-position="inline" data-theme="c">
+    <h2>Contact Details</h2>
+</div>
+<div class="ui-content">
+    <div class="mainContent">
+        <div class="menuIconContainer" style="margin-bottom: 16px;">
+            <a href="#" data-rel="back" data-direction="reverse" data-role="none" data-transition="slide" data-ajax="false">
+                <img src="/Content/Images/menuIcon.jpg" />
+            </a>
+        </div>
+        <div class="section">
+            @if (ViewData.Model.UserSession.LotNames.Count > 1)
+            {
+                @Html.Raw(Html.StrataDropdown(ViewData.Model.UserSession.LotNames, ViewData.Model.CurrentLotIndex, ((d, i) => Url.Action("Contacts", new { index = i }))))
+            }
+            else
+            {
+                <h3 class="plan">@Html.Raw(ViewData.Model.UserSession.LotNames[0].Name)</h3>
+            }
+
+            <h3>Portfolio</h3>
+            <div class="section">
+                @Model.BodyCorporateName
+                <br />
+                <span>Plan Number:</span> @Model.PlanNumber
+            </div>
+            <div class="section">
+                @Html.ValueOrDefault(Model.AddressLine1)
+                @Html.ValueOrDefault(Model.AddressLine2)
+                @Html.ValueOrDefault(Model.AddressLine3)
+            </div>
+        </div>
+        <div class="section" style="text-align: center;">
+            @if (Model.AgentContentStrata.ShowPropertyPhoto && Model.HasPropertyPhoto)
+            {
+                <img src="@Url.Action("PropertyPhoto", new { PlanNo = Model.PlanNumber == null ? "" : Model.PlanNumber.Trim() })" style="max-width: 90%;" />
+            }
+        </div>
+        <div class="section">
+            <h3>Owner Contact Details</h3>
+            <div class="section">
+                @Html.Partial("RenderContact", Model.MainContact)
+            </div>
+        </div>
+        <div class="section">
+            <h3>Financial Details</h3>
+            @if (!Model.HidePaidTo)
+            {
+                <div class="label">
+                    Paid to:
+                </div>
+                <div class="value">@Model.FinancialPaidTo</div>
+                <div class="clear">
+                </div>
+            }
+            <div class="label">
+                Last Receipt:
+            </div>
+            <div class="value">@Model.FinancialLastReceiptDate</div>
+            <div class="clear">
+            </div>
+            <div class="label">
+                Amount:
+            </div>
+            <div class="value">@Model.FinancialLastReceiptAmount</div>
+            <div class="clear">
+            </div>
+            <div class="label">
+                Receipt No:
+            </div>
+            <div class="value">@Model.FinancialLastReceiptRecordNo</div>
+        </div>
+        <div class="section">
+            <h3>Dates</h3>
+            <div class="label">
+                Entered:
+            </div>
+            <div class="value">
+                @if (Model.FinancialEnteredDate != null)
+                {
+                    @Model.FinancialEnteredDate.ToShortDateString();
+                }
+            </div>
+            <div class="clear">
+            </div>
+            <div class="label">
+                Purchased:
+            </div>
+            <div class="value">
+                @if (Model.FinancialPurchasedDate != null)
+                {
+                    @Model.FinancialPurchasedDate.ToShortDateString();
+                }
+            </div>
+        </div>
+        <div class="section">
+            <h3>Agent Contact Details</h3>
+            @if (Model.AgentContact != null)
+            {
+                @Html.Partial("RenderContact", Model.AgentContact)
+            }
+            else
+            {
+                @Html.Partial("RenderContact", new Contact())
+            }
+        </div>
+        <div class="section">
+            <h3>Tenant Contact Details</h3>
+            @if (Model.LevyContact != null)
+            {
+                @Html.Partial("RenderContact", Model.LevyContact)
+            }
+            else
+            {
+                @Html.Partial("RenderContact", new Contact())
+            }
+        </div>
+        <div class="section">
+            @Html.ActionLink("Update my details", "UpdateRequestForm", "Agency", new { subject = string.Concat("Update my details: ", Model.BodyCorporateName), heading = "Update Request Form" }, new { @class = "coolButton", style = "float: left; width: 145px; height: 29px; vertical-align: middle; padding-top: 6px;" })
+        </div>
+    </div>
+    @if (Model.ShowDocumentDisributions && Model.DocumentDistributions != null)
+    {
+        <div style="clear: both"></div>
+        <h2>Document Distribution</h2>
+        <div class="section">
+            <h3>Levies</h3>
+            <div class="section">
+                @foreach (var dd in ((List<DocumentDistributionModel>)Model.DocumentDistributions).Where(d => d.Type == "Levies"))
+                {
+                    <div class="label">@dd.Recipient</div>
+                    <div class="value">@dd.Value </div>
+                    <div style="clear: both"></div>
+                }
+            </div>
+        </div>
+        <div class="section">
+            <h3>Meetings</h3>
+            <div class="section">
+                @foreach (var dd in ((List<DocumentDistributionModel>)Model.DocumentDistributions).Where(d => d.Type == "Meetings"))
+                {
+                    <div class="label">@dd.Recipient</div>
+                    <div class="value">@dd.Value </div>
+                    <div style="clear: both"></div>
+                }
+            </div>
+        </div>
+        <div style="clear: both" />
+        <div class="report-section">
+            <h3>Correspondence</h3>
+            <div class="section">
+                @foreach (var dd in ((List<DocumentDistributionModel>)Model.DocumentDistributions).Where(d => d.Type == "Correspondence"))
+                {
+                    <div class="label">@dd.Recipient</div>
+                    <div class="value">@dd.Value </div>
+                    <div style="clear: both"></div>
+                }
+            </div>
+        </div>
+    }
+</div>

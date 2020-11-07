@@ -1,0 +1,115 @@
+﻿@model Rockend.iStrata.StrataWebsite.Model.OwnersCorpModel
+@using Rockend.iStrata.StrataWebsite.Helpers
+@section HeadTagsSection {
+    <style>
+        .label {
+            width: 170px;
+        }
+    </style>
+}
+<h1>
+    @ViewData.Model.UserSession.Terminology["Owners Corporation"]
+</h1>
+@if (ViewData.Model.UserSession.OwnersCorpNames.Count > 1)
+{
+    @Html.Raw(Html.StrataDropdown(ViewData.Model.UserSession.OwnersCorpNames, ViewData.Model.CurrentOwnersCorpIndex, ((d, i) => Url.Action("General", new { index = i }))))
+}
+else
+{
+    <h2>@ViewData.Model.UserSession.OwnersCorpNames[0].Name</h2>
+}
+<div class="full-width-data-container" style="border: none; background-color: inherit;">
+    <div class="report-section floatLeft">
+        <h3>Property Details</h3>
+        <div class="section">
+            @Model.BodyCorporateName
+            <br />
+            <span>Plan Number:</span> @Model.PlanNumber
+        </div>
+        <div class="section" style="clear: both;">
+            @Html.ValueOrDefault(Model.AddressLine1)
+            @Html.ValueOrDefault(Model.AddressLine2)
+            @Html.ValueOrDefault(Model.AddressLine3)
+        </div>
+        <h3>Management Details</h3>
+        <div class="section">
+            <div class="label">
+                Number of Lots:
+            </div>
+            <div class="value">@Model.NumberOfLots</div>
+            <div class="label">
+                Last issued levy notice:
+            </div>
+            <div class="value">@Model.LastIssuedlevyNotice</div>
+            <div class="label">
+                Normal levy frequency:
+            </div>
+            <div class="value">@Model.NormalLevyFrequency</div>
+            <div class="label">
+                Levy Discount Rate (%):
+            </div>
+            <div class="value">@Model.LevyDiscountRate</div>
+            <div class="label">
+                Levy Interest Rate (%):
+            </div>
+            <div class="value">@Model.LevyInterestRate</div>
+            <div class="label">
+                Interest Free Period:
+            </div>
+            <div class="value">@Model.InterestFreePeriod</div>
+            <div style="height: 30px; clear: both; float: left;"></div>
+            <div class="label">
+                Financial Year End:
+            </div>
+            <div class="value">@Model.FinancialYearEnd</div>
+            @if (Model.ShowABN)
+            {
+                <div class="label">
+                    ABN:
+                </div>
+                <div class="value">@Model.ABN</div>
+            }
+            <div class="label">
+                GST Status:
+            </div>
+            <div class="value">@Model.GSTStatus</div>
+            <div class="label">
+                TFN:
+            </div>
+            <div class="value">@Model.TFN</div>
+            <div class="label">
+                Tax Year End:
+            </div>
+            <div class="value">@Model.TaxYearEnd</div>
+            @if (Model.EntitlementSets.Count() > 0)
+            {
+                @Html.ActionLink("Show Entitlements", "Entitlements", "OwnersCorp", null, new { @class = "coolButton", style = "float: left; width: 145px; height: 29px; vertical-align: middle; padding-top: 6px; margin-top: 10px;" })
+            }            
+        </div>
+    </div>
+    @if (Model.AgentContentStrata.ShowManagerNameAndPhoto || Model.AgentContentStrata.ShowManagerEmail)
+    {
+        <div class="report-section floatRight">
+            <h3>Manager</h3>
+            <div>
+                @if (Model.AgentContentStrata.ShowManagerNameAndPhoto)
+                {
+                    <div class="label" style="width: 75px;">Name</div>
+                    <div class="value">@Model.ManagerName</div>
+                }
+                @if (Model.AgentContentStrata.ShowManagerEmail)
+                {
+                    <div class="label" style="width: 75px;">Email</div>
+                    <div class="value">@Model.ManagerEmail</div>
+                }
+                @if (Model.AgentContentStrata.ShowManagerNameAndPhoto && Model.HasManagerPhoto)
+                {
+                    <div class="label" style="width: 75px;">&nbsp;</div>
+                    <div class="value">
+                        <img src="@Url.Action("ManagerPhoto", new { PlanNo = Model.PlanNumber == null ? "" : Model.PlanNumber.Trim() })" />
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

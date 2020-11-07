@@ -1,0 +1,4 @@
+﻿@{
+    Layout = Request.Browser.IsMobileDevice && !Rockend.iStrata.StrataWebsite.MobileViewEngine.IsIPad() ? "~/Views/Shared/Mobile.cshtml" : "~/Views/Shared/NewLayout.cshtml";
+    // Layout = "~/Views/Shared/Mobile.cshtml";
+}

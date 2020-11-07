@@ -1,0 +1,275 @@
+﻿@using Rockend.iStrata.StrataWebsite.Model
+@model MaintenanceModel
+@{
+    ViewBag.Title = "Repairs & Maintenance";
+}
+@section HeadTagsSection
+{
+    <script type="text/javascript" src="/Content/Scripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Documents.js"></script>
+    <script type="text/javascript" src="/Content/Scripts/Maintenance.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("table").tablesorter({
+                dateFormat: "mmddyyyy",
+                sortList: [[0, 1]],
+                headers: {
+                    0: { sorter: "shortDate" } //, dateFormat will parsed as the default above
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            // Adding this line so I can absolute position the pending / completed links. Can't position an element, if it's parent is static (static = default).
+            $('.mainContent').css('position', 'relative');
+            $("#showPendingWorkOrdersLink").css('display', 'none');
+            $("#showPendingQuotesLink").css('display', 'none');
+            
+            if (window.location.hash && window.location.hash !== '') {
+                // Need to do this - as if user clicks back from detail page - these will never have executed, and all items are displayed in the table.
+                ShowPendingQuotes();
+                ShowPendingWorkOrders();
+                switch (window.location.hash) {
+                    case '#woOpen':
+                        ShowWorkOrders();
+                        ShowCompletedWorkOrders();
+                        ShowPendingWorkOrders();
+                        break;
+                    case '#woClosed':
+                        ShowWorkOrders();
+                        ShowPendingWorkOrders();
+                        ShowCompletedWorkOrders();
+                        break;
+                    case '#quOpen':
+                        ShowQuotes();
+                        ShowCompletedQuotes();
+                        ShowPendingQuotes();
+                        break;
+                    case '#quClosed':
+                        ShowQuotes();
+                        ShowPendingQuotes();
+                        ShowCompletedQuotes();
+                        break;
+                    default:
+                        ShowWorkOrders();
+                        ShowPendingQuotes();
+                        ShowPendingWorkOrders();
+                        break;
+                }
+            }
+            else {
+                ShowWorkOrders();
+                ShowPendingQuotes();
+                ShowPendingWorkOrders();
+            }
+
+            $('.detailLink').click(function (ev) {
+                window.location.hash = pageStateHash;
+                return true;
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        table.documents th
+        {
+            font-weight: bold;
+            background-image: url(/Content/Images/toggle.gif);
+            background-position: center right;
+            background-repeat: no-repeat;
+            padding-right: 10px;
+            background-color: #999999;
+            color: #FFFFFF;
+            cursor: pointer;
+            padding: 2px 3px 2px 3px;
+        }
+
+            table.documents th:first-child
+            {
+                border-left: solid 1px #CCCCCC;
+            }
+
+            table.documents th:last-child
+            {
+                border-right: solid 1px #CCCCCC;
+            }
+
+        table.documents td
+        {
+            padding: 6px;
+            background-color: White;
+            border-bottom: solid 1px #CCCCCC;
+        }
+
+        table.documents .date
+        {
+            width: 100px;
+            border-left: solid 1px #CCCCCC;
+        }
+
+        table.documents .status
+        {
+            width: 130px;
+        }
+
+        table.documents .propCode
+        {
+            width: 130px;
+        }
+
+        table.documents .jobNo
+        {
+            width: 70px;
+            border-right: solid 1px #CCCCCC;
+        }
+
+        table.documents .description
+        {
+            width: 331px;
+        }
+        .changeLinks:active, .changeLinks:hover
+        {
+            background: none;
+        }
+    </style>
+}
+
+<h1 id="pageHeader">Work Orders</h1>
+<div style="display: inline; position: absolute; right: 16px; width: 200px; text-align: right; top: 20px;"><a class="changeLinks" id="showWorkOrdersLink" href="javascript:ShowWorkOrders();">Show Work Orders</a><a class="changeLinks" id="showQuotesLink" href="javascript:ShowQuotes();">Show Quotes</a></div>
+<div id="workOrdersDiv">
+@if (Model != null && Model.WorkOrderSummaries != null && Model.WorkOrderSummaries.Count > 0)
+{
+    <div style="width: 100%; margin-bottom: 6px; margin-top: 20px; text-align: right;">
+        <h2 id="WorkOrdersPageHeader" style="float: left;">Open Work Orders</h2>
+        <a class="changeLinks" id="showCompletedWorkOrdersLink" href="javascript:ShowCompletedWorkOrders();">Closed Work Items</a><a class="changeLinks" id="showPendingWorkOrdersLink" href="javascript:ShowPendingWorkOrders();">Open Work Items</a>
+    </div>
+    <table id="myTable" class="tablesorter documents workOrdersTable" style="width: 822px;">
+        <thead>
+            <tr>
+                <th class="date" data-sorter="shortDate" data-date-format="ddmmyyyy">Date
+                </th>
+                <th class="status">Status
+                </th>
+                <th class="description">Job Summary
+                </th>
+                <th class="propCode">Plan No
+                </th>
+                <th class="jobNo">No
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (WorkOrderSummary job in Model.WorkOrderSummaries)
+            {            
+                <tr class="@job.JobStateCssClass">
+                    <td class="date">
+                        @job.OrderDate.ToShortDateString()
+                    </td>
+                    <td class="status">
+                        @if (Model.ShowDetailLink)
+                        {
+                            <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.WorkOrderID, maintType = "workOrder" })">@job.StatusString</a>
+                        }
+                        else
+                        {
+                            @job.StatusString
+                        }
+                    </td>
+                    <td class="description">
+                        @if (Model.ShowDetailLink)
+                        {
+                            <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.WorkOrderID, maintType = "workOrder" })">@job.DiarySubject</a>
+                        }
+                        else
+                        {
+                            @job.DiarySubject
+                        }
+                    </td>
+                    <td class="propCode">
+                        @job.PlanNumber
+                    </td>
+                    <td class="jobNo">
+                        @job.OrderNumber
+                    </td>
+                </tr>
+            }
+            <tr class="hiddenRow date jobNo" style="display: none; width: 821px;">
+                <td colspan="5">No jobs to display.</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <span>No Work Orders to display.</span>
+}
+</div>
+
+<div id="quotesDiv">
+@if (Model != null && Model.QuoteSummaries != null && Model.QuoteSummaries.Count > 0)
+{
+    <div style="width: 100%; margin-bottom: 6px; margin-top: 20px; text-align: right;">
+        <h2 id="QuotesPageHeader" style="float: left;">Open Quotes</h2>
+        <a class="changeLinks" id="showCompletedQuotesLink" href="javascript:ShowCompletedQuotes();">Closed Quotes</a><a class="changeLinks" id="showPendingQuotesLink" href="javascript:ShowPendingQuotes();">Open Quotes</a>
+    </div>
+    <table id="myTable" class="tablesorter documents quotesTable" style="width: 822px;">
+        <thead>
+            <tr>
+                <th class="date" data-sorter="shortDate" data-date-format="ddmmyyyy">Date
+                </th>
+                <th class="status">Status
+                </th>
+                <th class="description">Job Summary
+                </th>
+                <th class="propCode">Plan No
+                </th>
+                <th class="jobNo">No
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (QuoteSummary job in Model.QuoteSummaries)
+            {            
+                <tr class="@job.JobStateCssClass">
+                    <td class="date">
+                        @job.QuoteRequestDate.ToShortDateString()
+                    </td>
+                    <td class="status">
+                        @if (Model.ShowDetailLink)
+                        {
+                            <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.QuoteID, maintType = "quote" })">@job.StatusString</a>
+                        }
+                        else
+                        {
+                            @job.StatusString
+                        }
+                    </td>
+                    <td class="description">
+                        @if (Model.ShowDetailLink)
+                        {
+                            <a class="detailLink" href="@Url.Action("JobDetails", new { JobId = job.QuoteID, maintType = "quote" })">@job.DiarySubject</a>
+                        }
+                        else
+                        {
+                            @job.DiarySubject
+                        }
+                    </td>
+                    <td class="propCode">
+                        @job.PlanNumber
+                    </td>
+                    <td class="jobNo">
+                        @job.OrderNumber
+                    </td>
+                </tr>
+            }
+            <tr class="hiddenRow date jobNo" style="display: none; width: 821px;">
+                <td colspan="5">No quotes to display.</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <span>No quotes to display.</span>
+}
+</div>

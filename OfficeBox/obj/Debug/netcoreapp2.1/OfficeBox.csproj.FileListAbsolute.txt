@@ -1,0 +1,4 @@
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.1\OfficeBox.csprojAssemblyReference.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.1\OfficeBox.csproj.CoreCompileInputs.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.1\OfficeBox.AssemblyInfoInputs.cache
+C:\Dev\OfficeBox\obj\Debug\netcoreapp2.1\OfficeBox.AssemblyInfo.cs

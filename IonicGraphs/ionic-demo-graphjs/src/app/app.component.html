@@ -1,0 +1,42 @@
+<!-- <app-header></app-header>
+<div class="container" *ngIf="provinces">
+  <div class="col-md-6">
+    <app-table-component [flatProvinces]="flatProvinces" (userRowSelect)="onRowSelected($event)"></app-table-component>
+  </div>
+  <div class="col-md-6">
+    <app-map-component [provinces]="provinces"></app-map-component>
+  </div>
+</div>
+<hr>
+<div class=" col-sm-12">
+  <div *ngIf="selectedProvince">
+    <h2>Data for {{selectedProvince.province}}</h2>
+    <div class="col-md-4">
+      <h3>Summary of province</h3>
+      <app-summary-component [province]="selectedProvince"></app-summary-component>
+    </div>
+    <div class="col-md-2">
+      <h3>Filters</h3>
+    </div>
+    <div class="col-md-6">
+      <h3>Bar chart</h3>
+      <app-bar-chart-component [data]="barChartData" [labels]="chartLabels" (chartClicked)="chartClicked($event)"></app-bar-chart-component>
+    </div>
+    <div class="col-md-4">
+      <h3>Stacked bar chart of {{ selectedProvince.province }} + {{ randomProvince.province }}</h3>
+      <canvas baseChart [datasets]="lineChartData" [labels]="chartLabels" [options]="stackedBarChartOptions
+       " [legend]="true" (chartClick)="chartClicked($event)" chartType="bar"></canvas>
+    </div>
+    <div class="col-md-4">
+      <h3>Line chart of {{ selectedProvince.province }} vs {{ randomProvince.province }}</h3>
+      <canvas baseChart [datasets]="lineChartData" [labels]="chartLabels" [options]="lineChartOptions" [legend]="true
+       " (chartClick)="chartClicked($event)" chartType="line"></canvas>
+    </div>
+    <div class="col-md-4" *ngIf="selectedData">
+      <h3>Gauge</h3>
+      <canvas baseChart [datasets]="selectedData" [labels]="selectedLabel" [options]="doughnutChartOptions
+       " [legend]="true" chartType="doughnut"></canvas>
+    </div>
+  </div>
+</div> -->
+<ion-nav [root]="rootPage"></ion-nav>

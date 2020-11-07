@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
+/* example compiler usage
+"compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/types/*"
+            ]
+        }
+    },
+    "files": [
+      "app.ts",
+      "./Lessons/typescript-fundamentals.ts"
+    ]
+*/
